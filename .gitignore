@@ -1,3 +1,4 @@
+.git/
 .awcache/
 build/
 node_modules/
