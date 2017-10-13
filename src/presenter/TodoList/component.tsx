@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Todo } from '../Todo';
+import * as CSSModules from 'react-css-modules';
 const style = require('./style.less');
 
 function makeTodoClick(onTodoClick, id) {
@@ -12,8 +13,10 @@ const rows = (todos, onTodoClick) => {
   ));
 };
 
-export const TodoList = ({ todos, onTodoClick }) => (
-  <ul className={style.ulBg}>
+const TodoListRSC = ({ todos, onTodoClick }) => (
+  <ul styleName='ul-bg'>
     {rows(todos, onTodoClick)}
   </ul>
 );
+
+export const TodoList = CSSModules(TodoListRSC, style);
