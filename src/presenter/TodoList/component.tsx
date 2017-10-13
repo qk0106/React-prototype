@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Todo } from '../Todo';
-const style = require('./style.css');
+const style = require('./style.less');
 
 function makeTodoClick(onTodoClick, id) {
   return () => { onTodoClick(id); };
