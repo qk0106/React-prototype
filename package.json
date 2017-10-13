@@ -4,16 +4,11 @@
   "description": "shroogal-ui",
   "main": "build/server.js",
   "scripts": {
-    "clean": "rimraf build",
-    "prebuild": "npm run clean",
-    "build": "webpack --config config/webpack/index.js",
-    "build:prod": "cross-env NODE_ENV=production npm run build",
+    "prebuild": "rimraf build",
+    "build": "webpack --config config/webpack/dev.js",
     "postbuild": "webpack --config config/webpack/server.js",
     "prestart": "npm run build",
-    "start": "node build/server.js",
-    "start:prod": "cross-env NODE_ENV=production npm start",
-    "test": "karma start config/test/karma.conf.js",
-    "lint": "tslint \"src/**/**.ts*\""
+    "start": "node build/server.js"
   },
   "author": "Dylan Qin <dylan.chin@shroogal.com.au>",
   "contributors": [
@@ -35,19 +30,9 @@
     "react",
     "redux",
     "typescript",
-    "webpack",
-    "universal",
-    "isomorphic",
-    "starter",
-    "kit",
-    "boilerplate",
-    "hot reload",
-    "react-hot-loader",
-    "enzyme",
-    "mocha",
-    "chai"
+    "webpack"
   ],
-  "license": "MIT",
+  "license": "",
   "devDependencies": {
     "@types/base16": "^1.0.1",
     "@types/chai": "^4.0.4",
