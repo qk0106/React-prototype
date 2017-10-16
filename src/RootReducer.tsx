@@ -7,5 +7,3 @@ export const RegisterToRootReducer = (componentName, reducer) => {
 }
 
 export let FetchRootReducer = () => (combineReducers(reducers));
-
-

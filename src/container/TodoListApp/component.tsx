@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { STATE_PROP } from './const';
-import { AddTodo } from '../AddTodo';
-import { TodoFooter } from '../TodoFooter';
-import { VisibleTodoList } from '../VisibleTodoList';
+import { AddTodo, TodoFooter, VisibleTodoList } from '../../container';
 import { RegisterToRootRoutes } from '../../RootRoutes';
 
 const TodoListApp = () => (

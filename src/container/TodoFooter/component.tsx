@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TodoFilterLink } from '../TodoFilterLink';
+import { TodoFilterLink } from '../../container';
 
 export const TodoFooter: React.SFC<any> = ({ stateProp }) => (
   <p>
