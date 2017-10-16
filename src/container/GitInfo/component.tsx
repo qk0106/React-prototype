@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
-import { Refresh } from './action';
+import { refresh } from './action';
 import { GitSize } from '../../presenter';
-// import { asyncConnect } from 'redux-connect';
-
 
 const mapStateToProps = (state, ownProps) => {
   let ownState = state[ownProps.stateProp];
@@ -13,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClick: () => { dispatch(Refresh(ownProps.refreshCount)); },
+    onClick: () => { dispatch(refresh(ownProps.refreshCount)); },
   }
 };
 
