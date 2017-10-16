@@ -21,11 +21,8 @@ const gitSize = (gitSize = 0, action) => {
     case FETCH_GIT_INFO:
       return 'fetching git info';
     case FETCH_GIT_INFO_SUCCESS:
-      console.log(gitSize);
-      console.log(action.data);
-      return 100;
+      return action.data.size;
     case FETCH_GIT_INFO_FAILED:
-      console.log(action.error);
       return 'error';
     default:
       return gitSize;
