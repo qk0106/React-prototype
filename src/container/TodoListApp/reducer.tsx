@@ -10,9 +10,9 @@ const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_COMPLETED: 'SHOW_COMPLETED',
   SHOW_ACTIVE: 'SHOW_ACTIVE'
-}
+};
 
-const { SHOW_ALL } = VisibilityFilters
+const { SHOW_ALL } = VisibilityFilters;
 
 const visibilityFilter = (visibilityFilter = SHOW_ALL, action): string => {
   switch (action.type) {
@@ -21,7 +21,7 @@ const visibilityFilter = (visibilityFilter = SHOW_ALL, action): string => {
     default:
       return visibilityFilter
   }
-}
+};
 
 const todos = (todos = [], action): any[] => {
   switch (action.type) {
@@ -42,11 +42,11 @@ const todos = (todos = [], action): any[] => {
     default:
       return todos
   }
-}
+};
 
 const TodoListAppReducer = combineReducers({
     visibilityFilter,
     todos
-})
+});
 
 RegisterToRootReducer(STATE_PROP, TodoListAppReducer);

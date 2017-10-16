@@ -14,4 +14,3 @@ const TodoListApp = () => (
 );
 
 RegisterToRootRoutes('TodoListApp', '/todo', 'Todo List', TodoListApp);
-
