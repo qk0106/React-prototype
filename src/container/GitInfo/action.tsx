@@ -1,14 +1,14 @@
 // Action Type
-export const REFRESH: string = 'REFRESH';
+export const REFRESH_GIT_INFO: string = 'REFRESH_GIT_INFO';
 export const FETCH_GIT_INFO: string = 'FETCH_GIT_INFO';
 export const FETCH_GIT_INFO_SUCCESS: string = 'FETCH_GIT_INFO_SUCCESS';
 export const FETCH_GIT_INFO_FAILED: string = 'FETCH_GIT_INFO_FAILED';
 
 // Action Creator
-export const refresh = (refreshCount) => {
+export const refreshGitInfo = (refreshCount) => {
     return { 
-        type: REFRESH,
-        refreshCount 
+        type: REFRESH_GIT_INFO,
+        refreshCount
     }
 };
 
