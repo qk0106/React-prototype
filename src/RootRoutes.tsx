@@ -34,12 +34,14 @@ export const FetchRootRoutes = () => {
   let linkRows = rows(linkTemplate, routes);
   let routeRows = rows(routeTemplate, routes);
 
-  return (<BrowserRouter>
-    <div>
-      {linkRows}
-      <Switch>
-          {routeRows}
-      </Switch>
-    </div>
-  </BrowserRouter>)
+  return (
+    <BrowserRouter>
+      <div>
+        {linkRows}
+        <Switch>
+            {routeRows}
+        </Switch>
+      </div>
+    </BrowserRouter>
+  )
 };
