@@ -19,4 +19,4 @@ const TodoListRSC = ({ todos, onTodoClick }) => (
   </ul>
 );
 
-export const TodoList = CSSModules(TodoListRSC, style);
+export const TodoList = CSSModules(TodoListRSC, style); // modulise style with component
