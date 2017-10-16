@@ -18,7 +18,7 @@ var config = {
 
   entry: {
     app: [
-      './src/index.tsx'
+      './src/Root.tsx'
     ]
   },
 
