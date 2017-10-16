@@ -6,7 +6,7 @@ import { TOGGLE_TODO } from '../VisibleTodoList';
 import { SET_VISIBILITY_FILTER } from '../TodoFilterLink';
 import { RegisterToRootReducer } from '../../RootReducer';
 
-export const VisibilityFilters = {
+const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_COMPLETED: 'SHOW_COMPLETED',
   SHOW_ACTIVE: 'SHOW_ACTIVE'
