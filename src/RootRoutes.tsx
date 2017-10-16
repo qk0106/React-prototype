@@ -31,15 +31,12 @@ const routeTemplate = (route) => (
 );
 
 export const FetchRootRoutes = () => {
-  let linkRows = rows(linkTemplate, routes);
-  let routeRows = rows(routeTemplate, routes);
-
   return (
     <BrowserRouter>
       <div>
-        {linkRows}
+        {rows(linkTemplate, routes)}
         <Switch>
-            {routeRows}
+            {rows(routeTemplate, routes)}
         </Switch>
       </div>
     </BrowserRouter>
