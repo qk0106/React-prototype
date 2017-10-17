@@ -1,10 +1,7 @@
 import * as React from 'react';
-import * as gitInfoFoler from '../GitInfo';
-import { GitInfo, GitInfoReducer } from '../GitInfo';
+import { GitInfo, GitInfoReducer } from '../../container';
 import { RegisterToRootRoutes } from '../../RootRoutes';
 import { RegisterToRootReducer } from '../../RootReducer';
-
-console.log(gitInfoFoler);
 
 const STATE_PROP = 'Async_GitInfo';
 
