@@ -1,4 +1,5 @@
 import { applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger';
 
 let middlewares = [];
 
@@ -6,13 +7,7 @@ export const RegisterToRootMiddlewares = (middleware) => {
   middlewares.push(middleware);
 }
 
-const loggerMiddleware = store => next => action => {
-  console.log('dispatching', action)
-  let result = next(action)
-  console.log('next state', store.getState())
-  return result
-}
-
+const loggerMiddleware = createLogger();
 RegisterToRootMiddlewares(loggerMiddleware);
 
 export const FetchRootMiddlewares = () => (
