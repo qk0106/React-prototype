@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { GitInfo } from '../../container';
-import { STATE_PROP } from '../Async';
 import { RegisterToRootRoutes } from '../../RootRoutes';
+
+export const STATE_PROP = 'Async_GitInfo';
 
 const Async = () => (
     <div>
