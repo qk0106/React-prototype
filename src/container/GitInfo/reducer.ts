@@ -25,7 +25,7 @@ const gitSize = (gitSize = 0, action) => {
     default:
       return gitSize;
   }
-}
+};
 
 export const GitInfoReducer = combineReducers({
     gitSize,
