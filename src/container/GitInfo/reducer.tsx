@@ -1,7 +1,6 @@
 import * as iassign from 'immutable-assign';
 import { combineReducers } from 'redux';
 import { REFRESH_GIT_INFO, FETCH_GIT_INFO, FETCH_GIT_INFO_SUCCESS, FETCH_GIT_INFO_FAILED } from '../GitInfo';
-import { RegisterToRootReducer } from '../../RootReducer';
 
 const refreshCount = (refreshCount = {count: 0}, action) => {
   switch (action.type) {
@@ -28,10 +27,7 @@ const gitSize = (gitSize = 0, action) => {
   }
 }
 
-const GetInfoReducer = combineReducers({
+export const GetInfoReducer = combineReducers({
     gitSize,
     refreshCount,
 });
-
-RegisterToRootReducer('Async_GitInfo', GetInfoReducer);
-

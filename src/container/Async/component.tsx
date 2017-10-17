@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { GitInfo } from '../../container';
+import { GitInfo } from '../GitInfo';
+import { GetInfoReducer } from '../GitInfo';
+import * as GetInfoFolder from '../GitInfo';
 import { RegisterToRootRoutes } from '../../RootRoutes';
+import { RegisterToRootReducer } from '../../RootReducer';
 
-export const STATE_PROP = 'Async_GitInfo';
+const STATE_PROP = 'Async_GitInfo';
+
+console.log(GetInfoFolder);
+
 
 const Async = () => (
     <div>
@@ -12,3 +18,5 @@ const Async = () => (
 );
 
 RegisterToRootRoutes('Async', '/async', 'Async', Async);
+
+RegisterToRootReducer('Async_GitInfo', GetInfoReducer);

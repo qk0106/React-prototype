@@ -1,5 +1,5 @@
-import './reducer';
-import './actionHandler';
+import "./actionHandler";
 
+export * from "./reducer";
 export * from "./component";
 export * from "./action";
