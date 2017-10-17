@@ -3,9 +3,9 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import './container';
-import { FetchRootMiddlewares } from './RootMiddlewares';
-import { FetchRootReducer } from './RootReducer';
 import { FetchRootRoutes } from './RootRoutes';
+import { FetchRootReducer } from './RootReducer';
+import { FetchRootMiddlewares } from './RootMiddlewares';
 
 const store = createStore(
   FetchRootReducer(), 
