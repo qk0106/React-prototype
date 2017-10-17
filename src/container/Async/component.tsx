@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GitInfo, GetInfoReducer } from '../GitInfo';
+import { GitInfo, GitInfoReducer } from '../GitInfo';
 import { RegisterToRootRoutes } from '../../RootRoutes';
 import { RegisterToRootReducer } from '../../RootReducer';
 
@@ -14,4 +14,4 @@ const Async = () => (
 
 RegisterToRootRoutes('Async', '/async', 'Async', Async);
 
-RegisterToRootReducer(STATE_PROP, GetInfoReducer);
+RegisterToRootReducer(STATE_PROP, GitInfoReducer);

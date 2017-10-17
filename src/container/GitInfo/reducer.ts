@@ -27,7 +27,7 @@ const gitSize = (gitSize = 0, action) => {
   }
 }
 
-export const GetInfoReducer = combineReducers({
+export const GitInfoReducer = combineReducers({
     gitSize,
     refreshCount,
 });
