@@ -37,14 +37,14 @@ var config = {
       //   use: 'tslint-loader'
       // },
       {
-        test: /\.tsx?$/,
+        test: /\.tsx|ts?$/,
         use:[
           // 'react-hot-loader',
           'awesome-typescript-loader'
         ] 
       },
       {
-        test: /\.jsx$/,
+        test: /\.jsx|js$/,
         use: 'babel-loader'
       },
       {
