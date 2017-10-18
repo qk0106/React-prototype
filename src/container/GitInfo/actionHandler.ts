@@ -6,7 +6,7 @@ const actionHandlerMiddleware = store => next => action => {
     if (action.type === REFRESH_GIT_INFO) {
       dispatch(
         // {type: FETCH_GIT_INFO}
-        fetchGitInfo('dummy_url')
+        fetchGitInfo()
       );
       fetch("https://api.github.com/repos/qk0106/React-prototype").then((res)=> {
         res.json().then((data) => {

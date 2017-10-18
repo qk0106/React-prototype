@@ -10,11 +10,11 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     onClick: () => { 
       dispatch(
-        refreshGitInfo(ownProps.refreshCount)
+        refreshGitInfo()
       );
     },
   }
