@@ -3,8 +3,6 @@ const appConfig = require('../config/main');
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
 
-// const manifest = require('../build/manifest.json');
-
 const express = require('express');
 const path = require('path');
 const compression = require('compression');

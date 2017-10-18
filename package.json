@@ -68,8 +68,6 @@
     "tslint-react": "^3.2.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.2.0",
-    "webpack-hot-middleware": "^2.18.0",
     "webpack-manifest-plugin": "^1.1.0",
     "semantic-ui-less": "^2.2.12",
     "less-loader": "^4.0.5",
