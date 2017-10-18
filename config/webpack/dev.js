@@ -48,10 +48,6 @@ var config = {
         use: 'babel-loader'
       },
       {
-        test: /\.json$/,
-        use: 'json-loader'
-      },
-      {
         test: /\.less$/,
         use: [
           "style-loader", // creates style nodes from JS strings

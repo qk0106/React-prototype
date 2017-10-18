@@ -38,10 +38,6 @@ var config = {
         use: 'url-loader?limit=1000&name=images/[hash].[ext]'
       },
       {
-        test: /\.json$/,
-        use: 'json-loader'
-      },
-      {
         test: /\.jsx$/,
         use: 'babel-loader'
       },
