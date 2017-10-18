@@ -39,7 +39,6 @@ var config = {
       {
         test: /\.tsx|ts?$/,
         use:[
-          // 'react-hot-loader',
           'awesome-typescript-loader'
         ] 
       },
