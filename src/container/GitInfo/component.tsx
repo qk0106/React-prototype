@@ -12,7 +12,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClick: () => { dispatch(refreshGitInfo(ownProps.refreshCount)); },
+    onClick: () => { 
+      dispatch(
+        refreshGitInfo(ownProps.refreshCount)
+      );
+    },
   }
 };
 

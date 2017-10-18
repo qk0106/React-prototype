@@ -1,19 +1,28 @@
 import { RegisterToRootMiddlewares } from '../../RootMiddlewares';
-import { REFRESH_GIT_INFO, FETCH_GIT_INFO, FETCH_GIT_INFO_SUCCESS, FETCH_GIT_INFO_FAILED } from './action';
+import { REFRESH_GIT_INFO, fetchGitInfo, fetchGitInfoSuccess, fetchGitInfoFailed } from './action';
 
 const actionHandlerMiddleware = store => next => action => {
-    let result = next(action);
+    let { dispatch } = store;
     if (action.type === REFRESH_GIT_INFO) {
-      store.dispatch({type: FETCH_GIT_INFO});
+      dispatch(
+        // {type: FETCH_GIT_INFO}
+        fetchGitInfo('dummy_url')
+      );
       fetch("https://api.github.com/repos/qk0106/React-prototype").then((res)=> {
         res.json().then((data) => {
-          store.dispatch({type: FETCH_GIT_INFO_SUCCESS, data});
+          dispatch(
+            // {type: FETCH_GIT_INFO_SUCCESS, data}
+            fetchGitInfoSuccess(data)
+          );
         });
       }, (error) => {
-        store.dispatch({ type: FETCH_GIT_INFO_FAILED, error});
+        dispatch(
+          // { type: FETCH_GIT_INFO_FAILED, error}
+          fetchGitInfoFailed(error)
+        );
       })
     }
-    return result;
+    return next(action);;
 }
 
 RegisterToRootMiddlewares(actionHandlerMiddleware);

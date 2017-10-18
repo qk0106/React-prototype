@@ -21,14 +21,14 @@ export const fetchGitInfo = (url) => {
 
 export const fetchGitInfoSuccess = (data) => {
     return {
-        type: FETCH_GIT_INFO,
-        response: data
+        type: FETCH_GIT_INFO_SUCCESS,
+        data: data
     }
 };
 
 export const fetchGitInfoFailed = (error) => {
     return {
-        type: FETCH_GIT_INFO,
+        type: FETCH_GIT_INFO_FAILED,
         error: error
     }
 };
