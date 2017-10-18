@@ -66,7 +66,7 @@ class Html extends React.Component<any, {}> {
   }
 }
 
-function renderHTML() {
+const renderHTML = () => {
   const html = ReactDOMServer.renderToString(
     <Html/>,
   );

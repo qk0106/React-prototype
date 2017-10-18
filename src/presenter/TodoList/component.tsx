@@ -3,13 +3,11 @@ import { Todo } from '../../presenter';
 import * as CSSModules from 'react-css-modules';
 const style = require('./style.less');
 
-function makeTodoClick(onTodoClick, id) {
-  return () => { onTodoClick(id); };
-}
+const makeTodoClick = (onTodoClick, id) => (() => { onTodoClick(id) });
 
 const rows = (todos, onTodoClick) => {
   return todos.map((todo) => (
-    <Todo key={todo.id} {...todo} onClick={makeTodoClick(onTodoClick, todo.id)} />
+    <Todo key={todo.id} {...todo} onClick={ makeTodoClick(onTodoClick, todo.id) } />
   ));
 };
 
