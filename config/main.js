@@ -3,7 +3,7 @@
 var config = {
   env: process.env.NODE_ENV || 'development',
   host: process.env.HOST || 'localhost',
-  port: process.env.PORT || 4000,
+  port: process.env.PORT || 4001,
   karmaPort: 9876,
 };
 
