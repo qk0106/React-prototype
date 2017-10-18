@@ -18,6 +18,7 @@ var config = {
 
   entry: {
     app: [
+      'webpack-hot-middleware/client',
       './src/Root.tsx'
     ]
   },

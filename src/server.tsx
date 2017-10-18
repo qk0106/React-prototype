@@ -13,6 +13,23 @@ const app = express();
 
 app.use(compression());
 
+const webpack = require('webpack');
+const webpackConfig = require('../config/webpack/dev');
+const webpackCompiler = webpack(webpackConfig);
+
+app.use(require('webpack-dev-middleware')(webpackCompiler, {
+  publicPath: webpackConfig.output.publicPath,
+  stats: { colors: true },
+  noInfo: true,
+  hot: true,
+  inline: true,
+  lazy: false,
+  historyApiFallback: true,
+  quiet: true,
+}));
+
+app.use(require('webpack-hot-middleware')(webpackCompiler));
+
 app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
