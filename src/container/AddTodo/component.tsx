@@ -1,21 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from './action';
+// import { addTodo } from './action';
 
-let AddTodoAsOtherCmp = ({ dispatch }) => {
+let AddTodoPresentor = ({ onSubmit }) => {
     let input
 
     return (
         <div>
             <form
-                onSubmit={e => {
-                    e.preventDefault()
-                    if (!input.value.trim()) {
-                        return
-                    }
-                    dispatch(addTodo(input.value))
-                    input.value = ''
-                }}
+                onSubmit={onSubmit}
             >
                 <input
                     ref={node => {
@@ -30,4 +23,19 @@ let AddTodoAsOtherCmp = ({ dispatch }) => {
     )
 };
 
-export const AddTodo = connect()(AddTodoAsOtherCmp);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        onSubmit: e => {
+            e.preventDefault()
+            console.log(dispatch, ownProps);
+
+            // if (!input.value.trim()) {
+            //     return
+            // }
+            // dispatch(addTodo(input.value))
+            // input.value = ''
+        },
+    }
+};
+
+export const AddTodo = connect(undefined, mapDispatchToProps)(AddTodoPresentor);
