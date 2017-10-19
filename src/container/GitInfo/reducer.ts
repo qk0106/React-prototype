@@ -1,7 +1,7 @@
-import * as iassign from 'immutable-assign';
-import { REFRESH_GIT_INFO, FETCH_GIT_INFO, FETCH_GIT_INFO_SUCCESS, FETCH_GIT_INFO_FAILED } from '../GitInfo';
+import { REFRESH_GIT_INFO, FETCH_GIT_INFO, FETCH_GIT_INFO_SUCCESS, FETCH_GIT_INFO_FAILED } from './action'; // To get Action Types
 import { InstancesInitStateCreator, InstancesReducerCreator } from '../../global';
 import { RegisterToRootReducer } from '../../RootReducer';
+import * as iassign from 'immutable-assign';
 
 const refreshCount = (refreshCount, action) => {
   switch (action.type) {
