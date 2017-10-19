@@ -10,4 +10,4 @@ const AsyncTest = () => (
     </div>
 );
 
-RegisterToRootRoutes('AsyncTest', '/asyncTestPage', 'Async Test', AsyncTest);
+RegisterToRootRoutes('AsyncTest', '/asyncTest', 'Async Test', AsyncTest);

@@ -11,4 +11,4 @@ const TodoListApp = () => (
     </div>
 );
 
-RegisterToRootRoutes('TodoListApp', '/todo', 'Todo List', TodoListApp);
+RegisterToRootRoutes('TodoListApp', '/todoList', 'Todo List', TodoListApp);
