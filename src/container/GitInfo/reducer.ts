@@ -46,12 +46,12 @@ const GitInfosInit = {
 
 const GitInfosReducer = (GitInfos = GitInfosInit, action) => {
   if(!(action.instanceId in GitInfos)) return GitInfos;
-  const GitInfo = GitInfos[action.instanceId];
-  const updatedGitInfo = GitInfoReducer(GitInfo, action);
-  return {
-    ...GitInfos,
-    [action.instanceId]: updatedGitInfo
-  };
+  return iassign(GitInfos, (obj) => {
+    const GitInfo = GitInfos[action.instanceId];
+    const updatedGitInfo = GitInfoReducer(GitInfo, action);
+    obj[action.instanceId] = updatedGitInfo;
+    return obj;
+  });
 };
 
 RegisterToRootReducer('GitInfos', GitInfosReducer);
