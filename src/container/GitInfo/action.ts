@@ -5,10 +5,11 @@ export const FETCH_GIT_INFO_SUCCESS: string = 'FETCH_GIT_INFO_SUCCESS';
 export const FETCH_GIT_INFO_FAILED: string = 'FETCH_GIT_INFO_FAILED';
 
 // Action Creator
-export const refreshGitInfo = (instanceId) => {
+export const refreshGitInfo = (instanceId, gitUrl) => {
     return { 
         type: REFRESH_GIT_INFO,
-        instanceId
+        instanceId,
+        gitUrl,
     }
 };
 

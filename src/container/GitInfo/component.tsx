@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
       dispatch(
-        refreshGitInfo(ownProps.instanceId)
+        refreshGitInfo(ownProps.instanceId, ownProps.gitUrl)
       );
     },
   }

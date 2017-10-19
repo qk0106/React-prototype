@@ -7,7 +7,7 @@ const actionHandlerMiddleware = ({ dispatch }) => next => action => {
       dispatch(
         fetchGitInfo(action.instanceId)
       );
-      fetch("https://api.github.com/repos/qk0106/React-prototype").then((res)=> {
+      fetch(action.gitUrl).then((res)=> {
         res.json().then((data) => {
           dispatch(
             fetchGitInfoSuccess(action.instanceId, data)
