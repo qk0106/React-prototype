@@ -3,4 +3,4 @@ import { InstanceActionCreator } from '../../global/instantiation';
 export const SET_VISIBILITY_FILTER: string = 'SET_VISIBILITY_FILTER';
 
 // Action Creator
-export const setVisibilityFilter = InstanceActionCreator(SET_VISIBILITY_FILTER, 'filter');
+export const setVisibilityFilter = InstanceActionCreator(SET_VISIBILITY_FILTER, ['filter']);

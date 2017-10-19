@@ -10,12 +10,12 @@ const actionHandlerMiddleware = ({ dispatch }) => next => action => {
         fetch(action.gitUrl).then((res) => {
             res.json().then((data) => {
                 dispatch(
-                    fetchGitInfoSuccess(action.instanceId, data)
+                    fetchGitInfoSuccess(action.instanceId, [data])
                 );
             });
         }, (error) => {
             dispatch(
-                fetchGitInfoFailed(action.instanceId, error)
+                fetchGitInfoFailed(action.instanceId, [error])
             );
         })
     }

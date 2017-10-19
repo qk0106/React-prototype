@@ -6,4 +6,4 @@ export const TOGGLE_TODO: string = 'TOGGLE_TODO';
 // export const toggleTodo = (id) => {
 //     return { type: TOGGLE_TODO, id }
 // }
-export const toggleTodo = InstanceActionCreator(TOGGLE_TODO, 'id');
+export const toggleTodo = InstanceActionCreator(TOGGLE_TODO, ['id']);

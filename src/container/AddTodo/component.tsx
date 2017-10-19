@@ -17,10 +17,11 @@ let AddTodoPresenter = ({ onSubmit, onChange }) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     let text;
+    let nextTodoId = 0;
     return {
         onSubmit: e => {
             e.preventDefault()
-            dispatch(addTodo(ownProps.instanceId, text));
+            dispatch(addTodo(ownProps.instanceId, [text, nextTodoId++]));
 
         },
         onChange: e => {
