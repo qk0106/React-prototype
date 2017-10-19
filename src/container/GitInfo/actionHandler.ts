@@ -5,17 +5,17 @@ const actionHandlerMiddleware = ({ dispatch }) => next => action => {
     next(action);
     if (action.type === REFRESH_GIT_INFO) {
       dispatch(
-        fetchGitInfo()
+        fetchGitInfo(action.instanceId)
       );
       fetch("https://api.github.com/repos/qk0106/React-prototype").then((res)=> {
         res.json().then((data) => {
           dispatch(
-            fetchGitInfoSuccess(data)
+            fetchGitInfoSuccess(action.instanceId, data)
           );
         });
       }, (error) => {
         dispatch(
-          fetchGitInfoFailed(error)
+          fetchGitInfoFailed(action.instanceId, error)
         );
       })
     }

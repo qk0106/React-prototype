@@ -5,8 +5,8 @@ import { RegisterToRootRoutes } from '../../RootRoutes';
 const Async = () => (
     <div>
         <span>This is Async Page</span>
-        <GitInfo/>
-        <GitInfo/>
+        <GitInfo instanceId="Async_1" />
+        <GitInfo instanceId="Async_2" />
     </div>
 );
 

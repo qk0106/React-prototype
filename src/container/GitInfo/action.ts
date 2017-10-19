@@ -5,28 +5,32 @@ export const FETCH_GIT_INFO_SUCCESS: string = 'FETCH_GIT_INFO_SUCCESS';
 export const FETCH_GIT_INFO_FAILED: string = 'FETCH_GIT_INFO_FAILED';
 
 // Action Creator
-export const refreshGitInfo = () => {
+export const refreshGitInfo = (instanceId) => {
     return { 
         type: REFRESH_GIT_INFO,
+        instanceId
     }
 };
 
-export const fetchGitInfo = () => {
+export const fetchGitInfo = (instanceId) => {
     return {
         type: FETCH_GIT_INFO,
+        instanceId,
     }
 };
 
-export const fetchGitInfoSuccess = (data) => {
+export const fetchGitInfoSuccess = (instanceId, data) => {
     return {
         type: FETCH_GIT_INFO_SUCCESS,
-        data: data
+        instanceId,
+        data,
     }
 };
 
-export const fetchGitInfoFailed = (error) => {
+export const fetchGitInfoFailed = (instanceId, error) => {
     return {
         type: FETCH_GIT_INFO_FAILED,
-        error: error
+        instanceId,
+        error,
     }
 };
