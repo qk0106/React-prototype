@@ -2,10 +2,10 @@ import * as React from 'react';
 import { STATE_PROP } from './const';
 import { AddTodo, TodoFooter, VisibleTodoList } from '../../container';
 
-export const TodoListApp = () => (
+export const TodoListApp = ({ instanceId }) => (
     <div>
         <AddTodo />
-        <VisibleTodoList stateProp={STATE_PROP} />
-        <TodoFooter stateProp={STATE_PROP} />
+        <VisibleTodoList stateProp={STATE_PROP} instanceId={instanceId} />
+        <TodoFooter stateProp={STATE_PROP} instanceId={instanceId} />
     </div>
 );

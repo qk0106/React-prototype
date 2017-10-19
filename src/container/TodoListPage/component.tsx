@@ -5,7 +5,8 @@ import { RegisterToRootRoutes } from '../../RootRoutes';
 const TodoListPage = () => (
     <div>
         <span>This is Todo List Page</span>
-        <TodoListApp />
+        <TodoListApp instanceId="TodoList_1" />
+        <TodoListApp instanceId="TodoList_2" />
     </div>
 );
 
