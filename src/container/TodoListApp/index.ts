@@ -1,3 +1,2 @@
-
 import "./component";
 import "./reducer";

@@ -5,8 +5,8 @@ import { RegisterToRootRoutes } from '../../RootRoutes';
 const Async = () => (
     <div>
         <span>This is Async Page</span>
-        <GitInfo instanceId="Async_1" gitUrl="https://api.github.com/repos/qk0106/React-prototype"/>
-        <GitInfo instanceId="Async_2" gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor"/>
+        <GitInfo instanceId="Async_1" gitUrl="https://api.github.com/repos/qk0106/React-prototype" />
+        <GitInfo instanceId="Async_2" gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor" />
     </div>
 );
 

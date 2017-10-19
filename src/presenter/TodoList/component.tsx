@@ -6,15 +6,15 @@ const style = require('./style.less');
 const makeTodoClick = (onTodoClick, id) => (() => { onTodoClick(id) });
 
 const rows = (todos, onTodoClick) => {
-  return todos.map((todo) => (
-    <Todo key={todo.id} {...todo} onClick={ makeTodoClick(onTodoClick, todo.id) } />
-  ));
+    return todos.map((todo) => (
+        <Todo key={todo.id} {...todo} onClick={makeTodoClick(onTodoClick, todo.id)} />
+    ));
 };
 
 const TodoListRSC = ({ todos, onTodoClick }) => (
-  <ul styleName='ul-bg'>
-    {rows(todos, onTodoClick)}
-  </ul>
+    <ul styleName='ul-bg'>
+        {rows(todos, onTodoClick)}
+    </ul>
 );
 
 export const TodoList = CSSModules(TodoListRSC, style); // modulise style with component

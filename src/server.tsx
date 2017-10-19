@@ -18,14 +18,14 @@ const webpackConfig = require('../config/webpack/dev');
 const webpackCompiler = webpack(webpackConfig);
 
 app.use(require('webpack-dev-middleware')(webpackCompiler, {
-  publicPath: webpackConfig.output.publicPath,
-  stats: { colors: true },
-  noInfo: true,
-  hot: true,
-  inline: true,
-  lazy: false,
-  historyApiFallback: true,
-  quiet: true,
+    publicPath: webpackConfig.output.publicPath,
+    stats: { colors: true },
+    noInfo: true,
+    hot: true,
+    inline: true,
+    lazy: false,
+    historyApiFallback: true,
+    quiet: true,
 }));
 
 app.use(require('webpack-hot-middleware')(webpackCompiler));
@@ -40,35 +40,35 @@ app.get('*', (req, res) => {
 });
 
 app.listen(appConfig.port, appConfig.host, (err) => {
-  if (err) {
-    console.error(Chalk.bgRed(err));
-  } else {
-    console.info(Chalk.black.bgGreen(
-      `Listening at http://${appConfig.host}:${appConfig.port}\n`,
-    ));
-  }
+    if (err) {
+        console.error(Chalk.bgRed(err));
+    } else {
+        console.info(Chalk.black.bgGreen(
+            `Listening at http://${appConfig.host}:${appConfig.port}\n`,
+        ));
+    }
 });
 
 class Html extends React.Component<any, {}> {
-  public render() {
-    return (
-      <html>
-        <head>
-          head tag
+    public render() {
+        return (
+            <html>
+                <head>
+                    head tag
           <link rel="shortcut icon" href="/favicon.ico" />
-        </head>
-        <body>
-          <div id="app">loading app</div>
-        </body>
-        <script src="/public/js/app.js"></script>        
-      </html>
-    );
-  }
+                </head>
+                <body>
+                    <div id="app">loading app</div>
+                </body>
+                <script src="/public/js/app.js"></script>
+            </html>
+        );
+    }
 }
 
 const renderHTML = () => {
-  const html = ReactDOMServer.renderToString(
-    <Html/>,
-  );
-  return `<!doctype html> ${html}`;
+    const html = ReactDOMServer.renderToString(
+        <Html />,
+    );
+    return `<!doctype html> ${html}`;
 }

@@ -8,15 +8,15 @@ import { FetchRootReducer } from './RootReducer';
 import { FetchRootMiddlewares } from './RootMiddlewares';
 
 const store = createStore(
-  FetchRootReducer(), 
-  FetchRootMiddlewares()
+    FetchRootReducer(),
+    FetchRootMiddlewares()
 );
 
 const routes = FetchRootRoutes();
 
 render(
-  <Provider store={store}>
-    { routes }
-  </Provider>,
-  document.getElementById('app'),
+    <Provider store={store}>
+        {routes}
+    </Provider>,
+    document.getElementById('app'),
 );
