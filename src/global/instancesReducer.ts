@@ -1,5 +1,13 @@
 import * as iassign from 'immutable-assign';
 
+export const InstancesInitStateCreator = (instanceInitState, instanceIds) => {
+  let instancesInitState = {};
+  instanceIds.forEach(instanceId => {
+    instancesInitState[instanceId] = instanceInitState;
+  });
+  return instancesInitState;
+}
+
 export const InstancesReducerCreator = (instatncesInitState, instanceReducer) => (
     (instances = instatncesInitState, action) => {
       if(!(action.instanceId in instances)) return instances;

@@ -1,6 +1,6 @@
 import * as iassign from 'immutable-assign';
 import { REFRESH_GIT_INFO, FETCH_GIT_INFO, FETCH_GIT_INFO_SUCCESS, FETCH_GIT_INFO_FAILED } from '../GitInfo';
-import { InstancesReducerCreator } from '../../global';
+import { InstancesInitStateCreator, InstancesReducerCreator } from '../../global';
 import { RegisterToRootReducer } from '../../RootReducer';
 
 const refreshCount = (refreshCount, action) => {
@@ -33,15 +33,11 @@ const GitInfoReducer = (GitInfo, action) => ({
   refreshCount: refreshCount(GitInfo.refreshCount, action),
 });
 
-const GitInfosInit = {
-  Async_1: {
-    gitSize: 0,
-    refreshCount: {count: 0},
-  },
-  Async_2: {
-    gitSize: 0,
-    refreshCount: {count: 0},
-  }
-}
+const GitInfoInit = {
+  gitSize: 0,
+  refreshCount: {count: 0},
+};
+
+const GitInfosInit = InstancesInitStateCreator(GitInfoInit, ['Async_1', 'Async_2']);
 
 RegisterToRootReducer('GitInfos', InstancesReducerCreator(GitInfosInit, GitInfoReducer));
