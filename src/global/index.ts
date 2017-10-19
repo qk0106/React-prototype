@@ -1,4 +1,4 @@
-export * from './instancesReducer';
+export * from './instantiation';
 export const globalStyle = require('./style.less');
 
 
