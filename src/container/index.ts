@@ -5,6 +5,6 @@ export * from './VisibleTodoList';
 export * from './TodoFilterLink';
 export * from './GitInfo';
 
-import './Home';
+import './HomePage';
 import './AsyncTestPage';
 import './TodoListApp';

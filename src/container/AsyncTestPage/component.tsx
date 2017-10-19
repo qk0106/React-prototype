@@ -2,7 +2,7 @@ import * as React from 'react';
 import { GitInfo } from '../../container';
 import { RegisterToRootRoutes } from '../../RootRoutes';
 
-const AsyncTestPage = () => (
+const AsyncTest = () => (
     <div>
         <span>This is Async Page</span>
         <GitInfo instanceId="Async_1" gitUrl="https://api.github.com/repos/qk0106/React-prototype" />
@@ -10,4 +10,4 @@ const AsyncTestPage = () => (
     </div>
 );
 
-RegisterToRootRoutes('AsyncTestPage', '/asyncTestPage', 'Async Test Page', AsyncTestPage);
+RegisterToRootRoutes('AsyncTest', '/asyncTestPage', 'Async Test', AsyncTest);
