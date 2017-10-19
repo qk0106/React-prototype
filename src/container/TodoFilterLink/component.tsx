@@ -3,7 +3,7 @@ import { setVisibilityFilter } from './action';
 import { Link } from '../../presenter';
 
 const mapStateToProps = (state, ownProps) => {
-    let ownState = state[ownProps.stateProp];
+    let ownState = state['TodoLists'][ownProps.instanceId];
     return {
         active: ownProps.filter === ownState.visibilityFilter,
     }
@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onClick: () => {
             dispatch(
-                setVisibilityFilter(ownProps.filter)
+                setVisibilityFilter(ownProps.instanceId, ownProps.filter)
             );
         },
     }

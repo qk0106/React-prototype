@@ -1,41 +1,32 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-// import { addTodo } from './action';
+import { addTodo } from './action';
 
-let AddTodoPresentor = ({ onSubmit }) => {
-    let input
-
+let AddTodoPresenter = ({ onSubmit, onChange }) => {
     return (
         <div>
-            <form
-                onSubmit={onSubmit}
-            >
-                <input
-                    ref={node => {
-                        input = node
-                    }}
-                />
+            <form onSubmit={onSubmit} >
+                <input onChange={onChange} />
                 <button type="submit">
                     Add Todo
-        </button>
+                </button>
             </form>
         </div>
     )
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+    let text;
     return {
         onSubmit: e => {
             e.preventDefault()
-            console.log(dispatch, ownProps);
+            dispatch(addTodo(ownProps.instanceId, text));
 
-            // if (!input.value.trim()) {
-            //     return
-            // }
-            // dispatch(addTodo(input.value))
-            // input.value = ''
         },
+        onChange: e => {
+            text = e.target.value;
+        }
     }
 };
 
-export const AddTodo = connect(undefined, mapDispatchToProps)(AddTodoPresentor);
+export const AddTodo = connect(undefined, mapDispatchToProps)(AddTodoPresenter);

@@ -38,7 +38,6 @@ const GitInfoReducer = combineReducers({
     gitSize,
     refreshCount
 });
-
 // // Same functionality as:
 // const GitInfoReducer = (GitInfo, action) => ({
 //   gitSize: gitSize(GitInfo.gitSize, action),

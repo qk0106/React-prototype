@@ -1,10 +1,11 @@
 import * as iassign from 'immutable-assign';
 
-export const InstanceActionCreator = (actionType, actionParamPropName?) => (
+export const InstanceActionCreator = (actionType, actionParamPropName?, otherPairs?) => (
     (instanceId, actionParam?) => ({
         type: actionType,
         instanceId: instanceId,
         [actionParamPropName]: actionParam,
+        ...otherPairs
     })
 );
 

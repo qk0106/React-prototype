@@ -3,7 +3,7 @@ import { GitSize } from '../../presenter';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
-    let ownState = state['GitInfos'][ownProps.instanceId];
+    let ownState = state['TodoLists'][ownProps.instanceId];
     return {
         refreshCount: ownState.refreshCount,
         gitSize: ownState.gitSize,
