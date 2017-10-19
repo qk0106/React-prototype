@@ -1,6 +1,6 @@
-import { ADD_TODO } from '../AddTodo';
-import { TOGGLE_TODO } from '../VisibleTodoList';
-import { SET_VISIBILITY_FILTER } from '../TodoFilterLink'; // To get Action Types
+import { ADD_TODO } from '../AddTodo/action'; // To get Action Types
+import { TOGGLE_TODO } from '../VisibleTodoList/action'; // To get Action Types
+import { SET_VISIBILITY_FILTER } from '../TodoFilterLink/action'; // To get Action Types
 import { InstancesInitStateCreator, InstancesReducerCreator } from '../../global/instantiation';
 import { RegisterToRootReducer } from '../../RootReducer';
 import { combineReducers } from 'redux';
