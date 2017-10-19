@@ -6,5 +6,5 @@ export * from './TodoFilterLink';
 export * from './GitInfo';
 
 import './Home';
-import './Async';
+import './AsyncTestPage';
 import './TodoListApp';
