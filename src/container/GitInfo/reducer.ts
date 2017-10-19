@@ -35,12 +35,10 @@ const GitInfoReducer = (GitInfo, action) => ({
 
 const GitInfosInit = {
   Async_1: {
-    instanceId: "Async_1",
     gitSize: 0,
     refreshCount: {count: 0},
   },
   Async_2: {
-    instanceId: "Async_1",
     gitSize: 0,
     refreshCount: {count: 0},
   }
