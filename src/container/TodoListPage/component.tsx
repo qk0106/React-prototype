@@ -1,11 +1,11 @@
 import * as React from 'react';
-// import { TodoListApp } from '../../container';
+import { TodoListApp } from '../../container';
 import { RegisterToRootRoutes } from '../../RootRoutes';
 
 const TodoListPage = () => (
     <div>
         <span>This is Todo List Page</span>
-        {/* <TodoListApp /> */}
+        <TodoListApp />
     </div>
 );
 
