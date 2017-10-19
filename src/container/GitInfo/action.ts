@@ -1,37 +1,13 @@
+import { InstanceActionCreator } from '../../global/instantiation';
+
 // Action Type
-export const REFRESH_GIT_INFO: string = 'REFRESH_GIT_INFO';
-export const FETCH_GIT_INFO: string = 'FETCH_GIT_INFO';
+export const REFRESH_GIT_INFO: string       = 'REFRESH_GIT_INFO';
+export const FETCH_GIT_INFO: string         = 'FETCH_GIT_INFO';
 export const FETCH_GIT_INFO_SUCCESS: string = 'FETCH_GIT_INFO_SUCCESS';
-export const FETCH_GIT_INFO_FAILED: string = 'FETCH_GIT_INFO_FAILED';
+export const FETCH_GIT_INFO_FAILED: string  = 'FETCH_GIT_INFO_FAILED';
 
 // Action Creator
-export const refreshGitInfo = (instanceId, gitUrl) => {
-    return { 
-        type: REFRESH_GIT_INFO,
-        instanceId,
-        gitUrl,
-    }
-};
-
-export const fetchGitInfo = (instanceId) => {
-    return {
-        type: FETCH_GIT_INFO,
-        instanceId,
-    }
-};
-
-export const fetchGitInfoSuccess = (instanceId, data) => {
-    return {
-        type: FETCH_GIT_INFO_SUCCESS,
-        instanceId,
-        data,
-    }
-};
-
-export const fetchGitInfoFailed = (instanceId, error) => {
-    return {
-        type: FETCH_GIT_INFO_FAILED,
-        instanceId,
-        error,
-    }
-};
+export const refreshGitInfo      = InstanceActionCreator(REFRESH_GIT_INFO, 'gitUrl');
+export const fetchGitInfo        = InstanceActionCreator(FETCH_GIT_INFO);
+export const fetchGitInfoSuccess = InstanceActionCreator(FETCH_GIT_INFO_SUCCESS, 'data');
+export const fetchGitInfoFailed  = InstanceActionCreator(FETCH_GIT_INFO_FAILED, 'error');

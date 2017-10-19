@@ -1,5 +1,5 @@
 import { REFRESH_GIT_INFO, FETCH_GIT_INFO, FETCH_GIT_INFO_SUCCESS, FETCH_GIT_INFO_FAILED } from './action'; // To get Action Types
-import { InstancesInitStateCreator, InstancesReducerCreator } from '../../global';
+import { InstancesInitStateCreator, InstancesReducerCreator } from '../../global/instantiation';
 import { RegisterToRootReducer } from '../../RootReducer';
 import { combineReducers } from 'redux';
 import * as iassign from 'immutable-assign';
