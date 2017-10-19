@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { refreshGitInfo } from './action';
 import { GitSize } from '../../presenter';
 
-const mapStateToProps = (state, ownProps) => {
-  let ownState = state[ownProps.stateProp];
+const mapStateToProps = (state) => {
+  let ownState = state['GitInfo'];
   return {
     refreshCount: ownState.refreshCount,
     gitSize: ownState.gitSize,
