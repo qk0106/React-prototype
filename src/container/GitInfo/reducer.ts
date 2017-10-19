@@ -1,9 +1,15 @@
 import { REFRESH_GIT_INFO, FETCH_GIT_INFO, FETCH_GIT_INFO_SUCCESS, FETCH_GIT_INFO_FAILED } from './action'; // To get Action Types
 import { InstancesInitStateCreator, InstancesReducerCreator } from '../../global';
 import { RegisterToRootReducer } from '../../RootReducer';
+import { combineReducers } from 'redux';
 import * as iassign from 'immutable-assign';
 
-const refreshCount = (refreshCount, action) => {
+const GitInfoInit = {
+  gitSize: 0,
+  refreshCount: {count: 0},
+};
+
+const refreshCount = (refreshCount = GitInfoInit.refreshCount, action) => {
   switch (action.type) {
     case REFRESH_GIT_INFO:
       return iassign(refreshCount, (obj) => {
@@ -15,7 +21,7 @@ const refreshCount = (refreshCount, action) => {
   }
 };
 
-const gitSize = (gitSize, action) => {
+const gitSize = (gitSize = GitInfoInit.gitSize, action) => {
   switch (action.type) {
     case FETCH_GIT_INFO:
       return 'fetching git info';
@@ -28,16 +34,12 @@ const gitSize = (gitSize, action) => {
   }
 };
 
-const GitInfoReducer = (GitInfo, action) => ({
-  gitSize: gitSize(GitInfo.gitSize, action),
-  refreshCount: refreshCount(GitInfo.refreshCount, action),
+const GitInfoReducer = combineReducers({
+  gitSize,
+  refreshCount
 });
 
-const GitInfoInit = {
-  gitSize: 0,
-  refreshCount: {count: 0},
-};
+const GitInfosInit    = InstancesInitStateCreator(GitInfoInit, ['Async_1', 'Async_2']);
+const GitInfosReducer = InstancesReducerCreator(GitInfosInit, GitInfoReducer);
 
-const GitInfosInit = InstancesInitStateCreator(GitInfoInit, ['Async_1', 'Async_2']);
-
-RegisterToRootReducer('GitInfos', InstancesReducerCreator(GitInfosInit, GitInfoReducer));
+RegisterToRootReducer('GitInfos', GitInfosReducer);
