@@ -1,2 +1,2 @@
-import "./component";
+export * from "./component";
 import "./reducer";
