@@ -1,10 +1,10 @@
-import { ADD_TODO } from '../AddTodo'; // To get Action Types
+import { ADD_TODO } from '../AddTodo';
 import { TOGGLE_TODO } from '../VisibleTodoList';
-import { SET_VISIBILITY_FILTER } from '../TodoFilterLink';
+import { SET_VISIBILITY_FILTER } from '../TodoFilterLink'; // To get Action Types
 import { InstancesInitStateCreator, InstancesReducerCreator } from '../../global/instantiation';
 import { RegisterToRootReducer } from '../../RootReducer';
-import * as iassign from 'immutable-assign';
 import { combineReducers } from 'redux';
+import * as iassign from 'immutable-assign';
 
 const TodoListAppInit = {
     visibilityFilter: 'SHOW_ALL',

@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import { setVisibilityFilter } from './action';
+import { setVisibilityFilter } from './action'; // To get Action Creators
 import { Link } from '../../presenter';
+import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => {
     let ownState = state['TodoLists'][ownProps.instanceId];

@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { TodoFilterLink } from '../../container';
+import * as React from 'react';
 
 export const TodoFooter: React.SFC<any> = ({ instanceId }) => (
     <p>
