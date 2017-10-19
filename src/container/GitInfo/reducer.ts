@@ -39,6 +39,12 @@ const GitInfoReducer = combineReducers({
   refreshCount
 });
 
+// // Same functionality as:
+// const GitInfoReducer = (GitInfo, action) => ({
+//   gitSize: gitSize(GitInfo.gitSize, action),
+//   refreshCount: refreshCount(GitInfo.refreshCount, action),
+// });
+
 const GitInfosInit    = InstancesInitStateCreator(GitInfoInit, ['Async_1', 'Async_2']);
 const GitInfosReducer = InstancesReducerCreator(GitInfosInit, GitInfoReducer);
 
