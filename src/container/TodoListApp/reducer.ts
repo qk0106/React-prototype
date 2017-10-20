@@ -44,8 +44,8 @@ const todos = (todos = TodoListAppInit.todos, action): any[] => {
         case TOGGLE_TODO:
             return iassign(
                 todos,
-                (arr, ctx) => { return arr[ctx.id].completed; },
-                (completed) => { return !completed; },
+                (arr, ctx) => arr[ctx.id].completed,
+                completed => !completed,
                 { id: action.id, },
             );
         default:

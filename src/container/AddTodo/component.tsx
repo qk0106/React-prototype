@@ -1,6 +1,6 @@
-import * as React from 'react';
 import { addTodo, changeInputText } from './action'; // To get Action Creators
 import { connect } from 'react-redux';
+import * as React from 'react';
 
 let AddTodoPresenter = ({ onSubmit, onChange, text }) => {
     return (
