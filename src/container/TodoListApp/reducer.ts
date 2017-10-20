@@ -1,4 +1,4 @@
-import { ADD_TODO } from '../AddTodo/action'; // To get Action Types
+import { ADD_TODO, CHANGE_INPUT_TEXT } from '../AddTodo/action'; // To get Action Types
 import { TOGGLE_TODO } from '../VisibleTodoList/action'; // To get Action Types
 import { SET_VISIBILITY_FILTER } from '../TodoFilterLink/action'; // To get Action Types
 import { InstancesInitStateCreator, InstancesReducerCreator } from '../../global/instantiation';
@@ -7,9 +7,19 @@ import { combineReducers } from 'redux';
 import * as iassign from 'immutable-assign';
 
 const TodoListAppInit = {
+    inputText: '',
     visibilityFilter: 'SHOW_ALL',
     todos: [],
 };
+
+const inputText = (inputText = TodoListAppInit.inputText, action) => {
+    switch (action.type) {
+        case CHANGE_INPUT_TEXT:
+            return action.inputText;
+        default:
+            return inputText;
+    }
+}
 
 const visibilityFilter = (visibilityFilter = TodoListAppInit.visibilityFilter, action): string => {
     switch (action.type) {
@@ -42,6 +52,7 @@ const todos = (todos = TodoListAppInit.todos, action): any[] => {
 };
 
 const TodoListAppReducer = combineReducers({
+    inputText,
     visibilityFilter,
     todos
 });
