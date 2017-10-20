@@ -36,4 +36,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 };
 
-export const AddTodo = connect(mapStateToProps, mapDispatchToProps)(AddTodoPresenter);
+function mergeProps(stateProps, dispatchProps, ownProps) {
+    console.log(ownProps);
+    return {
+        ...stateProps,
+        ...dispatchProps,
+    };
+}
+
+export const AddTodo = connect(mapStateToProps, mapDispatchToProps, mergeProps)(AddTodoPresenter);
