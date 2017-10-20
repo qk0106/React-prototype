@@ -6,6 +6,9 @@ import './container';
 import { FetchRootRoutes } from './RootRoutes';
 import { FetchRootReducer } from './RootReducer';
 import { FetchRootMiddlewares } from './RootMiddlewares';
+import * as iassign from "immutable-assign";
+
+iassign.setOption({freeze: true});
 
 const store = createStore(
     FetchRootReducer(),

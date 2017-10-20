@@ -6,8 +6,8 @@ const style = require('./style.less');
 const makeTodoClick = (onTodoClick, id) => (() => { onTodoClick(id) });
 
 const rows = (todos, onTodoClick) => {
-    return todos.map((todo) => (
-        <Todo key={todo.id} {...todo} onClick={makeTodoClick(onTodoClick, todo.id)} />
+    return todos.map((todo, index) => (
+        <Todo key={index} {...todo} onClick={makeTodoClick(onTodoClick, todo.id)} />
     ));
 };
 

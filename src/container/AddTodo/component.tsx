@@ -15,33 +15,33 @@ let AddTodoPresenter = ({ onSubmit, onChange, text }) => {
     )
 };
 
-const mapStateToProps = (state, ownProps) => {
-    let ownState = state['TodoLists'][ownProps.instanceId];
+const mapStateToProps = (state, { instanceId }) => {
+    let ownState = state['TodoLists'][instanceId];
     return {
         text: ownState.inputText,
     }
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    let nextTodoId = 0;
+let nextTodoId = 0;
+const mapDispatchToProps = ({ text }, dispatch, { instanceId }) => {
     return {
         onSubmit: e => {
             e.preventDefault()
-            dispatch(addTodo(ownProps.instanceId, [nextTodoId++]));
-            dispatch(changeInputText(ownProps.instanceId, ['']))
+            dispatch(addTodo(instanceId, [text, nextTodoId++]));
+            dispatch(changeInputText(instanceId, ['']))
         },
         onChange: e => {
-            dispatch(changeInputText(ownProps.instanceId, [e.target.value]))
+            dispatch(changeInputText(instanceId, [e.target.value]))
         }
     }
 };
 
-function mergeProps(stateProps, dispatchProps, ownProps) {
-    console.log(ownProps);
+
+const mergeProps = (stateProps, { dispatch }, ownProps) => {
     return {
         ...stateProps,
-        ...dispatchProps,
+        ...mapDispatchToProps(stateProps, dispatch, ownProps),
     };
 }
 
-export const AddTodo = connect(mapStateToProps, mapDispatchToProps, mergeProps)(AddTodoPresenter);
+export const AddTodo = connect(mapStateToProps, null, mergeProps)(AddTodoPresenter);
