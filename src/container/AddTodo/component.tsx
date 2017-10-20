@@ -23,16 +23,14 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    let text;
     let nextTodoId = 0;
     return {
         onSubmit: e => {
             e.preventDefault()
-            dispatch(addTodo(ownProps.instanceId, [text, nextTodoId++]));
+            dispatch(addTodo(ownProps.instanceId, [nextTodoId++]));
             dispatch(changeInputText(ownProps.instanceId, ['']))
         },
         onChange: e => {
-            text = e.target.value;
             dispatch(changeInputText(ownProps.instanceId, [e.target.value]))
         }
     }

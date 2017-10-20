@@ -3,7 +3,7 @@ import { TOGGLE_TODO } from '../VisibleTodoList/action'; // To get Action Types
 import { SET_VISIBILITY_FILTER } from '../TodoFilterLink/action'; // To get Action Types
 import { InstancesInitStateCreator, InstancesReducerCreator } from '../../global/instantiation';
 import { RegisterToRootReducer } from '../../RootReducer';
-import { combineReducers } from 'redux';
+// import { combineReducers } from 'redux';
 import * as iassign from 'immutable-assign';
 
 const TodoListAppInit = {
@@ -30,13 +30,13 @@ const visibilityFilter = (visibilityFilter = TodoListAppInit.visibilityFilter, a
     }
 };
 
-const todos = (todos = TodoListAppInit.todos, action): any[] => {
+const todos = (todos = TodoListAppInit.todos, action, TodoListApp?): any[] => {
     switch (action.type) {
         case ADD_TODO:
             return iassign(todos, (arr) => {
                 arr.push({
                     id: action.id,
-                    text: action.text,
+                    text: TodoListApp.inputText,
                     completed: false
                 });
                 return arr;
@@ -51,10 +51,16 @@ const todos = (todos = TodoListAppInit.todos, action): any[] => {
     }
 };
 
-const TodoListAppReducer = combineReducers({
-    inputText,
-    visibilityFilter,
-    todos
+// const TodoListAppReducer = combineReducers({
+//     inputText,
+//     visibilityFilter,
+//     todos
+// });
+// // Same functionality as:
+const TodoListAppReducer = (TodoListApp, action) => ({
+    inputText: inputText(TodoListApp.gitSize, action),
+    visibilityFilter: visibilityFilter(TodoListApp.refreshCount, action),
+    todos: todos(TodoListApp.todos, action, TodoListApp),
 });
 
 const TodoListAppsInit = InstancesInitStateCreator(TodoListAppInit, ['TodoList_1', 'TodoList_2']);
