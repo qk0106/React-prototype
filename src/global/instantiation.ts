@@ -27,12 +27,15 @@ export const InstancesInitStateCreator = (instanceInitState, instanceIds) => {
 
 export const InstancesReducerCreator = (instatncesInitState, instanceReducer) => (
     (instances = instatncesInitState, action) => {
-        if (!(action.instanceId in instances)) return instances;
-        return iassign(instances, (obj) => {
-            const instance = instances[action.instanceId];
-            const updatedInstance = instanceReducer(instance, action);
-            obj[action.instanceId] = updatedInstance;
-            return obj;
-        });
+        let instanceId = action.instanceId;
+        if (!(instanceId in instances)) return instances;
+        return iassign(
+            instances,
+            obj => {
+                const instance = instances[instanceId];
+                const updatedInstance = instanceReducer(instance, action);
+                obj[instanceId] = updatedInstance;
+                return obj;
+            });
     }
 );

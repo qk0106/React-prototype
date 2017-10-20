@@ -8,7 +8,7 @@ import { FetchRootReducer } from './RootReducer';
 import { FetchRootMiddlewares } from './RootMiddlewares';
 import * as iassign from "immutable-assign";
 
-iassign.setOption({freeze: true});
+iassign.setOption({ freeze: true }); // throw immutable error
 
 const store = createStore(
     FetchRootReducer(),

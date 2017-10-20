@@ -19,7 +19,7 @@ const inputText = (inputText = TodoListAppInit.inputText, action) => {
         default:
             return inputText;
     }
-}
+};
 
 const visibilityFilter = (visibilityFilter = TodoListAppInit.visibilityFilter, action): string => {
     switch (action.type) {
@@ -33,14 +33,17 @@ const visibilityFilter = (visibilityFilter = TodoListAppInit.visibilityFilter, a
 const todos = (todos = TodoListAppInit.todos, action): any[] => {
     switch (action.type) {
         case ADD_TODO:
-            return iassign(todos, (arr) => {
-                arr.push({
-                    id: action.id,
-                    text: action.text,
-                    completed: false
-                });
-                return arr;
-            });
+            return iassign(
+                todos,
+                arr => {
+                    arr.push({
+                        id: action.id,
+                        text: action.text,
+                        completed: false
+                    });
+                    return arr;
+                }
+            );
         case TOGGLE_TODO:
             return iassign(
                 todos,

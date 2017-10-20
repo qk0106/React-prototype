@@ -12,10 +12,11 @@ const GitInfoInit = {
 const refreshCount = (refreshCount = GitInfoInit.refreshCount, action) => {
     switch (action.type) {
         case REFRESH_GIT_INFO:
-            return iassign(refreshCount, (obj) => {
-                obj.count++;
-                return obj;
-            });
+            return iassign(
+                refreshCount,
+                obj => obj.count,
+                count => count + 1
+            );
         default:
             return refreshCount;
     }

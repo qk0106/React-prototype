@@ -2,18 +2,18 @@ import { setVisibilityFilter } from './action'; // To get Action Creators
 import { Link } from '../../presenter';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state, ownProps) => {
-    let ownState = state['TodoLists'][ownProps.instanceId];
+const mapStateToProps = (state, { instanceId, filter }) => {
+    let ownState = state['TodoLists'][instanceId];
     return {
-        active: ownProps.filter === ownState.visibilityFilter,
+        active: filter === ownState.visibilityFilter,
     }
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, { instanceId, filter }) => {
     return {
         onClick: () => {
             dispatch(
-                setVisibilityFilter(ownProps.instanceId, [ownProps.filter])
+                setVisibilityFilter(instanceId, [filter])
             );
         },
     }

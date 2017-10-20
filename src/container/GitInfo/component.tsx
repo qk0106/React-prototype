@@ -2,19 +2,19 @@ import { refreshGitInfo } from './action'; // To get Action Creators
 import { GitSize } from '../../presenter';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state, ownProps) => {
-    let ownState = state['GitInfos'][ownProps.instanceId];
+const mapStateToProps = (state, { instanceId }) => {
+    let ownState = state['GitInfos'][instanceId];
     return {
         refreshCount: ownState.refreshCount,
         gitSize: ownState.gitSize,
     }
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, { instanceId, gitUrl }) => {
     return {
         onClick: () => {
             dispatch(
-                refreshGitInfo(ownProps.instanceId, [ownProps.gitUrl])
+                refreshGitInfo(instanceId, [gitUrl])
             );
         },
     }
