@@ -36,8 +36,9 @@ const todos = (todos = TodoListAppInit.todos, action): any[] => {
             return iassign(
                 todos,
                 arr => {
+                    let id = arr.length;
                     arr.push({
-                        id: action.id,
+                        id: id,
                         text: action.text,
                         completed: false
                     });

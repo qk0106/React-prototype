@@ -22,12 +22,11 @@ const mapStateToProps = (state, { instanceId }) => {
     }
 };
 
-let nextTodoId = 0;
 const mapDispatchToProps = ({ text }, dispatch, { instanceId }) => {
     return {
         onSubmit: e => {
             e.preventDefault()
-            dispatch(addTodo(instanceId, [text, nextTodoId++]));
+            dispatch(addTodo(instanceId, [text]));
             dispatch(changeInputText(instanceId, ['']))
         },
         onChange: e => {
@@ -44,4 +43,8 @@ const mergeProps = (stateProps, { dispatch }, ownProps) => {
     };
 }
 
-export const AddTodo = connect(mapStateToProps, null, mergeProps)(AddTodoPresenter);
+export const AddTodo = connect(
+    mapStateToProps,
+    null,
+    mergeProps
+)(AddTodoPresenter);
