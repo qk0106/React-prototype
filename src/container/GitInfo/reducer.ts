@@ -4,12 +4,7 @@ import { RegisterToRootReducer } from '../../RootReducer';
 import { combineReducers } from 'redux';
 import * as iassign from 'immutable-assign';
 
-const GitInfoInit = {
-    gitSize: 0,
-    refreshCount: { count: 0 },
-};
-
-const refreshCount = (refreshCount = GitInfoInit.refreshCount, action) => {
+const refreshCount = (refreshCount = { count: 0 }, action) => {
     switch (action.type) {
         case REFRESH_GIT_INFO:
             return iassign(
@@ -22,7 +17,7 @@ const refreshCount = (refreshCount = GitInfoInit.refreshCount, action) => {
     }
 };
 
-const gitSize = (gitSize = GitInfoInit.gitSize, action) => {
+const gitSize = (gitSize = 0, action) => {
     switch (action.type) {
         case FETCH_GIT_INFO:
             return 'fetching git info';
@@ -39,11 +34,6 @@ const GitInfoReducer = combineReducers({
     gitSize,
     refreshCount
 });
-// // Same functionality as:
-// const GitInfoReducer = (GitInfo, action) => ({
-//   gitSize: gitSize(GitInfo.gitSize, action),
-//   refreshCount: refreshCount(GitInfo.refreshCount, action),
-// });
 
 const GitInfosReducer = InstancesReducerCreator(['Async_1', 'Async_2'], GitInfoReducer);
 
