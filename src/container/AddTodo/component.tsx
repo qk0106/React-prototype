@@ -2,11 +2,11 @@ import { addTodo, changeInputText } from './action'; // To get Action Creators
 import { connect } from 'react-redux';
 import * as React from 'react';
 
-let AddTodoPresenter = ({ onSubmit, onChange, text }) => {
+let AddTodoPresenter = ({ onSubmit, onChange, inputText }) => {
     return (
         <div>
             <form onSubmit={onSubmit} >
-                <input value={text} onChange={onChange} />
+                <input value={inputText} onChange={onChange} />
                 <button type="submit">
                     Add Todo
                 </button>
@@ -15,18 +15,18 @@ let AddTodoPresenter = ({ onSubmit, onChange, text }) => {
     )
 };
 
-const mapStateToProps = (state, { instanceId }) => {
+const mapStateToProps = (state, { instanceId, inputText }) => {
     let ownState = state['TodoLists'][instanceId];
     return {
-        text: ownState.inputText,
+        inputText: (ownState.inputText !== undefined) ? ownState.inputText : inputText,
     }
 };
 
-const mapDispatchToProps = ({ text }, dispatch, { instanceId }) => {
+const mapDispatchToProps = ({ inputText }, dispatch, { instanceId }) => {
     return {
         onSubmit: e => {
             e.preventDefault()
-            dispatch(addTodo(instanceId, [text]));
+            dispatch(addTodo(instanceId, [inputText]));
             dispatch(changeInputText(instanceId, ['']))
         },
         onChange: e => {

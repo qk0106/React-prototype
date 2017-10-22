@@ -17,16 +17,12 @@ export const InstanceActionCreator = (actionType, actionParamNames?) => (
     }
 );
 
-export const InstancesInitStateCreator = (instanceInitState, instanceIds) => {
-    let instancesInitState = {};
-    instanceIds.forEach(instanceId => {
-        instancesInitState[instanceId] = instanceInitState;
+export const InstancesReducerCreator = (instanceIdArray, instanceReducer) => {
+    let instatncesInitState = {};
+    instanceIdArray.forEach((instanceId) => {
+        instatncesInitState[instanceId] = {};
     });
-    return instancesInitState;
-}
-
-export const InstancesReducerCreator = (instatncesInitState, instanceReducer) => (
-    (instances = instatncesInitState, action) => {
+    return (instances = instatncesInitState, action) => {
         let instanceId = action.instanceId;
         if (!(instanceId in instances)) return instances;
         return iassign(
@@ -38,4 +34,4 @@ export const InstancesReducerCreator = (instatncesInitState, instanceReducer) =>
                 return obj;
             });
     }
-);
+};
