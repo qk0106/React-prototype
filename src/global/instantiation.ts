@@ -1,7 +1,7 @@
 import * as iassign from 'immutable-assign';
 
 export const InstanceActionCreator = (actionType, actionParamNames?) => (
-    (instanceId, actionParams?) => {
+    (instancesProp, instanceId, actionParams?) => {
         let actionParamsObj = {};
         if (actionParamNames) {
             actionParamNames.forEach((actionParamName, index) => {
@@ -11,20 +11,23 @@ export const InstanceActionCreator = (actionType, actionParamNames?) => (
         }
         return {
             type: actionType,
+            instancesProp: instancesProp,
             instanceId: instanceId,
             ...actionParamsObj
         }
     }
 );
 
-export const InstancesReducerCreator = (instanceIdArray, instanceReducer) => {
+export const InstancesReducerCreator = (instanceIdsObj, instanceReducer) => {
+    let instanceIdArray = instanceIdsObj.instanceIdArray;
+    let instancesProp = instanceIdsObj.instancesProp;
     let instatncesInitState = {};
     instanceIdArray.forEach((instanceId) => {
         instatncesInitState[instanceId] = {};
     });
     return (instances = instatncesInitState, action) => {
         let instanceId = action.instanceId;
-        if (!(instanceId in instances)) return instances;
+        if (instancesProp !== action.instancesProp || !(instanceId in instances)) return instances;
         return iassign(
             instances,
             obj => {

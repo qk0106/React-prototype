@@ -4,19 +4,20 @@ import { RegisterToRootMiddlewares } from '../../RootMiddlewares';
 const actionHandlerMiddleware = ({ dispatch }) => next => action => {
     next(action);
     if (action.type === REFRESH_GIT_INFO) {
+        let instancesProp = action.instancesProp;
         let instanceId = action.instanceId;
         dispatch(
-            fetchGitInfo(instanceId)
+            fetchGitInfo(instancesProp, instanceId)
         );
         fetch(action.gitUrl).then((res) => {
             res.json().then((data) => {
                 dispatch(
-                    fetchGitInfoSuccess(instanceId, [data])
+                    fetchGitInfoSuccess(instancesProp, instanceId, [data])
                 );
             });
         }, (error) => {
             dispatch(
-                fetchGitInfoFailed(instanceId, [error])
+                fetchGitInfoFailed(instancesProp, instanceId, [error])
             );
         })
     }

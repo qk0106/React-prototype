@@ -22,15 +22,15 @@ const mapStateToProps = (state, { instancesProp, instanceId, inputText }) => {
     }
 };
 
-const mapDispatchToProps = ({ inputText }, dispatch, { instanceId }) => {
+const mapDispatchToProps = ({ inputText }, dispatch, { instancesProp, instanceId }) => {
     return {
         onSubmit: e => {
             e.preventDefault()
-            dispatch(addTodo(instanceId, [inputText]));
-            dispatch(changeInputText(instanceId, ['']))
+            dispatch(addTodo(instancesProp, instanceId, [inputText]));
+            dispatch(changeInputText(instancesProp, instanceId, ['']))
         },
         onChange: e => {
-            dispatch(changeInputText(instanceId, [e.target.value]))
+            dispatch(changeInputText(instancesProp, instanceId, [e.target.value]))
         }
     }
 };

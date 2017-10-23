@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 
 export const GitInfosProp = 'GitInfos';
 
+const instancesProp = GitInfosProp;
+
 const mapStateToProps = (state, { instanceId, gitUrl }) => {
-    let ownState = state[GitInfosProp][instanceId];
+    let ownState = state[instancesProp][instanceId];
     return {
         refreshCount: (ownState.refreshCount !== undefined) ? ownState.refreshCount : { count: 0 },
         gitSize: (ownState.gitSize !== undefined) ? ownState.gitSize : 0,
@@ -17,7 +19,7 @@ const mapDispatchToProps = ({ }, dispatch, { instanceId, gitUrl }) => {
     return {
         onClick: () => {
             dispatch(
-                refreshGitInfo(instanceId, [gitUrl])
+                refreshGitInfo(instancesProp, instanceId, [gitUrl])
             );
         },
     }

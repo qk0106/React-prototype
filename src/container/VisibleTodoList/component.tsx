@@ -22,9 +22,9 @@ const mapStateToProps = (state, { instancesProp, instanceId }) => {
     };
 };
 
-const mapDispatchToProps = ({ }, dispatch, { instanceId }) => {
+const mapDispatchToProps = ({ }, dispatch, { instancesProp, instanceId }) => {
     return {
-        onTodoClick: (id) => { dispatch(toggleTodo(instanceId, [id])); },
+        onTodoClick: (id) => { dispatch(toggleTodo(instancesProp, instanceId, [id])); },
     };
 };
 

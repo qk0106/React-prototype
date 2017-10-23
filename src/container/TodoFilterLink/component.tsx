@@ -10,11 +10,11 @@ const mapStateToProps = (state, { instancesProp, instanceId, filter, children })
     }
 };
 
-const mapDispatchToProps = ({ }, dispatch, { instanceId, filter }) => {
+const mapDispatchToProps = ({ }, dispatch, { instancesProp, instanceId, filter }) => {
     return {
         onClick: () => {
             dispatch(
-                setVisibilityFilter(instanceId, [filter])
+                setVisibilityFilter(instancesProp, instanceId, [filter])
             );
         },
     }

@@ -14,5 +14,8 @@ export const RegisterToRootReducer = (instancesProp, reducer) => {
     reducers[instancesProp] = reducer;
 }
 
-export let FetchInstanceIdArray = (instancesProp) => (instanceIdArrays[instancesProp]);
+export let FetchInstanceIdsObj = (instancesProp) => ({
+    instancesProp: instancesProp,
+    instanceIdArray: instanceIdArrays[instancesProp],
+});
 export let FetchRootReducer = () => (combineReducers(reducers));
