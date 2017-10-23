@@ -6,8 +6,6 @@ import { RegisterInstanceId } from '../../RootReducer';
 
 const GitInfoInstanceIds = ['TodoList_1'];
 const TodoListAppInstanceIds = ['TodoList_1', 'TodoList_2'];
-RegisterInstanceId('GitInfos', GitInfoInstanceIds);
-RegisterInstanceId('TodoLists', TodoListAppInstanceIds);
 
 const TodoListPage = () => (
     <div>
@@ -18,4 +16,6 @@ const TodoListPage = () => (
     </div>
 );
 
+RegisterInstanceId('GitInfos', GitInfoInstanceIds);
+RegisterInstanceId('TodoLists', TodoListAppInstanceIds);
 RegisterToRootRoutes('TodoList', '/todoList', 'Todo List', TodoListPage);

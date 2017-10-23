@@ -4,7 +4,6 @@ import { RegisterToRootRoutes } from '../../RootRoutes';
 import { RegisterInstanceId } from '../../RootReducer';
 
 const GitInfoInstanceIds = ['Async_1', 'Async_2'];
-RegisterInstanceId('GitInfos', GitInfoInstanceIds);
 
 const AsyncTestPage = () => (
     <div>
@@ -14,4 +13,5 @@ const AsyncTestPage = () => (
     </div>
 );
 
+RegisterInstanceId('GitInfos', GitInfoInstanceIds);
 RegisterToRootRoutes('AsyncTest', '/asyncTest', 'Async Test', AsyncTestPage);
