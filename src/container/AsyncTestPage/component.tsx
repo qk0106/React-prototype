@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { GitInfo } from '../GitInfo';
+import { GitInfo, GitInfosProp } from '../GitInfo';
 import { TodoListApp, TodoListAppsProp } from '../TodoListApp';
 import { RegisterToRootRoutes } from '../../RootRoutes';
 import { RegisterInstanceId } from '../../RootReducer';
 
-const GitInfoInstanceIds = ['Async_1', 'Async_2'];
-const TodoListAppInstanceIds = ['Async_1'];
+const GitInfoInstanceIds = ['AsyncPage_1', 'AsyncPage_1'];
+const TodoListAppInstanceIds = ['AsyncPage_1'];
 
 const AsyncTestPage = () => (
     <div>
@@ -16,6 +16,6 @@ const AsyncTestPage = () => (
     </div>
 );
 
-RegisterInstanceId('GitInfos', GitInfoInstanceIds);
+RegisterInstanceId(GitInfosProp, GitInfoInstanceIds);
 RegisterInstanceId(TodoListAppsProp, TodoListAppInstanceIds);
 RegisterToRootRoutes('AsyncTest', '/asyncTest', 'Async Test', AsyncTestPage);
