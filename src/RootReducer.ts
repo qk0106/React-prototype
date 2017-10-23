@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 let reducers = {};
 let instanceIdArrays = {};
 
-export const RegisterInstanceId = (instancesProp, instanceIdArray) => {
+export const RegisterInstanceIds = (instancesProp, instanceIdArray) => {
     if (instanceIdArrays[instancesProp] === undefined) {
         instanceIdArrays[instancesProp] = [];
     }
