@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as CSSModules from 'react-css-modules';
 const style = require('./style.less');
 
-const GitSizeRSC = ({ gitSize, refreshCount, onClick }) => (
+const _GitSize = ({ gitSize, refreshCount, onClick }) => (
     <div>
         <p styleName='size-bg'>Size: {gitSize}</p>
         <p>Refresh Count: {refreshCount.count}</p>
@@ -10,4 +10,4 @@ const GitSizeRSC = ({ gitSize, refreshCount, onClick }) => (
     </div>
 );
 
-export const GitSize = CSSModules(GitSizeRSC, style); // modulise style with component
+export const GitSize = CSSModules(_GitSize, style); // modulise style with component

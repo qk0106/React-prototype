@@ -11,10 +11,10 @@ const rows = (todos, onTodoClick) => {
     ));
 };
 
-const TodoListRSC = ({ todos, onTodoClick }) => (
+const _TodoList = ({ todos, onTodoClick }) => (
     <ul styleName='ul-bg'>
         {rows(todos, onTodoClick)}
     </ul>
 );
 
-export const TodoList = CSSModules(TodoListRSC, style); // modulise style with component
+export const TodoList = CSSModules(_TodoList, style); // modulise style with component
