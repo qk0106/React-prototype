@@ -4,7 +4,7 @@ import { TodoListApp, TodoListAppsProp } from '../TodoListApp';
 import { RegisterToRootRoutes } from '../../RootRoutes';
 import { RegisterInstanceId } from '../../RootReducer';
 
-const GitInfoInstanceIds = ['AsyncPage_1', 'AsyncPage_1'];
+const GitInfoInstanceIds = ['AsyncPage_1', 'AsyncPage_2'];
 const TodoListAppInstanceIds = ['AsyncPage_1'];
 
 const AsyncTestPage = () => (
