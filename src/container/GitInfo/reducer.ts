@@ -1,6 +1,6 @@
 import { REFRESH_GIT_INFO, FETCH_GIT_INFO, FETCH_GIT_INFO_SUCCESS, FETCH_GIT_INFO_FAILED } from './action'; // To get Action Types
 import { InstancesReducerCreator } from '../../global/instantiation';
-import { RegisterToRootReducer } from '../../RootReducer';
+import { RegisterToRootReducer, FetchInstanceIdArray } from '../../RootReducer';
 import { combineReducers } from 'redux';
 import * as iassign from 'immutable-assign';
 
@@ -35,6 +35,6 @@ const GitInfoReducer = combineReducers({
     refreshCount
 });
 
-const GitInfosReducer = InstancesReducerCreator(['Async_1', 'Async_2'], GitInfoReducer);
+const GitInfosReducer = InstancesReducerCreator(FetchInstanceIdArray('GitInfos'), GitInfoReducer);
 
 RegisterToRootReducer('GitInfos', GitInfosReducer);

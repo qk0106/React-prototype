@@ -2,7 +2,7 @@ import { ADD_TODO, CHANGE_INPUT_TEXT } from '../AddTodo/action'; // To get Actio
 import { TOGGLE_TODO } from '../VisibleTodoList/action'; // To get Action Types
 import { SET_VISIBILITY_FILTER } from '../TodoFilterLink/action'; // To get Action Types
 import { InstancesReducerCreator } from '../../global/instantiation';
-import { RegisterToRootReducer } from '../../RootReducer';
+import { RegisterToRootReducer, FetchInstanceIdArray } from '../../RootReducer';
 import { combineReducers } from 'redux';
 import * as iassign from 'immutable-assign';
 
@@ -57,6 +57,6 @@ const TodoListAppReducer = combineReducers({
     todos
 });
 
-const TodoListAppsReducer = InstancesReducerCreator(['TodoList_1', 'TodoList_2'], TodoListAppReducer);
+const TodoListAppsReducer = InstancesReducerCreator(FetchInstanceIdArray('TodoLists'), TodoListAppReducer);
 
 RegisterToRootReducer('TodoLists', TodoListAppsReducer);
