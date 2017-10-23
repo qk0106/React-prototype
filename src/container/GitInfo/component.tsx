@@ -13,7 +13,7 @@ const mapStateToProps = (state, { instanceId, gitUrl }) => {
     }
 };
 
-const mapDispatchToProps = (dispatch, { instanceId, gitUrl }) => {
+const mapDispatchToProps = ({ }, dispatch, { instanceId, gitUrl }) => {
     return {
         onClick: () => {
             dispatch(
@@ -23,7 +23,15 @@ const mapDispatchToProps = (dispatch, { instanceId, gitUrl }) => {
     }
 };
 
+const mergeProps = (stateProps, { dispatch }, ownProps) => {
+    return {
+        ...stateProps,
+        ...mapDispatchToProps(stateProps, dispatch, ownProps),
+    };
+}
+
 export const GitInfo = connect(
     mapStateToProps,
-    mapDispatchToProps
+    null,
+    mergeProps
 )(GitSize);
