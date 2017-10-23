@@ -1,39 +1,33 @@
-import { refreshGitInfo } from './action'; // To get Action Creators
-import { GitSize } from '../../presenter';
-import { connect } from 'react-redux';
+import { refreshGitInfo } from "./action"; // To get Action Creators
+import { GitSize } from "../../presenter";
+import { connect } from "react-redux";
 
-export const GitInfosProp = 'GitInfos';
+export const GitInfosProp = "GitInfos";
 
 const instancesProp = GitInfosProp;
 
 const mapStateToProps = (state, { instanceId, gitUrl }) => {
     let ownState = state[instancesProp][instanceId];
     return {
-        refreshCount: (ownState.refreshCount !== undefined) ? ownState.refreshCount : { count: 0 },
-        gitSize: (ownState.gitSize !== undefined) ? ownState.gitSize : 0,
-        gitUrl: gitUrl,
-    }
+        refreshCount: ownState.refreshCount !== undefined ? ownState.refreshCount : { count: 0 },
+        gitSize: ownState.gitSize !== undefined ? ownState.gitSize : 0,
+        gitUrl: gitUrl
+    };
 };
 
-const mapDispatchToProps = ({ }, dispatch, { instanceId, gitUrl }) => {
+const mapDispatchToProps = ({}, dispatch, { instanceId, gitUrl }) => {
     return {
         onClick: () => {
-            dispatch(
-                refreshGitInfo(instancesProp, instanceId, [gitUrl])
-            );
-        },
-    }
+            dispatch(refreshGitInfo(instanceId, [gitUrl]));
+        }
+    };
 };
 
 const mergeProps = (stateProps, { dispatch }, ownProps) => {
     return {
         ...stateProps,
-        ...mapDispatchToProps(stateProps, dispatch, ownProps),
+        ...mapDispatchToProps(stateProps, dispatch, ownProps)
     };
-}
+};
 
-export const GitInfo = connect(
-    mapStateToProps,
-    null,
-    mergeProps
-)(GitSize);
+export const GitInfo = connect(mapStateToProps, null, mergeProps)(GitSize);

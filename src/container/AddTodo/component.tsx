@@ -1,50 +1,43 @@
-import { addTodo, changeInputText } from './action'; // To get Action Creators
-import { connect } from 'react-redux';
-import * as React from 'react';
+import { addTodo, changeInputText } from "./action"; // To get Action Creators
+import { connect } from "react-redux";
+import * as React from "react";
 
 let AddTodoPresenter = ({ onSubmit, onChange, inputText }) => {
     return (
         <div>
-            <form onSubmit={onSubmit} >
+            <form onSubmit={onSubmit}>
                 <input value={inputText} onChange={onChange} />
-                <button type="submit">
-                    Add Todo
-                </button>
+                <button type="submit">Add Todo</button>
             </form>
         </div>
-    )
+    );
 };
 
 const mapStateToProps = (state, { instancesProp, instanceId, inputText }) => {
     let ownState = state[instancesProp][instanceId];
     return {
-        inputText: (ownState.inputText !== undefined) ? ownState.inputText : inputText,
-    }
+        inputText: ownState.inputText !== undefined ? ownState.inputText : inputText
+    };
 };
 
-const mapDispatchToProps = ({ inputText }, dispatch, { instancesProp, instanceId }) => {
+const mapDispatchToProps = ({ inputText }, dispatch, { instanceId }) => {
     return {
         onSubmit: e => {
-            e.preventDefault()
-            dispatch(addTodo(instancesProp, instanceId, [inputText]));
-            dispatch(changeInputText(instancesProp, instanceId, ['']))
+            e.preventDefault();
+            dispatch(addTodo(instanceId, [inputText]));
+            dispatch(changeInputText(instanceId, [""]));
         },
         onChange: e => {
-            dispatch(changeInputText(instancesProp, instanceId, [e.target.value]))
+            dispatch(changeInputText(instanceId, [e.target.value]));
         }
-    }
+    };
 };
-
 
 const mergeProps = (stateProps, { dispatch }, ownProps) => {
     return {
         ...stateProps,
-        ...mapDispatchToProps(stateProps, dispatch, ownProps),
+        ...mapDispatchToProps(stateProps, dispatch, ownProps)
     };
-}
+};
 
-export const AddTodo = connect(
-    mapStateToProps,
-    null,
-    mergeProps
-)(AddTodoPresenter);
+export const AddTodo = connect(mapStateToProps, null, mergeProps)(AddTodoPresenter);
