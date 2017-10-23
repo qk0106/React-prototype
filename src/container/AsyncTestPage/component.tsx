@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { GitInfo } from '../GitInfo';
-import { TodoListApp } from '../TodoListApp';
+import { TodoListApp, TodoListAppsProp } from '../TodoListApp';
 import { RegisterToRootRoutes } from '../../RootRoutes';
 import { RegisterInstanceId } from '../../RootReducer';
 
@@ -17,5 +17,5 @@ const AsyncTestPage = () => (
 );
 
 RegisterInstanceId('GitInfos', GitInfoInstanceIds);
-RegisterInstanceId('TodoListApps', TodoListAppInstanceIds);
+RegisterInstanceId(TodoListAppsProp, TodoListAppInstanceIds);
 RegisterToRootRoutes('AsyncTest', '/asyncTest', 'Async Test', AsyncTestPage);

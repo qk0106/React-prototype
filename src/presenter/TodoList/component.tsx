@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { Todo } from '../../presenter';
+import * as React from 'react';
 import * as CSSModules from 'react-css-modules';
 const style = require('./style.less');
 

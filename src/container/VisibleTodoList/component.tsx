@@ -15,20 +15,28 @@ const getVisibleTodos = (todos, filter) => {
     }
 };
 
-const mapStateToProps = (state, { instanceId }) => {
-    let ownState = state['TodoListApps'][instanceId];
+const mapStateToProps = (state, { instancesProp, instanceId }) => {
+    let ownState = state[instancesProp][instanceId];
     return {
         todos: getVisibleTodos(ownState.todos, ownState.visibilityFilter),
     };
 };
 
-const mapDispatchToProps = (dispatch, { instanceId }) => {
+const mapDispatchToProps = ({ }, dispatch, { instanceId }) => {
     return {
         onTodoClick: (id) => { dispatch(toggleTodo(instanceId, [id])); },
     };
 };
 
+const mergeProps = (stateProps, { dispatch }, ownProps) => {
+    return {
+        ...stateProps,
+        ...mapDispatchToProps(stateProps, dispatch, ownProps),
+    };
+}
+
 export const VisibleTodoList = connect(
     mapStateToProps,
-    mapDispatchToProps,
+    null,
+    mergeProps
 )(TodoList);
