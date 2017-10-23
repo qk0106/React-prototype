@@ -3,16 +3,16 @@ import { combineReducers } from 'redux';
 let reducers = {};
 let instanceIdArrays = {}
 
-export const RegisterInstanceId = (instancesName, instanceIdArray) => {
-    if (instanceIdArrays[instancesName] === undefined) {
-        instanceIdArrays[instancesName] = [];
+export const RegisterInstanceId = (instancesProp, instanceIdArray) => {
+    if (instanceIdArrays[instancesProp] === undefined) {
+        instanceIdArrays[instancesProp] = [];
     }
-    instanceIdArrays[instancesName] = instanceIdArrays[instancesName].concat(instanceIdArray);
+    instanceIdArrays[instancesProp] = instanceIdArrays[instancesProp].concat(instanceIdArray);
 }
 
-export const RegisterToRootReducer = (instancesName, reducer) => {
-    reducers[instancesName] = reducer;
+export const RegisterToRootReducer = (instancesProp, reducer) => {
+    reducers[instancesProp] = reducer;
 }
 
-export let FetchInstanceIdArray = (instancesName) => (instanceIdArrays[instancesName]);
+export let FetchInstanceIdArray = (instancesProp) => (instanceIdArrays[instancesProp]);
 export let FetchRootReducer = () => (combineReducers(reducers));
