@@ -17,5 +17,5 @@ const TodoListPage = () => (
 );
 
 RegisterInstanceId('GitInfos', GitInfoInstanceIds);
-RegisterInstanceId('TodoLists', TodoListAppInstanceIds);
+RegisterInstanceId('TodoListApps', TodoListAppInstanceIds);
 RegisterToRootRoutes('TodoList', '/todoList', 'Todo List', TodoListPage);

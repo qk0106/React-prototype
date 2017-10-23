@@ -57,6 +57,6 @@ const TodoListAppReducer = combineReducers({
     todos
 });
 
-const TodoListAppsReducer = InstancesReducerCreator(FetchInstanceIdArray('TodoLists'), TodoListAppReducer);
+const TodoListAppsReducer = InstancesReducerCreator(FetchInstanceIdArray('TodoListApps'), TodoListAppReducer);
 
-RegisterToRootReducer('TodoLists', TodoListAppsReducer);
+RegisterToRootReducer('TodoListApps', TodoListAppsReducer);

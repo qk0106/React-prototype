@@ -16,7 +16,7 @@ let AddTodoPresenter = ({ onSubmit, onChange, inputText }) => {
 };
 
 const mapStateToProps = (state, { instanceId, inputText }) => {
-    let ownState = state['TodoLists'][instanceId];
+    let ownState = state['TodoListApps'][instanceId];
     return {
         inputText: (ownState.inputText !== undefined) ? ownState.inputText : inputText,
     }

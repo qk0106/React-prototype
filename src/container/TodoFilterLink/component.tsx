@@ -3,7 +3,7 @@ import { Link } from '../../presenter';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, { instanceId, filter }) => {
-    let ownState = state['TodoLists'][instanceId];
+    let ownState = state['TodoListApps'][instanceId];
     return {
         active: filter === ownState.visibilityFilter,
     }

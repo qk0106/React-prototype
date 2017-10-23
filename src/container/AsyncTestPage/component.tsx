@@ -17,5 +17,5 @@ const AsyncTestPage = () => (
 );
 
 RegisterInstanceId('GitInfos', GitInfoInstanceIds);
-RegisterInstanceId('TodoLists', TodoListAppInstanceIds);
+RegisterInstanceId('TodoListApps', TodoListAppInstanceIds);
 RegisterToRootRoutes('AsyncTest', '/asyncTest', 'Async Test', AsyncTestPage);

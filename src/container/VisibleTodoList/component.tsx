@@ -16,7 +16,7 @@ const getVisibleTodos = (todos, filter) => {
 };
 
 const mapStateToProps = (state, { instanceId }) => {
-    let ownState = state['TodoLists'][instanceId];
+    let ownState = state['TodoListApps'][instanceId];
     return {
         todos: getVisibleTodos(ownState.todos, ownState.visibilityFilter),
     };
