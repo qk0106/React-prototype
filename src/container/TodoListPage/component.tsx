@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { GitInfo } from '../GitInfo';
 import { TodoListApp } from '../TodoListApp';
 import { RegisterToRootRoutes } from '../../RootRoutes';
-import { GitInfo } from '../GitInfo';
 import { RegisterInstanceId } from '../../RootReducer';
 
 const GitInfoInstanceIds = ['TodoList_1'];
