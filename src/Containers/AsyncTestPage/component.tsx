@@ -6,7 +6,7 @@ import { registerToRootRoutes } from "RootHelper";
 
 const instanceIdPrefix = "AsyncPage";
 const GitInfoInstanceIds = yieldRegisteredInstanceIds(GitInfosProp, instanceIdPrefix, 2);
-const TodoListAppInstanceIds = yieldRegisteredInstanceIds(TodoListAppsProp, instanceIdPrefix, 1);
+const TodoListAppInstanceIds = yieldRegisteredInstanceIds(TodoListAppsProp, instanceIdPrefix, 2);
 
 const AsyncTestPage = () => (
     <div>
@@ -22,6 +22,10 @@ const AsyncTestPage = () => (
         <TodoListApp
             instanceId={TodoListAppInstanceIds[0]}
             inputText="This is TodoList 1 in Async"
+        />
+        <TodoListApp
+            instanceId={TodoListAppInstanceIds[1]}
+            inputText="This is TodoList 2 in Async"
         />
     </div>
 );
