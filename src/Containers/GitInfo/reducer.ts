@@ -1,3 +1,4 @@
+import * as iassign from "immutable-assign";
 import {
     REFRESH_GIT_INFO,
     FETCH_GIT_INFO,
@@ -5,10 +6,7 @@ import {
     FETCH_GIT_INFO_FAILED
 } from "./action"; // To get Action Types
 import { instancesProp } from "./component";
-import { combineInstanceReducers } from "Instantiator";
 import { registerToRootReducer } from "RootHelper";
-import { combineReducers } from "redux";
-import * as iassign from "immutable-assign";
 
 const refreshCount = (refreshCount = { count: 0 }, action) => {
     switch (action.type) {
@@ -32,11 +30,9 @@ const gitSize = (gitSize = 0, action) => {
     }
 };
 
-const combinedReducerObj = {
+const instanceReducerObj = {
     gitSize,
     refreshCount
 };
 
-const intanceReducer = combineReducers(combinedReducerObj);
-const instancesReducer = combineInstanceReducers(instancesProp, intanceReducer);
-registerToRootReducer(instancesProp, instancesReducer);
+registerToRootReducer(instancesProp, instanceReducerObj);
