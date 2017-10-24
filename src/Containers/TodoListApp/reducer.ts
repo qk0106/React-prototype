@@ -1,7 +1,7 @@
 import { ADD_TODO, CHANGE_INPUT_TEXT } from "AddTodo";
 import { TOGGLE_TODO } from "VisibleTodoList";
 import { SET_VISIBILITY_FILTER } from "TodoFilterLink"; // To get Action Types
-import { TodoListAppsProp } from "./component";
+import { instancesProp } from "./component";
 import { combineInstanceReducers } from "Instantiator";
 import { registerToRootReducer } from "RootHelper";
 import { combineReducers } from "redux";
@@ -46,12 +46,12 @@ const todos = (todos = [], action): any[] => {
     }
 };
 
-const TodoListAppReducer = combineReducers({
+const combinedReducerObj = {
     inputText,
     visibilityFilter,
     todos
-});
+};
 
-const TodoListAppsReducer = combineInstanceReducers(TodoListAppsProp, TodoListAppReducer);
-
-registerToRootReducer(TodoListAppsProp, TodoListAppsReducer);
+const instanceReducer = combineReducers(combinedReducerObj);
+const instancesReducer = combineInstanceReducers(instancesProp, instanceReducer);
+registerToRootReducer(instancesProp, instancesReducer);

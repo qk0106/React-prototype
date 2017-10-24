@@ -4,7 +4,7 @@ import {
     FETCH_GIT_INFO_SUCCESS,
     FETCH_GIT_INFO_FAILED
 } from "./action"; // To get Action Types
-import { GitInfosProp } from "./component";
+import { instancesProp } from "./component";
 import { combineInstanceReducers } from "Instantiator";
 import { registerToRootReducer } from "RootHelper";
 import { combineReducers } from "redux";
@@ -32,11 +32,11 @@ const gitSize = (gitSize = 0, action) => {
     }
 };
 
-const GitInfoReducer = combineReducers({
+const combinedReducerObj = {
     gitSize,
     refreshCount
-});
+};
 
-const GitInfosReducer = combineInstanceReducers(GitInfosProp, GitInfoReducer);
-
-registerToRootReducer(GitInfosProp, GitInfosReducer);
+const intanceReducer = combineReducers(combinedReducerObj);
+const instancesReducer = combineInstanceReducers(instancesProp, intanceReducer);
+registerToRootReducer(instancesProp, instancesReducer);

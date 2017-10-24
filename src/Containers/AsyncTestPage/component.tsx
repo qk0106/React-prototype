@@ -1,6 +1,6 @@
 import * as React from "react";
-import { GitInfo, GitInfosProp } from "GitInfo";
-import { TodoListApp, TodoListAppsProp } from "TodoListApp";
+import { GitInfo, instancesProp as GitInfosProp } from "GitInfo";
+import { TodoListApp, instancesProp as TodoListAppsProp } from "TodoListApp";
 import { yieldInstanceIds, registerInstanceIds } from "Instantiator";
 import { registerToRootRoutes } from "RootHelper";
 

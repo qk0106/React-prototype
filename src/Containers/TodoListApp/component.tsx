@@ -3,12 +3,12 @@ import { AddTodo } from "AddTodo";
 import { TodoFooter } from "TodoFooter";
 import { VisibleTodoList } from "VisibleTodoList";
 
-export const TodoListAppsProp = "TodoListApps";
+export const instancesProp = "TodoListApps";
 
 export const TodoListApp = ({ instanceId, inputText }) => (
     <div>
-        <AddTodo instancesProp={TodoListAppsProp} instanceId={instanceId} inputText={inputText} />
-        <VisibleTodoList instancesProp={TodoListAppsProp} instanceId={instanceId} />
-        <TodoFooter instancesProp={TodoListAppsProp} instanceId={instanceId} />
+        <AddTodo instancesProp={instancesProp} instanceId={instanceId} inputText={inputText} />
+        <VisibleTodoList instancesProp={instancesProp} instanceId={instanceId} />
+        <TodoFooter instancesProp={instancesProp} instanceId={instanceId} />
     </div>
 );

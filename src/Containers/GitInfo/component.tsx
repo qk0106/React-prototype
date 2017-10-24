@@ -2,9 +2,7 @@ import { refreshGitInfo } from "./action"; // To get Action Creators
 import { GitSize } from "GitSize";
 import { connect } from "react-redux";
 
-export const GitInfosProp = "GitInfos";
-
-const instancesProp = GitInfosProp;
+export const instancesProp = "GitInfos";
 
 const mapStateToProps = (state, { instanceId, gitUrl }) => {
     let ownState = state[instancesProp][instanceId];
