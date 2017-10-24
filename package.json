@@ -26,7 +26,12 @@
     "bugs": {
         "url": ""
     },
-    "keywords": ["react", "redux", "typescript", "webpack"],
+    "keywords": [
+        "react",
+        "redux",
+        "typescript",
+        "webpack"
+    ],
     "license": "UNLICENSED",
     "private": true,
     "devDependencies": {
@@ -69,18 +74,19 @@
         "webpack": "^3.6.0",
         "webpack-dev-middleware": "^1.12.0",
         "webpack-hot-middleware": "^2.20.0",
-        "webpack-manifest-plugin": "^1.1.0"
+        "webpack-manifest-plugin": "^1.1.0",
+        "semantic-ui-react": "^0.75.1"
     },
     "dependencies": {
         "chalk": "^2.1.0",
         "compression": "^1.6.2",
         "express": "^4.14.0",
         "react": "^16.0.0",
+        "react-css-modules": "^4.1.0",
         "react-dom": "~16.0.0",
         "react-redux": "^5.0.2",
         "react-router": "^3.0.0",
         "react-router-dom": "^4.2.2",
-        "react-css-modules": "^4.1.0",
         "redux": "^3.6.0",
         "redux-logger": "^3.0.6",
         "serve-favicon": "^2.3.2"
