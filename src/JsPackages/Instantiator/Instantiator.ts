@@ -2,19 +2,25 @@ import * as iassign from "immutable-assign";
 
 let rootInstanceIds = {};
 
-export const yieldInstanceIds = (prefix, count) => {
+const yieldInstanceIds = (instanceIdPrefix, count) => {
     let instanceIds = [];
     for (let i = 0; i < count; i++) {
-        instanceIds.push(prefix + "_" + Math.round(Math.random() * Math.pow(10, 10)));
+        instanceIds.push(instanceIdPrefix + "_" + Math.round(Math.random() * Math.pow(10, 10)));
     }
     return instanceIds;
 };
 
-export const registerInstanceIds = (instancesProp, instanceIds) => {
+const registerInstanceIds = (instancesProp, instanceIds) => {
     if (rootInstanceIds[instancesProp] === undefined) {
         rootInstanceIds[instancesProp] = [];
     }
     rootInstanceIds[instancesProp] = rootInstanceIds[instancesProp].concat(instanceIds);
+};
+
+export const yieldRegisteredInstanceIds = (instancesProp, instanceIdPrefix, count) => {
+    let instanceIds = yieldInstanceIds(instanceIdPrefix, count);
+    registerInstanceIds(instancesProp, instanceIds);
+    return instanceIds;
 };
 
 const fetchInstanceIds = instancesProp => rootInstanceIds[instancesProp];

@@ -1,12 +1,12 @@
 import * as React from "react";
 import { GitInfo, instancesProp as GitInfosProp } from "GitInfo";
 import { TodoListApp, instancesProp as TodoListAppsProp } from "TodoListApp";
-import { yieldInstanceIds, registerInstanceIds } from "Instantiator";
+import { yieldRegisteredInstanceIds } from "Instantiator";
 import { registerToRootRoutes } from "RootHelper";
 
-const prefix = "TodoListPage";
-const GitInfoInstanceIds = yieldInstanceIds(prefix, 1);
-const TodoListAppInstanceIds = yieldInstanceIds(prefix, 2);
+const instanceIdPrefix = "TodoListPage";
+const GitInfoInstanceIds = yieldRegisteredInstanceIds(GitInfosProp, instanceIdPrefix, 1);
+const TodoListAppInstanceIds = yieldRegisteredInstanceIds(TodoListAppsProp, instanceIdPrefix, 2);
 
 const TodoListPage = () => (
     <div>
@@ -20,6 +20,4 @@ const TodoListPage = () => (
     </div>
 );
 
-registerInstanceIds(GitInfosProp, GitInfoInstanceIds);
-registerInstanceIds(TodoListAppsProp, TodoListAppInstanceIds);
 registerToRootRoutes("TodoList", "/todoList", "Todo List", TodoListPage);
