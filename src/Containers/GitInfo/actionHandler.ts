@@ -1,21 +1,18 @@
 import { REFRESH_GIT_INFO, fetchGitInfo, fetchGitInfoSuccess, fetchGitInfoFailed } from "./action"; // To get Action Creators
 import { RegisterToRootMiddlewares } from "RootHelper";
 
-const actionHandlerMiddleware = ({ dispatch }) => next => action => {
+const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);
     if (action.type === REFRESH_GIT_INFO) {
         let instanceId = action.instanceId;
         dispatch(fetchGitInfo(instanceId));
-        fetch(action.gitUrl).then(
-            res => {
-                res.json().then(data => {
-                    dispatch(fetchGitInfoSuccess(instanceId, { data }));
-                });
-            },
-            error => {
-                dispatch(fetchGitInfoFailed(instanceId, { error }));
-            }
-        );
+        try {
+            let res = await fetch(action.gitUrl);
+            let data = await res.json();
+            dispatch(fetchGitInfoSuccess(instanceId, { data }));
+        } catch (error) {
+            dispatch(fetchGitInfoFailed(instanceId, { error }));
+        }
     }
 };
 
