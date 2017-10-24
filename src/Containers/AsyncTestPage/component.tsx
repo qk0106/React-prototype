@@ -4,9 +4,9 @@ import { TodoListApp, TodoListAppsProp } from "TodoListApp";
 import { yieldInstanceIds, registerInstanceIds } from "Instantiator";
 import { registerToRootRoutes } from "RootHelper";
 
-const ContainerPrefix = "AsyncPage";
-const GitInfoInstanceIds = yieldInstanceIds(ContainerPrefix, 2);
-const TodoListAppInstanceIds = yieldInstanceIds(ContainerPrefix, 1);
+const prefix = "AsyncPage";
+const GitInfoInstanceIds = yieldInstanceIds(prefix, 2);
+const TodoListAppInstanceIds = yieldInstanceIds(prefix, 1);
 
 const AsyncTestPage = () => (
     <div>

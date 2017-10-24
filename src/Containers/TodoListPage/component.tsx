@@ -4,9 +4,9 @@ import { TodoListApp, TodoListAppsProp } from "TodoListApp";
 import { yieldInstanceIds, registerInstanceIds } from "Instantiator";
 import { registerToRootRoutes } from "RootHelper";
 
-const ContainerPrefix = "TodoListPage";
-const GitInfoInstanceIds = yieldInstanceIds(ContainerPrefix, 1);
-const TodoListAppInstanceIds = yieldInstanceIds(ContainerPrefix, 2);
+const prefix = "TodoListPage";
+const GitInfoInstanceIds = yieldInstanceIds(prefix, 1);
+const TodoListAppInstanceIds = yieldInstanceIds(prefix, 2);
 
 const TodoListPage = () => (
     <div>
