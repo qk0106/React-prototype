@@ -14,15 +14,15 @@ export const InstanceActionCreator = (actionType, actionParamNames?) => (
 ) => {
     let actionParamsObj = {};
     if (actionParamNames) {
-        actionParamNames.forEach((actionParamName, index) => {
-            let actionParam = actionParams[index];
+        actionParamNames.forEach(actionParamName => {
+            let actionParam = actionParams[actionParamName];
             actionParamsObj[actionParamName] = actionParam;
         });
     }
     return {
+        ...actionParamsObj,
         type: actionType,
-        instanceId: instanceId,
-        ...actionParamsObj
+        instanceId: instanceId
     };
 };
 

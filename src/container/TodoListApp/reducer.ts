@@ -10,7 +10,7 @@ import * as iassign from "immutable-assign";
 const inputText = (inputText = "", action) => {
     switch (action.type) {
         case CHANGE_INPUT_TEXT:
-            return action.inputText;
+            return action.text;
         default:
             return inputText;
     }

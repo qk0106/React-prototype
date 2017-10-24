@@ -9,11 +9,11 @@ const actionHandlerMiddleware = ({ dispatch }) => next => action => {
         fetch(action.gitUrl).then(
             res => {
                 res.json().then(data => {
-                    dispatch(fetchGitInfoSuccess(instanceId, [data]));
+                    dispatch(fetchGitInfoSuccess(instanceId, { data }));
                 });
             },
             error => {
-                dispatch(fetchGitInfoFailed(instanceId, [error]));
+                dispatch(fetchGitInfoFailed(instanceId, { error }));
             }
         );
     }

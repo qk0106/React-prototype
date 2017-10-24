@@ -24,11 +24,11 @@ const mapDispatchToProps = ({ inputText }, dispatch, { instanceId }) => {
     return {
         onSubmit: e => {
             e.preventDefault();
-            dispatch(addTodo(instanceId, [inputText]));
-            dispatch(changeInputText(instanceId, [""]));
+            dispatch(addTodo(instanceId, { text: inputText }));
+            dispatch(changeInputText(instanceId, { text: "" }));
         },
         onChange: e => {
-            dispatch(changeInputText(instanceId, [e.target.value]));
+            dispatch(changeInputText(instanceId, { text: e.target.value }));
         }
     };
 };
