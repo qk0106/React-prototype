@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 let routes = {};
 
-export const RegisterToRootRoutes = (componentName, path, text, component) => {
+export const registerToRootRoutes = (componentName, path, text, component) => {
     routes[componentName] = {
         path: path,
         text: text,
@@ -32,7 +32,7 @@ const routeTemplate = route => (
     <Route key={route.key + "_route"} exact path={route.path} component={route.component} />
 );
 
-export const FetchRootRoutes = () => {
+export const fetchRootRoutes = () => {
     return (
         <BrowserRouter>
             <div>

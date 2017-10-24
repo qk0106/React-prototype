@@ -17,10 +17,10 @@ import "TodoListApp/reducer";
 //register middleware
 import "GitInfo/actionHandler";
 
-import { FetchRootReducer, FetchRootMiddlewares, FetchRootRoutes } from "RootHelper";
+import { fetchRootReducer, fetchRootMiddlewares, fetchRootRoutes } from "RootHelper";
 
-const store = createStore(FetchRootReducer(), FetchRootMiddlewares());
+const store = createStore(fetchRootReducer(), fetchRootMiddlewares());
 
-const routes = FetchRootRoutes();
+const routes = fetchRootRoutes();
 
 render(<Provider store={store}>{routes}</Provider>, document.getElementById("app"));

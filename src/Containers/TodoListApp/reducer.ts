@@ -3,7 +3,7 @@ import { TOGGLE_TODO } from "VisibleTodoList"; // To get Action Types
 import { SET_VISIBILITY_FILTER } from "TodoFilterLink"; // To get Action Types
 import { TodoListAppsProp } from "./component";
 import { instancesReducerCreator } from "Instantiator";
-import { RegisterToRootReducer, FetchInstanceIdArray } from "RootHelper";
+import { registerToRootReducer, fetchInstanceIdArray } from "RootHelper";
 import { combineReducers } from "redux";
 import * as iassign from "immutable-assign";
 
@@ -53,8 +53,8 @@ const TodoListAppReducer = combineReducers({
 });
 
 const TodoListAppsReducer = instancesReducerCreator(
-    FetchInstanceIdArray(TodoListAppsProp),
+    fetchInstanceIdArray(TodoListAppsProp),
     TodoListAppReducer
 );
 
-RegisterToRootReducer(TodoListAppsProp, TodoListAppsReducer);
+registerToRootReducer(TodoListAppsProp, TodoListAppsReducer);

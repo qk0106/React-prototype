@@ -3,11 +3,11 @@ import { createLogger } from "redux-logger";
 
 let middlewares = [];
 
-export const RegisterToRootMiddlewares = middleware => {
+export const registerToRootMiddlewares = middleware => {
     middlewares.push(middleware);
 };
 
 const loggerMiddleware = createLogger();
-RegisterToRootMiddlewares(loggerMiddleware);
+registerToRootMiddlewares(loggerMiddleware);
 
-export const FetchRootMiddlewares = () => applyMiddleware(...middlewares);
+export const fetchRootMiddlewares = () => applyMiddleware(...middlewares);

@@ -2,7 +2,7 @@ import * as React from "react";
 import { GitInfo, GitInfosProp } from "GitInfo";
 import { TodoListApp, TodoListAppsProp } from "TodoListApp";
 import { instanceIdsGenerator } from "Instantiator";
-import { RegisterInstanceIds, RegisterToRootRoutes } from "RootHelper";
+import { registerInstanceIds, registerToRootRoutes } from "RootHelper";
 
 const ContainerPrefix = "AsyncPage";
 const GitInfoInstanceIds = instanceIdsGenerator(ContainerPrefix, 2);
@@ -26,6 +26,6 @@ const AsyncTestPage = () => (
     </div>
 );
 
-RegisterInstanceIds(GitInfosProp, GitInfoInstanceIds);
-RegisterInstanceIds(TodoListAppsProp, TodoListAppInstanceIds);
-RegisterToRootRoutes("AsyncTest", "/asyncTest", "Async Test", AsyncTestPage);
+registerInstanceIds(GitInfosProp, GitInfoInstanceIds);
+registerInstanceIds(TodoListAppsProp, TodoListAppInstanceIds);
+registerToRootRoutes("AsyncTest", "/asyncTest", "Async Test", AsyncTestPage);
