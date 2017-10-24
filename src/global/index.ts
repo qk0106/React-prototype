@@ -1,2 +1,2 @@
-export * from './instantiation';
-export const globalStyle = require('./style.less');
+export * from "./Instantiation";
+export const globalStyle = require("./style.less");

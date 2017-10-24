@@ -3,11 +3,11 @@ import { GitInfo, GitInfosProp } from "../GitInfo";
 import { TodoListApp, TodoListAppsProp } from "../TodoListApp";
 import { RegisterToRootRoutes } from "../../RootRoutes";
 import { RegisterInstanceIds } from "../../RootReducer";
-import { InstanceIdsGenerator } from "../../Global/instantiation";
+import { instanceIdsGenerator } from "../../Global/Instantiation";
 
 const ContainerPrefix = "TodoListPage";
-const GitInfoInstanceIds = InstanceIdsGenerator(ContainerPrefix, 1);
-const TodoListAppInstanceIds = InstanceIdsGenerator(ContainerPrefix, 2);
+const GitInfoInstanceIds = instanceIdsGenerator(ContainerPrefix, 1);
+const TodoListAppInstanceIds = instanceIdsGenerator(ContainerPrefix, 2);
 
 const TodoListPage = () => (
     <div>

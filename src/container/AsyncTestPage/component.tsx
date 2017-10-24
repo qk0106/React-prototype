@@ -3,11 +3,11 @@ import { GitInfo, GitInfosProp } from "../GitInfo";
 import { TodoListApp, TodoListAppsProp } from "../TodoListApp";
 import { RegisterToRootRoutes } from "../../RootRoutes";
 import { RegisterInstanceIds } from "../../RootReducer";
-import { InstanceIdsGenerator } from "../../Global/instantiation";
+import { instanceIdsGenerator } from "../../Global/Instantiation";
 
 const ContainerPrefix = "AsyncPage";
-const GitInfoInstanceIds = InstanceIdsGenerator(ContainerPrefix, 2);
-const TodoListAppInstanceIds = InstanceIdsGenerator(ContainerPrefix, 1);
+const GitInfoInstanceIds = instanceIdsGenerator(ContainerPrefix, 2);
+const TodoListAppInstanceIds = instanceIdsGenerator(ContainerPrefix, 1);
 
 const AsyncTestPage = () => (
     <div>

@@ -1,6 +1,6 @@
 import * as iassign from "immutable-assign";
 
-export const InstanceIdsGenerator = (prefix, count) => {
+export const instanceIdsGenerator = (prefix, count) => {
     let instanceIds = [];
     for (let i = 0; i < count; i++) {
         instanceIds.push(prefix + "_" + Math.round(Math.random() * Math.pow(10, 10)));
@@ -8,25 +8,13 @@ export const InstanceIdsGenerator = (prefix, count) => {
     return instanceIds;
 };
 
-export const InstanceActionCreator = (actionType, actionParamNames?) => (
-    instanceId,
-    actionParams?
-) => {
-    let actionParamsObj = {};
-    if (actionParamNames) {
-        actionParamNames.forEach(actionParamName => {
-            let actionParam = actionParams[actionParamName];
-            actionParamsObj[actionParamName] = actionParam;
-        });
-    }
-    return {
-        ...actionParamsObj,
-        type: actionType,
-        instanceId: instanceId
-    };
-};
+export const instanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({
+    type: actionType,
+    instanceId: instanceId,
+    ...actionParamsObj
+});
 
-export const InstancesReducerCreator = (instanceIdArray, instanceReducer) => {
+export const instancesReducerCreator = (instanceIdArray, instanceReducer) => {
     let instatncesInitState = {};
     instanceIdArray.forEach(instanceId => {
         instatncesInitState[instanceId] = {};

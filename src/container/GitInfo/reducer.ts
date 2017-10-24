@@ -5,7 +5,7 @@ import {
     FETCH_GIT_INFO_FAILED
 } from "./action"; // To get Action Types
 import { GitInfosProp } from "./component";
-import { InstancesReducerCreator } from "../../Global/instantiation";
+import { instancesReducerCreator } from "../../Global/Instantiation";
 import { RegisterToRootReducer, FetchInstanceIdArray } from "../../RootReducer";
 import { combineReducers } from "redux";
 import * as iassign from "immutable-assign";
@@ -37,6 +37,6 @@ const GitInfoReducer = combineReducers({
     refreshCount
 });
 
-const GitInfosReducer = InstancesReducerCreator(FetchInstanceIdArray(GitInfosProp), GitInfoReducer);
+const GitInfosReducer = instancesReducerCreator(FetchInstanceIdArray(GitInfosProp), GitInfoReducer);
 
 RegisterToRootReducer(GitInfosProp, GitInfosReducer);
