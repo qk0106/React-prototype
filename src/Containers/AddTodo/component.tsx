@@ -1,6 +1,6 @@
 import { addTodo, changeInputText } from "./action"; // To get Action Creators
-import { connect } from "react-redux";
 import * as React from "react";
+import { yieldContainer } from "ReduxHelper";
 
 const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => {
     return (
@@ -33,11 +33,4 @@ const mapDispatchToProps = ({ inputText }, dispatch, { instanceId }) => {
     };
 };
 
-const mergeProps = (stateProps, { dispatch }, ownProps) => {
-    return {
-        ...stateProps,
-        ...mapDispatchToProps(stateProps, dispatch, ownProps)
-    };
-};
-
-export const AddTodo = connect(mapStateToProps, null, mergeProps)(AddTodoPresenter);
+export const AddTodo = yieldContainer(mapStateToProps, mapDispatchToProps)(AddTodoPresenter);

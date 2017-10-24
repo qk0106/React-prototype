@@ -1,6 +1,6 @@
 import { refreshGitInfo } from "./action"; // To get Action Creators
 import { GitSize } from "GitSize";
-import { connect } from "react-redux";
+import { yieldContainer } from "ReduxHelper";
 
 export const instancesProp = "GitInfos";
 
@@ -21,11 +21,4 @@ const mapDispatchToProps = ({}, dispatch, { instanceId, gitUrl }) => {
     };
 };
 
-const mergeProps = (stateProps, { dispatch }, ownProps) => {
-    return {
-        ...stateProps,
-        ...mapDispatchToProps(stateProps, dispatch, ownProps)
-    };
-};
-
-export const GitInfo = connect(mapStateToProps, null, mergeProps)(GitSize);
+export const GitInfo = yieldContainer(mapStateToProps, mapDispatchToProps)(GitSize);

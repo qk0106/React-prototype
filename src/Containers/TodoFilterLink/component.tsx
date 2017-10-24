@@ -1,6 +1,6 @@
 import { setVisibilityFilter } from "./action"; // To get Action Creators
 import { Link } from "Link";
-import { connect } from "react-redux";
+import { yieldContainer } from "ReduxHelper";
 
 const mapStateToProps = (state, { instancesProp, instanceId, filter, children }) => {
     let ownState = state[instancesProp][instanceId];
@@ -18,11 +18,4 @@ const mapDispatchToProps = ({}, dispatch, { instanceId, filter }) => {
     };
 };
 
-const mergeProps = (stateProps, { dispatch }, ownProps) => {
-    return {
-        ...stateProps,
-        ...mapDispatchToProps(stateProps, dispatch, ownProps)
-    };
-};
-
-export const TodoFilterLink = connect(mapStateToProps, null, mergeProps)(Link);
+export const TodoFilterLink = yieldContainer(mapStateToProps, mapDispatchToProps)(Link);
