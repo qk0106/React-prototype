@@ -1,8 +1,8 @@
 import * as React from "react";
 import { GitInfo, GitInfosProp } from "GitInfo";
 import { TodoListApp, TodoListAppsProp } from "TodoListApp";
-import { instanceIdsGenerator } from "Instantiator";
-import { registerInstanceIds, registerToRootRoutes } from "RootHelper";
+import { instanceIdsGenerator, registerInstanceIds } from "Instantiator";
+import { registerToRootRoutes } from "RootHelper";
 
 const ContainerPrefix = "TodoListPage";
 const GitInfoInstanceIds = instanceIdsGenerator(ContainerPrefix, 1);
