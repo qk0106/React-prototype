@@ -3,11 +3,12 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import * as iassign from "immutable-assign";
+iassign.setOption({ freeze: true }); // throw immutable error
 
-// register route and instanceId, this has to happen before register reducer
-import "HomePage";
-import "AsyncTestPage";
-import "TodoListPage";
+// register routes ||  register instanceId -> this has to happen before register reducer
+import "HomePage/component";
+import "AsyncTestPage/component";
+import "TodoListPage/component";
 
 // register reducer
 import "GitInfo/reducer";
@@ -17,8 +18,6 @@ import "TodoListApp/reducer";
 import "GitInfo/actionHandler";
 
 import { FetchRootReducer, FetchRootMiddlewares, FetchRootRoutes } from "RootHelper";
-
-iassign.setOption({ freeze: true }); // throw immutable error
 
 const store = createStore(FetchRootReducer(), FetchRootMiddlewares());
 
