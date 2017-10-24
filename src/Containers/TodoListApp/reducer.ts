@@ -1,8 +1,8 @@
-import { ADD_TODO, CHANGE_INPUT_TEXT } from "AddTodo"; // To get Action Types
-import { TOGGLE_TODO } from "VisibleTodoList"; // To get Action Types
+import { ADD_TODO, CHANGE_INPUT_TEXT } from "AddTodo";
+import { TOGGLE_TODO } from "VisibleTodoList";
 import { SET_VISIBILITY_FILTER } from "TodoFilterLink"; // To get Action Types
 import { TodoListAppsProp } from "./component";
-import { fetchInstanceIdArray, instancesReducerCreator } from "Instantiator";
+import { combineInstanceReducers } from "Instantiator";
 import { registerToRootReducer } from "RootHelper";
 import { combineReducers } from "redux";
 import * as iassign from "immutable-assign";
@@ -52,9 +52,6 @@ const TodoListAppReducer = combineReducers({
     todos
 });
 
-const TodoListAppsReducer = instancesReducerCreator(
-    fetchInstanceIdArray(TodoListAppsProp),
-    TodoListAppReducer
-);
+const TodoListAppsReducer = combineInstanceReducers(TodoListAppsProp, TodoListAppReducer);
 
 registerToRootReducer(TodoListAppsProp, TodoListAppsReducer);

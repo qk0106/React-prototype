@@ -1,7 +1,7 @@
-import { instanceActionCreator } from "Instantiator";
+import { generateInstanceActionCreator } from "Instantiator";
 
 // Action Type
 export const TOGGLE_TODO: string = "TOGGLE_TODO";
 
 // Action Creator
-export const toggleTodo = instanceActionCreator(TOGGLE_TODO);
+export const toggleTodo = generateInstanceActionCreator(TOGGLE_TODO);

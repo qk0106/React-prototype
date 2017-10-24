@@ -1,12 +1,12 @@
 import * as React from "react";
 import { GitInfo, GitInfosProp } from "GitInfo";
 import { TodoListApp, TodoListAppsProp } from "TodoListApp";
-import { instanceIdsGenerator, registerInstanceIds } from "Instantiator";
+import { yieldInstanceIds, registerInstanceIds } from "Instantiator";
 import { registerToRootRoutes } from "RootHelper";
 
 const ContainerPrefix = "AsyncPage";
-const GitInfoInstanceIds = instanceIdsGenerator(ContainerPrefix, 2);
-const TodoListAppInstanceIds = instanceIdsGenerator(ContainerPrefix, 1);
+const GitInfoInstanceIds = yieldInstanceIds(ContainerPrefix, 2);
+const TodoListAppInstanceIds = yieldInstanceIds(ContainerPrefix, 1);
 
 const AsyncTestPage = () => (
     <div>

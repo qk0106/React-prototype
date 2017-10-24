@@ -1,6 +1,8 @@
 import * as iassign from "immutable-assign";
 
-export const instanceIdsGenerator = (prefix, count) => {
+let rootInstanceIds = {};
+
+export const yieldInstanceIds = (prefix, count) => {
     let instanceIds = [];
     for (let i = 0; i < count; i++) {
         instanceIds.push(prefix + "_" + Math.round(Math.random() * Math.pow(10, 10)));
@@ -8,17 +10,32 @@ export const instanceIdsGenerator = (prefix, count) => {
     return instanceIds;
 };
 
-export const instanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({
+export const registerInstanceIds = (instancesProp, instanceIds) => {
+    if (rootInstanceIds[instancesProp] === undefined) {
+        rootInstanceIds[instancesProp] = [];
+    }
+    rootInstanceIds[instancesProp] = rootInstanceIds[instancesProp].concat(instanceIds);
+};
+
+const fetchInstanceIds = instancesProp => rootInstanceIds[instancesProp];
+
+export const generateInstanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({
     type: actionType,
     instanceId: instanceId,
     ...actionParamsObj
 });
 
-export const instancesReducerCreator = (instanceIdArray, instanceReducer) => {
+export const combineInstanceReducers = (instancesProps, instanceReducer) => {
+    // fetch instance Ids
+    let instanceIds = fetchInstanceIds(instancesProps);
+
+    // generate instatnces initital state based on instance Ids
     let instatncesInitState = {};
-    instanceIdArray.forEach(instanceId => {
+    instanceIds.forEach(instanceId => {
         instatncesInitState[instanceId] = {};
     });
+
+    // return reducer that only updates the state of certain instance
     return (instances = instatncesInitState, action) => {
         let instanceId = action.instanceId;
         if (!(instanceId in instances)) return instances;
@@ -30,14 +47,3 @@ export const instancesReducerCreator = (instanceIdArray, instanceReducer) => {
         });
     };
 };
-
-let instanceIdArrays = {};
-
-export const registerInstanceIds = (instancesProp, instanceIdArray) => {
-    if (instanceIdArrays[instancesProp] === undefined) {
-        instanceIdArrays[instancesProp] = [];
-    }
-    instanceIdArrays[instancesProp] = instanceIdArrays[instancesProp].concat(instanceIdArray);
-};
-
-export const fetchInstanceIdArray = instancesProp => instanceIdArrays[instancesProp];

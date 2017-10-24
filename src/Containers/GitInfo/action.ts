@@ -1,4 +1,4 @@
-import { instanceActionCreator } from "Instantiator";
+import { generateInstanceActionCreator } from "Instantiator";
 
 // Action Type
 export const REFRESH_GIT_INFO: string = "REFRESH_GIT_INFO";
@@ -7,7 +7,7 @@ export const FETCH_GIT_INFO_SUCCESS: string = "FETCH_GIT_INFO_SUCCESS";
 export const FETCH_GIT_INFO_FAILED: string = "FETCH_GIT_INFO_FAILED";
 
 // Action Creator
-export const refreshGitInfo = instanceActionCreator(REFRESH_GIT_INFO);
-export const fetchGitInfo = instanceActionCreator(FETCH_GIT_INFO);
-export const fetchGitInfoSuccess = instanceActionCreator(FETCH_GIT_INFO_SUCCESS);
-export const fetchGitInfoFailed = instanceActionCreator(FETCH_GIT_INFO_FAILED);
+export const refreshGitInfo = generateInstanceActionCreator(REFRESH_GIT_INFO);
+export const fetchGitInfo = generateInstanceActionCreator(FETCH_GIT_INFO);
+export const fetchGitInfoSuccess = generateInstanceActionCreator(FETCH_GIT_INFO_SUCCESS);
+export const fetchGitInfoFailed = generateInstanceActionCreator(FETCH_GIT_INFO_FAILED);
