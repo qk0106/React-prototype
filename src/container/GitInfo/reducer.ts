@@ -5,7 +5,7 @@ import {
     FETCH_GIT_INFO_FAILED
 } from "./action"; // To get Action Types
 import { GitInfosProp } from "./component";
-import { InstancesReducerCreator } from "../../global/instantiation";
+import { InstancesReducerCreator } from "../../Global/instantiation";
 import { RegisterToRootReducer, FetchInstanceIdArray } from "../../RootReducer";
 import { combineReducers } from "redux";
 import * as iassign from "immutable-assign";

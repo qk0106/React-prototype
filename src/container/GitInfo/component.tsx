@@ -1,5 +1,5 @@
 import { refreshGitInfo } from "./action"; // To get Action Creators
-import { GitSize } from "../../presenter";
+import { GitSize } from "../../Presenter";
 import { connect } from "react-redux";
 
 export const GitInfosProp = "GitInfos";

@@ -2,7 +2,7 @@ import { ADD_TODO, CHANGE_INPUT_TEXT } from "../AddTodo/action"; // To get Actio
 import { TOGGLE_TODO } from "../VisibleTodoList/action"; // To get Action Types
 import { SET_VISIBILITY_FILTER } from "../TodoFilterLink/action"; // To get Action Types
 import { TodoListAppsProp } from "./component";
-import { InstancesReducerCreator } from "../../global/instantiation";
+import { InstancesReducerCreator } from "../../Global/instantiation";
 import { RegisterToRootReducer, FetchInstanceIdArray } from "../../RootReducer";
 import { combineReducers } from "redux";
 import * as iassign from "immutable-assign";

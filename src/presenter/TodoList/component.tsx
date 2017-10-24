@@ -1,4 +1,4 @@
-import { Todo } from '../../presenter';
+import { Todo } from '../../Presenter';
 import * as React from 'react';
 import * as CSSModules from 'react-css-modules';
 const style = require('./style.less');

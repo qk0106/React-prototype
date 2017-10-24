@@ -3,7 +3,7 @@ import { GitInfo, GitInfosProp } from "../GitInfo";
 import { TodoListApp, TodoListAppsProp } from "../TodoListApp";
 import { RegisterToRootRoutes } from "../../RootRoutes";
 import { RegisterInstanceIds } from "../../RootReducer";
-import { InstanceIdsGenerator } from "../../global/instantiation";
+import { InstanceIdsGenerator } from "../../Global/instantiation";
 
 const ContainerPrefix = "TodoListPage";
 const GitInfoInstanceIds = InstanceIdsGenerator(ContainerPrefix, 1);

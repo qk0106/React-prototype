@@ -1,5 +1,5 @@
 import { toggleTodo } from "./action"; // To get Action Creators
-import { TodoList } from "../../presenter";
+import { TodoList } from "../../Presenter";
 import { connect } from "react-redux";
 
 const getVisibleTodos = (todos, filter) => {

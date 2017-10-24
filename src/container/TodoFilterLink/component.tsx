@@ -1,5 +1,5 @@
 import { setVisibilityFilter } from "./action"; // To get Action Creators
-import { Link } from "../../presenter";
+import { Link } from "../../Presenter";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state, { instancesProp, instanceId, filter, children }) => {
