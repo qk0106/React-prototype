@@ -1,13 +1,13 @@
-// register routes || register instanceId -> this has to happen before register reducer
+// register routes to root || register instanceId -> this has to happen before register reducer
 import "HomePage/component";
 import "AsyncTestPage/component";
 import "TodoListPage/component";
 
-// register reducer
+// register reducers to root
 import "GitInfo/reducer";
 import "TodoListApp/reducer";
 
-//register middleware
+//register middlewares to root
 import "GitInfo/actionHandler";
 
 import * as React from "react";
