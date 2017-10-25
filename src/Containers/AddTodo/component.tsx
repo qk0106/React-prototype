@@ -1,5 +1,5 @@
-import { addTodo, changeInputText } from "./action"; // To get Action Creators
 import * as React from "react";
+import { addTodo, changeInputText } from "./action"; // To get Action Creators
 import { yieldContainer } from "ReduxHelper";
 
 const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => {

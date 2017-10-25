@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 interface ILinkProps {
     active: boolean;
@@ -8,18 +8,18 @@ interface ILinkProps {
 
 export const Link: React.SFC<ILinkProps> = ({ active, children, onClick }) => {
     if (active) {
-        return <span>{children}</span>
+        return <span>{children}</span>;
     }
 
     return (
         <a
             href="#"
             onClick={e => {
-                e.preventDefault()
-                onClick()
+                e.preventDefault();
+                onClick();
             }}
         >
             {children}
         </a>
-    )
+    );
 };

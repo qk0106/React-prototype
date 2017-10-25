@@ -1,7 +1,8 @@
-import { Todo } from "Todo";
 import * as React from "react";
 import * as CSSModules from "react-css-modules";
 const style = require("./style.less");
+import { Todo } from "Todo";
+import { List } from "semantic-ui-react";
 
 const makeTodoClick = (onTodoClick, id) => () => {
     onTodoClick(id);
@@ -13,6 +14,10 @@ const rows = (todos, onTodoClick) => {
     ));
 };
 
-const _TodoList = ({ todos, onTodoClick }) => <ul styleName="ul-bg">{rows(todos, onTodoClick)}</ul>;
+const _TodoList = ({ todos, onTodoClick }) => (
+    <List bulleted styleName="ul-bg">
+        {rows(todos, onTodoClick)}
+    </List>
+);
 
 export const TodoList = CSSModules(_TodoList, style); // modulise style with component
