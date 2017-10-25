@@ -8,6 +8,7 @@ export const Todo = ({ onClick, completed, text }) => (
             textDecoration: completed ? "line-through" : "none"
         }}
     >
+        <List.Icon name="folder" />
         {text}
     </List.Item>
 );
