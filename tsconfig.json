@@ -17,7 +17,7 @@
         "jsx": "react",
         "moduleResolution": "node"
     },
-    "exclude": ["node_modules", "build", "typings/main", "typings/main.d.ts"],
+    "exclude": ["node_modules", "build"],
     "awesomeTypescriptLoaderOptions": {
         "useCache": true,
         "useBabel": true
