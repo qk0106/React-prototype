@@ -15,7 +15,7 @@ const rows = (todos, onTodoClick) => {
 };
 
 const _TodoList = ({ todos, onTodoClick }) => (
-    <List bulleted styleName="ul-bg">
+    <List animated bulleted styleName="ul-bg">
         {rows(todos, onTodoClick)}
     </List>
 );
