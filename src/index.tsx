@@ -5,7 +5,7 @@ import { createStore } from "redux";
 import * as iassign from "immutable-assign";
 import "./registry";
 import { fetchRootReducer, fetchRootMiddlewares, fetchRootRoutes } from "RootHelper";
-// import "semantic-ui-css/semantic.min.css";
+import "semantic-ui-css/semantic.min.css";
 
 iassign.setOption({ freeze: true }); // throw immutable error
 

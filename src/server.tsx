@@ -58,10 +58,6 @@ class Html extends React.Component<any, {}> {
                 <head>
                     head tag
                     <link rel="shortcut icon" href="/favicon.ico" />
-                    <link
-                        rel="stylesheet"
-                        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css"
-                    />
                 </head>
                 <body>
                     <div id="app">loading app</div>
