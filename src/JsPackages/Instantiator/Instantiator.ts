@@ -2,12 +2,12 @@ import * as iassign from "immutable-assign";
 
 let rootInstanceIds = {};
 
-const yieldIds = () => Math.round(Math.random() * Math.pow(10, 10));
+const yieldId = () => Math.round(Math.random() * Math.pow(10, 10));
 
 const yieldInstanceIds = (instanceIdPrefix, count) => {
     let instanceIds = [];
     for (let i = 0; i < count; i++) {
-        instanceIds.push(instanceIdPrefix + "_" + yieldIds());
+        instanceIds.push(instanceIdPrefix + "_" + yieldId());
     }
     return instanceIds;
 };
@@ -30,7 +30,7 @@ export const yieldRegisteredInstanceIds = (instancesProp, instanceIdPrefix, coun
 export const generateInstanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({
     type: actionType,
     instanceId: instanceId,
-    requestId: yieldIds(),
+    requestId: yieldId(),
     ...actionParamsObj
 });
 
