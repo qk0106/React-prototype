@@ -1,11 +1,11 @@
 const path = require("path");
-const serverConfig = require("./config/server");
 const express = require("express");
 const compression = require("compression");
 const Chalk = require("chalk");
 const favicon = require("serve-favicon");
 const webpack = require("webpack");
-const webpackConfig = require("./config/webpack/dev");
+const serverConfig = require("./config/server.config");
+const webpackConfig = require("./config/webpack/dev.config");
 const webpackCompiler = webpack(webpackConfig);
 
 const app = express();

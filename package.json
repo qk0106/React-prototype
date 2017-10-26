@@ -5,7 +5,7 @@
     "main": "build/server.js",
     "scripts": {
         "prebuild": "rimraf build",
-        "build": "webpack --config config/webpack/dev.js",
+        "build": "webpack --config config/webpack/dev.config.js",
         "prestart": "npm run build",
         "start": "node server.js"
     },
