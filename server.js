@@ -1,5 +1,5 @@
 const path = require("path");
-const Chalk = require("chalk");
+const chalk = require("chalk");
 const express = require("express");
 const favicon = require("serve-favicon");
 const webpack = require("webpack");
@@ -38,10 +38,10 @@ app.get("*", (req, res) => {
 
 app.listen(serverConfig.port, serverConfig.host, err => {
     if (err) {
-        console.error(Chalk.bgRed(err));
+        console.error(chalk.bgRed(err));
     } else {
         console.info(
-            Chalk.black.bgGreen(`Listening at http://${serverConfig.host}:${serverConfig.port}\n`)
+            chalk.black.bgGreen(`Listening at http://${serverConfig.host}:${serverConfig.port}\n`)
         );
     }
 });
