@@ -8,15 +8,12 @@
         "module": "commonjs", // target === "ES3" or "ES5" ? "CommonJS" : "ES6"
         "moduleResolution": "node", // module === "AMD" or "System" or "ES6" ? "Classic" : "Node"
         "lib": ["es2015", "dom"], // --target ES5: DOM,ES5,ScriptHost
-        "sourceMap": true,
-        "inlineSourceMap": false,
-        "inlineSources": false,
         "experimentalDecorators": true,
-        "noUnusedParameters": true,
-        "noUnusedLocals": true,
+        "noUnusedParameters": true, // Report errors on unused locals.
+        "noUnusedLocals": true, // Report errors on unused parameters.
         "jsx": "react"
     },
-    "exclude": ["node_modules", "build"],
+    "exclude": ["node_modules", "dist"],
     "awesomeTypescriptLoaderOptions": {
         "useCache": true
     }
