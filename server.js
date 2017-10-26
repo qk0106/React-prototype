@@ -25,15 +25,15 @@ app.use(
     })
 );
 
-app.use(require("webpack-hot-middleware")(webpackCompiler));
+app.use(require("webpack-hot-middleware")(webpackCompiler)); // hot-mid uses dev-mid
 
-app.use(favicon(path.join(__dirname, "/build/public/favicon.ico")));
+app.use(favicon(path.join(__dirname, "/build/favicon.ico")));
 
-app.use("/public", express.static(path.join(__dirname, "/build/public")));
+app.use("/public", express.static(path.join(__dirname, "/build")));
 
 app.get("*", (req, res) => {
     req = req;
-    res.status(200).sendFile(path.join(__dirname, "/build/public", "/index.html"));
+    res.status(200).sendFile(path.join(__dirname, "/build", "/index.html"));
 });
 
 app.listen(serverConfig.port, serverConfig.host, err => {
