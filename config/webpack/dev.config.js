@@ -101,7 +101,7 @@ module.exports = {
     plugins: [
         new CheckerPlugin(),
         new HtmlWebpackPlugin({
-            template: "index.html"
+            template: "./src/index.html"
         }),
         new webpack.HotModuleReplacementPlugin()
     ]
