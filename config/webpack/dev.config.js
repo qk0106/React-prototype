@@ -19,7 +19,7 @@ module.exports = {
     // Output folder
     output: {
         filename: "js/[name].js",
-        path: path.resolve("./build"),
+        path: path.resolve("./dist"),
         publicPath: "/",
         pathinfo: true
     },
@@ -121,5 +121,5 @@ const createIfDoesntExist = dest => {
     }
 };
 
-createIfDoesntExist("./build");
-copySync("./src/favicon.ico", "./build/favicon.ico", true);
+createIfDoesntExist("./dist");
+copySync("./src/favicon.ico", "./dist/favicon.ico", true);

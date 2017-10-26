@@ -2,9 +2,9 @@
     "name": "shroogal-ui",
     "version": "0.0.0",
     "description": "shroogal-ui",
-    "main": "build/server.js",
+    "main": "server.js",
     "scripts": {
-        "prebuild": "rimraf build",
+        "prebuild": "rimraf dist",
         "build": "webpack --config config/webpack/dev.config.js",
         "prestart": "npm run build",
         "start": "node server.js"
