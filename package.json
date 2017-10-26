@@ -6,9 +6,8 @@
     "scripts": {
         "prebuild": "rimraf build",
         "build": "webpack --config config/webpack/dev.js",
-        "postbuild": "webpack --config config/webpack/server.js",
         "prestart": "npm run build",
-        "start": "node build/server.js"
+        "start": "node server.js"
     },
     "author": "Dylan Qin <dylan.chin@shroogal.com.au>",
     "contributors": [

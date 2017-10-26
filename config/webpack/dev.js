@@ -100,7 +100,9 @@ module.exports = {
     },
     plugins: [
         new CheckerPlugin(),
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: "index.html"
+        }),
         new webpack.HotModuleReplacementPlugin()
     ]
 };
