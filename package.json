@@ -26,7 +26,12 @@
     "bugs": {
         "url": ""
     },
-    "keywords": ["react", "redux", "typescript", "webpack"],
+    "keywords": [
+        "react",
+        "redux",
+        "typescript",
+        "webpack"
+    ],
     "license": "UNLICENSED",
     "private": true,
     "devDependencies": {

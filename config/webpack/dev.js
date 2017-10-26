@@ -1,134 +1,10 @@
-var fs = require("fs");
-var path = require("path");
-var webpack = require("webpack");
-var postcssAssets = require("postcss-assets");
-var postcssNext = require("postcss-cssnext");
-var stylelint = require("stylelint");
-var ManifestPlugin = require("webpack-manifest-plugin");
-var CheckerPlugin = require("awesome-typescript-loader").CheckerPlugin;
-
-var config = {
-    // Enable sourcemaps for debugging webpack's output.
-    devtool: "source-map",
-
-    resolve: {
-        extensions: [".ts", ".tsx", ".js", ".jsx"],
-        modules: [path.resolve(__dirname), "node_modules", "JsPackages", "Containers", "Presenters"]
-    },
-
-    entry: {
-        app: ["webpack-hot-middleware/client", "./src/index.tsx"]
-    },
-
-    output: {
-        path: path.resolve("./build/public"),
-        publicPath: "/public/",
-        filename: "js/[name].js",
-        pathinfo: true
-    },
-
-    module: {
-        rules: [
-            // {
-            //   enforce: 'pre',
-            //   test: /\.tsx?$/,
-            //   use: 'tslint-loader'
-            // },
-            {
-                test: /\.tsx|ts?$/,
-                use: ["awesome-typescript-loader"]
-            },
-            {
-                test: /\.jsx|js$/,
-                use: "babel-loader"
-            },
-            {
-                test: /\.less$/,
-                use: [
-                    "style-loader", // creates style nodes from JS strings
-                    "css-loader?modules&importLoaders=2&localIdentName=[local]___[hash:base64:5]", // translates CSS into CommonJS
-                    "less-loader" // compiles Less to CSS
-                ]
-            },
-            {
-                test: /\.css$/,
-                include: path.resolve("./src"),
-                use: [
-                    { loader: "style-loader" },
-                    {
-                        loader:
-                            "css-loader?modules&importLoaders=2&localIdentName=[local]___[hash:base64:5]"
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            plugins: () => [require("autoprefixer")]
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.css$/,
-                exclude: path.resolve("./src"),
-                use: ["style-loader", "css-loader"]
-            },
-            {
-                test: /\.eot(\?.*)?$/,
-                use: "file-loader?name=fonts/[hash].[ext]"
-            },
-            {
-                test: /\.(woff|woff2)(\?.*)?$/,
-                use: "file-loader?name=fonts/[hash].[ext]"
-            },
-            {
-                test: /\.ttf(\?.*)?$/,
-                use:
-                    "url-loader?limit=10000&mimetype=application/octet-stream&name=fonts/[hash].[ext]"
-            },
-            {
-                test: /\.svg(\?.*)?$/,
-                use: "url-loader?limit=10000&mimetype=image/svg+xml&name=fonts/[hash].[ext]"
-            },
-            {
-                test: /\.(jpe?g|png|gif)$/i,
-                use: "url-loader?limit=1000&name=images/[hash].[ext]"
-            }
-        ]
-    },
-
-    plugins: [
-        new CheckerPlugin(),
-        new webpack.LoaderOptionsPlugin({
-            debug: true,
-            options: {
-                tslint: {
-                    failOnHint: true
-                },
-                postcss: function() {
-                    return [
-                        stylelint({
-                            files: "../../src/app/*.css"
-                        }),
-                        postcssNext(),
-                        postcssAssets({
-                            relative: true
-                        })
-                    ];
-                }
-            }
-        }),
-        new ManifestPlugin({
-            fileName: "../manifest.json"
-        }),
-        new webpack.DefinePlugin({
-            "process.env": {
-                BROWSER: JSON.stringify(true),
-                NODE_ENV: JSON.stringify("development")
-            }
-        }),
-        new webpack.HotModuleReplacementPlugin()
-    ]
-};
+// `CheckerPlugin` is optional. Use it if you want async error reporting.
+// We need this plugin to detect a `--watch` mode. It may be removed later
+// after https://github.com/webpack/webpack/issues/3460 will be resolved.
+const fs = require("fs");
+const path = require("path");
+const webpack = require("webpack");
+const { CheckerPlugin } = require("awesome-typescript-loader");
 
 const copySync = (src, dest, overwrite) => {
     if (overwrite && fs.existsSync(dest)) {
@@ -148,4 +24,84 @@ createIfDoesntExist("./build");
 createIfDoesntExist("./build/public");
 copySync("./src/favicon.ico", "./build/public/favicon.ico", true);
 
-module.exports = config;
+module.exports = {
+    // Source maps support ('inline-source-map' also works)
+    devtool: "source-map",
+
+    // Entry point
+    entry: {
+        app: ["webpack-hot-middleware/client", "./src/index.tsx"]
+    },
+
+    // Output folder
+    output: {
+        filename: "js/[name].js",
+        path: path.resolve("./build/public"),
+        publicPath: "/public/",
+        pathinfo: true
+    },
+
+    // Currently we need to add '.ts' to the resolve.extensions array.
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".jsx"],
+        modules: [path.resolve(__dirname), "node_modules", "JsPackages", "Containers", "Presenters"]
+    },
+
+    // Add the loader for .ts files.
+    module: {
+        rules: [
+            {
+                test: /\.tsx|ts?$/,
+                include: path.resolve("./src"),
+                use: [
+                    {
+                        loader: "awesome-typescript-loader"
+                    }
+                ]
+            },
+            {
+                test: /\.less$/,
+                include: path.resolve("./src"),
+                use: [
+                    {
+                        loader: "style-loader" // creates style nodes from JS strings
+                    },
+                    {
+                        loader: "css-loader", // translates CSS into CommonJS
+                        options: {
+                            modules: true,
+                            localIdentName: "[path][name]__[local]--[hash:base64:5]"
+                        }
+                    },
+                    {
+                        loader: "less-loader" // compiles Less to CSS
+                    }
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 100000
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.css$/,
+                include: /node_modules/,
+                use: [
+                    {
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader"
+                    }
+                ]
+            }
+        ]
+    },
+    plugins: [new CheckerPlugin(), new webpack.HotModuleReplacementPlugin()]
+};
