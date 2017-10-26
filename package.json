@@ -26,12 +26,7 @@
     "bugs": {
         "url": ""
     },
-    "keywords": [
-        "react",
-        "redux",
-        "typescript",
-        "webpack"
-    ],
+    "keywords": ["react", "redux", "typescript", "webpack"],
     "license": "UNLICENSED",
     "private": true,
     "devDependencies": {
@@ -75,6 +70,7 @@
         "webpack-dev-middleware": "^1.12.0",
         "webpack-hot-middleware": "^2.20.0",
         "webpack-manifest-plugin": "^1.1.0",
+        "html-webpack-plugin": "^2.30.1",
         "semantic-ui-css": "^2.2.12",
         "semantic-ui-react": "^0.75.1"
     },

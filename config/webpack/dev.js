@@ -4,25 +4,8 @@
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
-
-const copySync = (src, dest, overwrite) => {
-    if (overwrite && fs.existsSync(dest)) {
-        fs.unlinkSync(dest);
-    }
-    const data = fs.readFileSync(src);
-    fs.writeFileSync(dest, data);
-};
-
-const createIfDoesntExist = dest => {
-    if (!fs.existsSync(dest)) {
-        fs.mkdirSync(dest);
-    }
-};
-
-createIfDoesntExist("./build");
-createIfDoesntExist("./build/public");
-copySync("./src/favicon.ico", "./build/public/favicon.ico", true);
 
 module.exports = {
     // Source maps support ('inline-source-map' also works)
@@ -115,5 +98,27 @@ module.exports = {
             }
         ]
     },
-    plugins: [new CheckerPlugin(), new webpack.HotModuleReplacementPlugin()]
+    plugins: [
+        new CheckerPlugin(),
+        new HtmlWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+    ]
 };
+
+const copySync = (src, dest, overwrite) => {
+    if (overwrite && fs.existsSync(dest)) {
+        fs.unlinkSync(dest);
+    }
+    const data = fs.readFileSync(src);
+    fs.writeFileSync(dest, data);
+};
+
+const createIfDoesntExist = dest => {
+    if (!fs.existsSync(dest)) {
+        fs.mkdirSync(dest);
+    }
+};
+
+createIfDoesntExist("./build");
+createIfDoesntExist("./build/public");
+copySync("./src/favicon.ico", "./build/public/favicon.ico", true);
