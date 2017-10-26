@@ -50,6 +50,11 @@ module.exports = {
     // Add the loader for .ts files.
     module: {
         rules: [
+            // {
+            //   enforce: 'pre',
+            //   test: /\.tsx?$/,
+            //   use: 'tslint-loader'
+            // },
             {
                 test: /\.tsx|ts?$/,
                 include: path.resolve("./src"),
@@ -84,7 +89,8 @@ module.exports = {
                     {
                         loader: "url-loader",
                         options: {
-                            limit: 100000
+                            limit: 100000,
+                            name: "assets/[hash].[ext]"
                         }
                     }
                 ]
