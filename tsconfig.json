@@ -4,7 +4,6 @@
         "paths": {
             "*": ["*", "src/Containers/*", "src/Presenters/*", "src/JsPackages/*"]
         },
-        "outDir": "build",
         "module": "commonjs",
         "lib": ["es2015", "dom"],
         "target": "es5",
