@@ -13,7 +13,7 @@ module.exports = {
 
     // Entry point
     entry: {
-        app: ["webpack-hot-middleware/client", "./src/index.tsx"]
+        app: ["webpack-hot-middleware/client", "./src/app.tsx"]
     },
 
     // Output folder
