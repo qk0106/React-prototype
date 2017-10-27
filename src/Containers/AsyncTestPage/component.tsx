@@ -21,7 +21,7 @@ const AsyncTestPage = () => (
         />
         <TodoListApp
             instanceId={TodoListAppInstanceIds[0]}
-            inputText="This is TodoList 6 in Async"
+            inputText="This is TodoList 1 in Async"
         />
         <TodoListApp
             instanceId={TodoListAppInstanceIds[1]}
