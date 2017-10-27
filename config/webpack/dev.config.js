@@ -18,7 +18,7 @@ module.exports = {
 
     // Output folder
     output: {
-        filename: "js/[name].js",
+        filename: "js/[name]-[hash].js",
         path: path.resolve("./dist"),
         publicPath: "/",
         pathinfo: true
