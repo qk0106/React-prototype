@@ -13,7 +13,7 @@ module.exports = {
 
     // Entry point
     entry: {
-        app: ["webpack-hot-middleware/client", "./src/app.tsx"]
+        app: ["react-hot-loader/patch", "webpack-hot-middleware/client", "./src/index.tsx"]
     },
 
     // Output folder
@@ -42,6 +42,9 @@ module.exports = {
                 test: /\.tsx|ts?$/,
                 include: path.resolve("./src"),
                 use: [
+                    {
+                        loader: "react-hot-loader/webpack"
+                    },
                     {
                         loader: "awesome-typescript-loader"
                     }
