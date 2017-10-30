@@ -27,3 +27,9 @@ Dylan's React Prototype (Decentralised and Flat Style)
 6. Instantiate Module
  - Assume every component will be reused in the future.
  - Instantiate component and reducer so that it can be used multple times without state conflict.
+
+# Original Boilerplate: 
+Vortigern: https://github.com/barbar/vortigern
+
+# Advisor:
+Paul Li <paul.li@shroogal.com.au>
