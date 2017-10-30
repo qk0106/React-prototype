@@ -55,3 +55,12 @@ Dylan's React Prototype (Decentralised and Flat Style)
 
 ## Advisor:
  - Paul Li <paul.li@shroogal.com.au>
+
+## To Run
+'''
+yarn install
+yarn start
+'''
+
+## For Uncovered Information:
+Please ref to package.json
