@@ -9,7 +9,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - LESS
  - CSS Module
  - Semantic UI
- - Simple express as server
+ - Express (simple server)
  - Hot Reload (webpack-hot-middleware & react-hot-loader)
 
 ## Features:
@@ -30,10 +30,11 @@ Dylan's React Prototype (Decentralised and Flat Style)
    - Instantiate component and reducer so that it can be used multple times without state conflict.
 
 ## Future Improvements:
+ - Dependecy Injection
  - Complete TS Typings
  - React Helmet for SEO
- - Server side rendering for Performance
- - Code spliting for Performance
+ - Server side rendering for performance
+ - Code spliting for performance
  - Request ID and global error handling
  - Karma and unit testing
  - Producion config and minify & uglify
