@@ -14,16 +14,12 @@
         {
             "name": "Dylan Qin",
             "email": "heisqk@gmail.com",
-            "url": ""
+            "url": "https://github.com/qk0106"
         }
     ],
-    "homepage": "",
     "repository": {
         "type": "git",
-        "url": ""
-    },
-    "bugs": {
-        "url": ""
+        "url": "https://github.com/qk0106/React-prototype"
     },
     "keywords": ["react", "redux", "typescript", "webpack"],
     "license": "UNLICENSED",

@@ -1,7 +1,8 @@
-# React-prototype
+# React Prototype
 Dylan's React Prototype (Decentralised and Flat Style)
 
 ## Libraries:
+ - Node (yarn recommended)
  - Webpack
  - React
  - Redux
@@ -13,21 +14,28 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Hot Reload (webpack-hot-middleware & react-hot-loader)
 
 ## Features:
- - Modularise Everything: 
-   - Keep everything related as a module staying in one folder. (component, reducer, action, middleware, style and so on)
- - Flatten Folder Structure.
-   - Assume every component will be reused in the future.
+ - Modularise Everything
+   - Keep everything related as a module staying in one folder. 
+   - (component, reducer, action, middleware, style and so on).
+   - No need to open multiple folders to change one module.
+ - Flatten Folder Structure
+   - Assume every module will be reused in the future.
    - Build flat strucure instead of nested.
    - No common or gloabal concept.
- - Decentralised Management Style.
+   - More friendly to import.
+ - Decentralised Management Style
    - Management load of route, reducer, middlewares, instance are distributed 
    - to the registrition of the compoenent/module itself.
- - Separation of Containers and Presneters: 
+   - Each module maintain itself for adding and removing, no need to change a centralised place.
+ - Pure Separation of Containers and Presneters
    - Purify containers (only state and dispatch mapping) and presenters (only html and style),
    - so that containers can be fully reused with React Native.
+   - Satisfy the OCD (obsessive-compulsive disorder). XD
  - Instantiate Module
-   - Assume every component will be reused in the future.
+   - Assume every module will be reused in the future.
    - Instantiate component and reducer so that it can be used multple times without state conflict.
+   - At first it solves the desire to use the same module mutlitple times, but do not want to maintain state with array.
+   - Instantiation should always happen, because the initial motivation of modularization - reusability.
 
 ## Future Improvements:
  - Dependecy Injection
@@ -38,9 +46,13 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Request ID and global error handling
  - Karma and unit testing
  - Producion config and minify & uglify
+ - Yaml
+ - Cordova
 
 ## Original Boilerplate: 
  - Vortigern: https://github.com/barbar/vortigern
 
 ## Advisor:
  - Paul Li <paul.li@shroogal.com.au>
+
+## 
