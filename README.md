@@ -35,7 +35,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
    - Assume every module will be reused in the future.
    - Instantiate component and reducer so that it can be used multple times without state conflict.
    - At first it solves the desire to use the same module mutlitple times, but do not want to maintain state with array.
-   - Instantiation should always happen, because the initial motivation of modularization - reusability.
+   - Instantiation should always happen, because of initial motivation of modularization - reusability.
 
 ## Future Improvements:
  - Dependecy Injection
