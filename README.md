@@ -12,6 +12,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Semantic UI
  - Express (simple server)
  - Hot Reload (webpack-hot-middleware & react-hot-loader)
+ - immutable-assign
 
 ## Features:
  - Modularize Everything
@@ -54,7 +55,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Vortigern: https://github.com/barbar/vortigern
 
 ## Advisor:
- - Paul Li <paul.li@shroogal.com.au>
+ - Paul Li - <paul.li@shroogal.com.au> - Author of 'immutable-assign'
 
 ## To Run
 ```bash
