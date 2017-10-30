@@ -14,7 +14,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Hot Reload (webpack-hot-middleware & react-hot-loader)
 
 ## Features:
- - Modularise Everything
+ - Modularize Everything
    - Keep everything related as a module staying in one folder. 
    - (component, reducer, action, middleware, style and so on).
    - No need to open multiple folders to change one module.
@@ -54,5 +54,3 @@ Dylan's React Prototype (Decentralised and Flat Style)
 
 ## Advisor:
  - Paul Li <paul.li@shroogal.com.au>
-
-## 
