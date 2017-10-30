@@ -1,35 +1,45 @@
 # React-prototype
 Dylan's React Prototype (Decentralised and Flat Style)
 
-# Techs Used:
-1. Webpack
-2. React
-3. Redux
-4. TypeScript
-5. LESS
-6. CSS Module
-7. Semantic UI
-8. Hot Reload
+## Libraries:
+ - Webpack
+ - React
+ - Redux
+ - TypeScript
+ - LESS
+ - CSS Module
+ - Semantic UI
+ - Simple express as server
+ - Hot Reload (webpack-hot-middleware & react-hot-loader)
 
-# Features:
-1. Modularise Everything: 
- - Keep everything related as a module staying in one folder. (component, reducer, action, middleware, style and so on)
-2. Flatten Folder Structure.
- - Assume every component will be reused in the future.
- - Build flat strucure instead of nested.
- - No common or gloabal concept.
-3. Decentralised Management Style.
- - Management load of route, reducer, middlewares, instance are distributed 
- - to the registrition of the compoenent/module itself.
-5. Separation of Containers and Presneters: 
- - Purify containers (only state and dispatch mapping) and presenters (only html and style),
- - so that containers can be fully reused with React Native.
-6. Instantiate Module
- - Assume every component will be reused in the future.
- - Instantiate component and reducer so that it can be used multple times without state conflict.
+## Features:
+ - Modularise Everything: 
+   - Keep everything related as a module staying in one folder. (component, reducer, action, middleware, style and so on)
+ - Flatten Folder Structure.
+   - Assume every component will be reused in the future.
+   - Build flat strucure instead of nested.
+   - No common or gloabal concept.
+ - Decentralised Management Style.
+   - Management load of route, reducer, middlewares, instance are distributed 
+   - to the registrition of the compoenent/module itself.
+ - Separation of Containers and Presneters: 
+   - Purify containers (only state and dispatch mapping) and presenters (only html and style),
+   - so that containers can be fully reused with React Native.
+ - Instantiate Module
+   - Assume every component will be reused in the future.
+   - Instantiate component and reducer so that it can be used multple times without state conflict.
 
-# Original Boilerplate: 
-Vortigern: https://github.com/barbar/vortigern
+## Future Improvements:
+ - Complete TS Typings
+ - React Helmet for SEO
+ - Server side rendering for Performance
+ - Code spliting for Performance
+ - Request ID and global error handling
+ - Karma and unit testing
+ - Producion config and minify & uglify
 
-# Advisor:
-Paul Li <paul.li@shroogal.com.au>
+## Original Boilerplate: 
+ - Vortigern: https://github.com/barbar/vortigern
+
+## Advisor:
+ - Paul Li <paul.li@shroogal.com.au>
