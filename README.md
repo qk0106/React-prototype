@@ -39,6 +39,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
 
 ## Future Improvements:
  - Dependecy Injection
+ - Async Props (react connect ?)
  - Complete TS Typings
  - React Helmet for SEO
  - Server side rendering for performance
