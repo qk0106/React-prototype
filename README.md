@@ -57,10 +57,10 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Paul Li <paul.li@shroogal.com.au>
 
 ## To Run
-'''
-yarn install
-yarn start
-'''
+'''bash
+$ yarn install
+$ yarn start
+'''bash
 
 ## For Uncovered Information:
 Please ref to package.json
