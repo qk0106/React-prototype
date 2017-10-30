@@ -1,7 +1,7 @@
 # React Prototype
 Dylan's React Prototype (Decentralised and Flat Style)
 
-## Libraries:
+## Libraries
  - Node (yarn recommended)
  - Webpack
  - React
@@ -14,7 +14,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Hot Reload (webpack-hot-middleware & react-hot-loader)
  - immutable-assign
 
-## Features:
+## Features
  - Modularize Everything
    - Keep everything related as a module staying in one folder. 
    - (component, reducer, action, middleware, style and so on).
@@ -38,7 +38,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
    - At first it solves the desire to use the same module mutlitple times, but do not want to maintain state with array.
    - Instantiation should always happen, because of initial motivation of modularization - reusability.
 
-## Future Improvements:
+## Future Improvements
  - Dependecy Injection
  - Async Props (react connect ?)
  - Complete TS Typings
@@ -51,10 +51,10 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Yaml
  - Cordova
 
-## Original Boilerplate: 
+## Original Boilerplate:
  - Vortigern: https://github.com/barbar/vortigern
 
-## Advisor:
+## Advisor
  - Paul Li <<paul.li@shroogal.com.au>> - author of 'immutable-assign'.
 
 ## To Run
@@ -63,5 +63,5 @@ $ yarn install
 $ yarn start
 ```
 
-## For Uncovered Information:
+## For Uncovered Information
 Please ref to [package.json](https://github.com/qk0106/React-prototype/blob/master/package.json)
