@@ -1,10 +1,11 @@
+import * as React from "react";
 import { refreshGitInfo } from "./action"; // To get Action Creators
 import { GitSize } from "GitSize";
 import { generateContainer } from "ReduxHelper";
+import { generateInstanceId, registerInstance } from "Instantiator";
+import { reducer } from "./reducer";
 
-export const instancesProp = "GitInfos";
-
-const mapStateToProps = (state, { instanceId, gitUrl }) => {
+const mapStateToProps = (state, { instancesProp, instanceId, gitUrl }) => {
     let ownState = state[instancesProp][instanceId];
     return {
         refreshCount: ownState.refreshCount !== undefined ? ownState.refreshCount : { count: 0 },
@@ -21,4 +22,28 @@ const mapDispatchToProps = ({}, dispatch, { instanceId, gitUrl }) => {
     };
 };
 
-export const GitInfo = generateContainer(mapStateToProps, mapDispatchToProps)(GitSize);
+const GitInfoContainer = generateContainer(mapStateToProps, mapDispatchToProps)(GitSize);
+
+export class GitInfo extends React.Component<any> {
+    private _instancesProp = "GitInfos";
+    private _instanceId = generateInstanceId("Test");
+    private _reducer = reducer;
+
+    constructor(props) {
+        super(props);
+        registerInstance(this._instancesProp, this._instanceId, this._reducer);
+    }
+
+    render() {
+        let instanceId = this._instanceId;
+        let instancesProp = this._instancesProp;
+        let { gitUrl } = this.props;
+        return (
+            <GitInfoContainer
+                instancesProp={instancesProp}
+                instanceId={instanceId}
+                inputText={gitUrl}
+            />
+        );
+    }
+}

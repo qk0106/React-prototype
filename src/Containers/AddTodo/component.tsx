@@ -2,16 +2,14 @@ import * as React from "react";
 import { addTodo, changeInputText } from "./action"; // To get Action Creators
 import { generateContainer } from "ReduxHelper";
 
-const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => {
-    return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <input value={inputText} onChange={onChange} />
-                <button type="submit">Add Todo</button>
-            </form>
-        </div>
-    );
-};
+const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => (
+    <div>
+        <form onSubmit={onSubmit}>
+            <input value={inputText} onChange={onChange} />
+            <button type="submit">Add Todo</button>
+        </form>
+    </div>
+);
 
 const mapStateToProps = (state, { instancesProp, instanceId, inputText }) => {
     let ownState = state[instancesProp][instanceId];

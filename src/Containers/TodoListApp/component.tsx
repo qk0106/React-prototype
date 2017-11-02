@@ -5,6 +5,14 @@ import { VisibleTodoList } from "VisibleTodoList";
 import { generateInstanceId, registerInstance } from "Instantiator";
 import { reducer } from "./reducer";
 
+const TodoListAppContainer = ({ instancesProp, instanceId, inputText }) => (
+    <div>
+        <AddTodo instancesProp={instancesProp} instanceId={instanceId} inputText={inputText} />
+        <VisibleTodoList instancesProp={instancesProp} instanceId={instanceId} />
+        <TodoFooter instancesProp={instancesProp} instanceId={instanceId} />
+    </div>
+);
+
 export class TodoListApp extends React.Component<any> {
     private _instancesProp = "TodoListApps";
     private _instanceId = generateInstanceId("Test");
@@ -20,15 +28,11 @@ export class TodoListApp extends React.Component<any> {
         let instancesProp = this._instancesProp;
         let { inputText } = this.props;
         return (
-            <div>
-                <AddTodo
-                    instancesProp={instancesProp}
-                    instanceId={instanceId}
-                    inputText={inputText}
-                />
-                <VisibleTodoList instancesProp={instancesProp} instanceId={instanceId} />
-                <TodoFooter instancesProp={instancesProp} instanceId={instanceId} />
-            </div>
+            <TodoListAppContainer
+                instancesProp={instancesProp}
+                instanceId={instanceId}
+                inputText={inputText}
+            />
         );
     }
 }
