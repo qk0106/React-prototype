@@ -4,27 +4,21 @@ let rootInstanceIds = {};
 
 const yieldId = () => Math.round(Math.random() * Math.pow(10, 10));
 
-const yieldInstanceIds = (instanceIdPrefix, count) => {
-    let instanceIds = [];
-    for (let i = 0; i < count; i++) {
-        instanceIds.push(instanceIdPrefix + "_" + yieldId());
-    }
-    return instanceIds;
-};
+const yieldInstanceId = instanceIdPrefix => instanceIdPrefix + "_" + yieldId();
 
-const registerInstanceIds = (instancesProp, instanceIds) => {
+const registerInstanceId = (instancesProp, instanceId) => {
     if (rootInstanceIds[instancesProp] === undefined) {
         rootInstanceIds[instancesProp] = [];
     }
-    rootInstanceIds[instancesProp] = rootInstanceIds[instancesProp].concat(instanceIds);
+    rootInstanceIds[instancesProp].push(instanceId);
 };
 
 const fetchInstanceIds = instancesProp => rootInstanceIds[instancesProp];
 
-export const yieldRegisteredInstanceIds = (instancesProp, instanceIdPrefix, count) => {
-    let instanceIds = yieldInstanceIds(instanceIdPrefix, count);
-    registerInstanceIds(instancesProp, instanceIds);
-    return instanceIds;
+export const yieldRegisteredInstanceId = (instancesProp, instanceIdPrefix) => {
+    let instanceId = yieldInstanceId(instanceIdPrefix);
+    registerInstanceId(instancesProp, instanceId);
+    return instanceId;
 };
 
 export const generateInstanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({

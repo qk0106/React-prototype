@@ -2,9 +2,8 @@ import { combineReducers } from "redux";
 import { combineInstanceReducers } from "Instantiator";
 let reducers = {};
 
-export const registerToRootReducer = (instancesProp, instanceReducerObj) => {
-    const intanceReducer = combineReducers(instanceReducerObj);
-    const instancesReducer = combineInstanceReducers(instancesProp, intanceReducer);
+export const registerToRootReducer = (instancesProp, instanceReducer) => {
+    const instancesReducer = combineInstanceReducers(instancesProp, instanceReducer);
     reducers[instancesProp] = instancesReducer;
 };
 

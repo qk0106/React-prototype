@@ -1,11 +1,11 @@
 import * as React from "react";
 import { render } from "react-dom";
 import { AppContainer } from "react-hot-loader";
-import { createStore } from "redux";
-import { fetchRootReducer, fetchRootMiddlewares, fetchRootRoutes } from "RootHelper";
+import { fetchStore } from "ReduxHelper";
+import { fetchRootRoutes } from "RootHelper";
 import App from "./app";
 
-const store = createStore(fetchRootReducer(), fetchRootMiddlewares());
+let store = fetchStore();
 const routes = fetchRootRoutes();
 const appElement = document.getElementById("app");
 
