@@ -1,4 +1,3 @@
-import * as iassign from "immutable-assign";
 import { registerReducer, fetchReducers, updateStore } from "ReduxHelper";
 
 let rootInstanceIds = {};
@@ -14,13 +13,13 @@ const registerInstanceId = (instancesProp, instanceId) => {
     rootInstanceIds[instancesProp].push(instanceId);
 };
 
-const fetchInstanceIds = instancesProp => rootInstanceIds[instancesProp];
-
 export const registerInstance = (instancesProp, instanceId, reducer) => {
     registerInstanceId(instancesProp, instanceId);
     registerReducer(instancesProp, reducer);
     updateStore(fetchReducers());
 };
+
+export const fetchInstanceIds = instancesProp => rootInstanceIds[instancesProp];
 
 export const generateInstanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({
     type: actionType,
@@ -28,27 +27,3 @@ export const generateInstanceActionCreator = actionType => (instanceId, actionPa
     requestId: generateId(),
     ...actionParamsObj
 });
-
-export const combineInstanceReducers = (instancesProps, instanceReducer) => {
-    // fetch instance Ids
-    let instanceIds = fetchInstanceIds(instancesProps);
-
-    // generate instatnces initital state based on instance Ids
-    let instatncesInitState = {};
-    instanceIds.forEach(instanceId => {
-        instatncesInitState[instanceId] = {};
-    });
-
-    // return reducer that only updates the state of certain instance
-    return (instances = instatncesInitState, action) => {
-        let mergedInstances = Object.assign({}, instatncesInitState, instances); // reverse the order will cause problem
-        let instanceId = action.instanceId;
-        if (!(instanceId in mergedInstances)) return mergedInstances;
-        return iassign(mergedInstances, obj => {
-            const instance = mergedInstances[instanceId];
-            const updatedInstance = instanceReducer(instance, action);
-            obj[instanceId] = updatedInstance;
-            return obj;
-        });
-    };
-};
