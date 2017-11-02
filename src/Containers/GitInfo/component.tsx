@@ -26,29 +26,53 @@ const mapDispatchToProps = ({}, dispatch, { instanceId, otherProps }) => {
 
 const GitInfoContainer = generateContainer(mapStateToProps, mapDispatchToProps)(GitSize);
 
-export class GitInfo extends React.Component<any> {
-    private _instancesProp = "GitInfos";
-    private _instanceId = generateInstanceId("Test");
-    private _reducer = reducer;
+const instanceComponentCreator = (componentName, reducer, Container) => {
+    let classes = {};
+    classes[componentName] = class extends React.Component<any> {
+        private _instancesProp = componentName + "s";
+        private _instanceId = generateInstanceId("Test");
+        private _reducer = reducer;
 
-    constructor(props) {
-        super(props);
-        registerInstance(this._instancesProp, this._instanceId, this._reducer);
-    }
+        constructor(props) {
+            super(props);
+            registerInstance(this._instancesProp, this._instanceId, this._reducer);
+        }
 
-    render() {
-        let instanceId = this._instanceId;
-        let instancesProp = this._instancesProp;
-        return (
-            <GitInfoContainer
-                instancesProp={instancesProp}
-                instanceId={instanceId}
-                otherProps={this.props}
-            />
-        );
-    }
-}
+        render() {
+            let instanceId = this._instanceId;
+            let instancesProp = this._instancesProp;
+            return (
+                <Container
+                    instancesProp={instancesProp}
+                    instanceId={instanceId}
+                    otherProps={this.props}
+                />
+            );
+        }
+    };
+    return classes[componentName];
+};
 
-// const instanceComponentCreator = (componentName, container, reducer) => {
+export const GitInfo = instanceComponentCreator("GitInfo", reducer, GitInfoContainer);
+// export class GitInfo extends React.Component<any> {
+//     private _instancesProp = "GitInfos";
+//     private _instanceId = generateInstanceId("Test");
+//     private _reducer = reducer;
 
-// };
+//     constructor(props) {
+//         super(props);
+//         registerInstance(this._instancesProp, this._instanceId, this._reducer);
+//     }
+
+//     render() {
+//         let instanceId = this._instanceId;
+//         let instancesProp = this._instancesProp;
+//         return (
+//             <GitInfoContainer
+//                 instancesProp={instancesProp}
+//                 instanceId={instanceId}
+//                 otherProps={this.props}
+//             />
+//         );
+//     }
+// }
