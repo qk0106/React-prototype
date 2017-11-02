@@ -25,5 +25,5 @@ export const generateContainer = (stateProps, dispatchProps) => {
             ...mapDispatchToProps(stateProps, dispatch, ownProps)
         };
     };
-    return connect(mapStateToProps, null, mergeProps);
+    return connect(mapStateToProps, null, mergeProps, { pure: true });
 };
