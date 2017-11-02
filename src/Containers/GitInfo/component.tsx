@@ -5,8 +5,9 @@ import { generateContainer } from "ReduxHelper";
 import { generateInstanceId, registerInstance } from "Instantiator";
 import { reducer } from "./reducer";
 
-const mapStateToProps = (state, { instancesProp, instanceId, gitUrl }) => {
+const mapStateToProps = (state, { instancesProp, instanceId, otherProps }) => {
     let ownState = state[instancesProp][instanceId];
+    let { gitUrl } = otherProps;
     return {
         refreshCount: ownState.refreshCount !== undefined ? ownState.refreshCount : { count: 0 },
         gitSize: ownState.gitSize !== undefined ? ownState.gitSize : 0,
@@ -14,7 +15,8 @@ const mapStateToProps = (state, { instancesProp, instanceId, gitUrl }) => {
     };
 };
 
-const mapDispatchToProps = ({}, dispatch, { instanceId, gitUrl }) => {
+const mapDispatchToProps = ({}, dispatch, { instanceId, otherProps }) => {
+    let { gitUrl } = otherProps;
     return {
         onClick: () => {
             dispatch(refreshGitInfo(instanceId, { gitUrl }));
@@ -37,13 +39,16 @@ export class GitInfo extends React.Component<any> {
     render() {
         let instanceId = this._instanceId;
         let instancesProp = this._instancesProp;
-        let { gitUrl } = this.props;
         return (
             <GitInfoContainer
                 instancesProp={instancesProp}
                 instanceId={instanceId}
-                gitUrl={gitUrl}
+                otherProps={this.props}
             />
         );
     }
 }
+
+// const instanceComponentCreator = (componentName, container, reducer) => {
+
+// };
