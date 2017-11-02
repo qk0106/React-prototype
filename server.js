@@ -4,8 +4,8 @@ const express = require("express");
 const favicon = require("serve-favicon");
 const webpack = require("webpack");
 const compression = require("compression");
-const serverConfig = require("./config/server.config");
-const webpackConfig = require("./config/webpack/dev.config");
+const serverConfig = require("./server.config");
+const webpackConfig = require("./Containers/DesktopApp/webpack.config.dev");
 const webpackCompiler = webpack(webpackConfig);
 
 const app = express();

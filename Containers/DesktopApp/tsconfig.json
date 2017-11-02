@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
+        "baseUrl": "../../",
         "paths": {
             "*": ["*", "Containers/*", "Presenters/*", "JsPackages/*"]
         },

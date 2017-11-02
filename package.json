@@ -4,9 +4,8 @@
     "description": "Dylan's React Prototype",
     "main": "server.js",
     "scripts": {
-        "prebuild": "rimraf dist",
-        "build": "webpack --config config/webpack/dev.config.js",
-        "prestart": "npm run build",
+        "build-desktop": "rimraf dist && webpack --config Containers/DesktopApp/webpack.config.dev",
+        "prestart": "npm run build-desktop",
         "start": "node server.js"
     },
     "author": "Dylan Qin <heisqk@gmail.com>",

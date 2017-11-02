@@ -7,13 +7,20 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
 
+const appDirPath = "./Containers/DesktopApp/";
+const getAppFilePath = fileName => appDirPath + fileName;
+
 module.exports = {
     // Source maps support ('inline-source-map' also works)
     devtool: "source-map",
 
     // Entry point
     entry: {
-        app: ["react-hot-loader/patch", "webpack-hot-middleware/client", "./src/index.tsx"]
+        app: [
+            "react-hot-loader/patch",
+            "webpack-hot-middleware/client",
+            getAppFilePath("index.tsx")
+        ]
     },
 
     // Output folder
@@ -40,19 +47,30 @@ module.exports = {
             // },
             {
                 test: /\.tsx|ts?$/,
-                include: path.resolve("./src"),
+                include: [
+                    path.resolve("./JsPackages"),
+                    path.resolve("./Containers"),
+                    path.resolve("./Presenters")
+                ],
                 use: [
                     {
                         loader: "react-hot-loader/webpack"
                     },
                     {
-                        loader: "awesome-typescript-loader"
+                        loader: "awesome-typescript-loader",
+                        options: {
+                            configFileName: getAppFilePath("tsconfig.json")
+                        }
                     }
                 ]
             },
             {
                 test: /\.less$/,
-                include: path.resolve("./src"),
+                include: [
+                    path.resolve("./JsPackages"),
+                    path.resolve("./Containers"),
+                    path.resolve("./Presenters")
+                ],
                 use: [
                     {
                         loader: "style-loader" // creates style nodes from JS strings
@@ -104,7 +122,7 @@ module.exports = {
     plugins: [
         new CheckerPlugin(),
         new HtmlWebpackPlugin({
-            template: "./src/index.html"
+            template: "./index.html"
         }),
         new webpack.HotModuleReplacementPlugin()
     ]
@@ -125,4 +143,4 @@ const createIfDoesntExist = dest => {
 };
 
 createIfDoesntExist("./dist");
-copySync("./src/favicon.ico", "./dist/favicon.ico", true);
+copySync(getAppFilePath("favicon.ico"), "./dist/favicon.ico", true);
