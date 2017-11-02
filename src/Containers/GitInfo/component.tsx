@@ -21,6 +21,6 @@ const mapDispatchToProps = ({}, dispatch, { instanceProps, gitUrl }) => {
     };
 };
 
-const GitInfoContainer = generateContainer(mapStateToProps, mapDispatchToProps)(GitSize);
+const _GitInfo = generateContainer(mapStateToProps, mapDispatchToProps)(GitSize);
 
-export const GitInfo = generateInstanceComponent("GitInfo", reducer, GitInfoContainer);
+export const GitInfo = generateInstanceComponent("GitInfos", reducer, _GitInfo);

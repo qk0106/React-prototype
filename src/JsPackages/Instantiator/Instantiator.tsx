@@ -38,11 +38,11 @@ export const generateInstanceActionCreator = actionType => (instanceId, actionPa
     ...actionParamsObj
 });
 
-export const generateInstanceComponent = (componentName, reducer, Container) => {
+export const generateInstanceComponent = (instancesProp, reducer, Component) => {
     return class extends React.Component<any> {
         private _reducer = reducer;
         private _instanceProps = {
-            instancesProp: componentName + "s",
+            instancesProp: instancesProp,
             instanceId: generateInstanceId("Test")
         };
 
@@ -52,7 +52,7 @@ export const generateInstanceComponent = (componentName, reducer, Container) => 
         }
 
         render() {
-            return <Container instanceProps={this._instanceProps} {...this.props} />;
+            return <Component instanceProps={this._instanceProps} {...this.props} />;
         }
     };
 };
