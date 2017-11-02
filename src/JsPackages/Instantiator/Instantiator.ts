@@ -4,9 +4,9 @@ let rootInstanceIds = {};
 
 const generateId = () => Math.round(Math.random() * Math.pow(10, 10));
 
-const generateInstanceId = instanceIdPrefix => instanceIdPrefix + "_" + generateId();
+export const generateInstanceId = instanceIdPrefix => instanceIdPrefix + "_" + generateId();
 
-const registerInstanceId = (instancesProp, instanceId) => {
+export const registerInstanceId = (instancesProp, instanceId) => {
     if (rootInstanceIds[instancesProp] === undefined) {
         rootInstanceIds[instancesProp] = [];
     }

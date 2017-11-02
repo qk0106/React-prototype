@@ -1,4 +1,5 @@
 import * as React from "react";
+// import { GitInfo } from "GitInfo";
 import { TodoListApp } from "TodoListApp";
 import { registerRoute } from "RouteHelper";
 
@@ -7,7 +8,7 @@ const TodoListPage = () => (
         <span>This is Todo List Page</span>
         <TodoListApp inputText="This is TodoList 1" />
         <TodoListApp inputText="This is TodoList 2" />
-        <TodoListApp inputText="This is TodoList 3" />
+        {/* <GitInfo gitUrl="https://api.github.com/repos/qk0106/React-prototype" /> */}
     </div>
 );
 
