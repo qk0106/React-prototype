@@ -14,9 +14,10 @@ const mapStateToProps = (state, { instanceProps, gitUrl }) => {
 };
 
 const mapDispatchToProps = ({}, dispatch, { instanceProps, gitUrl }) => {
+    let { instanceId } = instanceProps;
     return {
         onClick: () => {
-            dispatch(refreshGitInfo(instanceProps.instanceId, { gitUrl }));
+            dispatch(refreshGitInfo(instanceId, { gitUrl }));
         }
     };
 };
