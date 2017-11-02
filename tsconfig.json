@@ -1,4 +1,5 @@
 {
+    // IMPORTANT! this tsconfig.json is not used, only for Editor's IntelliSense Purpose
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
