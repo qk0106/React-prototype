@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
 import { createStore } from "redux";
-import { fetchRootReducer, registerToRootReducer } from "RootHelper";
+import { fetchRootReducer, registerToRootReducer, fetchRootMiddlewares } from "RootHelper";
 
-let store = createStore(s => s);
+let store = createStore(s => s, fetchRootMiddlewares());
 export const fetchStore = () => store;
 
 export const registerReducer = (instancesProp, reducer) => {
