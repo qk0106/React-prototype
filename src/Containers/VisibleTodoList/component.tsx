@@ -1,6 +1,6 @@
 import { toggleTodo } from "./action"; // To get Action Creators
 import { TodoList } from "TodoList";
-import { yieldContainer } from "ReduxHelper";
+import { generateContainer } from "ReduxHelper";
 
 const getVisibleTodos = (todos, filter) => {
     switch (filter) {
@@ -30,4 +30,4 @@ const mapDispatchToProps = ({}, dispatch, { instanceId }) => {
     };
 };
 
-export const VisibleTodoList = yieldContainer(mapStateToProps, mapDispatchToProps)(TodoList);
+export const VisibleTodoList = generateContainer(mapStateToProps, mapDispatchToProps)(TodoList);

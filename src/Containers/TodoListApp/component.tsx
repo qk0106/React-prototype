@@ -2,7 +2,7 @@ import * as React from "react";
 import { AddTodo } from "AddTodo";
 import { TodoFooter } from "TodoFooter";
 import { VisibleTodoList } from "VisibleTodoList";
-import { yieldRegisteredInstanceId } from "Instantiator";
+import { generateRegisteredInstanceId } from "Instantiator";
 import { registerReducer } from "ReduxHelper";
 import { reducer } from "./reducer";
 
@@ -15,7 +15,7 @@ export class TodoListApp extends React.Component<any> {
         super(props);
         console.log(this.state);
         console.log(this.props);
-        this._instanceId = yieldRegisteredInstanceId(this._instancesProp, "Test");
+        this._instanceId = generateRegisteredInstanceId(this._instancesProp, "Test");
         registerReducer(this._instancesProp, this._reducer);
     }
 

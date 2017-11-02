@@ -11,7 +11,7 @@ export const registerReducer = (instancesProp, reducer) => {
     console.log(store.getState());
 };
 
-export const yieldContainer = (mapStateToProps, mapDispatchToProps) => {
+export const generateContainer = (mapStateToProps, mapDispatchToProps) => {
     const mergeProps = (stateProps, { dispatch }, ownProps) => {
         return {
             ...stateProps,

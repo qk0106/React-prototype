@@ -2,9 +2,9 @@ import * as iassign from "immutable-assign";
 
 let rootInstanceIds = {};
 
-const yieldId = () => Math.round(Math.random() * Math.pow(10, 10));
+const generateId = () => Math.round(Math.random() * Math.pow(10, 10));
 
-const yieldInstanceId = instanceIdPrefix => instanceIdPrefix + "_" + yieldId();
+const generateInstanceId = instanceIdPrefix => instanceIdPrefix + "_" + generateId();
 
 const registerInstanceId = (instancesProp, instanceId) => {
     if (rootInstanceIds[instancesProp] === undefined) {
@@ -15,8 +15,8 @@ const registerInstanceId = (instancesProp, instanceId) => {
 
 const fetchInstanceIds = instancesProp => rootInstanceIds[instancesProp];
 
-export const yieldRegisteredInstanceId = (instancesProp, instanceIdPrefix) => {
-    let instanceId = yieldInstanceId(instanceIdPrefix);
+export const generateRegisteredInstanceId = (instancesProp, instanceIdPrefix) => {
+    let instanceId = generateInstanceId(instanceIdPrefix);
     registerInstanceId(instancesProp, instanceId);
     return instanceId;
 };
@@ -24,7 +24,7 @@ export const yieldRegisteredInstanceId = (instancesProp, instanceIdPrefix) => {
 export const generateInstanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({
     type: actionType,
     instanceId: instanceId,
-    requestId: yieldId(),
+    requestId: generateId(),
     ...actionParamsObj
 });
 
@@ -40,8 +40,7 @@ export const combineInstanceReducers = (instancesProps, instanceReducer) => {
 
     // return reducer that only updates the state of certain instance
     return (instances = instatncesInitState, action) => {
-        let mergedInstances = Object.assign({}, instatncesInitState, instances);
-
+        let mergedInstances = Object.assign({}, instatncesInitState, instances); // reverse the order will cause problem
         let instanceId = action.instanceId;
         if (!(instanceId in mergedInstances)) return mergedInstances;
         return iassign(mergedInstances, obj => {
