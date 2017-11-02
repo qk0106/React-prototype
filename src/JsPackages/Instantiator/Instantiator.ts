@@ -1,4 +1,6 @@
 import * as iassign from "immutable-assign";
+import { fetchStore } from "ReduxHelper";
+import { fetchRootReducer, registerToRootReducer } from "RouteHelper";
 
 let rootInstanceIds = {};
 
@@ -15,10 +17,12 @@ export const registerInstanceId = (instancesProp, instanceId) => {
 
 const fetchInstanceIds = instancesProp => rootInstanceIds[instancesProp];
 
-export const generateRegisteredInstanceId = (instancesProp, instanceIdPrefix) => {
-    let instanceId = generateInstanceId(instanceIdPrefix);
+export const registerInstance = (instancesProp, instanceId, reducer) => {
+    let store = fetchStore();
     registerInstanceId(instancesProp, instanceId);
-    return instanceId;
+    registerToRootReducer(instancesProp, reducer);
+    store.replaceReducer(fetchRootReducer());
+    console.log(store.getState());
 };
 
 export const generateInstanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({

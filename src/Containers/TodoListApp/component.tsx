@@ -2,8 +2,7 @@ import * as React from "react";
 import { AddTodo } from "AddTodo";
 import { TodoFooter } from "TodoFooter";
 import { VisibleTodoList } from "VisibleTodoList";
-import { generateInstanceId } from "Instantiator";
-import { registerReducer } from "ReduxHelper";
+import { generateInstanceId, registerInstance } from "Instantiator";
 import { reducer } from "./reducer";
 
 export class TodoListApp extends React.Component<any> {
@@ -13,7 +12,7 @@ export class TodoListApp extends React.Component<any> {
 
     constructor(props) {
         super(props);
-        registerReducer(this._instancesProp, this._instanceId, this._reducer);
+        registerInstance(this._instancesProp, this._instanceId, this._reducer);
     }
 
     render() {

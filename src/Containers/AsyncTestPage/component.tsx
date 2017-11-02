@@ -1,12 +1,9 @@
 import * as React from "react";
 // import { GitInfo, instancesProp as GitInfosProp } from "GitInfo";
 // import { TodoListApp } from "TodoListApp";
-// import { generateRegisteredInstanceIds } from "Instantiator";
 import { registerRoute } from "RouteHelper";
 
 // const instanceIdPrefix = "AsyncPage";
-// const GitInfoInstanceIds = generateRegisteredInstanceIds(GitInfosProp, instanceIdPrefix, 2);
-// const TodoListAppInstanceIds = generateRegisteredInstanceIds("sss", instanceIdPrefix, 2);
 
 const AsyncTestPage = () => (
     <div>
