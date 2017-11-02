@@ -52,7 +52,7 @@ export const generateInstanceComponent = (instancesProp, reducer, Component) => 
         }
 
         render() {
-            return <Component instanceProps={this._instanceProps} {...this.props} />;
+            return <Component instanceProps={this._instanceProps} ownProps={this.props} />;
         }
     };
 };
