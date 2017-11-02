@@ -31,7 +31,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Pure Separation of Containers and Presneters
    - Purify containers (only state and dispatch mapping) and presenters (only html and style),
    - so that containers can be fully reused with React Native.
-   - Satisfy the OCD (obsessive-compulsive disorder). XD
+   - Satisfy the OCD. XD
  - Instantiate Module
    - Assume every module will be reused in the future.
    - Instantiate component and reducer so that it can be used multple times without state conflict.
