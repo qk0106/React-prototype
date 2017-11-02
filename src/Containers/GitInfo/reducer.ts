@@ -28,7 +28,7 @@ const gitSize = (gitSize = 0, action) => {
     }
 };
 
-const instanceReducerObj = {
+export const instanceReducerObj = {
     gitSize,
     refreshCount
 };

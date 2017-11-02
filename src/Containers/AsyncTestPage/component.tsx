@@ -18,7 +18,7 @@ const AsyncTestPage = () => (
         <GitInfo
             instanceId={GitInfoInstanceIds[1]}
             gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor"
-        />
+        />*/}
     </div>
 );
 
