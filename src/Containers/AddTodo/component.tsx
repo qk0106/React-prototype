@@ -1,6 +1,6 @@
 import * as React from "react";
 import { addTodo, changeInputText } from "./action"; // To get Action Creators
-import { generateContainer } from "ReduxHelper";
+import { getOwnState, generateContainer } from "ReduxHelper";
 
 // should move this presenter to Presenters folder
 const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => (
@@ -13,7 +13,7 @@ const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => (
 );
 
 const mapStateToProps = (state, { instanceProps, inputText }) => {
-    let ownState = state[instanceProps.instancesProp][instanceProps.instanceId];
+    let ownState = getOwnState(state, instanceProps);
     return {
         inputText: ownState.inputText !== undefined ? ownState.inputText : inputText
     };
