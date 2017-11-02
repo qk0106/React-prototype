@@ -19,29 +19,28 @@ Dylan's React Prototype (Decentralised and Flat Style)
    - Keep everything related as a module staying in one folder. 
    - (component, reducer, action, middleware, style and so on).
    - No need to open multiple folders to change one module.
- - Flatten Folder Structure
+ - Instantiate Module
+   - Assume every module will be reused in the future.
+   - Create a reducer instance whenever a it's component is used.
+   - No need to manually maintian an array to manage reused component.
+  - Decentralised Management Style
+   - Management load of route, reducer, middlewares, instance are distributed 
+   - to the registrition of the compoenent/module itself.
+   - Each module maintain itself for adding and removing, no need to change a centralised place.
+- Flatten Folder Structure
    - Assume every module will be reused in the future.
    - Build flat strucure instead of nested.
    - No common or gloabal concept.
    - More friendly to import.
- - Decentralised Management Style
-   - Management load of route, reducer, middlewares, instance are distributed 
-   - to the registrition of the compoenent/module itself.
-   - Each module maintain itself for adding and removing, no need to change a centralised place.
  - Pure Separation of Containers and Presneters
    - Purify containers (only state and dispatch mapping) and presenters (only html and style),
    - so that containers can be fully reused with React Native.
    - Satisfy the OCD. XD
- - Instantiate Module
-   - Assume every module will be reused in the future.
-   - Instantiate component and reducer so that it can be used multple times without state conflict.
-   - At first it solves the desire to use the same module mutlitple times, but do not want to maintain state with array.
-   - Instantiation should always happen, because of initial motivation of modularization - reusability.
 
 ## Future Improvements
+ - Complete TS Typings
  - Dependecy Injection
  - Async Props (react connect ?)
- - Complete TS Typings
  - React Helmet for SEO
  - Server side rendering for performance
  - Code spliting for performance
