@@ -1,5 +1,5 @@
 import { REFRESH_GIT_INFO, fetchGitInfo, fetchGitInfoSuccess, fetchGitInfoFailed } from "./action"; // To get Action Creators
-import { registerToRootMiddlewares } from "RouteHelper";
+import { registerMiddleware } from "ReduxHelper";
 
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);
@@ -16,4 +16,4 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     }
 };
 
-registerToRootMiddlewares(actionHandlerMiddleware);
+registerMiddleware(actionHandlerMiddleware);

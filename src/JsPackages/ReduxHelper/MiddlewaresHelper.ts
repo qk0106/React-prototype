@@ -4,10 +4,10 @@ const loggerMiddleware = createLogger();
 
 let rootMiddlewares = [];
 
-export const registerToRootMiddlewares = middleware => {
+export const registerMiddleware = middleware => {
     rootMiddlewares.push(middleware);
 };
 
-registerToRootMiddlewares(loggerMiddleware);
+registerMiddleware(loggerMiddleware);
 
 export const fetchMiddlewares = () => applyMiddleware(...rootMiddlewares);

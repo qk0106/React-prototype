@@ -17,10 +17,9 @@ export const registerInstanceId = (instancesProp, instanceId) => {
 const fetchInstanceIds = instancesProp => rootInstanceIds[instancesProp];
 
 export const registerInstance = (instancesProp, instanceId, reducer) => {
-    const store = fetchStore();
     registerInstanceId(instancesProp, instanceId);
     registerReducer(instancesProp, reducer);
-    store.replaceReducer(fetchReducers());
+    fetchStore().replaceReducer(fetchReducers());
 };
 
 export const generateInstanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({
