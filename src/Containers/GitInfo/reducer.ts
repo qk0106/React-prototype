@@ -5,8 +5,6 @@ import {
     FETCH_GIT_INFO_SUCCESS,
     FETCH_GIT_INFO_FAILED
 } from "./action"; // To get Action Types
-import { instancesProp } from "./component";
-import { registerToRootReducer } from "RootHelper";
 
 const refreshCount = (refreshCount = { count: 0 }, action) => {
     switch (action.type) {
@@ -34,5 +32,3 @@ const instanceReducerObj = {
     gitSize,
     refreshCount
 };
-
-registerToRootReducer(instancesProp, instanceReducerObj);

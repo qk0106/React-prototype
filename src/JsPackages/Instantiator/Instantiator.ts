@@ -40,10 +40,12 @@ export const combineInstanceReducers = (instancesProps, instanceReducer) => {
 
     // return reducer that only updates the state of certain instance
     return (instances = instatncesInitState, action) => {
+        let mergedInstances = Object.assign({}, instatncesInitState, instances);
+
         let instanceId = action.instanceId;
-        if (!(instanceId in instances)) return instances;
-        return iassign(instances, obj => {
-            const instance = instances[instanceId];
+        if (!(instanceId in mergedInstances)) return mergedInstances;
+        return iassign(mergedInstances, obj => {
+            const instance = mergedInstances[instanceId];
             const updatedInstance = instanceReducer(instance, action);
             obj[instanceId] = updatedInstance;
             return obj;

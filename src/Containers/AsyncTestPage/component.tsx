@@ -19,14 +19,6 @@ const AsyncTestPage = () => (
             instanceId={GitInfoInstanceIds[1]}
             gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor"
         />
-        <TodoListApp
-            instanceId={TodoListAppInstanceIds[0]}
-            inputText="This is TodoList 1 in Async"
-        />
-        <TodoListApp
-            instanceId={TodoListAppInstanceIds[1]}
-            inputText="This is TodoList 2 in Async" */}
-        />
     </div>
 );
 

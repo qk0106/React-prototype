@@ -8,6 +8,7 @@ export const fetchStore = () => store;
 export const registerReducer = (instancesProp, reducer) => {
     registerToRootReducer(instancesProp, reducer);
     store.replaceReducer(fetchRootReducer());
+    console.log(store.getState());
 };
 
 export const yieldContainer = (mapStateToProps, mapDispatchToProps) => {
