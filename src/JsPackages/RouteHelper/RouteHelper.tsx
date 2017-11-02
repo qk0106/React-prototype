@@ -32,7 +32,7 @@ const routeTemplate = route => (
     <Route key={route.key + "_route"} exact path={route.path} component={route.component} />
 );
 
-export const fetchRoutes = () => {
+export const collectRoutes = () => {
     return (
         <BrowserRouter>
             <div>

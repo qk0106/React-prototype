@@ -10,4 +10,4 @@ export const registerMiddleware = middleware => {
 
 registerMiddleware(loggerMiddleware);
 
-export const fetchMiddlewares = () => applyMiddleware(...rootMiddlewares);
+export const collectMiddlewares = () => applyMiddleware(...rootMiddlewares);

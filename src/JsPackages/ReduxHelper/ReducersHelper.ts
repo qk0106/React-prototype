@@ -8,6 +8,6 @@ export const registerReducer = (instancesProp, instanceReducer) => {
     rootReducers[instancesProp] = instancesReducer;
 };
 
-export const fetchReducers = () => {
+export const collectReducers = () => {
     return combineReducers(rootReducers);
 };

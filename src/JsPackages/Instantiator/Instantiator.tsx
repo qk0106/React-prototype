@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as iassign from "immutable-assign";
-import { registerReducer, fetchReducers, updateStore } from "ReduxHelper";
+import { registerReducer, collectReducers, updateStore } from "ReduxHelper";
 
 let rootInstanceIds = {};
 
@@ -18,14 +18,14 @@ const registerInstanceId = (instancesProp, instanceId) => {
 const registerInstance = ({ instancesProp, instanceId }, reducer) => {
     registerInstanceId(instancesProp, instanceId);
     registerReducer(instancesProp, reducer);
-    updateStore(fetchReducers());
+    updateStore(collectReducers());
 };
 
-const fetchInstanceIds = instancesProp => rootInstanceIds[instancesProp];
+const collectInstanceIds = instancesProp => rootInstanceIds[instancesProp];
 
 const generateInstatncesInitState = instancesProps => {
     let instatncesInitState = {};
-    fetchInstanceIds(instancesProps).forEach(instanceId => {
+    collectInstanceIds(instancesProps).forEach(instanceId => {
         instatncesInitState[instanceId] = {};
     });
     return instatncesInitState;

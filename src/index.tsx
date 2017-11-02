@@ -1,13 +1,13 @@
 import * as React from "react";
 import { render } from "react-dom";
 import { AppContainer } from "react-hot-loader";
-import { fetchStore } from "ReduxHelper";
-import { fetchRoutes } from "RouteHelper";
+import { readStore } from "ReduxHelper";
+import { collectRoutes } from "RouteHelper";
 import { App } from "./app";
 import "semantic-ui-css/semantic.min.css";
 
-const store = fetchStore();
-const routes = fetchRoutes();
+const store = readStore();
+const routes = collectRoutes();
 const appElement = document.getElementById("app");
 
 render(
