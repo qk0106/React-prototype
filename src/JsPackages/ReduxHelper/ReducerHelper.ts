@@ -1,12 +1,13 @@
 import { combineReducers } from "redux";
 import { combineInstanceReducers } from "Instantiator";
-let reducers = {};
+
+let rootReducers = {};
 
 export const registerReducer = (instancesProp, instanceReducer) => {
     const instancesReducer = combineInstanceReducers(instancesProp, instanceReducer);
-    reducers[instancesProp] = instancesReducer;
+    rootReducers[instancesProp] = instancesReducer;
 };
 
 export const fetchReducers = () => {
-    return combineReducers(reducers);
+    return combineReducers(rootReducers);
 };

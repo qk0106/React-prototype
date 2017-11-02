@@ -21,7 +21,6 @@ export const registerInstance = (instancesProp, instanceId, reducer) => {
     registerInstanceId(instancesProp, instanceId);
     registerReducer(instancesProp, reducer);
     store.replaceReducer(fetchReducers());
-    console.log(store.getState());
 };
 
 export const generateInstanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({

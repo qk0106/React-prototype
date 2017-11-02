@@ -2,12 +2,12 @@ import { applyMiddleware } from "redux";
 import { createLogger } from "redux-logger";
 const loggerMiddleware = createLogger();
 
-let middlewares = [];
+let rootMiddlewares = [];
 
 export const registerToRootMiddlewares = middleware => {
-    middlewares.push(middleware);
+    rootMiddlewares.push(middleware);
 };
 
 registerToRootMiddlewares(loggerMiddleware);
 
-export const fetchRootMiddlewares = () => applyMiddleware(...middlewares);
+export const fetchMiddlewares = () => applyMiddleware(...rootMiddlewares);

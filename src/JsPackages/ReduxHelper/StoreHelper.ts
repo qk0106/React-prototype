@@ -1,10 +1,6 @@
 import { connect } from "react-redux";
 import { createStore } from "redux";
-import { fetchRootMiddlewares } from "./MiddlewaresHelper";
-
-let store = createStore(s => s, fetchRootMiddlewares());
-
-export const fetchStore = () => store;
+import { fetchMiddlewares } from "./MiddlewaresHelper";
 
 export const generateContainer = (mapStateToProps, mapDispatchToProps) => {
     const mergeProps = (stateProps, { dispatch }, ownProps) => {
@@ -15,3 +11,7 @@ export const generateContainer = (mapStateToProps, mapDispatchToProps) => {
     };
     return connect(mapStateToProps, null, mergeProps);
 };
+
+let rootStore = createStore(s => s, fetchMiddlewares());
+
+export const fetchStore = () => rootStore;
