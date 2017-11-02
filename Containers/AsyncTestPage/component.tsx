@@ -1,21 +1,14 @@
 import * as React from "react";
-// import { GitInfo, instancesProp as GitInfosProp } from "GitInfo";
-// import { TodoLister } from "TodoLister";
+import { GitInfo } from "GitInfo";
+import { TodoLister } from "TodoLister";
 import { registerRoute } from "RouteHelper";
-
-// const instanceIdPrefix = "AsyncPage";
 
 const AsyncTestPage = () => (
     <div>
         <span>This is Async Page</span>
-        {/* <GitInfo
-            instanceId={GitInfoInstanceIds[0]}
-            gitUrl="https://api.github.com/repos/qk0106/React-prototype"
-        />
-        <GitInfo
-            instanceId={GitInfoInstanceIds[1]}
-            gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor"
-        />*/}
+        <GitInfo gitUrl="https://api.github.com/repos/qk0106/React-prototype" />
+        <GitInfo gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor" />
+        <TodoLister inputText="This is TodoList in async page" />
     </div>
 );
 
