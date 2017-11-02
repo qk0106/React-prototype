@@ -1,5 +1,5 @@
 import * as iassign from "immutable-assign";
-import { fetchStore, registerReducer, fetchReducers } from "ReduxHelper";
+import { registerReducer, fetchReducers, updateStore } from "ReduxHelper";
 
 let rootInstanceIds = {};
 
@@ -7,7 +7,7 @@ const generateId = () => Math.round(Math.random() * Math.pow(10, 10));
 
 export const generateInstanceId = instanceIdPrefix => instanceIdPrefix + "_" + generateId();
 
-export const registerInstanceId = (instancesProp, instanceId) => {
+const registerInstanceId = (instancesProp, instanceId) => {
     if (rootInstanceIds[instancesProp] === undefined) {
         rootInstanceIds[instancesProp] = [];
     }
@@ -19,7 +19,7 @@ const fetchInstanceIds = instancesProp => rootInstanceIds[instancesProp];
 export const registerInstance = (instancesProp, instanceId, reducer) => {
     registerInstanceId(instancesProp, instanceId);
     registerReducer(instancesProp, reducer);
-    fetchStore().replaceReducer(fetchReducers());
+    updateStore(fetchReducers());
 };
 
 export const generateInstanceActionCreator = actionType => (instanceId, actionParamsObj?) => ({
