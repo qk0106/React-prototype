@@ -12,19 +12,19 @@ const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => (
     </div>
 );
 
-const mapStateToProps = (state, { instanceProps, inputText }) => {
-    let ownState = getOwnState(state, instanceProps);
+const mapStateToProps = (state, ownProps) => {
+    let ownState = getOwnState(state, ownProps.instanceProps);
     return {
-        inputText: ownState.inputText !== undefined ? ownState.inputText : inputText
+        inputText: ownState.inputText !== undefined ? ownState.inputText : ownProps.inputText
     };
 };
 
-const mapDispatchToProps = ({ inputText }, dispatch, { instanceProps }) => {
-    let { instanceId } = instanceProps;
+const mapDispatchToProps = (stateProps, dispatch, ownProps) => {
+    let { instanceId } = ownProps.instanceProps;
     return {
         onSubmit: e => {
             e.preventDefault();
-            dispatch(addTodo(instanceId, { text: inputText }));
+            dispatch(addTodo(instanceId, { text: stateProps.inputText }));
             dispatch(changeInputText(instanceId, { text: "" }));
         },
         onChange: e => {

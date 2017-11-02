@@ -2,19 +2,19 @@ import { setVisibilityFilter } from "./action"; // To get Action Creators
 import { Link } from "Link";
 import { getOwnState, generateContainer } from "ReduxHelper";
 
-const mapStateToProps = (state, { instanceProps, filter, children }) => {
-    let ownState = getOwnState(state, instanceProps);
+const mapStateToProps = (state, ownProps) => {
+    let ownState = getOwnState(state, ownProps.instanceProps);
     return {
-        active: filter === ownState.visibilityFilter,
-        children: children
+        active: ownProps.filter === ownState.visibilityFilter,
+        children: ownProps.children
     };
 };
 
-const mapDispatchToProps = ({}, dispatch, { instanceProps, filter }) => {
-    let { instanceId } = instanceProps;
+const mapDispatchToProps = (stateProps, dispatch, ownProps) => {
+    let { instanceId } = ownProps.instanceProps;
     return {
         onClick: () => {
-            dispatch(setVisibilityFilter(instanceId, { filter }));
+            dispatch(setVisibilityFilter(instanceId, { filter: ownProps.filter }));
         }
     };
 };
