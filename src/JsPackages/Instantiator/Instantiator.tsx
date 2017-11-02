@@ -43,7 +43,7 @@ export const generateInstanceComponent = (componentName, reducer, Container) => 
         }
 
         render() {
-            return <Container instanceProps={this._instanceProps} otherProps={this.props} />;
+            return <Container instanceProps={this._instanceProps} {...this.props} />;
         }
     };
 };
