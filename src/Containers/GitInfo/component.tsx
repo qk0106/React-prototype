@@ -42,7 +42,7 @@ export class GitInfo extends React.Component<any> {
             <GitInfoContainer
                 instancesProp={instancesProp}
                 instanceId={instanceId}
-                inputText={gitUrl}
+                gitUrl={gitUrl}
             />
         );
     }
