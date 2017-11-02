@@ -15,14 +15,15 @@ const getVisibleTodos = (todos, filter) => {
     }
 };
 
-const mapStateToProps = (state, { instancesProp, instanceId }) => {
-    let ownState = state[instancesProp][instanceId];
+const mapStateToProps = (state, { instanceProps }) => {
+    let ownState = state[instanceProps.instancesProp][instanceProps.instanceId];
     return {
         todos: getVisibleTodos(ownState.todos, ownState.visibilityFilter)
     };
 };
 
-const mapDispatchToProps = ({}, dispatch, { instanceId }) => {
+const mapDispatchToProps = ({}, dispatch, { instanceProps }) => {
+    let { instanceId } = instanceProps;
     return {
         onTodoClick: id => {
             dispatch(toggleTodo(instanceId, { id }));

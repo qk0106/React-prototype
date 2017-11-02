@@ -14,7 +14,7 @@ const registerInstanceId = (instancesProp, instanceId) => {
     rootInstanceIds[instancesProp].push(instanceId);
 };
 
-export const registerInstance = (instancesProp, instanceId, reducer) => {
+export const registerInstance = ({ instancesProp, instanceId }, reducer) => {
     registerInstanceId(instancesProp, instanceId);
     registerReducer(instancesProp, reducer);
     updateStore(fetchReducers());
@@ -31,25 +31,19 @@ export const generateInstanceActionCreator = actionType => (instanceId, actionPa
 
 export const generateInstanceComponent = (componentName, reducer, Container) => {
     return class extends React.Component<any> {
-        private _instancesProp = componentName + "s";
-        private _instanceId = generateInstanceId("Test");
         private _reducer = reducer;
+        private _instanceProps = {
+            instancesProp: componentName + "s",
+            instanceId: generateInstanceId("Test")
+        };
 
         constructor(props) {
             super(props);
-            registerInstance(this._instancesProp, this._instanceId, this._reducer);
+            registerInstance(this._instanceProps, this._reducer);
         }
 
         render() {
-            let instanceId = this._instanceId;
-            let instancesProp = this._instancesProp;
-            return (
-                <Container
-                    instancesProp={instancesProp}
-                    instanceId={instanceId}
-                    otherProps={this.props}
-                />
-            );
+            return <Container instanceProps={this._instanceProps} otherProps={this.props} />;
         }
     };
 };

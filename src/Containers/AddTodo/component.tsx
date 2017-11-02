@@ -2,6 +2,7 @@ import * as React from "react";
 import { addTodo, changeInputText } from "./action"; // To get Action Creators
 import { generateContainer } from "ReduxHelper";
 
+// should move this presenter to Presenters folder
 const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => (
     <div>
         <form onSubmit={onSubmit}>
@@ -11,14 +12,15 @@ const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => (
     </div>
 );
 
-const mapStateToProps = (state, { instancesProp, instanceId, inputText }) => {
-    let ownState = state[instancesProp][instanceId];
+const mapStateToProps = (state, { instanceProps, inputText }) => {
+    let ownState = state[instanceProps.instancesProp][instanceProps.instanceId];
     return {
         inputText: ownState.inputText !== undefined ? ownState.inputText : inputText
     };
 };
 
-const mapDispatchToProps = ({ inputText }, dispatch, { instanceId }) => {
+const mapDispatchToProps = ({ inputText }, dispatch, { instanceProps }) => {
+    let { instanceId } = instanceProps;
     return {
         onSubmit: e => {
             e.preventDefault();
