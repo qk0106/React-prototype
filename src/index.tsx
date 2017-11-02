@@ -5,7 +5,7 @@ import { fetchStore } from "ReduxHelper";
 import { fetchRootRoutes } from "RootHelper";
 import App from "./app";
 
-let store = fetchStore();
+const store = fetchStore();
 const routes = fetchRootRoutes();
 const appElement = document.getElementById("app");
 
