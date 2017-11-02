@@ -5,7 +5,7 @@ import { VisibleTodoList } from "VisibleTodoList";
 import { reducer } from "./reducer";
 import { generateInstanceComponent } from "Instantiator";
 
-const _TodoListApp = ({ instanceProps, inputText }) => (
+const _TodoLister = ({ instanceProps, inputText }) => (
     <div>
         <AddTodo instanceProps={instanceProps} inputText={inputText} />
         <VisibleTodoList instanceProps={instanceProps} />
@@ -13,4 +13,4 @@ const _TodoListApp = ({ instanceProps, inputText }) => (
     </div>
 );
 
-export const TodoListApp = generateInstanceComponent("TodoListApps", _TodoListApp, reducer);
+export const TodoLister = generateInstanceComponent("TodoListers", _TodoLister, reducer);

@@ -1,6 +1,6 @@
 import * as React from "react";
 // import { GitInfo, instancesProp as GitInfosProp } from "GitInfo";
-// import { TodoListApp } from "TodoListApp";
+// import { TodoLister } from "TodoLister";
 import { registerRoute } from "RouteHelper";
 
 // const instanceIdPrefix = "AsyncPage";
