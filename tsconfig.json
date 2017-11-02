@@ -9,7 +9,7 @@
         "moduleResolution": "node", // module === "AMD" or "System" or "ES6" ? "Classic" : "Node"
         "lib": ["es2015", "dom"], // --target ES5: DOM,ES5,ScriptHost
         "experimentalDecorators": true,
-        "noUnusedParameters": true, // Report errors on unused locals.
+        // "noUnusedParameters": true, // Report errors on unused locals.
         "noUnusedLocals": true, // Report errors on unused parameters.
         "jsx": "react"
     },
