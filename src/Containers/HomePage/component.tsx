@@ -1,5 +1,5 @@
 import * as React from "react";
-import { registerToRootRoutes } from "RootHelper";
+import { registerRoute } from "RouteHelper";
 
 const HomePage = () => (
     <div>
@@ -7,4 +7,4 @@ const HomePage = () => (
     </div>
 );
 
-registerToRootRoutes("Home", "/", "Home", HomePage);
+registerRoute("Home", "/", "Home", HomePage);

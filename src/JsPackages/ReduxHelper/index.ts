@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { createStore } from "redux";
-import { fetchRootReducer, registerToRootReducer, fetchRootMiddlewares } from "RootHelper";
+import { fetchRootReducer, registerToRootReducer, fetchRootMiddlewares } from "RouteHelper";
 
 let store = createStore(s => s, fetchRootMiddlewares());
 export const fetchStore = () => store;

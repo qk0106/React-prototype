@@ -2,7 +2,7 @@ import * as React from "react";
 // import { GitInfo, instancesProp as GitInfosProp } from "GitInfo";
 // import { TodoListApp } from "TodoListApp";
 // import { generateRegisteredInstanceIds } from "Instantiator";
-import { registerToRootRoutes } from "RootHelper";
+import { registerRoute } from "RouteHelper";
 
 // const instanceIdPrefix = "AsyncPage";
 // const GitInfoInstanceIds = generateRegisteredInstanceIds(GitInfosProp, instanceIdPrefix, 2);
@@ -22,4 +22,4 @@ const AsyncTestPage = () => (
     </div>
 );
 
-registerToRootRoutes("AsyncTest", "/asyncTest", "Async Test", AsyncTestPage);
+registerRoute("AsyncTest", "/asyncTest", "Async Test", AsyncTestPage);

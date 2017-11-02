@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TodoListApp } from "TodoListApp";
-import { registerToRootRoutes } from "RootHelper";
+import { registerRoute } from "RouteHelper";
 
 const TodoListPage = () => (
     <div>
@@ -11,4 +11,4 @@ const TodoListPage = () => (
     </div>
 );
 
-registerToRootRoutes("TodoList", "/todoList", "Todo List", TodoListPage);
+registerRoute("TodoList", "/todoList", "Todo List", TodoListPage);

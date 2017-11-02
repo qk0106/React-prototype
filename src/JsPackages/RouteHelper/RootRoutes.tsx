@@ -1,10 +1,10 @@
 import * as React from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
-let routes = {};
+let rootRoutes = {};
 
-export const registerToRootRoutes = (componentName, path, text, component) => {
-    routes[componentName] = {
+export const registerRoute = (componentName, path, text, component) => {
+    rootRoutes[componentName] = {
         path: path,
         text: text,
         key: componentName,
@@ -32,12 +32,12 @@ const routeTemplate = route => (
     <Route key={route.key + "_route"} exact path={route.path} component={route.component} />
 );
 
-export const fetchRootRoutes = () => {
+export const fetchRoutes = () => {
     return (
         <BrowserRouter>
             <div>
-                {rows(linkTemplate, routes)}
-                <Switch>{rows(routeTemplate, routes)}</Switch>
+                {rows(linkTemplate, rootRoutes)}
+                <Switch>{rows(routeTemplate, rootRoutes)}</Switch>
             </div>
         </BrowserRouter>
     );
