@@ -18,4 +18,4 @@ const dispatchProps = (stateProps, ownProps, dispatch, instanceId) => ({
 
 const _GitInfo = generateContainer(stateProps, dispatchProps)(GitSize);
 
-export const GitInfo = generateInstanceComponent("GitInfos", reducer, _GitInfo);
+export const GitInfo = generateInstanceComponent("GitInfos", _GitInfo, reducer);

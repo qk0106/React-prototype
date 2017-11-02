@@ -13,4 +13,4 @@ const _TodoListApp = ({ instanceProps, inputText }) => (
     </div>
 );
 
-export const TodoListApp = generateInstanceComponent("TodoListApps", reducer, _TodoListApp);
+export const TodoListApp = generateInstanceComponent("TodoListApps", _TodoListApp, reducer);
