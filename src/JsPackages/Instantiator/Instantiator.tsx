@@ -1,3 +1,4 @@
+import * as React from "react";
 import { registerReducer, fetchReducers, updateStore } from "ReduxHelper";
 
 let rootInstanceIds = {};
@@ -27,3 +28,28 @@ export const generateInstanceActionCreator = actionType => (instanceId, actionPa
     requestId: generateId(),
     ...actionParamsObj
 });
+
+export const generateInstanceComponent = (componentName, reducer, Container) => {
+    return class extends React.Component<any> {
+        private _instancesProp = componentName + "s";
+        private _instanceId = generateInstanceId("Test");
+        private _reducer = reducer;
+
+        constructor(props) {
+            super(props);
+            registerInstance(this._instancesProp, this._instanceId, this._reducer);
+        }
+
+        render() {
+            let instanceId = this._instanceId;
+            let instancesProp = this._instancesProp;
+            return (
+                <Container
+                    instancesProp={instancesProp}
+                    instanceId={instanceId}
+                    otherProps={this.props}
+                />
+            );
+        }
+    };
+};
