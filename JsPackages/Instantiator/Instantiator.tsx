@@ -6,11 +6,7 @@ let rootInstanceIds = {};
 
 const generateId = () => Math.round(Math.random() * Math.pow(10, 10));
 
-const generateInstanceId = component => {
-    // const parentName = component._reactInternalFiber.return.key; // get direct parent key
-    const parentName = component._reactInternalFiber._debugOwner.child.key; // get top level parent key
-    return parentName + "_" + generateId();
-};
+const generateInstanceId = prefix => prefix + "_" + generateId();
 
 const registerInstanceId = (instancesProp, instanceId) => {
     if (rootInstanceIds[instancesProp] === undefined) {
@@ -47,15 +43,11 @@ export const generateInstanceComponent = (instancesProp, Component, reducer) => 
         private _reducer = reducer;
         private _instanceProps = {
             instancesProp: instancesProp,
-            instanceId: undefined
+            instanceId: generateInstanceId(this.props.instanceIdPrefix)
         };
 
         constructor(props) {
             super(props);
-        }
-
-        componentWillMount() {
-            this._instanceProps.instanceId = generateInstanceId(this);
             registerInstance(this._instanceProps, this._reducer);
         }
 
