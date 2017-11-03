@@ -2,7 +2,7 @@ import "./actionHandler";
 import { reducer } from "./reducer";
 import { refreshGitInfo } from "./action"; // To get Action Creators
 import { GitSize } from "GitSize";
-import { generateContainer } from "ReduxHelper";
+import { generateReduxComponent } from "ReduxHelper";
 import { generateInstanceComponent } from "Instantiator";
 
 const stateProps = (ownState, ownProps) => ({
@@ -17,6 +17,6 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-const _GitInfo = generateContainer({ stateProps, dispatchProps }, GitSize);
+const _GitInfo = generateReduxComponent({ stateProps, dispatchProps }, GitSize);
 
 export const GitInfo = generateInstanceComponent("GitInfos", _GitInfo, reducer);

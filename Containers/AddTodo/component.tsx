@@ -1,6 +1,6 @@
 import * as React from "react";
 import { addTodo, changeInputText } from "./action"; // To get Action Creators
-import { generateContainer } from "ReduxHelper";
+import { generateReduxComponent } from "ReduxHelper";
 
 // should move this presenter to Presenters folder
 const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => (
@@ -27,4 +27,4 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const AddTodo = generateContainer({ stateProps, dispatchProps }, AddTodoPresenter);
+export const AddTodo = generateReduxComponent({ stateProps, dispatchProps }, AddTodoPresenter);
