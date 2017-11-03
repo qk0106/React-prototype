@@ -1,10 +1,13 @@
 import * as React from "react";
+import * as iassign from "immutable-assign";
 import { render } from "react-dom";
 import { AppContainer } from "react-hot-loader";
 import { readStore } from "ReduxHelper";
 import { collectRoutes } from "RouteHelper";
 import { App } from "./app";
+import "./registry"; // register must happen before collectRoutes()
 import "semantic-ui-css/semantic.min.css";
+iassign.setOption({ freeze: true }); // throw immutable error
 
 const store = readStore();
 const routes = collectRoutes();
