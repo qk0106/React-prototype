@@ -1,4 +1,7 @@
+const style = require("./style.less");
 import * as React from "react";
+import * as CSSModules from "react-css-modules";
+import {} from "semantic-ui-react";
 
 interface ILinkProps {
     active: boolean;
@@ -6,7 +9,7 @@ interface ILinkProps {
     onClick: (...args: any[]) => void;
 }
 
-export const Link: React.SFC<ILinkProps> = ({ active, children, onClick }) => {
+const _Link: React.SFC<ILinkProps> = ({ active, children, onClick }) => {
     if (active) {
         return <span>{children}</span>;
     }
@@ -23,3 +26,5 @@ export const Link: React.SFC<ILinkProps> = ({ active, children, onClick }) => {
         </a>
     );
 };
+
+export const Link = CSSModules(_Link, style); // modulise style with component

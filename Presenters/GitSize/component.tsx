@@ -1,6 +1,7 @@
+const style = require("./style.less");
 import * as React from "react";
 import * as CSSModules from "react-css-modules";
-const style = require("./style.less");
+import {} from "semantic-ui-react";
 
 const _GitSize = ({ gitSize, refreshCount, onClick }) => (
     <div>

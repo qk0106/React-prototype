@@ -1,6 +1,9 @@
+const style = require("./style.less");
 import * as React from "react";
+import * as CSSModules from "react-css-modules";
+import {} from "semantic-ui-react";
 
-export const AddTodoView = ({ onSubmit, onChange, inputText }) => (
+const _AddTodoView = ({ onSubmit, onChange, inputText }) => (
     <div>
         <form onSubmit={onSubmit}>
             <input value={inputText} onChange={onChange} />
@@ -8,3 +11,5 @@ export const AddTodoView = ({ onSubmit, onChange, inputText }) => (
         </form>
     </div>
 );
+
+export const AddTodoView = CSSModules(_AddTodoView, style); // modulise style with component

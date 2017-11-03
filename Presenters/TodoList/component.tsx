@@ -1,8 +1,8 @@
+const style = require("./style.less");
 import * as React from "react";
 import * as CSSModules from "react-css-modules";
-const style = require("./style.less");
-import { Todo } from "Todo";
 import { List } from "semantic-ui-react";
+import { Todo } from "Todo";
 
 const makeTodoClick = (onTodoClick, id) => () => {
     onTodoClick(id);
