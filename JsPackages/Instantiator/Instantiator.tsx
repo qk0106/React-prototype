@@ -6,7 +6,7 @@ let rootInstanceIds = {};
 
 const generateId = () => Math.round(Math.random() * Math.pow(10, 10));
 
-const generateInstanceId = prefix => prefix + "_" + generateId();
+const generateInstanceId = iPrefix => iPrefix + "_" + generateId(); // iPrefix is short for instanceIdPrefix
 
 const registerInstanceId = (instancesProp, instanceId) => {
     if (rootInstanceIds[instancesProp] === undefined) {
@@ -43,7 +43,7 @@ export const generateInstanceComponent = (instancesProp, Component, reducer) => 
         private _reducer = reducer;
         private _instanceProps = {
             instancesProp: instancesProp,
-            instanceId: generateInstanceId(this.props.instanceIdPrefix)
+            instanceId: generateInstanceId(this.props.iPrefix)
         };
         constructor(props) {
             super(props);

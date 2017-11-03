@@ -7,14 +7,14 @@ const AsyncTestPage = () => (
     <div>
         <span>This is Async Page</span>
         <GitInfo
-            instanceIdPrefix="AsyncTestPage"
+            iPrefix="AsyncTestPage"
             gitUrl="https://api.github.com/repos/qk0106/React-prototype"
         />
         <GitInfo
-            instanceIdPrefix="AsyncTestPage"
+            iPrefix="AsyncTestPage"
             gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor"
         />
-        <TodoLister instanceIdPrefix="AsyncTestPage" inputText="This is TodoList in async page" />
+        <TodoLister iPrefix="AsyncTestPage" inputText="This is TodoList in async page" />
     </div>
 );
 
