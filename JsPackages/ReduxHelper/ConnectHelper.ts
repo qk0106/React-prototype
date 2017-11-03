@@ -1,4 +1,4 @@
-import { connect } from "react-redux";
+import { connect } from "react-redux"; // connect redux and react
 
 const getOwnState = (state, { instancesProp, instanceId }) => state[instancesProp][instanceId];
 
