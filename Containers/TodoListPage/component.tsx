@@ -4,7 +4,7 @@ import { TodoLister } from "TodoLister";
 import { registerRoute } from "RouteHelper";
 
 const TodoListPage = () => (
-    <div>
+    <div key="TodoListPage">
         <span>This is Todo List Page</span>
         <TodoLister inputText="This is TodoList 1" />
         <TodoLister inputText="This is TodoList 2" />
