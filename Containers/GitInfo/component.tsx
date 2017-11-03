@@ -1,8 +1,8 @@
 import "./actionHandler";
+import { reducer } from "./reducer";
 import { refreshGitInfo } from "./action"; // To get Action Creators
 import { GitSize } from "GitSize";
 import { generateContainer } from "ReduxHelper";
-import { reducer } from "./reducer";
 import { generateInstanceComponent } from "Instantiator";
 
 const stateProps = (ownState, ownProps) => ({

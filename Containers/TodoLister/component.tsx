@@ -1,8 +1,8 @@
 import * as React from "react";
+import { reducer } from "./reducer";
 import { AddTodo } from "AddTodo";
 import { TodoFooter } from "TodoFooter";
 import { VisibleTodoList } from "VisibleTodoList";
-import { reducer } from "./reducer";
 import { generateInstanceComponent } from "Instantiator";
 
 const _TodoLister = ({ instanceProps, inputText }) => (
