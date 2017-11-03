@@ -45,12 +45,10 @@ export const generateInstanceComponent = (instancesProp, Component, reducer) => 
             instancesProp: instancesProp,
             instanceId: generateInstanceId(this.props.instanceIdPrefix)
         };
-
         constructor(props) {
             super(props);
             registerInstance(this._instanceProps, this._reducer);
         }
-
         render() {
             return <Component instanceProps={this._instanceProps} {...this.props} />;
         }
@@ -59,7 +57,6 @@ export const generateInstanceComponent = (instancesProp, Component, reducer) => 
 
 export const generateInstancesReducer = (instancesProps, instanceReducer) => {
     let instatncesInitState = generateInstatncesInitState(instancesProps);
-
     // return reducer that only updates the state of certain instance
     return (instancesState = instatncesInitState, action) => {
         let mergedInstancesState = Object.assign({}, instatncesInitState, instancesState); // reverse the order will lose the added instance
