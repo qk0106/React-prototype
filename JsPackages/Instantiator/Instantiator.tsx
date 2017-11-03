@@ -7,7 +7,8 @@ let rootInstanceIds = {};
 const generateId = () => Math.round(Math.random() * Math.pow(10, 10));
 
 const generateInstanceId = component => {
-    const parentName = component._reactInternalFiber.return.key;
+    // const parentName = component._reactInternalFiber.return.key; // get direct parent key
+    const parentName = component._reactInternalFiber._debugOwner.child.key; // get top level parent key
     return parentName + "_" + generateId();
 };
 
