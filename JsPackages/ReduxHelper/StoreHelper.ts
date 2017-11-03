@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
-import dynamicMiddlewares from "redux-dynamic-middlewares";
 import { createLogger } from "redux-logger";
+import dynamicMiddlewares from "redux-dynamic-middlewares";
 const loggerMiddleware = createLogger();
 
 let rootStore;
