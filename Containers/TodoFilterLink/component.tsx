@@ -13,4 +13,4 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const TodoFilterLink = generateContainer(stateProps, dispatchProps)(Link);
+export const TodoFilterLink = generateContainer({ stateProps, dispatchProps }, Link);

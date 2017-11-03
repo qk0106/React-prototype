@@ -16,7 +16,8 @@ const generateMapDispatchToProps = dispatchProps => {
     };
 };
 
-export const generateContainer = (stateProps, dispatchProps) => {
+// connect Redux container and React presenter (or container)
+export const generateContainer = ({ stateProps, dispatchProps }, presenter) => {
     const mapStateToProps = generateMapStateToProps(stateProps);
     const mapDispatchToProps = generateMapDispatchToProps(dispatchProps);
     const mergeProps = (stateProps, { dispatch }, ownProps) => {
@@ -25,5 +26,5 @@ export const generateContainer = (stateProps, dispatchProps) => {
             ...mapDispatchToProps(stateProps, dispatch, ownProps)
         };
     };
-    return connect(mapStateToProps, null, mergeProps, { pure: true });
+    return connect(mapStateToProps, null, mergeProps, { pure: true })(presenter);
 };

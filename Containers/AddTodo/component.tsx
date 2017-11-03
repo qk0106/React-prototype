@@ -27,4 +27,4 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const AddTodo = generateContainer(stateProps, dispatchProps)(AddTodoPresenter);
+export const AddTodo = generateContainer({ stateProps, dispatchProps }, AddTodoPresenter);

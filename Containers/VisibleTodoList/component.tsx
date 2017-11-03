@@ -25,4 +25,4 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const VisibleTodoList = generateContainer(stateProps, dispatchProps)(TodoList);
+export const VisibleTodoList = generateContainer({ stateProps, dispatchProps }, TodoList);
