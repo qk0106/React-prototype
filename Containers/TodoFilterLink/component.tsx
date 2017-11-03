@@ -7,7 +7,7 @@ const stateProps = (ownState, ownProps) => ({
     children: ownProps.children
 });
 
-const dispatchProps = (stateProps, ownProps, dispatch, instanceId) => ({
+const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     onClick: () => {
         dispatch(setVisibilityFilter(instanceId, { filter: ownProps.filter }));
     }

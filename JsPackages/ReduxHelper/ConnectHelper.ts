@@ -12,7 +12,7 @@ const generateMapStateToProps = stateProps => {
 const generateMapDispatchToProps = dispatchProps => {
     return (stateProps, dispatch, ownProps) => {
         let { instanceId } = ownProps.instanceProps;
-        return dispatchProps(stateProps, ownProps, dispatch, instanceId);
+        return dispatchProps(dispatch, instanceId, ownProps, stateProps);
     };
 };
 

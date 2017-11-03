@@ -19,7 +19,7 @@ const stateProps = (ownState, ownProps) => ({
     todos: getVisibleTodos(ownState.todos, ownState.visibilityFilter)
 });
 
-const dispatchProps = (stateProps, ownProps, dispatch, instanceId) => ({
+const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     onTodoClick: id => {
         dispatch(toggleTodo(instanceId, { id }));
     }

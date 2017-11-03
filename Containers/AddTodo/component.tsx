@@ -16,7 +16,7 @@ const stateProps = (ownState, ownProps) => ({
     inputText: ownState.inputText !== undefined ? ownState.inputText : ownProps.inputText
 });
 
-const dispatchProps = (stateProps, ownProps, dispatch, instanceId) => ({
+const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     onSubmit: e => {
         e.preventDefault();
         dispatch(addTodo(instanceId, { text: stateProps.inputText }));
