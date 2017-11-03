@@ -1,16 +1,6 @@
-import * as React from "react";
 import { addTodo, changeInputText } from "./action"; // To get Action Creators
+import { AddTodoView } from "AddTodoView";
 import { generateReduxComponent } from "ReduxHelper";
-
-// should move this presenter to Presenters folder
-const AddTodoPresenter = ({ onSubmit, onChange, inputText }) => (
-    <div>
-        <form onSubmit={onSubmit}>
-            <input value={inputText} onChange={onChange} />
-            <button type="submit">Add Todo</button>
-        </form>
-    </div>
-);
 
 const stateProps = (ownState, ownProps) => ({
     inputText: ownState.inputText !== undefined ? ownState.inputText : ownProps.inputText
@@ -27,4 +17,4 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const AddTodo = generateReduxComponent({ stateProps, dispatchProps }, AddTodoPresenter);
+export const AddTodo = generateReduxComponent({ stateProps, dispatchProps }, AddTodoView);
