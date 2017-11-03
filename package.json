@@ -20,7 +20,12 @@
         "type": "git",
         "url": "https://github.com/qk0106/React-prototype"
     },
-    "keywords": ["react", "redux", "typescript", "webpack"],
+    "keywords": [
+        "react",
+        "redux",
+        "typescript",
+        "webpack"
+    ],
     "license": "UNLICENSED",
     "private": true,
     "devDependencies": {
@@ -71,6 +76,7 @@
         "react-router": "^3.0.0",
         "react-router-dom": "^4.2.2",
         "redux": "^3.6.0",
+        "redux-dynamic-middlewares": "^0.2.1",
         "redux-logger": "^3.0.6",
         "serve-favicon": "^2.3.2"
     }

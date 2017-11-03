@@ -1,6 +1,5 @@
 import { REFRESH_GIT_INFO, fetchGitInfo, fetchGitInfoSuccess, fetchGitInfoFailed } from "./action"; // To get Action Creators
-import { registerMiddleware } from "ReduxHelper";
-
+import { addMiddleware } from "redux-dynamic-middlewares";
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);
     if (action.type === REFRESH_GIT_INFO) {
@@ -16,4 +15,4 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     }
 };
 
-registerMiddleware(actionHandlerMiddleware);
+addMiddleware(actionHandlerMiddleware);

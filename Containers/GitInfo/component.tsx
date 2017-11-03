@@ -1,3 +1,4 @@
+import "./actionHandler";
 import { refreshGitInfo } from "./action"; // To get Action Creators
 import { GitSize } from "GitSize";
 import { generateContainer } from "ReduxHelper";
