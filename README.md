@@ -23,11 +23,11 @@ Dylan's React Prototype (Decentralised and Flat Style)
    - Assume every module will be reused in the future.
    - Create a reducer instance whenever a it's component is used.
    - No need to manually maintian an array to manage reused component.
-  - Decentralised Management Style
+ - Decentralised Management Style
    - Management load of route, reducer, middlewares, instance are distributed 
    - to the registrition of the compoenent/module itself.
    - Each module maintain itself for adding and removing, no need to change a centralised place.
-- Flatten Folder Structure
+ - Flatten Folder Structure
    - Assume every module will be reused in the future.
    - Build flat strucure instead of nested.
    - No common or gloabal concept.
