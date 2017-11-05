@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { generateInstancesReducer } from "Instantiator";
+import { generateInstancesReducer } from "InstancesHelper";
 
 let rootReducers = {};
 

@@ -1,4 +1,4 @@
-import { generateInstanceActionCreator } from "Instantiator";
+import { generateInstanceActionCreator } from "ActionCreatorHelper";
 
 // Action Type
 export const SET_VISIBILITY_FILTER: string = "SET_VISIBILITY_FILTER";

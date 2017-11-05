@@ -1,4 +1,4 @@
-import { generateInstanceActionCreator } from "Instantiator";
+import { generateInstanceActionCreator } from "ActionCreatorHelper";
 
 // Action Type
 export const REFRESH_GIT_INFO: string = "REFRESH_GIT_INFO";

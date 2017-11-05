@@ -2,9 +2,9 @@ import "./actionHandler";
 import { reducer } from "./reducer";
 import { refreshGitInfo } from "./action"; // To get Action Creators
 import { GitSize } from "GitSize";
-import { generateReduxComponent } from "ConnectHelper";
-import { generateInstanceComponent } from "Instantiator";
 import { withInitData } from "InitDataWrapper";
+import { generateReduxComponent } from "ConnectHelper";
+import { generateInstanceComponent } from "InstanceWrapper";
 
 const stateProps = (ownState, ownProps) => ({
     refreshCount: ownState.refreshCount !== undefined ? ownState.refreshCount : { count: 0 },

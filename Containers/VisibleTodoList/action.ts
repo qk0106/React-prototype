@@ -1,4 +1,4 @@
-import { generateInstanceActionCreator } from "Instantiator";
+import { generateInstanceActionCreator } from "ActionCreatorHelper";
 
 // Action Type
 export const TOGGLE_TODO: string = "TOGGLE_TODO";
