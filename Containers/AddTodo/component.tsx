@@ -1,5 +1,7 @@
-import { addTodo, changeInputText } from "./action"; // To get Action Creators
+import "./actionHandler";
+import { addTodo, changeInputText, initInputInfo } from "./action"; // To get Action Creators
 import { AddTodoView } from "AddTodoView";
+import { withInitData } from "InitDataWrapper";
 import { generateReduxComponent } from "ConnectHelper";
 
 const stateProps = (ownState, ownProps) => ({
@@ -7,6 +9,13 @@ const stateProps = (ownState, ownProps) => ({
 });
 
 const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
+    init: () => {
+        dispatch(
+            initInputInfo(instanceId, {
+                gitUrl: "https://api.github.com/repos/qk0106/React-prototype"
+            })
+        );
+    },
     onSubmit: e => {
         e.preventDefault();
         dispatch(addTodo(instanceId, { text: stateProps.inputText }));
@@ -17,4 +26,7 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const AddTodo = generateReduxComponent({ stateProps, dispatchProps }, AddTodoView);
+export const AddTodo = generateReduxComponent(
+    { stateProps, dispatchProps },
+    withInitData(AddTodoView)
+);
