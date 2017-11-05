@@ -2,7 +2,7 @@ import * as React from "react";
 import * as iassign from "immutable-assign";
 import { render } from "react-dom";
 import { AppContainer } from "react-hot-loader";
-import { readStore } from "ReduxHelper";
+import { readStore } from "StoreHelper";
 import { collectRoutes } from "RouteHelper";
 import { App } from "./app"; // must isolate App for hot reload
 import "./routesRegistry"; // register must happen before collectRoutes()

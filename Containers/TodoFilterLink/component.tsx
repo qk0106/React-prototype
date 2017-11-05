@@ -1,6 +1,6 @@
 import { setVisibilityFilter } from "./action"; // To get Action Creators
 import { Link } from "Link";
-import { generateReduxComponent } from "ReduxHelper";
+import { generateReduxComponent } from "ConnectHelper";
 
 const stateProps = (ownState, ownProps) => ({
     active: ownProps.filter === ownState.visibilityFilter,

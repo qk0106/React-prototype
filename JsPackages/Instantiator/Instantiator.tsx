@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as iassign from "immutable-assign";
-import { registerReducer, collectReducers, updateStore } from "ReduxHelper";
+import { registerReducer, collectReducers } from "ReducersHelper";
+import { updateStore } from "StoreHelper";
 
 let rootInstanceIds = {};
 

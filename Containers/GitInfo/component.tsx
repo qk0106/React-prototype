@@ -2,7 +2,7 @@ import "./actionHandler";
 import { reducer } from "./reducer";
 import { refreshGitInfo } from "./action"; // To get Action Creators
 import { GitSize } from "GitSize";
-import { generateReduxComponent } from "ReduxHelper";
+import { generateReduxComponent } from "ConnectHelper";
 import { generateInstanceComponent } from "Instantiator";
 import { withInitData } from "InitDataWrapper";
 
