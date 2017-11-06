@@ -1,1 +1,1 @@
-export const generateId = () => Math.round(Math.random() * Math.pow(10, 10));
+export * from "./Src/IdGenerator";
