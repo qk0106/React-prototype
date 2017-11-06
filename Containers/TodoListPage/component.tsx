@@ -6,14 +6,14 @@ import { registerRoute } from "ReactRouteManager";
 const TodoListPage = () => (
     <div>
         <span>This is Todo List Page</span>
-        <TodoLister iPrefix="TodoListPage" inputText="This is TodoList 1" />
-        <TodoLister iPrefix="TodoListPage" inputText="This is TodoList 2" />
+        <TodoLister instanceIdPrefix="TodoListPage" inputText="This is TodoList 1" />
+        <TodoLister instanceIdPrefix="TodoListPage" inputText="This is TodoList 2" />
         <GitInfo
-            iPrefix="TodoListPage"
+            instanceIdPrefix="TodoListPage"
             gitUrl="https://api.github.com/repos/qk0106/React-prototype"
         />
         <GitInfo
-            iPrefix="TodoListPage"
+            instanceIdPrefix="TodoListPage"
             gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor"
         />
     </div>

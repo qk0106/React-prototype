@@ -7,7 +7,7 @@ export const wrapWithInstance = (instancesProp, Component, reducer) => {
         private _reducer = reducer;
         private _instanceProps = {
             instancesProp: instancesProp,
-            instanceId: generateInstanceId(this.props.iPrefix)
+            instanceId: generateInstanceId(this.props.instanceIdPrefix)
         };
         constructor(props) {
             super(props);
