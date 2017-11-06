@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export const withInitData = WrappedComponent => {
+export const wrapWithInit = WrappedComponent => {
     // ...and returns another component...
     return class extends React.Component {
         constructor(props) {

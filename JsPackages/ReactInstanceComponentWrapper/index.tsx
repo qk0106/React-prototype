@@ -2,7 +2,7 @@ import * as React from "react";
 import { generateInstanceId } from "ReactInstanceIdManager";
 import { registerInstance } from "ReactInstancesManager";
 
-export const generateInstanceComponent = (instancesProp, Component, reducer) => {
+export const wrapWithInstance = (instancesProp, Component, reducer) => {
     return class extends React.PureComponent<any> {
         private _reducer = reducer;
         private _instanceProps = {

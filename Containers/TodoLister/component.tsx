@@ -3,7 +3,7 @@ import { reducer } from "./reducer";
 import { AddTodo } from "AddTodo";
 import { TodoFooter } from "TodoFooter";
 import { VisibleTodoList } from "VisibleTodoList";
-import { generateInstanceComponent } from "ReactInstanceWrapper";
+import { wrapWithInstance } from "ReactInstanceComponentWrapper";
 
 const _TodoLister = ({ instanceProps, inputText }) => (
     <div>
@@ -13,4 +13,4 @@ const _TodoLister = ({ instanceProps, inputText }) => (
     </div>
 );
 
-export const TodoLister = generateInstanceComponent("TodoListers", _TodoLister, reducer);
+export const TodoLister = wrapWithInstance("TodoListers", _TodoLister, reducer);
