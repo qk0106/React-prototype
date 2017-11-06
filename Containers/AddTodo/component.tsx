@@ -2,7 +2,7 @@ import "./actionHandler";
 import { addTodo, changeInputText, initInputInfo } from "./action"; // To get Action Creators
 import { AddTodoView } from "AddTodoView";
 import { withInitData } from "InitDataWrapper";
-import { generateReduxComponent } from "ConnectHelper";
+import { generateReduxComponent } from "ReduxConnectHelper";
 
 const stateProps = (ownState, ownProps) => ({
     inputText: ownState.inputText !== undefined ? ownState.inputText : ownProps.inputText

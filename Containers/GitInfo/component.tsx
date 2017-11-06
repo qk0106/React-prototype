@@ -3,7 +3,7 @@ import { reducer } from "./reducer";
 import { refreshGitInfo } from "./action"; // To get Action Creators
 import { GitSize } from "GitSize";
 import { withInitData } from "InitDataWrapper";
-import { generateReduxComponent } from "ConnectHelper";
+import { generateReduxComponent } from "ReduxConnectHelper";
 import { generateInstanceComponent } from "InstanceWrapper";
 
 const stateProps = (ownState, ownProps) => ({
