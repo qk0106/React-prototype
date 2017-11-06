@@ -1,7 +1,7 @@
 import "./actionHandler";
 import { addTodo, changeInputText, initInputInfo } from "./action"; // To get Action Creators
 import { AddTodoView } from "AddTodoView";
-import { withInitData } from "InitDataWrapper";
+import { withInitData } from "ReactInitDataWrapper";
 import { generateReduxComponent } from "ReduxConnectHelper";
 
 const stateProps = (ownState, ownProps) => ({

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { registerRoute } from "RouteHelper";
+import { registerRoute } from "ReactRouteManager";
 
 const HomePage = () => (
     <div>

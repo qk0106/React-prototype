@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { generateInstancesReducer } from "InstancesHelper";
+import { generateInstancesReducer } from "ReactInstancesManager";
 
 let rootReducers = {};
 

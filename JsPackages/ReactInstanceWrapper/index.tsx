@@ -1,6 +1,6 @@
 import * as React from "react";
-import { generateInstanceId } from "InstanceIdHelper";
-import { registerInstance } from "InstancesHelper";
+import { generateInstanceId } from "ReactInstanceIdManager";
+import { registerInstance } from "ReactInstancesManager";
 
 export const generateInstanceComponent = (instancesProp, Component, reducer) => {
     return class extends React.PureComponent<any> {

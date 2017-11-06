@@ -1,7 +1,7 @@
 import * as iassign from "immutable-assign";
-import { updateStore } from "StoreHelper";
-import { registerReducer, collectReducers } from "ReducersHelper";
-import { registerInstanceId, collectInstanceIds } from "InstanceIdHelper";
+import { updateStore } from "ReduxStoreManager";
+import { registerReducer, collectReducers } from "ReduxReducersManager";
+import { registerInstanceId, collectInstanceIds } from "ReactInstanceIdManager";
 
 export const registerInstance = ({ instancesProp, instanceId }, reducer) => {
     registerInstanceId(instancesProp, instanceId);

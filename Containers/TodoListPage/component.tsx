@@ -1,7 +1,7 @@
 import * as React from "react";
 import { GitInfo } from "GitInfo";
 import { TodoLister } from "TodoLister";
-import { registerRoute } from "RouteHelper";
+import { registerRoute } from "ReactRouteManager";
 
 const TodoListPage = () => (
     <div>
