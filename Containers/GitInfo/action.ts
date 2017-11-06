@@ -1,4 +1,4 @@
-import { generateInstanceActionCreator } from "ActionCreatorHelper";
+import { generateInstanceActionCreator } from "ReduxActionCreatorHelper";
 
 // Action Type
 export const REFRESH_GIT_INFO: string = "REFRESH_GIT_INFO";

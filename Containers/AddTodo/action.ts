@@ -1,4 +1,4 @@
-import { generateInstanceActionCreator } from "ActionCreatorHelper";
+import { generateInstanceActionCreator } from "ReduxActionCreatorHelper";
 
 // Action Type
 export const ADD_TODO: string = "ADD_TODO";
