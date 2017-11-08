@@ -2,17 +2,17 @@
 Dylan's React Prototype (Decentralised and Flat Style)
 
 ## Libraries
- - Node (yarn recommended)
- - Webpack
  - React
  - Redux
  - TypeScript
+ - Webpack
  - LESS
  - CSS Module
  - Semantic UI
- - Express (simple server)
  - Hot Reload (webpack-hot-middleware & react-hot-loader)
  - immutable-assign
+ - Node
+ - Express
 
 ## Features
  - Modularize Everything
@@ -36,6 +36,9 @@ Dylan's React Prototype (Decentralised and Flat Style)
    - Purify containers (only state and dispatch mapping) and presenters (only html and style),
    - so that containers can be fully reused with React Native.
    - Satisfy the OCD. XD
+ - Async Handling
+   - Async action is handled by action handler middlewares.
+   - Async props is handled by init data wrapper component.
 
 ## Future Improvements
  - Complete TS Typings
@@ -48,6 +51,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Producion config and minify & uglify
  - Yaml
  - Cordova
+ - Recompose
 
 ## Original Boilerplate:
  - Vortigern: https://github.com/barbar/vortigern
