@@ -11,4 +11,12 @@ export const registerInstanceId = (instancesProp, instanceId) => {
     rootInstanceIds[instancesProp].push(instanceId);
 };
 
+export const unregisterInstanceId = (instancesProp, instanceId) => {
+    let array = rootInstanceIds[instancesProp];
+    let index = array.indexOf(instanceId);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+};
+
 export const collectInstanceIds = instancesProp => rootInstanceIds[instancesProp];

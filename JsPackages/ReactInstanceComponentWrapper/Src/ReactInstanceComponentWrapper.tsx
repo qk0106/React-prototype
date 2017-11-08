@@ -1,6 +1,6 @@
 import * as React from "react";
 import { generateInstanceId } from "ReactInstanceIdManager";
-import { registerInstance } from "ReactInstancesManager";
+import { registerInstance, unregisterInstance } from "ReactInstancesManager";
 
 export const wrapWithInstance = (instancesProp, Component, reducer) => {
     return class extends React.PureComponent<any> {
@@ -11,7 +11,12 @@ export const wrapWithInstance = (instancesProp, Component, reducer) => {
         };
         constructor(props) {
             super(props);
+        }
+        componentWillMount() {
             registerInstance(this._instanceProps, this._reducer);
+        }
+        componentWillUnmount() {
+            unregisterInstance(this._instanceProps, this._reducer);
         }
         render() {
             return <Component instanceProps={this._instanceProps} {...this.props} />;
