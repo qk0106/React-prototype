@@ -40,7 +40,7 @@ const getUpdatedInstancesReducer = (instancesProp, instanceReducer) => {
     };
 };
 
-export const updateReducers = (instancesProp, instanceReducer) => {
+export const updateInstancesReducer = (instancesProp, instanceReducer) => {
     const instancesReducer = getUpdatedInstancesReducer(instancesProp, instanceReducer);
     rootReducers[instancesProp] = instancesReducer;
 };

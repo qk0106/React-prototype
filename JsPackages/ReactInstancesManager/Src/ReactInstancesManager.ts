@@ -1,9 +1,9 @@
 import { updateStore } from "ReduxStoreManager";
-import { updateReducers, collectReducers } from "ReduxReducersManager";
+import { updateInstancesReducer, collectReducers } from "ReduxReducersManager";
 import { registerInstanceId, unregisterInstanceId } from "ReactInstanceIdManager";
 
 const updateRedux = (instancesProp, reducer) => {
-    updateReducers(instancesProp, reducer);
+    updateInstancesReducer(instancesProp, reducer);
     updateStore(collectReducers());
 };
 
