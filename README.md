@@ -40,12 +40,11 @@ Dylan's React Prototype (Decentralised and Flat Style)
 ## Future Improvements
  - Complete TS Typings
  - Dependecy Injection
- - Async Props (react connect ?)
  - React Helmet for SEO
  - Server side rendering for performance
  - Code spliting for performance
  - Request ID and global error handling
- - Karma and unit testing
+ - Jest and unit testing
  - Producion config and minify & uglify
  - Yaml
  - Cordova
