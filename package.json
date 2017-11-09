@@ -6,7 +6,9 @@
     "scripts": {
         "build-desktop": "rimraf dist && webpack --config Containers/DesktopApp/webpack.config.dev",
         "prestart": "npm run build-desktop",
-        "start": "node server.js"
+        "start": "node server.js",
+        "pretest": "tsc -w -p ./tsconfig.json",
+        "test": "jest"
     },
     "author": "Dylan Qin <heisqk@gmail.com>",
     "contributors": [

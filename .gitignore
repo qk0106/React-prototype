@@ -4,3 +4,6 @@ dist/
 node_modules/
 package-lock.json
 yarn.lock
+Containers/**/*.js
+Presenters/**/*.js
+JsPackages/**/*.js
