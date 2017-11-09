@@ -5,6 +5,7 @@ import { AppContainer } from "react-hot-loader";
 import { readStore } from "ReduxStoreManager";
 import { collectRoutes } from "ReactRouteManager";
 import { App } from "./app"; // must isolate App for hot reload
+import "semantic-ui-css/semantic.min.css";
 import "./routesRegistry"; // register must happen before collectRoutes()
 iassign.setOption({ freeze: true }); // throw immutable error
 
