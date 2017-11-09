@@ -7,7 +7,7 @@
         "build-desktop": "rimraf dist && webpack --config Containers/DesktopApp/webpack.config.dev",
         "prestart": "npm run build-desktop",
         "start": "node server.js",
-        "pretest": "tsc -w -p ./tsconfig.json",
+        "pretest": "tsc -p ./tsconfig.json",
         "test": "jest"
     },
     "author": "Dylan Qin <heisqk@gmail.com>",
@@ -48,6 +48,7 @@
         "file-loader": "^1.1.5",
         "html-webpack-plugin": "^2.30.1",
         "immutable-assign": "^2.0.1",
+        "jest": "^21.2.1",
         "less": "^2.3.1",
         "less-loader": "^4.0.5",
         "postcss-loader": "^2.0.7",
