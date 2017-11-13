@@ -4,6 +4,7 @@ module.exports = {
     coverageDirectory: "./outputs/coverage",
     verbose: true,
     testResultsProcessor: "./node_modules/jest-html-reporter",
+    setupFiles: ["<rootDir>/__mocks__/shim.js", "<rootDir>/__mocks__/setup.js"],
     moduleFileExtensions: ["js", "jsx", "json", "ts", "tsx", "less"],
     moduleDirectories: ["node_modules", "JsPackages", "Containers", "Presenters"],
     moduleNameMapper: {
