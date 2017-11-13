@@ -1,0 +1,28 @@
+{
+    "files.exclude": {
+        "**/*.js.map": true,
+        "**/*.js": { "when": "$(basename).ts" },
+        "**/**.js": { "when": "$(basename).tsx" },
+        "**/*.css": {
+            "when": "$(basename).less"
+        }
+    },
+    "editor.formatOnSave": true,
+    "editor.renderWhitespace": "all",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "window.zoomLevel": 1,
+    "files.autoSave": "off",
+    "workbench.colorTheme": "Atom One Dark",
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "babel": true
+    },
+    "workbench.sideBar.location": "left",
+    "workbench.statusBar.visible": true,
+    "workbench.activityBar.visible": true,
+    "prettier.printWidth": 100,
+    "prettier.tabWidth": 4
+}
