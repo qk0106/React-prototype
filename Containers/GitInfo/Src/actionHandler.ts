@@ -7,8 +7,7 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
         let instanceId = action.instanceId;
         dispatch(fetchGitInfo(instanceId));
         try {
-            let res = await doFetch(action.gitUrl);
-            let data = await res.json();
+            let data = await doFetch(action.gitUrl);
             dispatch(fetchGitInfoSuccess(instanceId, { data }));
         } catch (error) {
             dispatch(fetchGitInfoFailed(instanceId, { error }));

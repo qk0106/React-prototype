@@ -1,4 +1,6 @@
 export const doFetch = async url => {
     // console.log("fetching");
-    return await fetch(url);
+    let res = await fetch(url);
+    let data = await res.json();
+    return data;
 };

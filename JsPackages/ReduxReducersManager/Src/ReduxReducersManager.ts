@@ -4,19 +4,19 @@ import { collectInstanceIds } from "ReactInstanceIdManager";
 
 let rootReducers = {};
 
-const getUpdatedInstatncesInitState = instancesProp => {
-    let instatncesInitState = {};
+const getUpdatedInstancesInitState = instancesProp => {
+    let instancesInitState = {};
     collectInstanceIds(instancesProp).forEach(instanceId => {
-        instatncesInitState[instanceId] = {};
+        instancesInitState[instanceId] = {};
     });
-    return instatncesInitState;
+    return instancesInitState;
 };
 
-const getMergedInstancesState = (instatncesInitState, instancesState) => {
+const getMergedInstancesState = (instancesInitState, instancesState) => {
     let mergedInstancesState = {};
-    for (let prop in instatncesInitState) {
-        if (instatncesInitState.hasOwnProperty(prop)) {
-            mergedInstancesState[prop] = instatncesInitState[prop];
+    for (let prop in instancesInitState) {
+        if (instancesInitState.hasOwnProperty(prop)) {
+            mergedInstancesState[prop] = instancesInitState[prop];
             if (instancesState.hasOwnProperty(prop))
                 mergedInstancesState[prop] = instancesState[prop];
         }
@@ -25,10 +25,10 @@ const getMergedInstancesState = (instatncesInitState, instancesState) => {
 };
 
 const getUpdatedInstancesReducer = (instancesProp, instanceReducer) => {
-    let instatncesInitState = getUpdatedInstatncesInitState(instancesProp);
+    let instancesInitState = getUpdatedInstancesInitState(instancesProp);
     // return reducer that only updates the state of certain instance
-    return (instancesState = instatncesInitState, action) => {
-        let mergedInstancesState = getMergedInstancesState(instatncesInitState, instancesState);
+    return (instancesState = instancesInitState, action) => {
+        let mergedInstancesState = getMergedInstancesState(instancesInitState, instancesState);
         let actionInstanceId = action.instanceId;
         if (!(actionInstanceId in mergedInstancesState)) return mergedInstancesState;
         return iassign(mergedInstancesState, obj => {

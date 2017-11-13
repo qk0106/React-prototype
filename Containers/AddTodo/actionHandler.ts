@@ -6,8 +6,7 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     if (action.type === INIT_INPUT_INFO) {
         let instanceId = action.instanceId;
         try {
-            let res = await doFetch(action.gitUrl);
-            let data = await res.json();
+            let data = await doFetch(action.gitUrl);
             let sizeInfo = data.size;
             dispatch(changeInputText(instanceId, { text: sizeInfo }));
         } catch (error) {
