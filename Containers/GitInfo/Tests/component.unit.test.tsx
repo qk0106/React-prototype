@@ -9,8 +9,11 @@ const gitInfo = (
     />
 );
 
-describe("A suite", function() {
+describe("GitInfo Suite", function() {
     it("should render without throwing an error", function() {
+        console.log("======================");
+        console.log(shallow(gitInfo));
+        console.log("======================");
         expect(shallow(gitInfo).length).toBe(1);
     });
 });
