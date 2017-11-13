@@ -1,4 +1,3 @@
-import "./actionHandler";
 import { reducer } from "./reducer";
 import { refreshGitInfo } from "./action"; // To get Action Creators
 import { GitSize } from "GitSize";

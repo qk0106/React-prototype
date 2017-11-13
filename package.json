@@ -22,10 +22,16 @@
         "type": "git",
         "url": "https://github.com/qk0106/React-prototype"
     },
-    "keywords": ["react", "redux", "typescript", "webpack"],
+    "keywords": [
+        "react",
+        "redux",
+        "typescript",
+        "webpack"
+    ],
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {
+        "@types/jest": "^21.1.4",
         "@types/node": "^8.0.50",
         "@types/react": "^16.0.21",
         "@types/react-css-modules": "^4.2.1",
@@ -40,11 +46,12 @@
         "@types/uglify-js": "^2.6.28",
         "@types/webpack": "^3.0.13",
         "@types/webpack-env": "^1.13.2",
-        "@types/jest": "^21.1.4",
         "awesome-typescript-loader": "^3.0.0-beta.18",
         "chalk": "^2.1.0",
         "compression": "^1.6.2",
         "css-loader": "^0.28.7",
+        "enzyme": "^3.1.1",
+        "enzyme-adapter-react-16": "^1.0.4",
         "express": "^4.14.0",
         "file-loader": "^1.1.5",
         "html-webpack-plugin": "^2.30.1",

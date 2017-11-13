@@ -1,4 +1,3 @@
-import "./actionHandler";
 import { addTodo, changeInputText, initInputInfo } from "./action"; // To get Action Creators
 import { AddTodoView } from "AddTodoView";
 import { wrapWithInit } from "ReactInitComponentWrapper";
