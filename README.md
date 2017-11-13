@@ -13,6 +13,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - immutable-assign
  - Node
  - Express
+ - Jest (Unit Test)
 
 ## Features
  - Modularize Everything
@@ -47,7 +48,6 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - Server side rendering for performance
  - Code spliting for performance
  - Request ID and global error handling
- - Jest and unit testing
  - Producion config and minify & uglify
  - Yaml
  - Cordova
