@@ -4,9 +4,8 @@ import { Provider } from "react-redux";
 import { readStore } from "ReduxStoreManager";
 import { GitInfor } from "../Src/component";
 import { GitInfo } from "GitInfo";
-import { GitSize } from "GitSize";
 
-describe(">>>GitInfo Unit Testing", () => {
+describe(">>>GitInfor Unit Testing", () => {
     let store, wrapper;
 
     beforeEach(() => {
@@ -29,13 +28,13 @@ describe(">>>GitInfo Unit Testing", () => {
         expect(wrapper.find(GitInfo).length).toEqual(1);
     });
 
-    it("+++ render 1 GitSize", () => {
-        expect(wrapper.find(GitSize).length).toEqual(1);
+    it("+++ check instanceProps", () => {
+        expect(wrapper.find(GitInfo).prop("instanceProps").instancesProp).toEqual("GitInfors");
     });
 
-    // it("+++ check Prop matches with initialState", () => {
-    //     expect(wrapper.find(GitInfo).prop("output")).toEqual(initialState.output);
-    // });
+    it("+++ check instanceId", () => {
+        expect(wrapper.find(GitInfo).prop("instanceProps").instanceId).toMatch(/UniTest_/);
+    });
 
     // it("+++ check action on dispatching ", () => {
     //     let action;
