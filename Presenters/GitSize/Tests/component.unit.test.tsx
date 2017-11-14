@@ -2,14 +2,19 @@ import * as React from "react";
 import { shallow } from "enzyme";
 import { GitSize } from "../Src/component";
 
-const mockFn = jest.fn();
-const gitSize = <GitSize gitSize={0} refreshCount={0} onClick={mockFn} />;
+describe(">>>GitSize Unit Testing", () => {
+    let wrapper, mockFn;
 
-describe("GitSize Suite", function() {
-    it("should render without throwing an error", function() {
-        console.log("======================");
-        console.log(shallow(gitSize));
-        console.log("======================");
-        expect(shallow(gitSize).length).toBe(1);
+    beforeEach(() => {
+        mockFn = jest.fn();
+        wrapper = shallow(<GitSize gitSize={0} refreshCount={0} onClick={mockFn} />);
+    });
+
+    it("+++ render 2 p tags", () => {
+        expect(wrapper.find("p").length).toEqual(2);
+    });
+
+    it("+++ render 1 button tag", () => {
+        expect(wrapper.find("button").length).toEqual(1);
     });
 });
