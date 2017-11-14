@@ -1,7 +1,7 @@
-import { addTodo, changeInputText, initInputInfo } from "./action"; // To get Action Creators
-import { AddTodoView } from "AddTodoView";
 import { wrapWithInit } from "ReactInitComponentWrapper";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
+import { addTodo, changeInputText, initInputInfo } from "./action"; // To get Action Creators
+import { AddTodoView } from "AddTodoView";
 
 const stateProps = (ownState, ownProps) => ({
     inputText: ownState.inputText !== undefined ? ownState.inputText : ownProps.inputText

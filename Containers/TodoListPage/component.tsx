@@ -1,5 +1,5 @@
 import * as React from "react";
-import { GitInfo } from "GitInfo";
+import { GitInfor } from "GitInfor";
 import { TodoLister } from "TodoLister";
 import { registerRoute } from "ReactRouteManager";
 
@@ -8,11 +8,11 @@ const TodoListPage = () => (
         <span>This is Todo List Page</span>
         <TodoLister instanceIdPrefix="TodoListPage" inputText="This is TodoList 1" />
         <TodoLister instanceIdPrefix="TodoListPage" inputText="This is TodoList 2" />
-        <GitInfo
+        <GitInfor
             instanceIdPrefix="TodoListPage"
             gitUrl="https://api.github.com/repos/qk0106/React-prototype"
         />
-        <GitInfo
+        <GitInfor
             instanceIdPrefix="TodoListPage"
             gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor"
         />

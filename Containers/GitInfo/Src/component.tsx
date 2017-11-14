@@ -1,9 +1,7 @@
-import { reducer } from "./reducer";
-import { refreshGitInfo } from "./action"; // To get Action Creators
-import { GitSize } from "GitSize";
 import { wrapWithInit } from "ReactInitComponentWrapper";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
-import { wrapWithInstance } from "ReactInstanceComponentWrapper";
+import { refreshGitInfo } from "./action";
+import { GitSize } from "GitSize";
 
 const stateProps = (ownState, ownProps) => ({
     refreshCount: ownState.refreshCount !== undefined ? ownState.refreshCount : { count: 0 },
@@ -20,6 +18,4 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-const _GitInfo = wrapWithConnect({ stateProps, dispatchProps }, wrapWithInit(GitSize));
-
-export const GitInfo = wrapWithInstance("GitInfos", _GitInfo, reducer);
+export const GitInfo = wrapWithConnect({ stateProps, dispatchProps }, wrapWithInit(GitSize));
