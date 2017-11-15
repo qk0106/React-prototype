@@ -1,6 +1,6 @@
 import * as React from "react";
 import { shallow } from "enzyme";
-import { GitSize } from "../Src/component";
+import { GitSize } from "GitSize";
 
 describe(">>>GitSize Unit Testing", () => {
     let wrapper, mockFn;
@@ -10,11 +10,11 @@ describe(">>>GitSize Unit Testing", () => {
         wrapper = shallow(<GitSize gitSize={0} refreshCount={0} onClick={mockFn} />);
     });
 
-    it("+++ render 2 p tags", () => {
+    it("+++ check render 2 p tags", () => {
         expect(wrapper.find("p").length).toEqual(2);
     });
 
-    it("+++ render 1 button tag", () => {
+    it("+++ check render 1 button tag", () => {
         expect(wrapper.find("button").length).toEqual(1);
     });
 });

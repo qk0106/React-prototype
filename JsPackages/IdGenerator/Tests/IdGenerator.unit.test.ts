@@ -1,4 +1,4 @@
-import { generateId } from "../Src/IdGenerator";
+import { generateId } from "IdGenerator";
 
 test("test generateId", () => {
     expect(generateId()).toBeGreaterThan(0);
