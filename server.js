@@ -5,7 +5,7 @@ const favicon = require("serve-favicon");
 const webpack = require("webpack");
 const compression = require("compression");
 const serverConfig = require("./server.config");
-const webpackConfig = require("./Containers/DesktopApp/webpack.config.dev");
+const webpackConfig = require("./Components/DesktopApp/webpack.config.dev");
 const webpackCompiler = webpack(webpackConfig);
 
 const app = express();

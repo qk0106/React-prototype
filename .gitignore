@@ -5,6 +5,5 @@ outputs/
 node_modules/
 package-lock.json
 yarn.lock
-Containers/**/*.js
-Presenters/**/*.js
+Components/**/*.js
 JsPackages/**/*.js

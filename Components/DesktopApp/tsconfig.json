@@ -2,7 +2,7 @@
     "compilerOptions": {
         "baseUrl": "../../",
         "paths": {
-            "*": ["*", "Containers/*", "Presenters/*", "JsPackages/*"]
+            "*": ["*", "Components/*", "JsPackages/*"]
         },
         "target": "es5",
         "module": "commonjs", // target === "ES3" or "ES5" ? "CommonJS" : "ES6"
