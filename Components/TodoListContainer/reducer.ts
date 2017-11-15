@@ -1,7 +1,7 @@
 import * as iassign from "immutable-assign";
-import { ADD_TODO, CHANGE_INPUT_TEXT } from "AddTodo";
-import { TOGGLE_TODO } from "VisibleTodoList";
-import { SET_VISIBILITY_FILTER } from "TodoFilterLink"; // To get Action Types
+import { ADD_TODO, CHANGE_INPUT_TEXT } from "AddTodoContainer";
+import { TOGGLE_TODO } from "VisibleTodoListContainer";
+import { SET_VISIBILITY_FILTER } from "TodoFilterLinkContainer"; // To get Action Types
 import { combineReducers } from "redux";
 
 const inputText = (inputText = "", action) => {

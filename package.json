@@ -4,7 +4,7 @@
     "description": "Dylan's React Prototype",
     "main": "server.js",
     "scripts": {
-        "build-desktop": "rimraf dist && webpack --config Containers/DesktopApp/webpack.config.dev",
+        "build-desktop": "rimraf dist && webpack --config Components/DesktopApp/webpack.config.dev",
         "prestart": "npm run build-desktop",
         "start": "node server.js",
         "pretest": "tsc -p ./tsconfig.json",
@@ -22,12 +22,7 @@
         "type": "git",
         "url": "https://github.com/qk0106/React-prototype"
     },
-    "keywords": [
-        "react",
-        "redux",
-        "typescript",
-        "webpack"
-    ],
+    "keywords": ["react", "redux", "typescript", "webpack"],
     "license": "UNLICENSED",
     "private": true,
     "dependencies": {

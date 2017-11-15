@@ -7,7 +7,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
 
-const appDirPath = "./Containers/DesktopApp/";
+const appDirPath = "./Components/DesktopApp/";
 const getAppFilePath = fileName => appDirPath + fileName;
 
 module.exports = {
@@ -34,7 +34,7 @@ module.exports = {
     // Currently we need to add '.ts' to the resolve.extensions array.
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"],
-        modules: [path.resolve(__dirname), "node_modules", "JsPackages", "Containers", "Presenters"]
+        modules: [path.resolve(__dirname), "node_modules", "JsPackages", "Components"]
     },
 
     // Add the loader for .ts files.
@@ -47,11 +47,7 @@ module.exports = {
             // },
             {
                 test: /\.tsx|ts?$/,
-                include: [
-                    path.resolve("./JsPackages"),
-                    path.resolve("./Containers"),
-                    path.resolve("./Presenters")
-                ],
+                include: [path.resolve("./JsPackages"), path.resolve("./Components")],
                 use: [
                     {
                         loader: "react-hot-loader/webpack"
@@ -66,11 +62,7 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                include: [
-                    path.resolve("./JsPackages"),
-                    path.resolve("./Containers"),
-                    path.resolve("./Presenters")
-                ],
+                include: [path.resolve("./JsPackages"), path.resolve("./Components")],
                 use: [
                     {
                         loader: "style-loader" // creates style nodes from JS strings

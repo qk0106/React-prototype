@@ -1,12 +1,12 @@
 import * as React from "react";
 import { reducer } from "./reducer";
 import { wrapWithInstance } from "ReactInstanceComponentWrapper";
-import { GitInfo } from "GitInfo";
+import { GitInfoSubContainer } from "GitInfoSubContainer";
 
-const _GitInfor = ({ instanceProps, gitUrl }) => (
+const GitInfo = ({ instanceProps, gitUrl }) => (
     <div>
-        <GitInfo instanceProps={instanceProps} gitUrl={gitUrl} />
+        <GitInfoSubContainer instanceProps={instanceProps} gitUrl={gitUrl} />
     </div>
 );
 
-export const GitInfor = wrapWithInstance("GitInfors", _GitInfor, reducer);
+export const GitInfoContainer = wrapWithInstance("GitInfoContainers", GitInfo, reducer);

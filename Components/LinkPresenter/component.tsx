@@ -9,7 +9,7 @@ interface ILinkProps {
     onClick: (...args: any[]) => void;
 }
 
-const _Link: React.SFC<ILinkProps> = ({ active, children, onClick }) => {
+const _LinkPresenter: React.SFC<ILinkProps> = ({ active, children, onClick }) => {
     if (active) {
         return <span>{children}</span>;
     }
@@ -27,4 +27,4 @@ const _Link: React.SFC<ILinkProps> = ({ active, children, onClick }) => {
     );
 };
 
-export const Link = CSSModules(_Link, style); // modulise style with component
+export const LinkPresenter = CSSModules(_LinkPresenter, style); // modulise style with component

@@ -1,16 +1,16 @@
 import * as React from "react";
 import { reducer } from "./reducer";
-import { AddTodo } from "AddTodo";
-import { TodoFooter } from "TodoFooter";
-import { VisibleTodoList } from "VisibleTodoList";
+import { AddTodoContainer } from "AddTodoContainer";
+import { TodoFooterContainer } from "TodoFooterContainer";
+import { VisibleTodoListContainer } from "VisibleTodoListContainer";
 import { wrapWithInstance } from "ReactInstanceComponentWrapper";
 
-const _TodoLister = ({ instanceProps, inputText }) => (
+const TodoList = ({ instanceProps, inputText }) => (
     <div>
-        <AddTodo instanceProps={instanceProps} inputText={inputText} />
-        <VisibleTodoList instanceProps={instanceProps} />
-        <TodoFooter instanceProps={instanceProps} />
+        <AddTodoContainer instanceProps={instanceProps} inputText={inputText} />
+        <VisibleTodoListContainer instanceProps={instanceProps} />
+        <TodoFooterContainer instanceProps={instanceProps} />
     </div>
 );
 
-export const TodoLister = wrapWithInstance("TodoListers", _TodoLister, reducer);
+export const TodoListContainer = wrapWithInstance("TodoListContainers", TodoList, reducer);

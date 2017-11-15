@@ -1,4 +1,4 @@
 // register routes to root
-import "HomePage";
-import "AsyncTestPage";
-import "TodoListPage";
+import "HomePageContainer";
+import "AsyncTestPageContainer";
+import "TodoListPageContainer";

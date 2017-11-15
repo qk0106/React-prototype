@@ -1,20 +1,23 @@
 import * as React from "react";
-import { GitInfor } from "GitInfor";
-import { TodoLister } from "TodoLister";
+import { GitInfoContainer } from "GitInfoContainer";
+import { TodoListContainer } from "TodoListContainer";
 import { registerRoute } from "ReactRouteManager";
 
 const AsyncTestPage = () => (
     <div>
         <span>This is Async Page</span>
-        <GitInfor
+        <GitInfoContainer
             instanceIdPrefix="AsyncTestPage"
             gitUrl="https://api.github.com/repos/qk0106/React-prototype"
         />
-        <GitInfor
+        <GitInfoContainer
             instanceIdPrefix="AsyncTestPage"
             gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor"
         />
-        <TodoLister instanceIdPrefix="AsyncTestPage" inputText="This is TodoList in async page" />
+        <TodoListContainer
+            instanceIdPrefix="AsyncTestPage"
+            inputText="This is TodoList in async page"
+        />
     </div>
 );
 

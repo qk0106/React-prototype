@@ -1,19 +1,19 @@
-import { TodoFilterLink } from "TodoFilterLink";
+import { TodoFilterLinkContainer } from "TodoFilterLinkContainer";
 import * as React from "react";
 
-export const TodoFooter: React.SFC<any> = ({ instanceProps }) => (
+export const TodoFooterContainer: React.SFC<any> = ({ instanceProps }) => (
     <p>
         Show:{" "}
-        <TodoFilterLink instanceProps={instanceProps} filter="SHOW_ALL">
+        <TodoFilterLinkContainer instanceProps={instanceProps} filter="SHOW_ALL">
             All
-        </TodoFilterLink>
+        </TodoFilterLinkContainer>
         {", "}
-        <TodoFilterLink instanceProps={instanceProps} filter="SHOW_ACTIVE">
+        <TodoFilterLinkContainer instanceProps={instanceProps} filter="SHOW_ACTIVE">
             Active
-        </TodoFilterLink>
+        </TodoFilterLinkContainer>
         {", "}
-        <TodoFilterLink instanceProps={instanceProps} filter="SHOW_COMPLETED">
+        <TodoFilterLinkContainer instanceProps={instanceProps} filter="SHOW_COMPLETED">
             Completed
-        </TodoFilterLink>
+        </TodoFilterLinkContainer>
     </p>
 );

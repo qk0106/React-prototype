@@ -1,7 +1,7 @@
 import { wrapWithInit } from "ReactInitComponentWrapper";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
 import { addTodo, changeInputText, initInputInfo } from "./action"; // To get Action Creators
-import { AddTodoView } from "AddTodoView";
+import { AddTodoPresenter } from "AddTodoPresenter";
 
 const stateProps = (ownState, ownProps) => ({
     inputText: ownState.inputText !== undefined ? ownState.inputText : ownProps.inputText
@@ -25,4 +25,8 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const AddTodo = wrapWithConnect({ stateProps, dispatchProps }, wrapWithInit(AddTodoView));
+export const AddTodoContainer = wrapWithConnect(
+    stateProps,
+    dispatchProps,
+    wrapWithInit(AddTodoPresenter)
+);

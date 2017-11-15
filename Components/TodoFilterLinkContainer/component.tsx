@@ -1,5 +1,5 @@
 import { setVisibilityFilter } from "./action"; // To get Action Creators
-import { Link } from "Link";
+import { LinkPresenter } from "LinkPresenter";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
 
 const stateProps = (ownState, ownProps) => ({
@@ -13,4 +13,4 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const TodoFilterLink = wrapWithConnect({ stateProps, dispatchProps }, Link);
+export const TodoFilterLinkContainer = wrapWithConnect(stateProps, dispatchProps, LinkPresenter);

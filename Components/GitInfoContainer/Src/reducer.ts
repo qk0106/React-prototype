@@ -4,7 +4,7 @@ import {
     FETCH_GIT_INFO,
     FETCH_GIT_INFO_SUCCESS,
     FETCH_GIT_INFO_FAILED
-} from "GitInfo"; // To get Action Types
+} from "GitInfoSubContainer"; // To get Action Types
 import { combineReducers } from "redux";
 
 const refreshCount = (refreshCount = { count: 0 }, action) => {

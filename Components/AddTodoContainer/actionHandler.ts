@@ -1,6 +1,6 @@
 import { doFetch } from "FetchHelper";
 import { addMiddleware } from "redux-dynamic-middlewares";
-import { INIT_INPUT_INFO, changeInputText } from "AddTodo";
+import { INIT_INPUT_INFO, changeInputText } from "./action";
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);
     if (action.type === INIT_INPUT_INFO) {

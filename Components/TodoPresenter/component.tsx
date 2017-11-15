@@ -3,7 +3,7 @@ import * as React from "react";
 import * as CSSModules from "react-css-modules";
 import { List } from "semantic-ui-react";
 
-const _Todo = ({ onClick, completed, text }) => (
+const _TodoPresenter = ({ onClick, completed, text }) => (
     <List.Item
         onClick={onClick}
         style={{
@@ -15,4 +15,4 @@ const _Todo = ({ onClick, completed, text }) => (
     </List.Item>
 );
 
-export const Todo = CSSModules(_Todo, style); // modulise style with component
+export const TodoPresenter = CSSModules(_TodoPresenter, style); // modulise style with component

@@ -1,5 +1,5 @@
 import { toggleTodo } from "./action"; // To get Action Creators
-import { TodoList } from "TodoList";
+import { TodoListPresenter } from "TodoListPresenter";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
 
 const getVisibleTodos = (todos, filter) => {
@@ -25,4 +25,8 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const VisibleTodoList = wrapWithConnect({ stateProps, dispatchProps }, TodoList);
+export const VisibleTodoListContainer = wrapWithConnect(
+    stateProps,
+    dispatchProps,
+    TodoListPresenter
+);
