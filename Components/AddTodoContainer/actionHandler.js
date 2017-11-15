@@ -38,7 +38,7 @@ var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var FetchHelper_1 = require("FetchHelper");
 var redux_dynamic_middlewares_1 = require("redux-dynamic-middlewares");
-var AddTodo_1 = require("AddTodo");
+var action_1 = require("./action");
 var actionHandlerMiddleware = function (_a) {
     var dispatch = _a.dispatch;
     return function (next) { return function (action) { return __awaiter(_this, void 0, void 0, function () {
@@ -47,7 +47,7 @@ var actionHandlerMiddleware = function (_a) {
             switch (_a.label) {
                 case 0:
                     next(action);
-                    if (!(action.type === AddTodo_1.INIT_INPUT_INFO)) return [3 /*break*/, 4];
+                    if (!(action.type === action_1.INIT_INPUT_INFO)) return [3 /*break*/, 4];
                     instanceId = action.instanceId;
                     _a.label = 1;
                 case 1:
@@ -56,12 +56,12 @@ var actionHandlerMiddleware = function (_a) {
                 case 2:
                     data = _a.sent();
                     sizeInfo = data.size;
-                    dispatch(AddTodo_1.changeInputText(instanceId, { text: sizeInfo }));
+                    dispatch(action_1.changeInputText(instanceId, { text: sizeInfo }));
                     return [3 /*break*/, 4];
                 case 3:
                     error_1 = _a.sent();
                     errorMessage = "Error";
-                    dispatch(AddTodo_1.changeInputText(instanceId, { text: errorMessage }));
+                    dispatch(action_1.changeInputText(instanceId, { text: errorMessage }));
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
             }

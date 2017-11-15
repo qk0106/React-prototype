@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var action_1 = require("./action"); // To get Action Creators
-var TodoList_1 = require("TodoList");
+var TodoListPresenter_1 = require("TodoListPresenter");
 var ReduxConnectComponentWrapper_1 = require("ReduxConnectComponentWrapper");
 var getVisibleTodos = function (todos, filter) {
     switch (filter) {
@@ -23,4 +23,4 @@ var dispatchProps = function (dispatch, instanceId, ownProps, stateProps) { retu
         dispatch(action_1.toggleTodo(instanceId, { id: id }));
     }
 }); };
-exports.VisibleTodoList = ReduxConnectComponentWrapper_1.wrapWithConnect({ stateProps: stateProps, dispatchProps: dispatchProps }, TodoList_1.TodoList);
+exports.VisibleTodoListContainer = ReduxConnectComponentWrapper_1.wrapWithConnect(stateProps, dispatchProps, TodoListPresenter_1.TodoListPresenter);

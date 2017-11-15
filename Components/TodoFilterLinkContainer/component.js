@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var action_1 = require("./action"); // To get Action Creators
-var Link_1 = require("Link");
+var LinkPresenter_1 = require("LinkPresenter");
 var ReduxConnectComponentWrapper_1 = require("ReduxConnectComponentWrapper");
 var stateProps = function (ownState, ownProps) { return ({
     active: ownProps.filter === ownState.visibilityFilter,
@@ -12,4 +12,4 @@ var dispatchProps = function (dispatch, instanceId, ownProps, stateProps) { retu
         dispatch(action_1.setVisibilityFilter(instanceId, { filter: ownProps.filter }));
     }
 }); };
-exports.TodoFilterLink = ReduxConnectComponentWrapper_1.wrapWithConnect({ stateProps: stateProps, dispatchProps: dispatchProps }, Link_1.Link);
+exports.TodoFilterLinkContainer = ReduxConnectComponentWrapper_1.wrapWithConnect(stateProps, dispatchProps, LinkPresenter_1.LinkPresenter);

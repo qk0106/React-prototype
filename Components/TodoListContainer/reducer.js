@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var iassign = require("immutable-assign");
-var AddTodo_1 = require("AddTodo");
-var VisibleTodoList_1 = require("VisibleTodoList");
-var TodoFilterLink_1 = require("TodoFilterLink"); // To get Action Types
+var AddTodoContainer_1 = require("AddTodoContainer");
+var VisibleTodoListContainer_1 = require("VisibleTodoListContainer");
+var TodoFilterLinkContainer_1 = require("TodoFilterLinkContainer"); // To get Action Types
 var redux_1 = require("redux");
 var inputText = function (inputText, action) {
     if (inputText === void 0) { inputText = ""; }
     switch (action.type) {
-        case AddTodo_1.CHANGE_INPUT_TEXT:
+        case AddTodoContainer_1.CHANGE_INPUT_TEXT:
             return action.text;
         default:
             return inputText;
@@ -17,7 +17,7 @@ var inputText = function (inputText, action) {
 var visibilityFilter = function (visibilityFilter, action) {
     if (visibilityFilter === void 0) { visibilityFilter = "SHOW_ALL"; }
     switch (action.type) {
-        case TodoFilterLink_1.SET_VISIBILITY_FILTER:
+        case TodoFilterLinkContainer_1.SET_VISIBILITY_FILTER:
             return action.filter;
         default:
             return visibilityFilter;
@@ -26,7 +26,7 @@ var visibilityFilter = function (visibilityFilter, action) {
 var todos = function (todos, action) {
     if (todos === void 0) { todos = []; }
     switch (action.type) {
-        case AddTodo_1.ADD_TODO:
+        case AddTodoContainer_1.ADD_TODO:
             return iassign(todos, function (arr) {
                 var id = arr.length;
                 arr.push({
@@ -36,7 +36,7 @@ var todos = function (todos, action) {
                 });
                 return arr;
             });
-        case VisibleTodoList_1.TOGGLE_TODO:
+        case VisibleTodoListContainer_1.TOGGLE_TODO:
             return iassign(todos, function (arr, ctx) { return arr[ctx.id].completed; }, function (completed) { return !completed; }, {
                 id: action.id
             });

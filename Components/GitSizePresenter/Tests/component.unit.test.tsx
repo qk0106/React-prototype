@@ -1,13 +1,13 @@
 import * as React from "react";
 import { shallow } from "enzyme";
-import { GitSize } from "GitSize";
+import { GitSizePresenter } from "GitSizePresenter";
 
-describe(">>>GitSize Unit Testing", () => {
+describe(">>>GitSizePresenter Unit Testing", () => {
     let wrapper, mockFn;
 
     beforeEach(() => {
         mockFn = jest.fn();
-        wrapper = shallow(<GitSize gitSize={0} refreshCount={0} onClick={mockFn} />);
+        wrapper = shallow(<GitSizePresenter gitSize={0} refreshCount={0} onClick={mockFn} />);
     });
 
     it("+++ check render 2 p tags", () => {

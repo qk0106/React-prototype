@@ -3,12 +3,12 @@ import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import { readStore } from "ReduxStoreManager";
 import { registerInstance } from "ReactInstancesManager";
-import { reducer } from "GitInfor/Src/reducer";
+import { reducer } from "GitInfoContainer/Src/reducer";
 import configureStore from "redux-mock-store";
-import { GitInfo, refreshGitInfo } from "GitInfo";
-import { GitSize } from "GitSize";
+import { GitInfoSubContainer, refreshGitInfo } from "GitInfoSubContainer";
+import { GitSizePresenter } from "GitSizePresenter";
 
-describe(">>>GitInfo Unit Testing", () => {
+describe(">>>GitInfoSubContainer Unit Testing", () => {
     let instanceProps, gitUrl, store, mockStore, fakeStore, wrapper;
 
     beforeEach(() => {
@@ -23,17 +23,17 @@ describe(">>>GitInfo Unit Testing", () => {
         fakeStore = mockStore(store.getState());
         wrapper = mount(
             <Provider store={store}>
-                <GitInfo instanceProps={instanceProps} gitUrl={gitUrl} />
+                <GitInfoSubContainer instanceProps={instanceProps} gitUrl={gitUrl} />
             </Provider>
         );
     });
 
-    it("+++ check render 1 GitInfo", () => {
-        expect(wrapper.find(GitInfo).length).toEqual(1);
+    it("+++ check render 1 GitInfoSubContainer", () => {
+        expect(wrapper.find(GitInfoSubContainer).length).toEqual(1);
     });
 
-    it("+++ check render 1 GitSize", () => {
-        expect(wrapper.find(GitSize).length).toEqual(1);
+    it("+++ check render 1 GitSizePresenter", () => {
+        expect(wrapper.find(GitSizePresenter).length).toEqual(1);
     });
 
     it("+++ check store dispatch correct action - refreshGitInfo ", () => {
