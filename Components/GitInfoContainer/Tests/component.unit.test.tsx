@@ -23,19 +23,24 @@ describe(">>>GitInfoContainer Unit Testing", () => {
         expect(wrapper.find(GitInfoContainer).length).toEqual(1);
     });
 
+    it("+++ check render 1 InstanceWrapper", () => {
+        let { wrapper } = preset();
+        expect(wrapper.find("InstanceWrapper").length).toEqual(1);
+    });
+
     it("+++ check render 1 GitInfoSubContainer", () => {
         let { wrapper } = preset();
         expect(wrapper.find(GitInfoSubContainer).length).toEqual(1);
     });
 
-    it("+++ check instanceProps", () => {
+    it("+++ check props passing - instanceProps", () => {
         let { wrapper, instanceIdPrefix } = preset();
         let instanceProps = wrapper.find(GitInfoSubContainer).prop("instanceProps");
         expect(instanceProps.instanceSet).toEqual(instanceSet);
         expect(instanceProps.instanceId).toMatch(new RegExp(instanceIdPrefix + "_"));
     });
 
-    it("+++ check gitUrl", () => {
+    it("+++ check props passing - gitUrl", () => {
         let { wrapper, gitUrl } = preset();
         expect(wrapper.find(GitInfoSubContainer).prop("gitUrl")).toEqual(gitUrl);
     });

@@ -3,7 +3,7 @@ import { generateInstanceId } from "ReactInstanceIdManager";
 import { registerInstance, unregisterInstance } from "ReactInstancesManager";
 
 export const wrapWithInstance = (WrappedComponent, instanceSet, reducer) => {
-    return class extends React.PureComponent<any> {
+    class InstanceWrapper extends React.PureComponent<any> {
         private _reducer = reducer;
         private _instanceProps = {
             instanceSet: instanceSet,
@@ -21,5 +21,6 @@ export const wrapWithInstance = (WrappedComponent, instanceSet, reducer) => {
         render() {
             return <WrappedComponent instanceProps={this._instanceProps} {...this.props} />;
         }
-    };
+    }
+    return InstanceWrapper;
 };
