@@ -31,7 +31,7 @@ describe(">>>GitInfoContainer Unit Testing", () => {
 
     it("+++ check instanceProps", () => {
         let { wrapper } = preset();
-        expect(wrapper.find(GitInfoSubContainer).prop("instanceProps").instancesProp).toEqual(
+        expect(wrapper.find(GitInfoSubContainer).prop("instanceProps").instanceSet).toEqual(
             "GitInfoContainers"
         );
     });

@@ -10,7 +10,7 @@ import { GitSizePresenter } from "GitSizePresenter";
 
 const preset = () => {
     let instanceProps = {
-        instancesProp: "MockInstancesProp",
+        instanceSet: "MockInstanceSet",
         instanceId: "MockInstanceId_112138"
     };
     let gitUrl = "MockGitUrl";
