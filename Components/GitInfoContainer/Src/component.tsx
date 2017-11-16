@@ -3,10 +3,11 @@ import { reducer } from "./reducer";
 import { wrapWithInstance } from "ReactInstanceComponentWrapper";
 import { GitInfoSubContainer } from "GitInfoSubContainer";
 
-const GitInfo = ({ instanceProps, gitUrl }) => (
+const component = ({ instanceProps, gitUrl }) => (
     <div>
         <GitInfoSubContainer instanceProps={instanceProps} gitUrl={gitUrl} />
     </div>
 );
 
-export const GitInfoContainer = wrapWithInstance("GitInfoContainers", GitInfo, reducer);
+export const instanceSet = "GitInfoContainers";
+export const GitInfoContainer = wrapWithInstance(component, instanceSet, reducer);

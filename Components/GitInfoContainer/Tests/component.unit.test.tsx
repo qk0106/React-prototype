@@ -2,20 +2,19 @@ import * as React from "react";
 import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import { readStore } from "ReduxStoreManager";
-import { GitInfoContainer } from "GitInfoContainer";
+import { GitInfoContainer, instanceSet } from "GitInfoContainer";
 import { GitInfoSubContainer } from "GitInfoSubContainer";
 
 const preset = () => {
     let store = readStore();
+    let instanceIdPrefix = "mockInstanceIdPrefix";
+    let gitUrl = "mockGitUrl";
     let wrapper = mount(
         <Provider store={store}>
-            <GitInfoContainer
-                instanceIdPrefix="UniTest"
-                gitUrl="https://api.github.com/repos/qk0106/React-prototype"
-            />
+            <GitInfoContainer instanceIdPrefix={instanceIdPrefix} gitUrl={gitUrl} />
         </Provider>
     );
-    return { wrapper };
+    return { wrapper, instanceIdPrefix, gitUrl };
 };
 
 describe(">>>GitInfoContainer Unit Testing", () => {
@@ -29,17 +28,15 @@ describe(">>>GitInfoContainer Unit Testing", () => {
         expect(wrapper.find(GitInfoSubContainer).length).toEqual(1);
     });
 
-    it("+++ check instanceSet", () => {
-        let { wrapper } = preset();
-        expect(wrapper.find(GitInfoSubContainer).prop("instanceProps").instanceSet).toEqual(
-            "GitInfoContainers"
-        );
+    it("+++ check instanceProps", () => {
+        let { wrapper, instanceIdPrefix } = preset();
+        let instanceProps = wrapper.find(GitInfoSubContainer).prop("instanceProps");
+        expect(instanceProps.instanceSet).toEqual(instanceSet);
+        expect(instanceProps.instanceId).toMatch(new RegExp(instanceIdPrefix + "_"));
     });
 
-    it("+++ check instanceId", () => {
-        let { wrapper } = preset();
-        expect(wrapper.find(GitInfoSubContainer).prop("instanceProps").instanceId).toMatch(
-            /UniTest_/
-        );
+    it("+++ check gitUrl", () => {
+        let { wrapper, gitUrl } = preset();
+        expect(wrapper.find(GitInfoSubContainer).prop("gitUrl")).toEqual(gitUrl);
     });
 });
