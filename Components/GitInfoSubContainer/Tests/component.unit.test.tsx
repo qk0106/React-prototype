@@ -19,7 +19,7 @@ const preset = () => {
     let mockStore = configureStore();
     let fakeStore = mockStore(store.getState());
     let wrapper = mount(
-        <Provider store={store}>
+        <Provider store={fakeStore}>
             <GitInfoSubContainer instanceProps={instanceProps} gitUrl={gitUrl} />
         </Provider>
     );
