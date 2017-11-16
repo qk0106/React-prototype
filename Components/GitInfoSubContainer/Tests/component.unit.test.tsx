@@ -39,6 +39,11 @@ describe(">>>GitInfoSubContainer Unit Testing", () => {
         expect(wrapper.find(GitInfoSubContainer).length).toEqual(1);
     });
 
+    it("+++ check render 1 InitWrapper", () => {
+        let { wrapper } = preset();
+        expect(wrapper.find("InitWrapper").length).toEqual(1);
+    });
+
     it("+++ check render 1 GitSizePresenter", () => {
         let { wrapper } = preset();
         expect(wrapper.find(GitSizePresenter).length).toEqual(1);
