@@ -6,7 +6,7 @@ import { registerInstance } from "ReactInstancesManager";
 import { reducer } from "GitInfoContainer/Src/reducer";
 import configureStore from "redux-mock-store";
 import dynamicMiddlewares from "redux-dynamic-middlewares";
-import { GitInfoSubContainer, refreshGitInfo, REFRESH_GIT_INFO } from "GitInfoSubContainer";
+import { GitInfoSubContainer, REFRESH_GIT_INFO } from "GitInfoSubContainer";
 import { GitSizePresenter } from "GitSizePresenter";
 
 const mockStore = configureStore([dynamicMiddlewares]);
@@ -23,7 +23,8 @@ const preset = () => {
         instanceId: "MockInstanceId_112138"
     };
     let gitUrl = "MockGitUrl";
-    let store = getStore(instanceProps, reducer);
+    let realStore = getStore(instanceProps, reducer);
+    let store = mockStore(realStore.getState());
     let wrapper = mount(
         <Provider store={store}>
             <GitInfoSubContainer instanceProps={instanceProps} gitUrl={gitUrl} />
@@ -43,20 +44,27 @@ describe(">>>GitInfoSubContainer Unit Testing", () => {
         expect(wrapper.find(GitSizePresenter).length).toEqual(1);
     });
 
-    it("+++ check map stateProps correctly", () => {
+    it("+++ check map dispatchProps correctly", () => {
         let { wrapper } = preset();
-        let presenterProps = wrapper.find(GitSizePresenter).props();
-        expect(presenterProps.gitSize).toEqual("fetching git info");
-        expect(presenterProps.refreshCount).toEqual({ count: 1 });
-        expect(presenterProps.gitUrl).toEqual("MockGitUrl");
+        let initWrapperProps = wrapper
+            .find(GitInfoSubContainer)
+            .childAt(0)
+            .props();
+        expect(initWrapperProps.gitSize).toEqual(0);
+        expect(initWrapperProps.refreshCount).toEqual({ count: 0 });
+        expect(initWrapperProps.gitUrl).toEqual("MockGitUrl");
     });
 
-    it("+++ check store dispatch correct action - refreshGitInfo ", () => {
-        let { instanceProps, gitUrl } = preset();
-        let fakeStore = mockStore();
-        fakeStore.dispatch(refreshGitInfo(instanceProps.instanceId, { gitUrl: gitUrl }));
-        let actions = fakeStore.getActions();
-        console.log(actions);
+    it("+++ check map stateProps correctly", () => {
+        let { wrapper, store } = preset();
+        let initWrapperProps = wrapper
+            .find(GitInfoSubContainer)
+            .childAt(0)
+            .props();
+        // init is invoked defaultly
+        initWrapperProps.onClick();
+        let actions = store.getActions();
         expect(actions[0].type).toBe(REFRESH_GIT_INFO);
+        expect(actions[2].type).toBe(REFRESH_GIT_INFO);
     });
 });
