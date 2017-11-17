@@ -1,5 +1,6 @@
 import * as iassign from "immutable-assign";
 import { collectInstanceIds } from "ReactInstanceIdManager";
+import { combineReducers } from "redux";
 
 let rootReducers = {};
 
@@ -33,7 +34,8 @@ const getUpdatedInstancesReducer = instanceReducer => {
         if (!(actionInstanceId in mergedInstancesState)) return mergedInstancesState;
         return iassign(mergedInstancesState, obj => {
             const instanceState = mergedInstancesState[actionInstanceId];
-            const updatedInstanceState = instanceReducer(instanceState, action);
+            const combinedInstanceReducer = combineReducers(instanceReducer);
+            const updatedInstanceState = combinedInstanceReducer(instanceState, action);
             obj[actionInstanceId] = updatedInstanceState;
             return obj;
         });

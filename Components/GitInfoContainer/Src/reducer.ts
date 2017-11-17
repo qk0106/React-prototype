@@ -5,7 +5,6 @@ import {
     FETCH_GIT_INFO_SUCCESS,
     FETCH_GIT_INFO_FAILED
 } from "GitInfoSubContainer"; // To get Action Types
-import { combineReducers } from "redux";
 
 const refreshCount = (refreshCount = { count: 0 }, action) => {
     switch (action.type) {
@@ -29,7 +28,7 @@ const gitSize = (gitSize = 0, action) => {
     }
 };
 
-export const reducer = combineReducers({
+export const reducer = {
     gitSize,
     refreshCount
-});
+};

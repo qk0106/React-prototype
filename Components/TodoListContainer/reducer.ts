@@ -2,7 +2,6 @@ import * as iassign from "immutable-assign";
 import { ADD_TODO, CHANGE_INPUT_TEXT } from "AddTodoContainer";
 import { TOGGLE_TODO } from "VisibleTodoListContainer";
 import { SET_VISIBILITY_FILTER } from "TodoFilterLinkContainer"; // To get Action Types
-import { combineReducers } from "redux";
 
 const inputText = (inputText = "", action) => {
     switch (action.type) {
@@ -43,8 +42,8 @@ const todos = (todos = [], action): any[] => {
     }
 };
 
-export const reducer = combineReducers({
+export const reducer = {
     inputText,
     visibilityFilter,
     todos
-});
+};
