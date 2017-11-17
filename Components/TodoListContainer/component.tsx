@@ -13,5 +13,4 @@ const component = ({ instanceProps, inputText }) => (
     </div>
 );
 
-export const instanceSet = "TodoListContainers";
-export const TodoListContainer = wrapWithInstance(component, instanceSet, reducer);
+export const TodoListContainer = wrapWithInstance(component, reducer);

@@ -1,12 +1,11 @@
 import * as iassign from "immutable-assign";
-import { combineReducers } from "redux";
 import { collectInstanceIds } from "ReactInstanceIdManager";
 
 let rootReducers = {};
 
-const getUpdatedInstancesInitState = instanceSet => {
+const getUpdatedInstancesInitState = () => {
     let instancesInitState = {};
-    collectInstanceIds(instanceSet).forEach(instanceId => {
+    collectInstanceIds().forEach(instanceId => {
         instancesInitState[instanceId] = {};
     });
     return instancesInitState;
@@ -24,8 +23,8 @@ const getMergedInstancesState = (instancesInitState, instancesState) => {
     return mergedInstancesState;
 };
 
-const getUpdatedInstancesReducer = (instanceSet, instanceReducer) => {
-    let instancesInitState = getUpdatedInstancesInitState(instanceSet);
+const getUpdatedInstancesReducer = instanceReducer => {
+    let instancesInitState = getUpdatedInstancesInitState();
     // return reducer that only updates the state of certain instance
     return (instancesState = instancesInitState, action) => {
         let mergedInstancesState = getMergedInstancesState(instancesInitState, instancesState);
@@ -40,11 +39,10 @@ const getUpdatedInstancesReducer = (instanceSet, instanceReducer) => {
     };
 };
 
-export const updateInstancesReducer = (instanceSet, instanceReducer) => {
-    const instancesReducer = getUpdatedInstancesReducer(instanceSet, instanceReducer);
-    rootReducers[instanceSet] = instancesReducer;
+export const updateInstancesReducer = instanceReducer => {
+    rootReducers = getUpdatedInstancesReducer(instanceReducer);
 };
 
 export const collectReducers = () => {
-    return combineReducers(rootReducers);
+    return rootReducers;
 };

@@ -2,11 +2,10 @@ import * as React from "react";
 import { generateInstanceId } from "ReactInstanceIdManager";
 import { registerInstance, unregisterInstance } from "ReactInstancesManager";
 
-export const wrapWithInstance = (WrappedComponent, instanceSet, reducer) => {
+export const wrapWithInstance = (WrappedComponent, reducer) => {
     class InstanceWrapper extends React.PureComponent<any> {
         private _reducer = reducer;
         private _instanceProps = {
-            instanceSet: instanceSet,
             instanceId: generateInstanceId(this.props.instanceIdPrefix)
         };
         constructor(props) {

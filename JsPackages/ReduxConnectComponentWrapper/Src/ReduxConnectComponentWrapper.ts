@@ -1,6 +1,6 @@
 import { connect } from "react-redux"; // connect redux and react
 
-const getOwnState = (state, { instanceSet, instanceId }) => state[instanceSet][instanceId];
+const getOwnState = (state, { instanceId }) => state[instanceId];
 
 const generateMapStateToProps = stateProps => {
     return (state, ownProps) => {
