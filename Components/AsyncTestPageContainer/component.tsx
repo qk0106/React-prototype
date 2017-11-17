@@ -2,6 +2,7 @@ import * as React from "react";
 import { GitInfoContainer } from "GitInfoContainer";
 import { TodoListContainer } from "TodoListContainer";
 import { registerRoute } from "ReactRouteManager";
+import { TopContainer } from "TopContainer";
 
 const AsyncTestPage = () => (
     <div>
@@ -18,6 +19,7 @@ const AsyncTestPage = () => (
             instanceIdPrefix="AsyncTestPage"
             inputText="This is TodoList in async page"
         />
+        <TopContainer />
     </div>
 );
 
