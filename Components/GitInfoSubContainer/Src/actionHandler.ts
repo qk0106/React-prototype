@@ -1,6 +1,6 @@
 import { doFetch } from "FetchHelper";
-import { REFRESH_GIT_INFO, fetchGitInfo, fetchGitInfoSuccess, fetchGitInfoFailed } from "./action"; // To get Action Creators
 import { addMiddleware } from "redux-dynamic-middlewares";
+import { REFRESH_GIT_INFO, fetchGitInfo, fetchGitInfoSuccess, fetchGitInfoFailed } from "./action"; // To get Action Creators
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);
     if (action.type === REFRESH_GIT_INFO) {
