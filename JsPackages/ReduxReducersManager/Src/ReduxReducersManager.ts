@@ -28,6 +28,7 @@ const getUpdatedInstancesReducer = instanceReducer => {
     // return reducer that only updates the state of certain instance
     return (instancesState = instancesInitState, action) => {
         let mergedInstancesState = getMergedInstancesState(instancesInitState, instancesState);
+        if (action.type === "FETCH_GIT_INFO_SUCCESS") debugger;
         let actionInstanceId = action.instanceId;
         if (!(actionInstanceId in mergedInstancesState)) return mergedInstancesState;
         return iassign(mergedInstancesState, obj => {

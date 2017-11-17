@@ -9,4 +9,4 @@ const component = ({ instanceProps, gitUrl }) => (
     </div>
 );
 
-export const GitInfoContainer = wrapWithInstance(component, reducer);
+export const GitInfoContainer = wrapWithInstance(component, reducer, "GitInfoContainer");

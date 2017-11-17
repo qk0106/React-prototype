@@ -2,7 +2,8 @@ import { generateId } from "IdGenerator";
 
 let rootInstanceIds = [];
 
-export const generateInstanceId = instanceIdPrefix => instanceIdPrefix + "_" + generateId(); // instanceIdPrefix is short for instanceIdPrefix
+export const generateInstanceId = (instanceIdPrefix, componentName) =>
+    instanceIdPrefix + "_" + componentName + "_" + generateId();
 
 export const registerInstanceId = instanceId => {
     rootInstanceIds.push(instanceId);
