@@ -4,46 +4,44 @@ import { combineReducers } from "redux";
 
 let rootReducers = {};
 
-const getUpdatedInstancesInitState = () => {
-    let instancesInitState = {};
+const getInitState = () => {
+    let initState = {};
     collectInstanceIds().forEach(instanceId => {
-        instancesInitState[instanceId] = {};
+        initState[instanceId] = {};
     });
-    return instancesInitState;
+    return initState;
 };
 
-const getMergedInstancesState = (instancesInitState, instancesState) => {
-    let mergedInstancesState = {};
-    for (let prop in instancesInitState) {
-        if (instancesInitState.hasOwnProperty(prop)) {
-            mergedInstancesState[prop] = instancesInitState[prop];
-            if (instancesState.hasOwnProperty(prop))
-                mergedInstancesState[prop] = instancesState[prop];
+const getMergedState = (state, initState) => {
+    let mergedState = {};
+    for (let prop in initState) {
+        if (initState.hasOwnProperty(prop)) {
+            mergedState[prop] = initState[prop];
+            if (state.hasOwnProperty(prop)) mergedState[prop] = state[prop];
         }
     }
-    return mergedInstancesState;
+    return mergedState;
 };
 
-const getUpdatedInstancesReducer = instanceReducer => {
-    let instancesInitState = getUpdatedInstancesInitState();
-    // return reducer that only updates the state of certain instance
-    return (instancesState = instancesInitState, action) => {
-        let mergedInstancesState = getMergedInstancesState(instancesInitState, instancesState);
+const getUpdatedReducers = reducer => {
+    let initState = getInitState();
+    return (state = initState, action) => {
+        let mergedState = getMergedState(state, initState);
         if (action.type === "FETCH_GIT_INFO_SUCCESS") debugger;
-        let actionInstanceId = action.instanceId;
-        if (!(actionInstanceId in mergedInstancesState)) return mergedInstancesState;
-        return iassign(mergedInstancesState, obj => {
-            const instanceState = mergedInstancesState[actionInstanceId];
-            const combinedInstanceReducer = combineReducers(instanceReducer);
-            const updatedInstanceState = combinedInstanceReducer(instanceState, action);
-            obj[actionInstanceId] = updatedInstanceState;
+        let instanceId = action.instanceId;
+        if (!(instanceId in mergedState)) return mergedState;
+        return iassign(mergedState, obj => {
+            const state = mergedState[instanceId];
+            const combinedReducer = combineReducers(reducer);
+            const updatedState = combinedReducer(state, action);
+            obj[instanceId] = updatedState;
             return obj;
         });
     };
 };
 
-export const updateReducers = instanceReducer => {
-    rootReducers = getUpdatedInstancesReducer(instanceReducer);
+export const updateReducers = reducer => {
+    rootReducers = getUpdatedReducers(reducer);
 };
 
 export const collectReducers = () => {
