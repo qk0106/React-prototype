@@ -27,8 +27,11 @@ const getUpdatedReducers = reducer => {
     let initState = getInitState();
     return (state = initState, action) => {
         let mergedState = getMergedState(state, initState);
-        if (action.type === "FETCH_GIT_INFO_SUCCESS") debugger;
         let instanceId = action.instanceId;
+        if (instanceId && instanceId.includes("TodoListContainer")) {
+            console.log(action.type);
+            console.log(reducer);
+        }
         if (!(instanceId in mergedState)) return mergedState;
         return iassign(mergedState, obj => {
             const state = mergedState[instanceId];
