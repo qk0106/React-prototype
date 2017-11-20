@@ -1,6 +1,6 @@
 import * as React from "react";
 import { generateInstanceId } from "ReactInstanceIdManager";
-import { registerInstance, unregisterInstance } from "ReactInstancesManager";
+import { registerInstance, unregisterInstance } from "ReactInstanceManager";
 
 export const wrapWithInstance = (WrappedComponent, reducer, componentName) => {
     class InstanceWrapper extends React.PureComponent<any> {

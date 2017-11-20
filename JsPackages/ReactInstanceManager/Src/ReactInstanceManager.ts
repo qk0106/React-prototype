@@ -1,5 +1,5 @@
 import { updateStore } from "ReduxStoreManager";
-import { updateReducers, collectReducers } from "ReduxReducersManager";
+import { updateReducers, collectReducers } from "ReduxReducerManager";
 import { registerInstanceId, unregisterInstanceId } from "ReactInstanceIdManager";
 
 const updateRedux = reducer => {
