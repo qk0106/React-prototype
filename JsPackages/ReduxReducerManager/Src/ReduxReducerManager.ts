@@ -1,8 +1,8 @@
 import * as iassign from "immutable-assign";
-import { collectInstanceIds } from "ReactInstanceIdManager";
+import { collectInstanceIds, extractComponentNameFromInstanceId } from "ReactInstanceIdManager";
 import { combineReducers } from "redux";
 
-let rootReducers = {};
+let reducerRegistry = {};
 
 const getInitState = () => {
     let initState = {};
@@ -23,30 +23,27 @@ const getMergedState = (state, initState) => {
     return mergedState;
 };
 
-const getUpdatedReducers = reducer => {
+export const registerReducer = (reducer, componentName) => {
+    if (!(componentName in reducerRegistry)) reducerRegistry[componentName] = reducer;
+};
+
+export const unregisterReducer = (reducer, componentName) => {
+    if (componentName in reducerRegistry) reducerRegistry[componentName] = undefined;
+};
+
+export const getRootReducer = () => {
     let initState = getInitState();
     return (state = initState, action) => {
         let mergedState = getMergedState(state, initState);
         let instanceId = action.instanceId;
-        if (instanceId && instanceId.includes("TodoListContainer")) {
-            console.log(action.type);
-            console.log(reducer);
-        }
+        let componentName = extractComponentNameFromInstanceId(action.instanceId);
         if (!(instanceId in mergedState)) return mergedState;
         return iassign(mergedState, obj => {
             const state = mergedState[instanceId];
-            const combinedReducer = combineReducers(reducer);
+            const combinedReducer = combineReducers(reducerRegistry[componentName]);
             const updatedState = combinedReducer(state, action);
             obj[instanceId] = updatedState;
             return obj;
         });
     };
-};
-
-export const updateReducers = reducer => {
-    rootReducers = getUpdatedReducers(reducer);
-};
-
-export const collectReducers = () => {
-    return rootReducers;
 };

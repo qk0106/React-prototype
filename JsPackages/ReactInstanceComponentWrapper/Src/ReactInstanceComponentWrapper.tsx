@@ -10,10 +10,10 @@ export const wrapWithInstance = (WrappedComponent, reducer, componentName) => {
             super(props);
         }
         componentWillMount() {
-            registerInstance(this._instanceId, this._reducer);
+            registerInstance(this._instanceId, this._reducer, componentName);
         }
         componentWillUnmount() {
-            unregisterInstance(this._instanceId, this._reducer);
+            unregisterInstance(this._instanceId, this._reducer, componentName);
         }
         render() {
             return <WrappedComponent instanceId={this._instanceId} {...this.props} />;

@@ -1,18 +1,15 @@
 import { updateStore } from "ReduxStoreManager";
-import { updateReducers, collectReducers } from "ReduxReducerManager";
+import { registerReducer, unregisterReducer, getRootReducer } from "ReduxReducerManager";
 import { registerInstanceId, unregisterInstanceId } from "ReactInstanceIdManager";
 
-const updateRedux = reducer => {
-    updateReducers(reducer);
-    updateStore(collectReducers());
-};
-
-export const registerInstance = (instanceId, reducer) => {
+export const registerInstance = (instanceId, reducer, componentName) => {
     registerInstanceId(instanceId);
-    updateRedux(reducer);
+    registerReducer(reducer, componentName);
+    updateStore(getRootReducer());
 };
 
-export const unregisterInstance = (instanceId, reducer) => {
+export const unregisterInstance = (instanceId, reducer, componentName) => {
     unregisterInstanceId(instanceId);
-    updateRedux(reducer);
+    unregisterReducer(reducer, componentName);
+    updateStore(getRootReducer());
 };
