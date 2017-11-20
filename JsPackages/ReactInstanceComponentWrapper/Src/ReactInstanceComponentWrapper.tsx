@@ -5,20 +5,18 @@ import { registerInstance, unregisterInstance } from "ReactInstancesManager";
 export const wrapWithInstance = (WrappedComponent, reducer, componentName) => {
     class InstanceWrapper extends React.PureComponent<any> {
         private _reducer = reducer;
-        private _instanceProps = {
-            instanceId: generateInstanceId(this.props.instanceIdPrefix, componentName)
-        };
+        private _instanceId = generateInstanceId(this.props.instanceIdPrefix, componentName);
         constructor(props) {
             super(props);
         }
         componentWillMount() {
-            registerInstance(this._instanceProps, this._reducer);
+            registerInstance(this._instanceId, this._reducer);
         }
         componentWillUnmount() {
-            unregisterInstance(this._instanceProps, this._reducer);
+            unregisterInstance(this._instanceId, this._reducer);
         }
         render() {
-            return <WrappedComponent instanceProps={this._instanceProps} {...this.props} />;
+            return <WrappedComponent instanceId={this._instanceId} {...this.props} />;
         }
     }
     return InstanceWrapper;

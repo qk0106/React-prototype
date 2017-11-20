@@ -5,11 +5,11 @@ import { AddTodoContainer } from "AddTodoContainer";
 import { TodoFooterContainer } from "TodoFooterContainer";
 import { VisibleTodoListContainer } from "VisibleTodoListContainer";
 
-const component = ({ instanceProps, inputText }) => (
+const component = ({ instanceId, inputText }) => (
     <div>
-        <AddTodoContainer instanceProps={instanceProps} inputText={inputText} />
-        <VisibleTodoListContainer instanceProps={instanceProps} />
-        <TodoFooterContainer instanceProps={instanceProps} />
+        <AddTodoContainer instanceId={instanceId} inputText={inputText} />
+        <VisibleTodoListContainer instanceId={instanceId} />
+        <TodoFooterContainer instanceId={instanceId} />
     </div>
 );
 

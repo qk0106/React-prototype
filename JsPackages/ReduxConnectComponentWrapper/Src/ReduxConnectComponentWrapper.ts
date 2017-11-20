@@ -1,18 +1,17 @@
 import { connect } from "react-redux"; // connect redux and react
 
-const getOwnState = (state, { instanceId }) => state[instanceId];
+const getOwnState = (state, instanceId) => state[instanceId];
 
 const generateMapStateToProps = stateProps => {
     return (state, ownProps) => {
-        let ownState = getOwnState(state, ownProps.instanceProps);
+        let ownState = getOwnState(state, ownProps.instanceId);
         return stateProps(ownState, ownProps);
     };
 };
 
 const generateMapDispatchToProps = dispatchProps => {
     return (stateProps, dispatch, ownProps) => {
-        let { instanceId } = ownProps.instanceProps;
-        return dispatchProps(dispatch, instanceId, ownProps, stateProps);
+        return dispatchProps(dispatch, ownProps.instanceId, ownProps, stateProps);
     };
 };
 
