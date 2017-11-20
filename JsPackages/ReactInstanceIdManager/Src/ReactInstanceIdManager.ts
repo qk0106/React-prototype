@@ -1,6 +1,6 @@
 import { generateId } from "IdGenerator";
 
-let rootInstanceIds = [];
+let instanceIdRegistry = [];
 
 export const generateInstanceId = (instanceIdPrefix, componentName) =>
     instanceIdPrefix + "_" + componentName + "_" + generateId();
@@ -12,15 +12,15 @@ export const extractComponentNameFromInstanceId = instanceId => {
 };
 
 export const registerInstanceId = instanceId => {
-    rootInstanceIds.push(instanceId);
+    instanceIdRegistry.push(instanceId);
 };
 
 export const unregisterInstanceId = instanceId => {
-    let array = rootInstanceIds;
+    let array = instanceIdRegistry;
     let index = array.indexOf(instanceId);
     if (index > -1) {
         array.splice(index, 1);
     }
 };
 
-export const collectInstanceIds = () => rootInstanceIds;
+export const collectInstanceIds = () => instanceIdRegistry;

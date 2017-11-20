@@ -1,4 +1,4 @@
-// register routes to root
+// register routes
 import "HomePageContainer";
 import "AsyncTestPageContainer";
 import "TodoListPageContainer";
