@@ -3,9 +3,9 @@ import { reducer } from "./reducer";
 import { wrapWithInstance } from "ReactInstanceComponentWrapper";
 import { GitInfoSubContainer } from "GitInfoSubContainer";
 
-const component = ({ instanceId, gitUrl }) => (
+const component = props => (
     <div>
-        <GitInfoSubContainer instanceId={instanceId} gitUrl={gitUrl} />
+        <GitInfoSubContainer {...props} />
     </div>
 );
 
