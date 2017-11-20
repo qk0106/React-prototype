@@ -1,6 +1,6 @@
 import { updateStore } from "ReduxStoreManager";
-import { registerReducer, unregisterReducer, getRootReducer } from "ReduxReducerManager";
 import { registerInstanceId, unregisterInstanceId } from "ReactInstanceIdManager";
+import { registerReducer, unregisterReducer, getRootReducer } from "ReduxReducerManager";
 
 export const registerInstance = (instanceId, reducer, componentName) => {
     registerInstanceId(instanceId);
