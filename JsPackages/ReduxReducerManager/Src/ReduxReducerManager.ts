@@ -34,20 +34,23 @@ export const unregisterReducer = (reducer, componentName) => {
     if (reducerRegistry[componentName].counter < 1) reducerRegistry[componentName] = undefined;
 };
 
+const updatedState = (instanceId, action, mergedState) => {
+    let componentName = extractComponentNameFromInstanceId(instanceId);
+    if (!(instanceId in mergedState)) return mergedState;
+    return iassign(mergedState, obj => {
+        const state = mergedState[instanceId];
+        const combinedReducer = combineReducers(reducerRegistry[componentName].reducer);
+        const instanceState = combinedReducer(state, action);
+        obj[instanceId] = instanceState;
+        return obj;
+    });
+};
+
 export const getRootReducer = () => {
     let instanceState = getInstanceState();
     return (state = instanceState, action) => {
         let mergedState = getMergedState(state, instanceState);
-
         let instanceId = action.instanceId;
-        let componentName = extractComponentNameFromInstanceId(instanceId);
-        if (!(instanceId in mergedState)) return mergedState;
-        return iassign(mergedState, obj => {
-            const state = mergedState[instanceId];
-            const combinedReducer = combineReducers(reducerRegistry[componentName].reducer);
-            const instanceState = combinedReducer(state, action);
-            obj[instanceId] = instanceState;
-            return obj;
-        });
+        return updatedState(instanceId, action, mergedState);
     };
 };
