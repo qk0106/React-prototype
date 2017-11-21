@@ -4,23 +4,35 @@ import { combineReducers } from "redux";
 
 let reducerRegistry = {};
 
-const getInstanceState = () => {
-    let instanceState = {};
+const getNewState = () => {
+    let state = {};
     collectInstanceIds().forEach(instanceId => {
-        instanceState[instanceId] = {};
+        state[instanceId] = {};
     });
-    return instanceState;
+    return state;
 };
 
-const getMergedState = (state, instanceState) => {
-    let mergedState = {};
-    for (let prop in instanceState) {
-        if (instanceState.hasOwnProperty(prop)) {
-            mergedState[prop] = instanceState[prop];
-            if (state.hasOwnProperty(prop)) mergedState[prop] = state[prop];
+const getMergedState = (oldState, newState) => {
+    let state = {};
+    for (let prop in newState) {
+        if (newState.hasOwnProperty(prop)) {
+            state[prop] = newState[prop];
+            if (oldState.hasOwnProperty(prop)) state[prop] = oldState[prop];
         }
     }
-    return mergedState;
+    return state;
+};
+
+const getUpdatedState = (instanceId, action, state) => {
+    let componentName = extractComponentNameFromInstanceId(instanceId);
+    if (!(instanceId in state)) return state;
+    return iassign(state, state => {
+        const instanceState = state[instanceId];
+        const combinedReducer = combineReducers(reducerRegistry[componentName].reducer);
+        const updatedInstanceState = combinedReducer(instanceState, action);
+        state[instanceId] = updatedInstanceState;
+        return state;
+    });
 };
 
 export const registerReducer = (reducer, componentName) => {
@@ -34,23 +46,11 @@ export const unregisterReducer = (reducer, componentName) => {
     if (reducerRegistry[componentName].counter < 1) reducerRegistry[componentName] = undefined;
 };
 
-const updatedState = (instanceId, action, mergedState) => {
-    let componentName = extractComponentNameFromInstanceId(instanceId);
-    if (!(instanceId in mergedState)) return mergedState;
-    return iassign(mergedState, obj => {
-        const state = mergedState[instanceId];
-        const combinedReducer = combineReducers(reducerRegistry[componentName].reducer);
-        const instanceState = combinedReducer(state, action);
-        obj[instanceId] = instanceState;
-        return obj;
-    });
-};
-
 export const getRootReducer = () => {
-    let instanceState = getInstanceState();
-    return (state = instanceState, action) => {
-        let mergedState = getMergedState(state, instanceState);
+    let newState = getNewState();
+    return (oldState = newState, action) => {
+        let state = getMergedState(oldState, newState);
         let instanceId = action.instanceId;
-        return updatedState(instanceId, action, mergedState);
+        return getUpdatedState(instanceId, action, state);
     };
 };
