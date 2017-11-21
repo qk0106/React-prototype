@@ -50,6 +50,7 @@ const getUpdatedState = (state, action) => {
             collectInstanceIds().forEach(instanceId => {
                 const prefix = extractPrefixFromInstanceId(instanceId);
                 if (currentInstancePrefix === prefix || currentInstancePrefix === instanceId)
+                    // if (currentInstancePrefix === instanceId)
                     state = getInstanceUpdatedState(instanceId, state, action);
             });
             break;
