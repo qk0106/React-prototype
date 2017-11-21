@@ -18,9 +18,9 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
             dispatch(changeInputText(instanceId)({ text: errorMessage }));
         }
     }
-    if (targetMode === ActionMode.Broadcast) {
+    if (targetMode === ActionMode.ParentTree) {
         if (action.data && action.data.size)
-            dispatch(addTodo(undefined, ActionMode.Broadcast)({ text: action.data.size }));
+            dispatch(addTodo(instanceId, targetMode)({ text: action.data.size }));
     }
 };
 

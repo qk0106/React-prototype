@@ -1,7 +1,11 @@
 import * as iassign from "immutable-assign";
 import { combineReducers } from "redux";
 import { collectReducers } from "ReduxReducerManager";
-import { collectInstanceIds, extractComponentNameFromInstanceId } from "ReactInstanceIdManager";
+import {
+    collectInstanceIds,
+    extractPrefixFromInstanceId,
+    extractComponentNameFromInstanceId
+} from "ReactInstanceIdManager";
 import { ActionMode } from "ReduxActionModeHelper";
 
 const getNewState = () => {
@@ -40,6 +44,14 @@ const getUpdatedState = (state, action) => {
         case ActionMode.InstanceOnly:
             const instanceId = action.instanceId;
             state = getInstanceUpdatedState(instanceId, state, action);
+            break;
+        case ActionMode.ParentTree:
+            let currentInstancePrefix = extractPrefixFromInstanceId(action.instanceId);
+            collectInstanceIds().forEach(instanceId => {
+                const prefix = extractPrefixFromInstanceId(instanceId);
+                if (prefix === currentInstancePrefix)
+                    state = getInstanceUpdatedState(instanceId, state, action);
+            });
             break;
         case ActionMode.Broadcast:
             collectInstanceIds().forEach(instanceId => {
