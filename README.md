@@ -9,33 +9,35 @@ Dylan's React Prototype (Decentralised and Flat Style)
  - LESS
  - CSS Module
  - Semantic UI
- - Hot Reload (webpack-hot-middleware & react-hot-loader)
+ - Hot Reload
  - immutable-assign
  - Node
  - Express
- - Jest (Unit Test)
+ - Jest
 
 ## Features
- - Modularize Everything
+ - Modularization
    - Keep everything related as a module staying in one folder. 
    - (component, reducer, action, middleware, style and so on).
    - No need to open multiple folders to change one module.
- - Instantiate Module
-   - Assume every module will be reused in the future.
-   - Create a reducer instance whenever a it's component is used.
-   - No need to manually maintian an array to manage reused component.
+ - Component Instance
+   - Assume every module will be reused.
+   - Create a instance whenever a it's component is mounted.
+   - No need to manually maintian an array to manage reused components.
  - Decentralised Management Style
-   - Management load of route, reducer, middlewares, instance are distributed 
+   - Management load of reducer, middlewares, instance are distributed
    - to the registrition of the compoenent/module itself.
-   - Each module maintain itself for adding and removing, no need to change a centralised place.
+   - Each module maintain itself for adding and removing, no need to change in a centralised file.
  - Flatten Folder Structure
-   - Assume every module will be reused in the future.
    - Build flat strucure instead of nested.
    - No common or gloabal concept.
-   - More friendly to import.
+   - Add module resolution.
  - Async Handling
    - Async action is handled by action handler middlewares.
    - Async props is handled by init data wrapper component.
+ - Communication Between Instances
+   - 3 action mode : InstanceOnly, ParentTree and Broadcast cover most of communication requirements.
+   - Full utilize the features of redux.
 
 ## Future Improvements
  - Complete TS Typings
