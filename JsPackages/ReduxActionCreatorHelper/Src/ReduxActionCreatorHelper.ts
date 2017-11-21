@@ -1,9 +1,5 @@
 import { generateId } from "IdGenerator";
-
-enum ActionMode {
-    InstanceOnly = 0,
-    BroadCast = 1
-}
+import { ActionMode } from "ReduxActionModeHelper";
 
 export const generateInstanceActionCreator = actionType => (instanceId, targetMode?) => (
     actionParamsObj?
