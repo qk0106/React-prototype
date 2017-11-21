@@ -8,7 +8,6 @@ export const TopContainer = () => (
         <GitInfoContainer
             instanceIdPrefix="TopContainer"
             gitUrl="https://api.github.com/repos/qk0106/React-prototype"
-            communicationTo="TodoListContainer"
         />
         <TodoListContainer
             instanceIdPrefix="TopContainer"
