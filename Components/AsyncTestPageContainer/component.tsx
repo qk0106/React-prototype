@@ -23,7 +23,8 @@ const AsyncTestPage = () => (
             inputText="This is TodoList in async page"
         />
         <hr />
-        <TopContainer />
+        <TopContainer instanceIdPrefix="AsyncTestPage" />
+        <TopContainer instanceIdPrefix="AsyncTestPage" />
     </div>
 );
 
