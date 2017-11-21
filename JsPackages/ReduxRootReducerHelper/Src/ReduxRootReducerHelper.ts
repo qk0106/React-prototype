@@ -2,6 +2,7 @@ import * as iassign from "immutable-assign";
 import { combineReducers } from "redux";
 import { collectReducers } from "ReduxReducerManager";
 import { collectInstanceIds, extractComponentNameFromInstanceId } from "ReactInstanceIdManager";
+import { ActionMode } from "ReduxActionModeHelper";
 
 const getNewState = () => {
     let state = {};
@@ -22,7 +23,7 @@ const getMergedState = (oldState, newState) => {
     return state;
 };
 
-const getUpdatedState = (instanceId, action, state) => {
+const getInstanceUpdatedState = (instanceId, state, action) => {
     let componentName = extractComponentNameFromInstanceId(instanceId);
     if (!(instanceId in state)) return state;
     return iassign(state, state => {
@@ -34,11 +35,27 @@ const getUpdatedState = (instanceId, action, state) => {
     });
 };
 
+const getUpdatedState = (state, action) => {
+    switch (action.targetMode) {
+        case ActionMode.InstanceOnly:
+            const instanceId = action.instanceId;
+            state = getInstanceUpdatedState(instanceId, state, action);
+            break;
+        case ActionMode.Broadcast:
+            collectInstanceIds().forEach(instanceId => {
+                state = getInstanceUpdatedState(instanceId, state, action);
+            });
+            break;
+        default:
+            break;
+    }
+    return state;
+};
+
 export const getRootReducer = () => {
     let newState = getNewState();
     return (oldState = newState, action) => {
         let state = getMergedState(oldState, newState);
-        let instanceId = action.instanceId;
-        return getUpdatedState(instanceId, action, state);
+        return getUpdatedState(state, action);
     };
 };
