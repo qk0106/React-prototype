@@ -16,7 +16,6 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     },
     onClick: () => {
         dispatch(refreshGitInfo(instanceId, ActionMode.ParentTree)({ gitUrl: ownProps.gitUrl }));
-        // dispatch(refreshGitInfo(instanceId, ActionMode.Broadcast)({ gitUrl: ownProps.gitUrl }));
     }
 });
 

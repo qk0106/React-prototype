@@ -28,7 +28,7 @@ const getMergedState = (oldState, newState) => {
 };
 
 const getInstanceUpdatedState = (instanceId, state, action) => {
-    let componentName = extractComponentNameFromInstanceId(instanceId);
+    const componentName = extractComponentNameFromInstanceId(instanceId);
     if (!(instanceId in state)) return state;
     return iassign(state, state => {
         const instanceState = state[instanceId];
@@ -49,7 +49,7 @@ const getUpdatedState = (state, action) => {
             let currentInstancePrefix = extractPrefixFromInstanceId(action.instanceId);
             collectInstanceIds().forEach(instanceId => {
                 const prefix = extractPrefixFromInstanceId(instanceId);
-                if (prefix === currentInstancePrefix)
+                if (currentInstancePrefix === prefix || currentInstancePrefix === instanceId)
                     state = getInstanceUpdatedState(instanceId, state, action);
             });
             break;
