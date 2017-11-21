@@ -38,8 +38,9 @@ export const getRootReducer = () => {
     let updatedState = getUpdatedState();
     return (state = updatedState, action) => {
         let mergedState = getMergedState(state, updatedState);
+
         let instanceId = action.instanceId;
-        let componentName = extractComponentNameFromInstanceId(action.instanceId);
+        let componentName = extractComponentNameFromInstanceId(instanceId);
         if (!(instanceId in mergedState)) return mergedState;
         return iassign(mergedState, obj => {
             const state = mergedState[instanceId];
