@@ -19,8 +19,6 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     onSubmit: e => {
         e.preventDefault();
         dispatch(onAddClick(instanceId, ActionMode.ParentTree)({ text: stateProps.inputText }));
-        // dispatch(addTodo(instanceId, ActionMode.ParentTree)({ text: stateProps.inputText }));
-        // dispatch(changeInputText(instanceId)({ text: "" }));
     },
     onChange: e => {
         dispatch(changeInputText(instanceId)({ text: e.target.value }));
