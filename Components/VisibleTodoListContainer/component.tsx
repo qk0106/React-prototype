@@ -21,7 +21,7 @@ const stateProps = (ownState, ownProps) => ({
 
 const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     onTodoClick: id => {
-        dispatch(toggleTodo(instanceId, { id }));
+        dispatch(toggleTodo(instanceId)({ id }));
     }
 });
 

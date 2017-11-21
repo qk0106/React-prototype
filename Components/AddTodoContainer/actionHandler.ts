@@ -8,10 +8,10 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
         try {
             let data = await doFetch(action.gitUrl);
             let sizeInfo = data.size;
-            dispatch(changeInputText(instanceId, { text: sizeInfo }));
+            dispatch(changeInputText(instanceId)({ text: sizeInfo }));
         } catch (error) {
             let errorMessage = "Error";
-            dispatch(changeInputText(instanceId, { text: errorMessage }));
+            dispatch(changeInputText(instanceId)({ text: errorMessage }));
         }
     }
 };

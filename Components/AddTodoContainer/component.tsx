@@ -10,18 +10,18 @@ const stateProps = (ownState, ownProps) => ({
 const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     init: () => {
         dispatch(
-            initInputInfo(instanceId, {
+            initInputInfo(instanceId)({
                 gitUrl: "https://api.github.com/repos/qk0106/React-prototype"
             })
         );
     },
     onSubmit: e => {
         e.preventDefault();
-        dispatch(addTodo(instanceId, { text: stateProps.inputText }));
-        dispatch(changeInputText(instanceId, { text: "" }));
+        dispatch(addTodo(instanceId)({ text: stateProps.inputText }));
+        dispatch(changeInputText(instanceId)({ text: "" }));
     },
     onChange: e => {
-        dispatch(changeInputText(instanceId, { text: e.target.value }));
+        dispatch(changeInputText(instanceId)({ text: e.target.value }));
     }
 });
 

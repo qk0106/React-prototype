@@ -9,7 +9,7 @@ const stateProps = (ownState, ownProps) => ({
 
 const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     onClick: () => {
-        dispatch(setVisibilityFilter(instanceId, { filter: ownProps.filter }));
+        dispatch(setVisibilityFilter(instanceId)({ filter: ownProps.filter }));
     }
 });
 

@@ -11,10 +11,10 @@ const stateProps = (ownState, ownProps) => ({
 
 const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     init: () => {
-        dispatch(refreshGitInfo(instanceId, { gitUrl: ownProps.gitUrl }));
+        dispatch(refreshGitInfo(instanceId)({ gitUrl: ownProps.gitUrl }));
     },
     onClick: () => {
-        dispatch(refreshGitInfo(instanceId, { gitUrl: ownProps.gitUrl }));
+        dispatch(refreshGitInfo(instanceId)({ gitUrl: ownProps.gitUrl }));
     }
 });
 
