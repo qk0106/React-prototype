@@ -4,7 +4,7 @@ import * as CSSModules from "react-css-modules";
 import {} from "semantic-ui-react";
 
 const _GitSizePresenter = ({ gitSize, refreshCount, onClick }) => (
-    <div styleName="git-size">
+    <div>
         <p>Git Info Component</p>
         <p styleName="size-bg">Size: {gitSize}</p>
         <p>Refresh Count: {refreshCount.count}</p>
