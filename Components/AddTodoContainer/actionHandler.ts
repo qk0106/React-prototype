@@ -3,6 +3,8 @@ import { addMiddleware } from "redux-dynamic-middlewares";
 import { INIT_INPUT_INFO, changeInputText, addTodo } from "./action";
 import { ActionMode } from "ReduxActionModeHelper";
 
+import { FETCH_GIT_INFO_SUCCESS } from "GitInfoSubContainer";
+
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);
     const type = action.type;
@@ -18,7 +20,7 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
             dispatch(changeInputText(instanceId)({ text: errorMessage }));
         }
     }
-    if (targetMode === ActionMode.ParentTree) {
+    if (type === FETCH_GIT_INFO_SUCCESS && targetMode !== ActionMode.InstanceOnly) {
         if (action.data && action.data.size)
             dispatch(addTodo(instanceId, targetMode)({ text: action.data.size }));
     }

@@ -7,18 +7,22 @@ import { TopContainer } from "TopContainer";
 const AsyncTestPage = () => (
     <div>
         <span>This is Async Page</span>
+        <hr />
         <GitInfoContainer
             instanceIdPrefix="AsyncTestPage"
             gitUrl="https://api.github.com/repos/qk0106/React-prototype"
         />
+        <hr />
         <GitInfoContainer
             instanceIdPrefix="AsyncTestPage"
             gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor"
         />
+        <hr />
         <TodoListContainer
             instanceIdPrefix="AsyncTestPage"
             inputText="This is TodoList in async page"
         />
+        <hr />
         <TopContainer />
     </div>
 );
