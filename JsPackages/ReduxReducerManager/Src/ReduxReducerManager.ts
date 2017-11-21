@@ -4,19 +4,19 @@ import { combineReducers } from "redux";
 
 let reducerRegistry = {};
 
-const getUpdatedState = () => {
-    let updatedState = {};
+const getInstanceState = () => {
+    let instanceState = {};
     collectInstanceIds().forEach(instanceId => {
-        updatedState[instanceId] = {};
+        instanceState[instanceId] = {};
     });
-    return updatedState;
+    return instanceState;
 };
 
-const getMergedState = (state, updatedState) => {
+const getMergedState = (state, instanceState) => {
     let mergedState = {};
-    for (let prop in updatedState) {
-        if (updatedState.hasOwnProperty(prop)) {
-            mergedState[prop] = updatedState[prop];
+    for (let prop in instanceState) {
+        if (instanceState.hasOwnProperty(prop)) {
+            mergedState[prop] = instanceState[prop];
             if (state.hasOwnProperty(prop)) mergedState[prop] = state[prop];
         }
     }
@@ -35,9 +35,9 @@ export const unregisterReducer = (reducer, componentName) => {
 };
 
 export const getRootReducer = () => {
-    let updatedState = getUpdatedState();
-    return (state = updatedState, action) => {
-        let mergedState = getMergedState(state, updatedState);
+    let instanceState = getInstanceState();
+    return (state = instanceState, action) => {
+        let mergedState = getMergedState(state, instanceState);
 
         let instanceId = action.instanceId;
         let componentName = extractComponentNameFromInstanceId(instanceId);
@@ -45,8 +45,8 @@ export const getRootReducer = () => {
         return iassign(mergedState, obj => {
             const state = mergedState[instanceId];
             const combinedReducer = combineReducers(reducerRegistry[componentName].reducer);
-            const updatedState = combinedReducer(state, action);
-            obj[instanceId] = updatedState;
+            const instanceState = combinedReducer(state, action);
+            obj[instanceId] = instanceState;
             return obj;
         });
     };
