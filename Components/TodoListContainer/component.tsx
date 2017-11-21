@@ -10,6 +10,7 @@ const component = props => (
         <AddTodoContainer {...props} />
         <VisibleTodoListContainer {...props} />
         <TodoFooterContainer {...props} />
+        <br />
     </div>
 );
 

@@ -6,6 +6,7 @@ import { GitInfoSubContainer } from "GitInfoSubContainer";
 const component = props => (
     <div>
         <GitInfoSubContainer {...props} />
+        <br />
     </div>
 );
 

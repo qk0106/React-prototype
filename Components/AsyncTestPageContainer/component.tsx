@@ -24,6 +24,7 @@ const AsyncTestPage = () => (
         />
         <hr />
         <TopContainer instanceIdPrefix="AsyncTestPage" />
+        <hr />
         <TopContainer instanceIdPrefix="AsyncTestPage" />
     </div>
 );
