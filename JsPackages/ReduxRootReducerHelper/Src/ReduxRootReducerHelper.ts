@@ -39,15 +39,16 @@ const getInstanceUpdatedState = (instanceId, state, action) => {
 };
 
 const getUpdatedState = (state, action) => {
-    let currentInstancePrefix = extractPrefixFromInstanceId(action.instanceId);
-    collectInstanceIds().forEach(instanceId => {
-        const prefix = extractPrefixFromInstanceId(instanceId);
+    const senderInstanceId = action.instanceId;
+    const senderParentInstanceId = extractPrefixFromInstanceId(senderInstanceId);
+    collectInstanceIds().forEach(receiverInstanceId => {
+        const receiverParentInstanceId = extractPrefixFromInstanceId(receiverInstanceId);
         if (
-            action.instanceId === instanceId ||
-            currentInstancePrefix === prefix ||
-            currentInstancePrefix === instanceId
+            senderInstanceId === receiverInstanceId ||
+            senderParentInstanceId === receiverInstanceId ||
+            senderParentInstanceId === receiverParentInstanceId
         )
-            state = getInstanceUpdatedState(instanceId, state, action);
+            state = getInstanceUpdatedState(receiverInstanceId, state, action);
     });
     return state;
 };
