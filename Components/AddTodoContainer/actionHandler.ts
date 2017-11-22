@@ -1,6 +1,7 @@
 import { doFetch } from "FetchHelper";
 import { addMiddleware } from "redux-dynamic-middlewares";
 import { INIT_INPUT_INFO, ON_ADD_CLICK, changeInputText, addTodo } from "./action";
+import { FETCH_GIT_INFO_SUCCESS } from "GitInfoSubContainer";
 
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);
@@ -20,11 +21,10 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
         dispatch(addTodo(instanceId)({ text: action.text }));
         dispatch(changeInputText(instanceId)({ text: "" }));
     }
-    // TODO decide how to talk to sibling
-    // if (type === FETCH_GIT_INFO_SUCCESS) {
-    //     if (action.data && action.data.size)
-    //         dispatch(addTodo(instanceId)({ text: action.data.size }));
-    // }
+    if (type === FETCH_GIT_INFO_SUCCESS) {
+        if (action.data && action.data.size)
+            dispatch(addTodo(instanceId)({ text: action.data.size }));
+    }
 };
 
 addMiddleware(actionHandlerMiddleware);

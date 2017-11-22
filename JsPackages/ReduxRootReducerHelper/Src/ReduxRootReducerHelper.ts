@@ -44,9 +44,9 @@ const getUpdatedState = (state, action) => {
     collectInstanceIds().forEach(receiverInstanceId => {
         const receiverParentInstanceId = extractPrefixFromInstanceId(receiverInstanceId);
         if (
-            senderInstanceId === receiverInstanceId ||
-            senderParentInstanceId === receiverInstanceId ||
-            senderParentInstanceId === receiverParentInstanceId
+            senderParentInstanceId === receiverInstanceId || // match parent instance
+            senderParentInstanceId === receiverParentInstanceId || // match sibling instances, including itself
+            receiverParentInstanceId.includes(senderParentInstanceId) // match descendant instances
         )
             state = getInstanceUpdatedState(receiverInstanceId, state, action);
     });
