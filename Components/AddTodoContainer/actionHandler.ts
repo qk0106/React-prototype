@@ -5,7 +5,6 @@ import { INIT_INPUT_INFO, ON_ADD_CLICK, changeInputText, addTodo } from "./actio
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);
     const type = action.type;
-    // const targetMode = action.targetMode;
     const instanceId = action.instanceId;
     if (type === INIT_INPUT_INFO) {
         try {
@@ -22,9 +21,9 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
         dispatch(changeInputText(instanceId)({ text: "" }));
     }
     // TODO decide how to talk to sibling
-    // if (type === FETCH_GIT_INFO_SUCCESS && targetMode !== ActionMode.InstanceOnly) {
+    // if (type === FETCH_GIT_INFO_SUCCESS) {
     //     if (action.data && action.data.size)
-    //         dispatch(addTodo(instanceId, targetMode)({ text: action.data.size }));
+    //         dispatch(addTodo(instanceId)({ text: action.data.size }));
     // }
 };
 

@@ -2,7 +2,6 @@ import { wrapWithInit } from "ReactInitComponentWrapper";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
 import { refreshGitInfo } from "./action";
 import { GitSizePresenter } from "GitSizePresenter";
-import { ActionMode } from "ReduxActionModeHelper";
 
 const stateProps = (ownState, ownProps) => ({
     refreshCount: ownState.refreshCount !== undefined ? ownState.refreshCount : { count: 0 },
@@ -15,7 +14,7 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
         dispatch(refreshGitInfo(instanceId)({ gitUrl: ownProps.gitUrl }));
     },
     onClick: () => {
-        dispatch(refreshGitInfo(instanceId, ActionMode.Parent)({ gitUrl: ownProps.gitUrl }));
+        dispatch(refreshGitInfo(instanceId)({ gitUrl: ownProps.gitUrl }));
     }
 });
 

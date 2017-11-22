@@ -6,7 +6,6 @@ import {
     extractPrefixFromInstanceId,
     extractComponentNameFromInstanceId
 } from "ReactInstanceIdManager";
-import { ActionMode } from "ReduxActionModeHelper";
 
 const getNewState = () => {
     let state = {};
@@ -40,29 +39,16 @@ const getInstanceUpdatedState = (instanceId, state, action) => {
 };
 
 const getUpdatedState = (state, action) => {
-    switch (action.targetMode) {
-        case ActionMode.InstanceOnly:
-            const instanceId = action.instanceId;
+    let currentInstancePrefix = extractPrefixFromInstanceId(action.instanceId);
+    collectInstanceIds().forEach(instanceId => {
+        const prefix = extractPrefixFromInstanceId(instanceId);
+        if (
+            action.instanceId === instanceId ||
+            currentInstancePrefix === prefix ||
+            currentInstancePrefix === instanceId
+        )
             state = getInstanceUpdatedState(instanceId, state, action);
-            break;
-        case ActionMode.Parent:
-            let currentInstancePrefix = extractPrefixFromInstanceId(action.instanceId);
-            collectInstanceIds().forEach(instanceId => {
-                // TODO: decide if need to update sibling
-                // const prefix = extractPrefixFromInstanceId(instanceId);
-                // if (currentInstancePrefix === prefix || currentInstancePrefix === instanceId)
-                if (action.instanceId === instanceId || currentInstancePrefix === instanceId)
-                    state = getInstanceUpdatedState(instanceId, state, action);
-            });
-            break;
-        case ActionMode.Broadcast:
-            collectInstanceIds().forEach(instanceId => {
-                state = getInstanceUpdatedState(instanceId, state, action);
-            });
-            break;
-        default:
-            break;
-    }
+    });
     return state;
 };
 

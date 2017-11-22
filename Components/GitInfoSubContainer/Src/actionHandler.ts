@@ -5,13 +5,12 @@ import { REFRESH_GIT_INFO, fetchGitInfo, fetchGitInfoSuccess, fetchGitInfoFailed
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);
     const type = action.type;
-    const targetMode = action.targetMode;
     const instanceId = action.instanceId;
     if (type === REFRESH_GIT_INFO) {
         dispatch(fetchGitInfo(instanceId)());
         try {
             let data = await doFetch(action.gitUrl);
-            dispatch(fetchGitInfoSuccess(instanceId, targetMode)({ data }));
+            dispatch(fetchGitInfoSuccess(instanceId)({ data }));
         } catch (error) {
             dispatch(fetchGitInfoFailed(instanceId)({ error }));
         }
