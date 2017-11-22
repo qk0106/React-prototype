@@ -2,7 +2,7 @@ import * as React from "react";
 import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import { newStore, readStore } from "ReduxStoreManager";
-import { registerInstance } from "ReactInstancesManager";
+import { registerInstance } from "ReactInstanceManager";
 import { reducer } from "GitInfoContainer/Src/reducer";
 import configureStore from "redux-mock-store";
 import dynamicMiddlewares from "redux-dynamic-middlewares";
@@ -11,26 +11,23 @@ import { GitSizePresenter } from "GitSizePresenter";
 
 const mockStore = configureStore([dynamicMiddlewares]);
 
-const getStore = (instanceProps, reducer) => {
+const getStore = (instanceId, reducer) => {
     newStore();
-    registerInstance(instanceProps, reducer);
+    registerInstance(instanceId, reducer);
     return readStore();
 };
 
 const preset = () => {
-    let instanceProps = {
-        instanceSet: "MockInstanceSet",
-        instanceId: "MockInstanceId_112138"
-    };
+    let instanceId: "MockInstanceId_112138";
     let gitUrl = "MockGitUrl";
-    let realStore = getStore(instanceProps, reducer);
+    let realStore = getStore(instanceId, reducer);
     let store = mockStore(realStore.getState());
     let wrapper = mount(
         <Provider store={store}>
-            <GitInfoSubContainer instanceProps={instanceProps} gitUrl={gitUrl} />
+            <GitInfoSubContainer instanceId={instanceId} gitUrl={gitUrl} />
         </Provider>
     );
-    return { wrapper, store, instanceProps, gitUrl };
+    return { wrapper, store, instanceId, gitUrl };
 };
 
 describe(">>>GitInfoSubContainer Unit Testing", () => {

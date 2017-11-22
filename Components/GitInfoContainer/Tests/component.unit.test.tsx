@@ -2,7 +2,7 @@ import * as React from "react";
 import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import { readStore } from "ReduxStoreManager";
-import { GitInfoContainer, instanceSet } from "GitInfoContainer";
+import { GitInfoContainer } from "GitInfoContainer";
 import { GitInfoSubContainer } from "GitInfoSubContainer";
 
 const preset = () => {
@@ -33,11 +33,10 @@ describe(">>>GitInfoContainer Unit Testing", () => {
         expect(wrapper.find(GitInfoSubContainer).length).toEqual(1);
     });
 
-    it("+++ check props passing - instanceProps", () => {
+    it("+++ check props passing - instanceId", () => {
         let { wrapper, instanceIdPrefix } = preset();
-        let instanceProps = wrapper.find(GitInfoSubContainer).prop("instanceProps");
-        expect(instanceProps.instanceSet).toEqual(instanceSet);
-        expect(instanceProps.instanceId).toMatch(new RegExp(instanceIdPrefix + "_"));
+        let instanceId = wrapper.find(GitInfoSubContainer).prop("instanceId");
+        expect(instanceId).toMatch(new RegExp(instanceIdPrefix + "_"));
     });
 
     it("+++ check props passing - gitUrl", () => {

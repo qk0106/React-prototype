@@ -10,9 +10,9 @@ const preset = () => {
 };
 
 describe(">>>GitSizePresenter Unit Testing", () => {
-    it("+++ check render 2 p tags", () => {
+    it("+++ check render 3 p tags", () => {
         let { wrapper } = preset();
-        expect(wrapper.find("p").length).toEqual(2);
+        expect(wrapper.find("p").length).toEqual(3);
     });
 
     it("+++ check render 1 button tag", () => {
