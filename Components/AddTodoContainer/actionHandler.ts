@@ -24,10 +24,11 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
         dispatch(addTodo(instanceId)({ text: action.text }));
         dispatch(changeInputText(instanceId)({ text: "" }));
     }
-    if (type === FETCH_GIT_INFO_SUCCESS && targetMode !== ActionMode.InstanceOnly) {
-        if (action.data && action.data.size)
-            dispatch(addTodo(instanceId, targetMode)({ text: action.data.size }));
-    }
+    // TODO decide how to talk to sibling
+    // if (type === FETCH_GIT_INFO_SUCCESS && targetMode !== ActionMode.InstanceOnly) {
+    //     if (action.data && action.data.size)
+    //         dispatch(addTodo(instanceId, targetMode)({ text: action.data.size }));
+    // }
 };
 
 addMiddleware(actionHandlerMiddleware);

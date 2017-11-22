@@ -1,5 +1,5 @@
 export enum ActionMode {
     InstanceOnly = "InstanceOnly",
-    ParentTree = "ParentTree",
+    Parent = "Parent",
     Broadcast = "Broadcast"
 }

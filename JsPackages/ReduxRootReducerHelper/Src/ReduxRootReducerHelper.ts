@@ -45,7 +45,7 @@ const getUpdatedState = (state, action) => {
             const instanceId = action.instanceId;
             state = getInstanceUpdatedState(instanceId, state, action);
             break;
-        case ActionMode.ParentTree:
+        case ActionMode.Parent:
             let currentInstancePrefix = extractPrefixFromInstanceId(action.instanceId);
             collectInstanceIds().forEach(instanceId => {
                 // TODO: decide if need to update sibling

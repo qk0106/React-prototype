@@ -36,7 +36,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
    - Async action is handled by action handler middlewares.
    - Async props is handled by init data wrapper component.
  - Communication Between Instances
-   - 3 action mode : InstanceOnly, ParentTree and Broadcast cover most of communication requirements.
+   - 3 action mode : InstanceOnly, Parent and Broadcast cover most of communication requirements.
    - Full utilize the features of redux.
 
 ## Future Improvements
