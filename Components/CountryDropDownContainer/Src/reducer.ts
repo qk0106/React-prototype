@@ -1,6 +1,6 @@
 import { ON_SELECT } from "CountryDropDownSubContainer"; // To get Action Types
 
-const selectedCountry = (selectedCountry = 0, action) => {
+const selectedCountry = (selectedCountry = "", action) => {
     switch (action.type) {
         case ON_SELECT:
             return action.select;
