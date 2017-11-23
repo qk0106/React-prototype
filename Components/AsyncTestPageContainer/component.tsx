@@ -4,10 +4,12 @@ import { TodoListContainer } from "TodoListContainer";
 import { registerRoute } from "ReactRouteManager";
 import { TopContainer } from "TopContainer";
 import { FitnessScoreContainer } from "FitnessScoreContainer";
+import { CountryDropDownContainer } from "CountryDropDownContainer";
 
 const AsyncTestPage = () => (
     <div>
         <span>This is Async Page</span>
+        <CountryDropDownContainer instanceIdPrefix="AsyncTestPage" />
         <FitnessScoreContainer instanceIdPrefix="AsyncTestPage_AnotherLevel" />
         <GitInfoContainer
             instanceIdPrefix="AsyncTestPage"
