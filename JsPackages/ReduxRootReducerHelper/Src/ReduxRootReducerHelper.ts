@@ -7,6 +7,7 @@ import {
     extractComponentNameFromInstanceId
 } from "ReactInstanceIdManager";
 import { collectBroadcastListeners } from "ReduxActionBroadcastListenerManager";
+import { sharedStateReducer } from "ReduxSharedStateHelper";
 
 const getNewState = () => {
     let state = {};
@@ -67,10 +68,22 @@ const getUpdatedState = (state, action) => {
     return state;
 };
 
+const getSharedState = (state, action) => {
+    return iassign(state, state => {
+        const instanceState = state["SharedState"];
+        const combinedReducer = combineReducers(sharedStateReducer);
+        const updatedInstanceState = combinedReducer(instanceState, action);
+        state["SharedState"] = updatedInstanceState;
+        return state;
+    });
+};
+
 export const getRootReducer = () => {
     let newState = getNewState();
     return (oldState = newState, action) => {
         let state = getMergedState(oldState, newState);
-        return getUpdatedState(state, action);
+        state = getUpdatedState(state, action);
+        state = getSharedState(state, action);
+        return state;
     };
 };
