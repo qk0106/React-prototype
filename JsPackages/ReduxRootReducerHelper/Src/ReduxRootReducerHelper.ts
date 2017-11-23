@@ -6,7 +6,7 @@ import {
     extractPrefixFromInstanceId,
     extractComponentNameFromInstanceId
 } from "ReactInstanceIdManager";
-import { collectBroadcastListeners } from "ReduxActionBroadcastManager";
+import { collectBroadcastListeners } from "ReduxActionBroadcastListenerManager";
 
 const getNewState = () => {
     let state = {};
