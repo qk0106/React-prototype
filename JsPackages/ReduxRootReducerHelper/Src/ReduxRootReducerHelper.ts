@@ -32,8 +32,8 @@ const getInstanceUpdatedState = (instanceId, componentName, state, action) => {
     if (!(instanceId in state)) return state;
     return iassign(state, state => {
         const instanceState = state[instanceId];
-        const combinedReducer = combineReducers(collectReducers()[componentName].reducer);
-        const updatedInstanceState = combinedReducer(instanceState, action);
+        const runCombinedReducer = combineReducers(collectReducers()[componentName].reducer);
+        const updatedInstanceState = runCombinedReducer(instanceState, action);
         state[instanceId] = updatedInstanceState;
         return state;
     });
@@ -70,10 +70,9 @@ const getUpdatedState = (state, action) => {
 
 const getSharedState = (state, action) => {
     return iassign(state, state => {
-        const instanceState = state["SharedState"];
-        const combinedReducer = combineReducers(sharedStateReducer);
-        const updatedInstanceState = combinedReducer(instanceState, action);
-        state["SharedState"] = updatedInstanceState;
+        const sharedState = state["SharedState"];
+        const runCombinedReducer = combineReducers(sharedStateReducer);
+        state["SharedState"] = runCombinedReducer(sharedState, action);
         return state;
     });
 };
