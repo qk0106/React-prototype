@@ -6,7 +6,12 @@ import { registerInstance } from "ReactInstanceManager";
 import { reducer } from "GitInfoContainer/Src/reducer";
 import configureStore from "redux-mock-store";
 import dynamicMiddlewares from "redux-dynamic-middlewares";
-import { GitInfoSubContainer, REFRESH_GIT_INFO } from "GitInfoSubContainer";
+import {
+    GitInfoSubContainer,
+    ON_REFRESH_CLICK,
+    REFRESH_GIT_INFO,
+    FETCH_GIT_INFO
+} from "GitInfoSubContainer";
 import { GitSizePresenter } from "GitSizePresenter";
 
 const mockStore = configureStore([dynamicMiddlewares]);
@@ -63,10 +68,10 @@ describe(">>>GitInfoSubContainer Unit Testing", () => {
             .find(GitInfoSubContainer)
             .childAt(0)
             .props();
-        // init is invoked defaultly
         initWrapperProps.onClick();
         let actions = store.getActions();
-        expect(actions[0].type).toBe(REFRESH_GIT_INFO);
-        expect(actions[2].type).toBe(REFRESH_GIT_INFO);
+        expect(actions[0].type).toBe(ON_REFRESH_CLICK);
+        expect(actions[1].type).toBe(REFRESH_GIT_INFO);
+        expect(actions[2].type).toBe(FETCH_GIT_INFO);
     });
 });

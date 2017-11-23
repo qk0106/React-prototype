@@ -6,6 +6,7 @@ import {
     extractPrefixFromInstanceId,
     extractComponentNameFromInstanceId
 } from "ReactInstanceIdManager";
+import { collectBroadcastListeners } from "ReduxActionBroadcastManager";
 
 const getNewState = () => {
     let state = {};
@@ -26,8 +27,7 @@ const getMergedState = (oldState, newState) => {
     return state;
 };
 
-const getInstanceUpdatedState = (instanceId, state, action) => {
-    const componentName = extractComponentNameFromInstanceId(instanceId);
+const getInstanceUpdatedState = (instanceId, componentName, state, action) => {
     if (!(instanceId in state)) return state;
     return iassign(state, state => {
         const instanceState = state[instanceId];
@@ -38,17 +38,31 @@ const getInstanceUpdatedState = (instanceId, state, action) => {
     });
 };
 
+const isBroadcastListener = componentName => {
+    const broadcastListenerRegistry = collectBroadcastListeners();
+    if (broadcastListenerRegistry[componentName])
+        return broadcastListenerRegistry[componentName].listen;
+    else return false;
+};
+
 const getUpdatedState = (state, action) => {
     const senderInstanceId = action.instanceId;
     const senderParentInstanceId = extractPrefixFromInstanceId(senderInstanceId);
     collectInstanceIds().forEach(receiverInstanceId => {
+        const receiverComponentName = extractComponentNameFromInstanceId(receiverInstanceId);
         const receiverParentInstanceId = extractPrefixFromInstanceId(receiverInstanceId);
         if (
-            senderParentInstanceId === receiverInstanceId || // match parent instance
-            senderParentInstanceId === receiverParentInstanceId || // match sibling instances, including itself
+            isBroadcastListener(receiverComponentName) ||
+            receiverInstanceId === senderParentInstanceId || // match parent instance
+            receiverParentInstanceId === senderParentInstanceId || // match sibling instances, including itself
             receiverParentInstanceId.includes(senderParentInstanceId) // match descendant instances
         )
-            state = getInstanceUpdatedState(receiverInstanceId, state, action);
+            state = getInstanceUpdatedState(
+                receiverInstanceId,
+                receiverComponentName,
+                state,
+                action
+            );
     });
     return state;
 };

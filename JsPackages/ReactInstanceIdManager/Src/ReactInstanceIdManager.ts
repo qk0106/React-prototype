@@ -7,13 +7,13 @@ export const generateInstanceId = (instanceIdPrefix, componentName) =>
 
 export const extractPrefixFromInstanceId = instanceId => {
     if (instanceId === undefined) return undefined;
-    const reg = /(\w+)\_\w+\_\w+$/;
+    const reg = /(\w+)\_[A-Za-z]+\_[0-9]+$/;
     return instanceId.match(reg)[1];
 };
 
 export const extractComponentNameFromInstanceId = instanceId => {
     if (instanceId === undefined) return undefined;
-    const reg = /\_(\w+)\_\w+$/;
+    const reg = /\_([A-Za-z]+)\_[0-9]+$/;
     return instanceId.match(reg)[1];
 };
 

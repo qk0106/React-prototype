@@ -8,7 +8,7 @@ import { FitnessScoreContainer } from "FitnessScoreContainer";
 const AsyncTestPage = () => (
     <div>
         <span>This is Async Page</span>
-        <FitnessScoreContainer instanceIdPrefix="AnotherPage" />
+        <FitnessScoreContainer instanceIdPrefix="AsyncTestPage_AnotherLevel" />
         <GitInfoContainer
             instanceIdPrefix="AsyncTestPage"
             gitUrl="https://api.github.com/repos/qk0106/React-prototype"
