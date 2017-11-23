@@ -1,5 +1,6 @@
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
 import { CountryDropDownPresenter } from "CountryDropDownPresenter";
+import { onSelect } from "CountryDropDownSubContainer";
 
 const stateProps = (ownState, ownProps, sharedState) => ({
     selectedCountry:
@@ -8,8 +9,8 @@ const stateProps = (ownState, ownProps, sharedState) => ({
 });
 
 const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
-    selectHandler: e => {
-        console.log(e);
+    selectHandler: (event, data) => {
+        dispatch(onSelect(instanceId)({ select: data.value }));
     }
 });
 

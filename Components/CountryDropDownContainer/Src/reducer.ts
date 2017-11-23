@@ -1,16 +1,14 @@
-import { ADD_FITNESS_SCORE } from "FitnessScoreSubContainer"; // To get Action Types
+import { ON_SELECT } from "CountryDropDownSubContainer"; // To get Action Types
 
-const fitnessScoreCounter = (fitnessScoreCounter = 0, action) => {
+const selectedCountry = (selectedCountry = 0, action) => {
     switch (action.type) {
-        case ADD_FITNESS_SCORE:
-            let score = Number(action.score);
-            if (score === NaN) score = 0;
-            return fitnessScoreCounter + score;
+        case ON_SELECT:
+            return action.select;
         default:
-            return fitnessScoreCounter;
+            return selectedCountry;
     }
 };
 
 export const reducer = {
-    fitnessScoreCounter
+    selectedCountry
 };

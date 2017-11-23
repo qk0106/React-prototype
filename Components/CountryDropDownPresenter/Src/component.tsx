@@ -12,7 +12,7 @@ const component = ({ selectedCountry, countryOptions, selectHandler }) => (
             search
             selection
             options={countryOptions}
-            onClick={selectHandler}
+            onChange={selectHandler}
         />
     </div>
 );
