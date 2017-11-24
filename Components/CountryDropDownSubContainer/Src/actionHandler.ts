@@ -8,13 +8,14 @@ import { doFetchText } from "FetchHelper";
 import { registerSharedState } from "ReduxSharedStateManager";
 
 const registerCountryOptions = () => {
-    const initCountryOptions = [];
+    let initCountryOptions = [];
     const countryOptions = (countryOptions = initCountryOptions, action) => {
         switch (action.type) {
             case FETCH_COUNTRY_OPTIONS_SUCCESS:
-                return action.countryOptions;
+                initCountryOptions = action.countryOptions;
+                return initCountryOptions;
             default:
-                return countryOptions;
+                return initCountryOptions;
         }
     };
     registerSharedState({ countryOptions });
