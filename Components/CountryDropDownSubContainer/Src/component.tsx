@@ -1,14 +1,17 @@
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
 import { CountryDropDownPresenter } from "CountryDropDownPresenter";
-import { onSelect } from "CountryDropDownSubContainer";
+import { onSelect, initCountryOptions } from "CountryDropDownSubContainer";
+import { wrapWithInit } from "ReactInitComponentWrapper";
 
 const stateProps = (ownState, ownProps, sharedState) => ({
-    selectedCountry:
-        ownState.selectedCountry !== undefined ? ownState.selectedCountry : "Unselected",
-    countryOptions: sharedState.countryOptions
+    selectedCountry: ownState.selectedCountry !== undefined ? ownState.selectedCountry : "",
+    countryOptions: sharedState.countryOptions !== undefined ? sharedState.countryOptions : []
 });
 
 const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
+    init: () => {
+        if (stateProps.countryOptions.length === 0) dispatch(initCountryOptions(instanceId)());
+    },
     selectHandler: (event, data) => {
         dispatch(onSelect(instanceId)({ select: data.value }));
     }
@@ -17,5 +20,5 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
 export const CountryDropDownSubContainer = wrapWithConnect(
     stateProps,
     dispatchProps,
-    CountryDropDownPresenter
+    wrapWithInit(CountryDropDownPresenter)
 );
