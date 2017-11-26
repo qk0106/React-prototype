@@ -9,7 +9,7 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     const instanceId = action.instanceId;
     if (type === INIT_INPUT_INFO) {
         try {
-            let data = await doFetch(action.gitUrl);
+            let data = await doFetch(action.gitUrl, "json");
             let sizeInfo = data.size;
             dispatch(changeInputText(instanceId)({ text: sizeInfo }));
         } catch (error) {

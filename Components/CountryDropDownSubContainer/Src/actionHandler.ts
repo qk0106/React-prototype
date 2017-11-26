@@ -4,7 +4,7 @@ import {
     FETCH_COUNTRY_OPTIONS_SUCCESS,
     fetchCountryOptionsSuccess
 } from "./action";
-import { doFetchText } from "FetchHelper";
+import { doFetch } from "FetchHelper";
 import { registerSharedState } from "ReduxSharedStateManager";
 
 const registerCountryOptions = () => {
@@ -22,7 +22,7 @@ const registerCountryOptions = () => {
 };
 
 const getCountryOptionsData = async () => {
-    const data = await doFetchText("https://react.semantic-ui.com/app.fa4f9df2677ed6cad825.js");
+    const data = await doFetch("https://react.semantic-ui.com/app.58ed96854ba9bd9ac420.js", "text");
     const reg = /\;t\.countryOptions=(.+)},\/\*\!\*+/;
     let str = data.match(reg)[1];
     str = str.replace(/key\:/g, '"key":');

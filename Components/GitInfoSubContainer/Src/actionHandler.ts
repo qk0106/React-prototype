@@ -19,7 +19,7 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     if (type === REFRESH_GIT_INFO) {
         dispatch(fetchGitInfo(instanceId)());
         try {
-            let data = await doFetch(action.gitUrl);
+            let data = await doFetch(action.gitUrl, "json");
             dispatch(fetchGitInfoSuccess(instanceId)({ data }));
         } catch (error) {
             dispatch(fetchGitInfoFailed(instanceId)({ error }));
