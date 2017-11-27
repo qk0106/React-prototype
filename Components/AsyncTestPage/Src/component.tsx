@@ -7,7 +7,7 @@ import { TodoList } from "TodoList";
 import { FitnessScore } from "FitnessScore";
 import { CountryDropDown } from "CountryDropDown";
 
-const AsyncTestPage = () => (
+const component = () => (
     <div>
         <span>This is Async Page</span>
         <CountryDropDown instanceIdPrefix="AsyncTestPage" />
@@ -26,4 +26,4 @@ const AsyncTestPage = () => (
     </div>
 );
 
-registerRoute("AsyncTest", "/asyncTest", "Async Test", AsyncTestPage);
+registerRoute("AsyncTest", "/asyncTest", "Async Test", component);

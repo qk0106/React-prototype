@@ -8,14 +8,14 @@ import {} from "semantic-ui-react";
 import { reducer } from "./reducer";
 import { AddTodoContainer } from "AddTodoContainer";
 import { TodoFooterContainer } from "TodoFooterContainer";
-import { VisibleTodoListContainer } from "VisibleTodoListContainer";
+import { TodoListContainer } from "TodoListContainer";
 
 const component = props => (
     <div>
         <div styleName="todo-list">
             <p>Todo List Component</p>
             <AddTodoContainer {...props} />
-            <VisibleTodoListContainer {...props} />
+            <TodoListContainer {...props} />
             <TodoFooterContainer {...props} />
         </div>
         <br />

@@ -5,7 +5,7 @@ import { GitInfo } from "GitInfo";
 import { TodoList } from "TodoList";
 import { CountryDropDown } from "CountryDropDown";
 
-const TodoListPage = () => (
+const component = () => (
     <div>
         <span>This is Todo List Page</span>
         <CountryDropDown instanceIdPrefix="AsyncTestPage" />
@@ -22,4 +22,4 @@ const TodoListPage = () => (
     </div>
 );
 
-registerRoute("TodoList", "/todoList", "Todo List", TodoListPage);
+registerRoute("AnotherTest", "/another", "Another Test", component);

@@ -1,4 +1,4 @@
 // register routes
-import "HomePageContainer";
-import "AsyncTestPageContainer";
-import "TodoListPageContainer";
+import "HomePage";
+import "AsyncTestPage";
+import "AnotherTestPage";

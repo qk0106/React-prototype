@@ -1,10 +1,10 @@
 import * as React from "react";
 import { registerRoute } from "ReactRouteManager";
 
-const HomePage = () => (
+const component = () => (
     <div>
         <span>This is Home</span>
     </div>
 );
 
-registerRoute("Home", "/", "Home", HomePage);
+registerRoute("Home", "/", "Home", component);
