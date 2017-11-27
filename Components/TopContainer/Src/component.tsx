@@ -13,4 +13,4 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const TopContainer = wrapWithConnect(stateProps, dispatchProps, TopPresenter);
+export const TopContainer = wrapWithConnect(stateProps, dispatchProps)(TopPresenter);

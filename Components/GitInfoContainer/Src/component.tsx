@@ -19,8 +19,6 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const GitInfoContainer = wrapWithConnect(
-    stateProps,
-    dispatchProps,
+export const GitInfoContainer = wrapWithConnect(stateProps, dispatchProps)(
     wrapWithInit(GitInfoPresenter)
 );

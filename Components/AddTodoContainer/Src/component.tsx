@@ -25,8 +25,6 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const AddTodoContainer = wrapWithConnect(
-    stateProps,
-    dispatchProps,
+export const AddTodoContainer = wrapWithConnect(stateProps, dispatchProps)(
     wrapWithInit(AddTodoPresenter)
 );

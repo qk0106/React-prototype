@@ -8,8 +8,6 @@ const stateProps = (ownState, ownProps) => ({
 
 const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({});
 
-export const FitnessScoreContainer = wrapWithConnect(
-    stateProps,
-    dispatchProps,
+export const FitnessScoreContainer = wrapWithConnect(stateProps, dispatchProps)(
     FitnessScorePresenter
 );

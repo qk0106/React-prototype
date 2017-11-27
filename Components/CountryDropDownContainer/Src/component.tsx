@@ -18,8 +18,6 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const CountryDropDownContainer = wrapWithConnect(
-    stateProps,
-    dispatchProps,
+export const CountryDropDownContainer = wrapWithConnect(stateProps, dispatchProps)(
     wrapWithInit(CountryDropDownPresenter)
 );

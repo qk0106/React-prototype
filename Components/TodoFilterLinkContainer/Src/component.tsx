@@ -14,4 +14,4 @@ const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
     }
 });
 
-export const TodoFilterLinkContainer = wrapWithConnect(stateProps, dispatchProps, LinkPresenter);
+export const TodoFilterLinkContainer = wrapWithConnect(stateProps, dispatchProps)(LinkPresenter);
