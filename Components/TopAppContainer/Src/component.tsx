@@ -7,8 +7,8 @@ import {} from "semantic-ui-react";
 
 import { reducer } from "./reducer";
 import { TopContainer } from "TopContainer";
-import { GitInfo } from "GitInfo";
-import { TodoList } from "TodoList";
+import { GitInfoAppContainer } from "GitInfoAppContainer";
+import { TodoListAppContainer } from "TodoListAppContainer";
 
 export const component = props => {
     const id = { instanceIdPrefix: props.instanceId };
@@ -18,12 +18,15 @@ export const component = props => {
                 <p>Top Component</p>
                 <TopContainer {...props} />
                 <br />
-                <GitInfo {...id} gitUrl="https://api.github.com/repos/qk0106/React-prototype" />
-                <TodoList {...id} inputText="This is TodoList in async page" />
+                <GitInfoAppContainer
+                    {...id}
+                    gitUrl="https://api.github.com/repos/qk0106/React-prototype"
+                />
+                <TodoListAppContainer {...id} inputText="This is TodoList in async page" />
             </div>
             <br />
         </div>
     );
 };
 
-export const Top = wrapWithInstance(CSSModules(component, style), reducer, "Top");
+export const TopAppContainer = wrapWithInstance(CSSModules(component, style), reducer, "Top");

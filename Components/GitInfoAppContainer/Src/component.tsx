@@ -17,4 +17,8 @@ const component = props => (
     </div>
 );
 
-export const GitInfo = wrapWithInstance(CSSModules(component, style), reducer, "GitInfo");
+export const GitInfoAppContainer = wrapWithInstance(
+    CSSModules(component, style),
+    reducer,
+    "GitInfo"
+);
