@@ -1,6 +1,8 @@
-const style = require("./style.less");
 import * as React from "react";
-import * as CSSModules from "react-css-modules";
+
+const style = require("./style.less");
+import { wrapWithStyle } from "ReactStyleWrapper";
+
 import { List } from "semantic-ui-react";
 
 const component = ({ onClick, completed, text }) => (
@@ -15,4 +17,4 @@ const component = ({ onClick, completed, text }) => (
     </List.Item>
 );
 
-export const TodoPresenter = CSSModules(component, style);
+export const TodoPresenter = wrapWithStyle(style)(component);

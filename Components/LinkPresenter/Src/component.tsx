@@ -1,7 +1,7 @@
-const style = require("./style.less");
 import * as React from "react";
-import * as CSSModules from "react-css-modules";
-import {} from "semantic-ui-react";
+
+const style = require("./style.less");
+import { wrapWithStyle } from "ReactStyleWrapper";
 
 interface ILinkProps {
     active: boolean;
@@ -27,4 +27,4 @@ const component: React.SFC<ILinkProps> = ({ active, children, onClick }) => {
     );
 };
 
-export const LinkPresenter = CSSModules(component, style);
+export const LinkPresenter = wrapWithStyle(style)(component);

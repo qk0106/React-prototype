@@ -1,4 +1,4 @@
-import { wrapWithConnect } from "ReduxConnectWrapper";
+import { wrapWithConnect } from "ReactConnectWrapper";
 
 import { addClickCount } from "./action";
 import { TopPresenter } from "TopPresenter";

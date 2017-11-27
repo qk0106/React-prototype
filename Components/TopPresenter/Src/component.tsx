@@ -1,7 +1,7 @@
-const style = require("./style.less");
 import * as React from "react";
-import * as CSSModules from "react-css-modules";
-import {} from "semantic-ui-react";
+
+const style = require("./style.less");
+import { wrapWithStyle } from "ReactStyleWrapper";
 
 const component = ({ clickCount, onClick }) => (
     <div>
@@ -10,4 +10,4 @@ const component = ({ clickCount, onClick }) => (
     </div>
 );
 
-export const TopPresenter = CSSModules(component, style);
+export const TopPresenter = wrapWithStyle(style)(component);

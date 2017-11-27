@@ -1,9 +1,8 @@
+import * as React from "react";
 import { wrapWithInstance } from "ReactInstanceWrapper";
 
 const style = require("./style.less");
-import * as React from "react";
-import * as CSSModules from "react-css-modules";
-import {} from "semantic-ui-react";
+import { wrapWithStyle } from "ReactStyleWrapper";
 
 import { reducer } from "./reducer";
 import { CountryDropDownContainer } from "CountryDropDownContainer";
@@ -19,5 +18,5 @@ export const component = props => (
 );
 
 export const CountryDropDownAppContainer = wrapWithInstance("CountryDropDown", reducer)(
-    CSSModules(component, style)
+    wrapWithStyle(style)(component)
 );

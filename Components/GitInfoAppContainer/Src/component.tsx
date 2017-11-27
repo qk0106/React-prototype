@@ -1,9 +1,8 @@
+import * as React from "react";
 import { wrapWithInstance } from "ReactInstanceWrapper";
 
 const style = require("./style.less");
-import * as CSSModules from "react-css-modules";
-import * as React from "react";
-import {} from "semantic-ui-react";
+import { wrapWithStyle } from "ReactStyleWrapper";
 
 import { reducer } from "./reducer";
 import { GitInfoContainer } from "GitInfoContainer";
@@ -18,5 +17,5 @@ const component = props => (
 );
 
 export const GitInfoAppContainer = wrapWithInstance("GitInfo", reducer)(
-    CSSModules(component, style)
+    wrapWithStyle(style)(component)
 );

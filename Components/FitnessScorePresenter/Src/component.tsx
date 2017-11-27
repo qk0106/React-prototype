@@ -1,6 +1,8 @@
-const style = require("./style.less");
 import * as React from "react";
-import * as CSSModules from "react-css-modules";
+
+const style = require("./style.less");
+import { wrapWithStyle } from "ReactStyleWrapper";
+
 import {} from "semantic-ui-react";
 
 const component = ({ fitnessScore }) => (
@@ -9,4 +11,4 @@ const component = ({ fitnessScore }) => (
     </div>
 );
 
-export const FitnessScorePresenter = CSSModules(component, style);
+export const FitnessScorePresenter = wrapWithStyle(style)(component);

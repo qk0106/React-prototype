@@ -1,9 +1,8 @@
+import * as React from "react";
 import { wrapWithInstance } from "ReactInstanceWrapper";
 
 const style = require("./style.less");
-import * as CSSModules from "react-css-modules";
-import * as React from "react";
-import {} from "semantic-ui-react";
+import { wrapWithStyle } from "ReactStyleWrapper";
 
 import { reducer } from "./reducer";
 import { FitnessScoreContainer } from "FitnessScoreContainer";
@@ -18,6 +17,6 @@ export const component = props => (
     </div>
 );
 
-export const FitnessScoreAppContainer = wrapWithInstance("FitnessScore", reducer, true)(
-    CSSModules(component, style)
-);
+export const FitnessScoreAppContainer = wrapWithInstance("FitnessScore", reducer, {
+    broadcast: true
+})(wrapWithStyle(style)(component));

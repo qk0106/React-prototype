@@ -1,9 +1,8 @@
+import * as React from "react";
 import { wrapWithInstance } from "ReactInstanceWrapper";
 
 const style = require("./style.less");
-import * as CSSModules from "react-css-modules";
-import * as React from "react";
-import {} from "semantic-ui-react";
+import { wrapWithStyle } from "ReactStyleWrapper";
 
 import { reducer } from "./reducer";
 import { TopContainer } from "TopContainer";
@@ -29,4 +28,4 @@ export const component = props => {
     );
 };
 
-export const TopAppContainer = wrapWithInstance("Top", reducer)(CSSModules(component, style));
+export const TopAppContainer = wrapWithInstance("Top", reducer)(wrapWithStyle(style)(component));

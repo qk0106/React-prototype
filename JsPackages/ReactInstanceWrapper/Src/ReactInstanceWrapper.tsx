@@ -19,11 +19,13 @@ export const wrapWithInstance = (
         }
         componentWillMount() {
             registerInstance(this._instanceId, this._reducer);
-            if (listenToBroadcast) registerBroadcastListener(componentName);
+            if (listenToBroadcast && listenToBroadcast.broadcast)
+                registerBroadcastListener(componentName);
         }
         componentWillUnmount() {
             unregisterInstance(this._instanceId, this._reducer);
-            if (listenToBroadcast) unregisterBroadcastListener(componentName);
+            if (listenToBroadcast && listenToBroadcast.broadcast)
+                unregisterBroadcastListener(componentName);
         }
         render() {
             return <WrappedComponent instanceId={this._instanceId} {...this.props} />;

@@ -1,7 +1,7 @@
-const style = require("./style.less");
 import * as React from "react";
-import * as CSSModules from "react-css-modules";
-import {} from "semantic-ui-react";
+
+const style = require("./style.less");
+import { wrapWithStyle } from "ReactStyleWrapper";
 
 const component = ({ onSubmit, onChange, inputText }) => (
     <div>
@@ -12,4 +12,4 @@ const component = ({ onSubmit, onChange, inputText }) => (
     </div>
 );
 
-export const AddTodoPresenter = CSSModules(component, style);
+export const AddTodoPresenter = wrapWithStyle(style)(component);

@@ -1,6 +1,7 @@
-const style = require("./style.less");
 import * as React from "react";
-import * as CSSModules from "react-css-modules";
+
+const style = require("./style.less");
+import { wrapWithStyle } from "ReactStyleWrapper";
 import { Dropdown } from "semantic-ui-react";
 
 const component = ({ selectedCountry, countryOptions, selectHandler }) => (
@@ -17,4 +18,4 @@ const component = ({ selectedCountry, countryOptions, selectHandler }) => (
     </div>
 );
 
-export const CountryDropDownPresenter = CSSModules(component, style);
+export const CountryDropDownPresenter = wrapWithStyle(style)(component);

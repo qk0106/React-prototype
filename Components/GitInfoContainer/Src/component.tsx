@@ -1,5 +1,5 @@
 import { wrapWithInit } from "ReactInitWrapper";
-import { wrapWithConnect } from "ReduxConnectWrapper";
+import { wrapWithConnect } from "ReactConnectWrapper";
 
 import { onRefreshClick } from "./action";
 import { GitInfoPresenter } from "GitInfoPresenter";
