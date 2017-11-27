@@ -1,1 +1,1 @@
-import "./component";
+import "./Src/component";

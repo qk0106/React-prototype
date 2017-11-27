@@ -2,6 +2,7 @@ const style = require("./style.less");
 import * as React from "react";
 import * as CSSModules from "react-css-modules";
 import { List } from "semantic-ui-react";
+
 import { TodoPresenter } from "TodoPresenter";
 
 const makeTodoClick = (onTodoClick, id) => () => {

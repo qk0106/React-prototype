@@ -1,10 +1,12 @@
+import { wrapWithInstance } from "ReactInstanceComponentWrapper";
+
 const style = require("./style.less");
-import * as CSSModules from "react-css-modules";
 import * as React from "react";
+import * as CSSModules from "react-css-modules";
+import {} from "semantic-ui-react";
+
 import { reducer } from "./reducer";
 import { CountryDropDownSubContainer } from "CountryDropDownSubContainer";
-import { wrapWithInstance } from "ReactInstanceComponentWrapper";
-import {} from "semantic-ui-react";
 
 export const component = props => (
     <div>

@@ -1,11 +1,12 @@
 import { addMiddleware } from "redux-dynamic-middlewares";
+
+import { doFetch } from "FetchHelper";
+import { registerSharedState } from "ReduxSharedStateManager";
 import {
     INIT_COUNTRY_OPTIONS,
     FETCH_COUNTRY_OPTIONS_SUCCESS,
     fetchCountryOptionsSuccess
 } from "./action";
-import { doFetch } from "FetchHelper";
-import { registerSharedState } from "ReduxSharedStateManager";
 
 const registerCountryOptions = () => {
     let initCountryOptions = [];

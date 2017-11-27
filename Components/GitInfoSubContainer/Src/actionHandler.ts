@@ -1,5 +1,6 @@
-import { doFetch } from "FetchHelper";
 import { addMiddleware } from "redux-dynamic-middlewares";
+
+import { doFetch } from "FetchHelper";
 import {
     REFRESH_GIT_INFO,
     ON_REFRESH_CLICK,

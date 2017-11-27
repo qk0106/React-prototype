@@ -1,7 +1,8 @@
+import { wrapWithInit } from "ReactInitComponentWrapper";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
+
 import { CountryDropDownPresenter } from "CountryDropDownPresenter";
 import { onSelect, initCountryOptions } from "CountryDropDownSubContainer";
-import { wrapWithInit } from "ReactInitComponentWrapper";
 
 const stateProps = (ownState, ownProps, sharedState) => ({
     selectedCountry: ownState.selectedCountry !== undefined ? ownState.selectedCountry : "",

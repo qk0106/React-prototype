@@ -1,6 +1,7 @@
-import { setVisibilityFilter } from "./action"; // To get Action Creators
-import { LinkPresenter } from "LinkPresenter";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
+
+import { setVisibilityFilter } from "./action";
+import { LinkPresenter } from "LinkPresenter";
 
 const stateProps = (ownState, ownProps) => ({
     active: ownProps.filter === ownState.visibilityFilter,

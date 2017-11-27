@@ -1,4 +1,5 @@
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
+
 import { FitnessScorePresenter } from "FitnessScorePresenter";
 
 const stateProps = (ownState, ownProps) => ({

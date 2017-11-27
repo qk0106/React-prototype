@@ -1,7 +1,7 @@
 import * as iassign from "immutable-assign";
-import { ADD_TODO, CHANGE_INPUT_TEXT } from "AddTodoContainer";
 import { TOGGLE_TODO } from "VisibleTodoListContainer";
-import { SET_VISIBILITY_FILTER } from "TodoFilterLinkContainer"; // To get Action Types
+import { SET_VISIBILITY_FILTER } from "TodoFilterLinkContainer";
+import { ADD_TODO, CHANGE_INPUT_TEXT } from "AddTodoContainer";
 
 const inputText = (inputText = "", action) => {
     switch (action.type) {

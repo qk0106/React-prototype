@@ -1,6 +1,7 @@
-import { toggleTodo } from "./action"; // To get Action Creators
-import { TodoListPresenter } from "TodoListPresenter";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
+
+import { toggleTodo } from "./action";
+import { TodoListPresenter } from "TodoListPresenter";
 
 const getVisibleTodos = (todos, filter) => {
     switch (filter) {

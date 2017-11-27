@@ -1,5 +1,6 @@
 import { wrapWithInit } from "ReactInitComponentWrapper";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
+
 import { onRefreshClick } from "./action";
 import { GitSizePresenter } from "GitSizePresenter";
 

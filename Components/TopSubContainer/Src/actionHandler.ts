@@ -1,7 +1,8 @@
 import { addMiddleware } from "redux-dynamic-middlewares";
+
 import { addClickCount } from "./action";
-import { ON_REFRESH_CLICK } from "GitInfoSubContainer";
 import { ON_ADD_CLICK } from "AddTodoContainer";
+import { ON_REFRESH_CLICK } from "GitInfoSubContainer";
 
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);

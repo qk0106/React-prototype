@@ -1,5 +1,6 @@
 import { wrapWithInit } from "ReactInitComponentWrapper";
 import { wrapWithConnect } from "ReduxConnectComponentWrapper";
+
 import { onAddClick, changeInputText, initInputInfo } from "./action"; // To get Action Creators
 import { AddTodoPresenter } from "AddTodoPresenter";
 
