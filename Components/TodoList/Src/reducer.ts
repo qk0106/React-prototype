@@ -1,5 +1,5 @@
 import * as iassign from "immutable-assign";
-import { TOGGLE_TODO } from "VisibleTodoListContainer";
+import { TOGGLE_TODO } from "TodoListContainer";
 import { SET_VISIBILITY_FILTER } from "TodoFilterLinkContainer";
 import { ADD_TODO, CHANGE_INPUT_TEXT } from "AddTodoContainer";
 
