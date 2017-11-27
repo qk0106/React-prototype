@@ -3,7 +3,7 @@ import * as React from "react";
 import * as CSSModules from "react-css-modules";
 import {} from "semantic-ui-react";
 
-const _GitSizePresenter = ({ gitSize, refreshCount, onClick }) => (
+const component = ({ gitSize, refreshCount, onClick }) => (
     <div>
         <p>Git Info Component</p>
         <p styleName="size-bg">Size: {gitSize}</p>
@@ -12,4 +12,4 @@ const _GitSizePresenter = ({ gitSize, refreshCount, onClick }) => (
     </div>
 );
 
-export const GitSizePresenter = CSSModules(_GitSizePresenter, style); // modulise style with component
+export const GitSizePresenter = CSSModules(component, style); // modulise style with component

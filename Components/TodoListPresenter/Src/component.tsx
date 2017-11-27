@@ -15,10 +15,10 @@ const rows = (todos, onTodoClick) => {
     ));
 };
 
-const _TodoListPresenter = ({ todos, onTodoClick }) => (
+const component = ({ todos, onTodoClick }) => (
     <List animated bulleted styleName="ul-bg">
         {rows(todos, onTodoClick)}
     </List>
 );
 
-export const TodoListPresenter = CSSModules(_TodoListPresenter, style); // modulise style with component
+export const TodoListPresenter = CSSModules(component, style); // modulise style with component
