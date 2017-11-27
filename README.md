@@ -42,6 +42,8 @@ Dylan's React Prototype (Decentralised and Flat Style)
   * Full utilize the features of redux.
   * Defaultly broadcast an action to the instance Parent Tree (parent, siblings and grandchildren).
   * For special instance that receives global broadcast, we use broadcast listener to manage them.
+* Shared State
+  * Add shared state to redux store to lazy load and manage static data like country list.
 
 ## Future Improvements
 
@@ -62,7 +64,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
 
 ## Advisor
 
-* Paul Li <mailto:<paul.li@shroogal.com.au>> - author of 'immutable-assign'.
+* Paul Li - author of 'immutable-assign'.
 
 ## To Run
 
