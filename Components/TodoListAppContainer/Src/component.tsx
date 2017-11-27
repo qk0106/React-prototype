@@ -22,8 +22,6 @@ const component = props => (
     </div>
 );
 
-export const TodoListAppContainer = wrapWithInstance(
-    CSSModules(component, style),
-    reducer,
-    "TodoList"
+export const TodoListAppContainer = wrapWithInstance("TodoList", reducer)(
+    CSSModules(component, style)
 );

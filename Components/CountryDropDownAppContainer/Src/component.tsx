@@ -18,8 +18,6 @@ export const component = props => (
     </div>
 );
 
-export const CountryDropDownAppContainer = wrapWithInstance(
-    CSSModules(component, style),
-    reducer,
-    "CountryDropDown"
+export const CountryDropDownAppContainer = wrapWithInstance("CountryDropDown", reducer)(
+    CSSModules(component, style)
 );

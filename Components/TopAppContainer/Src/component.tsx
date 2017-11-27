@@ -29,4 +29,4 @@ export const component = props => {
     );
 };
 
-export const TopAppContainer = wrapWithInstance(CSSModules(component, style), reducer, "Top");
+export const TopAppContainer = wrapWithInstance("Top", reducer)(CSSModules(component, style));

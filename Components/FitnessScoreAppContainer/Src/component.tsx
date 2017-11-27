@@ -18,9 +18,6 @@ export const component = props => (
     </div>
 );
 
-export const FitnessScoreAppContainer = wrapWithInstance(
-    CSSModules(component, style),
-    reducer,
-    "FitnessScore",
-    true
+export const FitnessScoreAppContainer = wrapWithInstance("FitnessScore", reducer, true)(
+    CSSModules(component, style)
 );

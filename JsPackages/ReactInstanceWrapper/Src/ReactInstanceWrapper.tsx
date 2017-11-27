@@ -6,7 +6,11 @@ import {
     unregisterBroadcastListener
 } from "ReduxBroadcastListenerManager";
 
-export const wrapWithInstance = (WrappedComponent, reducer, componentName, listenToBroadcast?) => {
+export const wrapWithInstance = (
+    componentName,
+    reducer,
+    listenToBroadcast?
+) => WrappedComponent => {
     class InstanceWrapper extends React.PureComponent<any> {
         private _reducer = reducer;
         private _instanceId = generateInstanceId(this.props.instanceIdPrefix, componentName);
