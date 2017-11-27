@@ -27,4 +27,4 @@ const component: React.SFC<ILinkProps> = ({ active, children, onClick }) => {
     );
 };
 
-export const LinkPresenter = CSSModules(component, style); // modulise style with component
+export const LinkPresenter = CSSModules(component, style);

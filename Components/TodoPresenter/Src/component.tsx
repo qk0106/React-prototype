@@ -15,4 +15,4 @@ const component = ({ onClick, completed, text }) => (
     </List.Item>
 );
 
-export const TodoPresenter = CSSModules(component, style); // modulise style with component
+export const TodoPresenter = CSSModules(component, style);

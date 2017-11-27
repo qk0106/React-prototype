@@ -12,4 +12,4 @@ const component = ({ onSubmit, onChange, inputText }) => (
     </div>
 );
 
-export const AddTodoPresenter = CSSModules(component, style); // modulise style with component
+export const AddTodoPresenter = CSSModules(component, style);

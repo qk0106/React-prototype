@@ -21,4 +21,4 @@ const component = ({ todos, onTodoClick }) => (
     </List>
 );
 
-export const TodoListPresenter = CSSModules(component, style); // modulise style with component
+export const TodoListPresenter = CSSModules(component, style);

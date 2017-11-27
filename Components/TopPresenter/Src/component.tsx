@@ -10,4 +10,4 @@ const component = ({ clickCount, onClick }) => (
     </div>
 );
 
-export const TopPresenter = CSSModules(component, style); // modulise style with component
+export const TopPresenter = CSSModules(component, style);

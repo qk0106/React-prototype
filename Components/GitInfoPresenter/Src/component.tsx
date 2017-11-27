@@ -12,4 +12,4 @@ const component = ({ gitSize, refreshCount, onClick }) => (
     </div>
 );
 
-export const GitInfoPresenter = CSSModules(component, style); // modulise style with component
+export const GitInfoPresenter = CSSModules(component, style);

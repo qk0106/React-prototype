@@ -9,4 +9,4 @@ const component = ({ fitnessScore }) => (
     </div>
 );
 
-export const FitnessScorePresenter = CSSModules(component, style); // modulise style with component
+export const FitnessScorePresenter = CSSModules(component, style);

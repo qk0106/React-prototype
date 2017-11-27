@@ -17,4 +17,4 @@ const component = ({ selectedCountry, countryOptions, selectHandler }) => (
     </div>
 );
 
-export const CountryDropDownPresenter = CSSModules(component, style); // modulise style with component
+export const CountryDropDownPresenter = CSSModules(component, style);
