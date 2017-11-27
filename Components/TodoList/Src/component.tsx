@@ -1,4 +1,4 @@
-import { wrapWithInstance } from "ReactInstanceComponentWrapper";
+import { wrapWithInstance } from "ReactInstanceWrapper";
 
 const style = require("./style.less");
 import * as CSSModules from "react-css-modules";

@@ -4,7 +4,7 @@ import { registerInstance, unregisterInstance } from "ReactInstanceManager";
 import {
     registerBroadcastListener,
     unregisterBroadcastListener
-} from "ReduxActionBroadcastListenerManager";
+} from "ReduxBroadcastListenerManager";
 
 export const wrapWithInstance = (WrappedComponent, reducer, componentName, listenToBroadcast?) => {
     class InstanceWrapper extends React.PureComponent<any> {

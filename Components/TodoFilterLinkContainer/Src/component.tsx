@@ -1,4 +1,4 @@
-import { wrapWithConnect } from "ReduxConnectComponentWrapper";
+import { wrapWithConnect } from "ReduxConnectWrapper";
 
 import { setVisibilityFilter } from "./action";
 import { LinkPresenter } from "LinkPresenter";

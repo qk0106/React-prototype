@@ -1,5 +1,5 @@
-import { wrapWithInit } from "ReactInitComponentWrapper";
-import { wrapWithConnect } from "ReduxConnectComponentWrapper";
+import { wrapWithInit } from "ReactInitWrapper";
+import { wrapWithConnect } from "ReduxConnectWrapper";
 
 import { CountryDropDownPresenter } from "CountryDropDownPresenter";
 import { onSelect, initCountryOptions } from "CountryDropDownContainer";

@@ -1,4 +1,4 @@
-import { wrapWithConnect } from "ReduxConnectComponentWrapper";
+import { wrapWithConnect } from "ReduxConnectWrapper";
 
 import { toggleTodo } from "./action";
 import { TodoListPresenter } from "TodoListPresenter";

@@ -1,4 +1,4 @@
-import { wrapWithInstance } from "ReactInstanceComponentWrapper";
+import { wrapWithInstance } from "ReactInstanceWrapper";
 
 const style = require("./style.less");
 import * as React from "react";
