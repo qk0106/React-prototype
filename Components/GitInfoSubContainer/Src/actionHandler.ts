@@ -8,7 +8,7 @@ import {
     fetchGitInfo,
     fetchGitInfoSuccess,
     fetchGitInfoFailed
-} from "./action"; // To get Action Creators
+} from "./action";
 
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);
