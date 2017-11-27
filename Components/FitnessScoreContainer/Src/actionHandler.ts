@@ -2,7 +2,7 @@ import { addMiddleware } from "redux-dynamic-middlewares";
 
 import { addFitnessScore } from "./action";
 import { ADD_TODO } from "AddTodoContainer";
-import { FETCH_GIT_INFO_SUCCESS } from "GitInfoSubContainer";
+import { FETCH_GIT_INFO_SUCCESS } from "GitInfoContainer";
 
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);

@@ -1,5 +1,4 @@
-import { ADD_FITNESS_SCORE } from "FitnessScoreSubContainer"; // To get Action Types
-
+import { ADD_FITNESS_SCORE } from "FitnessScoreContainer";
 const fitnessScoreCounter = (fitnessScoreCounter = 0, action) => {
     switch (action.type) {
         case ADD_FITNESS_SCORE:

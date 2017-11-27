@@ -1,24 +1,26 @@
-import { wrapWithInstance } from "ReactInstanceComponentWrapper";
+import { wrapWithInit } from "ReactInitComponentWrapper";
+import { wrapWithConnect } from "ReduxConnectComponentWrapper";
 
-const style = require("./style.less");
-import * as CSSModules from "react-css-modules";
-import * as React from "react";
-import {} from "semantic-ui-react";
+import { onRefreshClick } from "./action";
+import { GitInfoPresenter } from "GitInfoPresenter";
 
-import { reducer } from "./reducer";
-import { GitInfoSubContainer } from "GitInfoSubContainer";
+const stateProps = (ownState, ownProps) => ({
+    refreshCount: ownState.refreshCount !== undefined ? ownState.refreshCount : { count: 0 },
+    gitSize: ownState.gitSize !== undefined ? ownState.gitSize : 0,
+    gitUrl: ownProps.gitUrl
+});
 
-const component = props => (
-    <div>
-        <div styleName="git-size">
-            <GitInfoSubContainer {...props} />
-        </div>
-        <br />
-    </div>
-);
+const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
+    init: () => {
+        // dispatch(refreshGitInfo(instanceId)({ gitUrl: ownProps.gitUrl }));
+    },
+    onClick: () => {
+        dispatch(onRefreshClick(instanceId)({ gitUrl: ownProps.gitUrl }));
+    }
+});
 
-export const GitInfoContainer = wrapWithInstance(
-    CSSModules(component, style),
-    reducer,
-    "GitInfoContainer"
+export const GitInfoContainer = wrapWithConnect(
+    stateProps,
+    dispatchProps,
+    wrapWithInit(GitInfoPresenter)
 );

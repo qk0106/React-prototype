@@ -1,46 +1,77 @@
 import * as React from "react";
 import { mount } from "enzyme";
 import { Provider } from "react-redux";
-import { readStore } from "ReduxStoreManager";
-import { GitInfoContainer } from "GitInfoContainer";
-import { GitInfoSubContainer } from "GitInfoSubContainer";
+import { newStore, readStore } from "ReduxStoreManager";
+import { registerInstance } from "ReactInstanceManager";
+import { reducer } from "GitInfoContainer/Src/reducer";
+import configureStore from "redux-mock-store";
+import dynamicMiddlewares from "redux-dynamic-middlewares";
+import {
+    GitInfoSubContainer,
+    ON_REFRESH_CLICK,
+    REFRESH_GIT_INFO,
+    FETCH_GIT_INFO
+} from "GitInfoSubContainer";
+import { GitSizePresenter } from "GitSizePresenter";
 
-const preset = () => {
-    let store = readStore();
-    let instanceIdPrefix = "mockInstanceIdPrefix";
-    let gitUrl = "mockGitUrl";
-    let wrapper = mount(
-        <Provider store={store}>
-            <GitInfoContainer instanceIdPrefix={instanceIdPrefix} gitUrl={gitUrl} />
-        </Provider>
-    );
-    return { wrapper, instanceIdPrefix, gitUrl };
+const mockStore = configureStore([dynamicMiddlewares]);
+
+const getStore = (instanceId, reducer) => {
+    newStore();
+    registerInstance(instanceId, reducer);
+    return readStore();
 };
 
-describe(">>>GitInfoContainer Unit Testing", () => {
-    it("+++ check render 1 GitInfoContainer", () => {
-        let { wrapper } = preset();
-        expect(wrapper.find(GitInfoContainer).length).toEqual(1);
-    });
+const preset = () => {
+    let instanceId: "MockInstanceId_112138";
+    let gitUrl = "MockGitUrl";
+    let realStore = getStore(instanceId, reducer);
+    let store = mockStore(realStore.getState());
+    let wrapper = mount(
+        <Provider store={store}>
+            <GitInfoSubContainer instanceId={instanceId} gitUrl={gitUrl} />
+        </Provider>
+    );
+    return { wrapper, store, instanceId, gitUrl };
+};
 
-    it("+++ check render 1 InstanceWrapper", () => {
-        let { wrapper } = preset();
-        expect(wrapper.find("InstanceWrapper").length).toEqual(1);
-    });
-
+describe(">>>GitInfoSubContainer Unit Testing", () => {
     it("+++ check render 1 GitInfoSubContainer", () => {
         let { wrapper } = preset();
         expect(wrapper.find(GitInfoSubContainer).length).toEqual(1);
     });
 
-    it("+++ check props passing - instanceId", () => {
-        let { wrapper, instanceIdPrefix } = preset();
-        let instanceId = wrapper.find(GitInfoSubContainer).prop("instanceId");
-        expect(instanceId).toMatch(new RegExp(instanceIdPrefix + "_"));
+    it("+++ check render 1 InitWrapper", () => {
+        let { wrapper } = preset();
+        expect(wrapper.find("InitWrapper").length).toEqual(1);
     });
 
-    it("+++ check props passing - gitUrl", () => {
-        let { wrapper, gitUrl } = preset();
-        expect(wrapper.find(GitInfoSubContainer).prop("gitUrl")).toEqual(gitUrl);
+    it("+++ check render 1 GitSizePresenter", () => {
+        let { wrapper } = preset();
+        expect(wrapper.find(GitSizePresenter).length).toEqual(1);
+    });
+
+    it("+++ check map dispatchProps correctly", () => {
+        let { wrapper } = preset();
+        let initWrapperProps = wrapper
+            .find(GitInfoSubContainer)
+            .childAt(0)
+            .props();
+        expect(initWrapperProps.gitSize).toEqual(0);
+        expect(initWrapperProps.refreshCount).toEqual({ count: 0 });
+        expect(initWrapperProps.gitUrl).toEqual("MockGitUrl");
+    });
+
+    it("+++ check map stateProps correctly", () => {
+        let { wrapper, store } = preset();
+        let initWrapperProps = wrapper
+            .find(GitInfoSubContainer)
+            .childAt(0)
+            .props();
+        initWrapperProps.onClick();
+        let actions = store.getActions();
+        expect(actions[0].type).toBe(ON_REFRESH_CLICK);
+        expect(actions[1].type).toBe(REFRESH_GIT_INFO);
+        expect(actions[2].type).toBe(FETCH_GIT_INFO);
     });
 });

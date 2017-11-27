@@ -1,20 +1,21 @@
 import * as React from "react";
 import { registerRoute } from "ReactRouteManager";
-import { GitInfoContainer } from "GitInfoContainer";
-import { TodoListContainer } from "TodoListContainer";
-import { CountryDropDownContainer } from "CountryDropDownContainer";
+
+import { GitInfo } from "GitInfo";
+import { TodoList } from "TodoList";
+import { CountryDropDown } from "CountryDropDown";
 
 const TodoListPage = () => (
     <div>
         <span>This is Todo List Page</span>
-        <CountryDropDownContainer instanceIdPrefix="AsyncTestPage" />
-        <TodoListContainer instanceIdPrefix="TodoListPage" inputText="This is TodoList 1" />
-        <TodoListContainer instanceIdPrefix="TodoListPage" inputText="This is TodoList 2" />
-        <GitInfoContainer
+        <CountryDropDown instanceIdPrefix="AsyncTestPage" />
+        <TodoList instanceIdPrefix="TodoListPage" inputText="This is TodoList 1" />
+        <TodoList instanceIdPrefix="TodoListPage" inputText="This is TodoList 2" />
+        <GitInfo
             instanceIdPrefix="TodoListPage"
             gitUrl="https://api.github.com/repos/qk0106/React-prototype"
         />
-        <GitInfoContainer
+        <GitInfo
             instanceIdPrefix="TodoListPage"
             gitUrl="https://api.github.com/repos/qk0106/ACE-online-tutor"
         />

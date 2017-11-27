@@ -1,25 +1,25 @@
-import { wrapWithInstance } from "ReactInstanceComponentWrapper";
+import { wrapWithInit } from "ReactInitComponentWrapper";
+import { wrapWithConnect } from "ReduxConnectComponentWrapper";
 
-const style = require("./style.less");
-import * as React from "react";
-import * as CSSModules from "react-css-modules";
-import {} from "semantic-ui-react";
+import { CountryDropDownPresenter } from "CountryDropDownPresenter";
+import { onSelect, initCountryOptions } from "CountryDropDownContainer";
 
-import { reducer } from "./reducer";
-import { CountryDropDownSubContainer } from "CountryDropDownSubContainer";
+const stateProps = (ownState, ownProps, sharedState) => ({
+    selectedCountry: ownState.selectedCountry !== undefined ? ownState.selectedCountry : "",
+    countryOptions: sharedState.countryOptions !== undefined ? sharedState.countryOptions : []
+});
 
-export const component = props => (
-    <div>
-        <div styleName="country-drop">
-            <p>Country DropDown Component</p>
-            <CountryDropDownSubContainer {...props} />
-        </div>
-        <br />
-    </div>
-);
+const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({
+    init: () => {
+        if (stateProps.countryOptions.length === 0) dispatch(initCountryOptions(instanceId)());
+    },
+    selectHandler: (event, data) => {
+        dispatch(onSelect(instanceId)({ select: data.value }));
+    }
+});
 
-export const CountryDropDownContainer = wrapWithInstance(
-    CSSModules(component, style),
-    reducer,
-    "CountryDropDownContainer"
+export const CountryDropDownContainer = wrapWithConnect(
+    stateProps,
+    dispatchProps,
+    wrapWithInit(CountryDropDownPresenter)
 );

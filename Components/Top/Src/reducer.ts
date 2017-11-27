@@ -1,4 +1,4 @@
-import { ADD_CLICK_COUNT } from "TopSubContainer"; // To get Action Types
+import { ADD_CLICK_COUNT } from "TopContainer";
 
 const clickCounter = (clickCounter = 0, action) => {
     switch (action.type) {

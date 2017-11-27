@@ -1,26 +1,15 @@
-import { wrapWithInstance } from "ReactInstanceComponentWrapper";
+import { wrapWithConnect } from "ReduxConnectComponentWrapper";
 
-const style = require("./style.less");
-import * as CSSModules from "react-css-modules";
-import * as React from "react";
-import {} from "semantic-ui-react";
+import { FitnessScorePresenter } from "FitnessScorePresenter";
 
-import { reducer } from "./reducer";
-import { FitnessScoreSubContainer } from "FitnessScoreSubContainer";
+const stateProps = (ownState, ownProps) => ({
+    fitnessScore: ownState.fitnessScoreCounter !== undefined ? ownState.fitnessScoreCounter : 0
+});
 
-export const component = props => (
-    <div>
-        <div styleName="fitness-score">
-            <p>Fitness Score Component</p>
-            <FitnessScoreSubContainer {...props} />
-        </div>
-        <br />
-    </div>
-);
+const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({});
 
-export const FitnessScoreContainer = wrapWithInstance(
-    CSSModules(component, style),
-    reducer,
-    "FitnessScoreContainer",
-    true
+export const FitnessScoreContainer = wrapWithConnect(
+    stateProps,
+    dispatchProps,
+    FitnessScorePresenter
 );

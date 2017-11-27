@@ -2,7 +2,7 @@ import { addMiddleware } from "redux-dynamic-middlewares";
 
 import { doFetch } from "FetchHelper";
 import { INIT_INPUT_INFO, ON_ADD_CLICK, changeInputText, addTodo } from "./action";
-import { FETCH_GIT_INFO_SUCCESS } from "GitInfoSubContainer";
+import { FETCH_GIT_INFO_SUCCESS } from "GitInfoContainer";
 
 const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     next(action);

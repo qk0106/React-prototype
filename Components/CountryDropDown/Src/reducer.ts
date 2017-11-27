@@ -1,4 +1,4 @@
-import { ON_SELECT } from "CountryDropDownSubContainer"; // To get Action Types
+import { ON_SELECT } from "CountryDropDownContainer";
 
 const selectedCountry = (selectedCountry = "", action) => {
     switch (action.type) {

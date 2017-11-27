@@ -4,7 +4,7 @@ import {
     FETCH_GIT_INFO,
     FETCH_GIT_INFO_SUCCESS,
     FETCH_GIT_INFO_FAILED
-} from "GitInfoSubContainer"; // To get Action Types
+} from "GitInfoContainer";
 
 const refreshCount = (refreshCount = { count: 0 }, action) => {
     switch (action.type) {
