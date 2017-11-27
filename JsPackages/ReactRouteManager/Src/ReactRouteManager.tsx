@@ -24,7 +24,7 @@ const rows = (template, routes) => {
 
 const linkTemplate = route => (
     <Link key={route.key + "_link"} to={route.path}>
-        {route.text}
+        {"| " + route.text + " |"}
     </Link>
 );
 
