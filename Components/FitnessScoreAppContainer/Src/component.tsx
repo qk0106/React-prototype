@@ -7,6 +7,9 @@ import { wrapWithStyle } from "ReactStyleWrapper";
 import { reducer } from "./reducer";
 import { FitnessScoreContainer } from "FitnessScoreContainer";
 
+const broadcastConfig = {
+    subscribe: true
+};
 export const component = props => (
     <div>
         <div styleName="fitness-score">
@@ -17,6 +20,6 @@ export const component = props => (
     </div>
 );
 
-export const FitnessScoreAppContainer = wrapWithInstance(this, reducer, {
-    subscribe: true
-})(wrapWithStyle(style)(component));
+export const FitnessScoreAppContainer = wrapWithInstance(this, reducer, broadcastConfig)(
+    wrapWithStyle(style)(component)
+);

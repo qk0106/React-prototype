@@ -6,9 +6,9 @@ import {
 } from "ReduxBroadcastSubscriberManager";
 
 const findComponentName = appContainer => {
-    for (let prop in appContainer) {
-        if (appContainer[prop].name && appContainer[prop].name === "InstanceWrapper") {
-            return prop;
+    for (let key in appContainer) {
+        if (appContainer[key].name && appContainer[key].name === "InstanceWrapper") {
+            return key;
         }
     }
 };
