@@ -1,6 +1,6 @@
 let broadcastSubscriberRegistry = {};
 
-export const registerbroadcastSubscriber = (broadcastConfig, componentName) => {
+export const registerBroadcastSubscriber = (broadcastConfig, componentName) => {
     if (broadcastConfig && broadcastConfig.subscribe) {
         if (broadcastSubscriberRegistry[componentName] === undefined)
             broadcastSubscriberRegistry[componentName] = { subscribe: true, counter: 1 };
@@ -8,7 +8,7 @@ export const registerbroadcastSubscriber = (broadcastConfig, componentName) => {
     }
 };
 
-export const unregisterbroadcastSubscriber = (broadcastConfig, componentName) => {
+export const unregisterBroadcastSubscriber = (broadcastConfig, componentName) => {
     if (broadcastConfig && broadcastConfig.subscribe) {
         broadcastSubscriberRegistry[componentName].counter--;
         if (broadcastSubscriberRegistry[componentName].counter < 1)
@@ -16,4 +16,4 @@ export const unregisterbroadcastSubscriber = (broadcastConfig, componentName) =>
     }
 };
 
-export const collectbroadcastSubscribers = () => broadcastSubscriberRegistry;
+export const collectBroadcastSubscribers = () => broadcastSubscriberRegistry;

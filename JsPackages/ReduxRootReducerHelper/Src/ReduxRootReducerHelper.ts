@@ -7,7 +7,7 @@ import { combineReducers } from "redux";
 import { collectReducers } from "ReduxReducerManager";
 import { collectInstanceIds } from "ReduxInstanceIdManager";
 import { collectSharedStates } from "ReduxSharedStateManager";
-import { collectbroadcastSubscribers } from "ReduxbroadcastSubscriberManager";
+import { collectBroadcastSubscribers } from "ReduxBroadcastSubscriberManager";
 
 const getNewState = () => {
     let state = {};
@@ -41,7 +41,7 @@ const getInstanceUpdatedState = (instanceId, componentName, state, action) => {
 };
 
 const isbroadcastSubscriber = componentName => {
-    const broadcastSubscriberRegistry = collectbroadcastSubscribers();
+    const broadcastSubscriberRegistry = collectBroadcastSubscribers();
     if (broadcastSubscriberRegistry[componentName])
         return broadcastSubscriberRegistry[componentName].subscribe;
     else return false;

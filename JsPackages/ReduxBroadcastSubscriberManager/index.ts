@@ -1,1 +1,1 @@
-export * from "./Src/ReduxbroadcastSubscriberManager";
+export * from "./Src/ReduxBroadcastSubscriberManager";
