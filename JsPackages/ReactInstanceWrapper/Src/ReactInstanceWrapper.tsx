@@ -27,7 +27,7 @@ export const wrapWithInstance = (appContainer, reducer, broadcastConfig?) => Wra
         }
         componentWillUnmount() {
             const componentName = findComponentName(appContainer);
-            removeInstance(this._instanceId, componentName);
+            removeInstance(this._instanceId);
             unregisterBroadcastSubscriber(broadcastConfig, componentName);
         }
         render() {
