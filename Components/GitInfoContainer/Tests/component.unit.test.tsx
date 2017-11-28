@@ -2,7 +2,7 @@ import * as React from "react";
 import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import { newStore, readStore } from "ReduxStoreManager";
-import { registerInstance } from "ReactInstanceManager";
+import { registerInstance } from "ReduxInstanceManager";
 import { reducer } from "GitInfoContainer/Src/reducer";
 import configureStore from "redux-mock-store";
 import { collectMiddlewares } from "ReduxMiddlewareManager";

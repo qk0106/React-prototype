@@ -5,7 +5,7 @@ import {
     collectInstanceIds,
     extractPrefixFromInstanceId,
     extractComponentNameFromInstanceId
-} from "ReactInstanceIdManager";
+} from "ReduxInstanceIdManager";
 import { collectBroadcastListeners } from "ReduxBroadcastListenerManager";
 import { collectSharedState } from "ReduxSharedStateManager";
 

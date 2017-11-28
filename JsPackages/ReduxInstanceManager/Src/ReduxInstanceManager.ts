@@ -5,7 +5,7 @@ import {
     registerInstanceId,
     unregisterInstanceId,
     extractComponentNameFromInstanceId
-} from "ReactInstanceIdManager";
+} from "ReduxInstanceIdManager";
 
 export const registerInstance = (instanceId, reducer) => {
     const componentName = extractComponentNameFromInstanceId(instanceId);

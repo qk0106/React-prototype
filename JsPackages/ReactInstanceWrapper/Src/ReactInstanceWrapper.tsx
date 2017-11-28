@@ -1,6 +1,6 @@
 import * as React from "react";
-import { generateInstanceId } from "ReactInstanceIdManager";
-import { registerInstance, unregisterInstance } from "ReactInstanceManager";
+import { generateInstanceId } from "ReduxInstanceIdManager";
+import { registerInstance, unregisterInstance } from "ReduxInstanceManager";
 import {
     registerBroadcastListener,
     unregisterBroadcastListener
