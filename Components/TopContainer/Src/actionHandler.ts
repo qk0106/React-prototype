@@ -1,4 +1,4 @@
-import { addMiddleware } from "redux-dynamic-middlewares";
+import { registerMiddleware } from "ReduxMiddlewareManager";
 
 import { addClickCount } from "./action";
 import { ON_ADD_CLICK } from "AddTodoContainer";
@@ -13,4 +13,4 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     }
 };
 
-addMiddleware(actionHandlerMiddleware);
+registerMiddleware(actionHandlerMiddleware);
