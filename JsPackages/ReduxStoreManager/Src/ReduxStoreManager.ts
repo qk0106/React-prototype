@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import { collectMiddlewares } from "ReduxMiddlewareManager";
 import { getRootReducer } from "ReduxRootReducerHelper";
 
-let store = createStore(s => s, applyMiddleware(collectMiddlewares()));
+let store;
 
 export const newStore = () => {
     store = createStore(s => s, applyMiddleware(collectMiddlewares()));
@@ -15,3 +15,5 @@ export const updateStore = () => {
 export const readStore = () => {
     return store;
 };
+
+newStore();
