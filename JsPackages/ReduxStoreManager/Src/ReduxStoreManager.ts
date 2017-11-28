@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
 import { collectMiddlewares } from "ReduxMiddlewareManager";
+import { getRootReducer } from "ReduxRootReducerHelper";
 
 let store = createStore(s => s, applyMiddleware(collectMiddlewares()));
 
@@ -7,8 +8,8 @@ export const newStore = () => {
     store = createStore(s => s, applyMiddleware(collectMiddlewares()));
 };
 
-export const updateStore = rootReducer => {
-    store.replaceReducer(rootReducer);
+export const updateStore = () => {
+    store.replaceReducer(getRootReducer());
 };
 
 export const readStore = () => {
