@@ -5,7 +5,15 @@ import {
     unregisterBroadcastSubscriber
 } from "ReduxBroadcastSubscriberManager";
 
-export const wrapWithInstance = (componentName, reducer, broadcastConfig?) => WrappedComponent => {
+const findComponentName = appContainer => {
+    for (let prop in appContainer) {
+        if (appContainer[prop].name && appContainer[prop].name === "InstanceWrapper") {
+            return prop;
+        }
+    }
+};
+
+export const wrapWithInstance = (appContainer, reducer, broadcastConfig?) => WrappedComponent => {
     class InstanceWrapper extends React.PureComponent<any> {
         private _instanceId;
         constructor(props) {
@@ -13,10 +21,12 @@ export const wrapWithInstance = (componentName, reducer, broadcastConfig?) => Wr
         }
         componentWillMount() {
             const { instanceIdPrefix } = this.props;
+            const componentName = findComponentName(appContainer);
             this._instanceId = createInstance(instanceIdPrefix, componentName, reducer);
             registerBroadcastSubscriber(broadcastConfig, componentName);
         }
         componentWillUnmount() {
+            const componentName = findComponentName(appContainer);
             removeInstance(this._instanceId, componentName);
             unregisterBroadcastSubscriber(broadcastConfig, componentName);
         }

@@ -17,6 +17,6 @@ export const component = props => (
     </div>
 );
 
-export const CountryDropDownAppContainer = wrapWithInstance("CountryDropDown", reducer)(
+export const CountryDropDownAppContainer = wrapWithInstance(this, reducer)(
     wrapWithStyle(style)(component)
 );

@@ -17,6 +17,6 @@ export const component = props => (
     </div>
 );
 
-export const FitnessScoreAppContainer = wrapWithInstance("FitnessScore", reducer, {
+export const FitnessScoreAppContainer = wrapWithInstance(this, reducer, {
     subscribe: true
 })(wrapWithStyle(style)(component));
