@@ -1,4 +1,4 @@
-import { addMiddleware } from "redux-dynamic-middlewares";
+import { registerMiddleware } from "ReduxMiddlewareManager";
 
 import { doFetch } from "FetchHelper";
 import { INIT_INPUT_INFO, ON_ADD_CLICK, changeInputText, addTodo } from "./action";
@@ -28,4 +28,4 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     }
 };
 
-addMiddleware(actionHandlerMiddleware);
+registerMiddleware(actionHandlerMiddleware);

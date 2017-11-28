@@ -5,7 +5,7 @@ import { newStore, readStore } from "ReduxStoreManager";
 import { registerInstance } from "ReactInstanceManager";
 import { reducer } from "GitInfoContainer/Src/reducer";
 import configureStore from "redux-mock-store";
-import dynamicMiddlewares from "redux-dynamic-middlewares";
+import { collectMiddlewares } from "ReduxMiddlewareManager";
 import {
     GitInfoSubContainer,
     ON_REFRESH_CLICK,
@@ -14,7 +14,7 @@ import {
 } from "GitInfoSubContainer";
 import { GitSizePresenter } from "GitSizePresenter";
 
-const mockStore = configureStore([dynamicMiddlewares]);
+const mockStore = configureStore([collectMiddlewares()]);
 
 const getStore = (instanceId, reducer) => {
     newStore();

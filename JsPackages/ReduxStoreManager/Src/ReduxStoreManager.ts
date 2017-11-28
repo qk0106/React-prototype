@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from "redux";
-import dynamicMiddlewares from "redux-dynamic-middlewares";
+import { collectMiddlewares } from "ReduxMiddlewareManager";
 
-let store = createStore(s => s, applyMiddleware(dynamicMiddlewares));
+let store = createStore(s => s, applyMiddleware(collectMiddlewares()));
 
 export const newStore = () => {
-    store = createStore(s => s, applyMiddleware(dynamicMiddlewares));
+    store = createStore(s => s, applyMiddleware(collectMiddlewares()));
 };
 
 export const updateStore = rootReducer => {

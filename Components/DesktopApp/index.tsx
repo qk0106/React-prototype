@@ -3,7 +3,7 @@ import * as iassign from "immutable-assign";
 import { render } from "react-dom";
 import { createLogger } from "redux-logger";
 import { AppContainer } from "react-hot-loader";
-import { addMiddleware } from "redux-dynamic-middlewares";
+import { registerMiddleware } from "ReduxMiddlewareManager";
 import { readStore } from "ReduxStoreManager";
 import { collectRoutes } from "ReactRouteManager";
 import { App } from "./app"; // must isolate App for hot reload
@@ -12,7 +12,7 @@ import "semantic-ui-css/semantic.min.css";
 iassign.setOption({ freeze: true }); // throw immutable error
 
 const loggerMiddleware = createLogger();
-addMiddleware(loggerMiddleware);
+registerMiddleware(loggerMiddleware);
 
 const store = readStore();
 const routes = collectRoutes();

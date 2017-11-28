@@ -1,4 +1,4 @@
-import { addMiddleware } from "redux-dynamic-middlewares";
+import { registerMiddleware } from "ReduxMiddlewareManager";
 
 import { addFitnessScore } from "./action";
 import { ADD_TODO } from "AddTodoContainer";
@@ -13,4 +13,4 @@ const actionHandlerMiddleware = ({ dispatch }) => next => async action => {
     if (type === ADD_TODO) dispatch(addFitnessScore(instanceId)({ score: action.text }));
 };
 
-addMiddleware(actionHandlerMiddleware);
+registerMiddleware(actionHandlerMiddleware);
