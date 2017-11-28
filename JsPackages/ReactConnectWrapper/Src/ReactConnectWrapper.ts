@@ -16,7 +16,7 @@ const generateMapDispatchToProps = dispatchProps => {
     };
 };
 
-// connect Redux container and React presenter (or container) to generate Redux component
+// connect Redux container and React component to generate React-Redux component
 export const wrapWithConnect = (stateProps, dispatchProps) => WrappedComponent => {
     const mapStateToProps = generateMapStateToProps(stateProps);
     const mapDispatchToProps = generateMapDispatchToProps(dispatchProps);
