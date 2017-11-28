@@ -29,6 +29,13 @@ const mergeState = (oldState, newState) => {
     return state;
 };
 
+const isBroadcastSubscriber = componentName => {
+    const broadcastSubscriberRegistry = collectBroadcastSubscribers();
+    if (broadcastSubscriberRegistry[componentName])
+        return broadcastSubscriberRegistry[componentName].subscribe;
+    else return false;
+};
+
 const getInstanceUpdatedState = (instanceId, componentName, state, action) => {
     if (!(instanceId in state)) return state;
     return iassign(state, state => {
@@ -40,13 +47,6 @@ const getInstanceUpdatedState = (instanceId, componentName, state, action) => {
     });
 };
 
-const isbroadcastSubscriber = componentName => {
-    const broadcastSubscriberRegistry = collectBroadcastSubscribers();
-    if (broadcastSubscriberRegistry[componentName])
-        return broadcastSubscriberRegistry[componentName].subscribe;
-    else return false;
-};
-
 const updateInstanceState = (state, action) => {
     const senderInstanceId = action.instanceId;
     const senderParentInstanceId = extractPrefixFromInstanceId(senderInstanceId);
@@ -54,7 +54,7 @@ const updateInstanceState = (state, action) => {
         const receiverComponentName = extractComponentNameFromInstanceId(receiverInstanceId);
         const receiverParentInstanceId = extractPrefixFromInstanceId(receiverInstanceId);
         if (
-            isbroadcastSubscriber(receiverComponentName) ||
+            isBroadcastSubscriber(receiverComponentName) ||
             receiverInstanceId === senderParentInstanceId || // match parent instance
             receiverParentInstanceId === senderParentInstanceId || // match sibling instances, including itself
             receiverParentInstanceId.includes(senderParentInstanceId) // match descendant instances
