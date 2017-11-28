@@ -6,7 +6,7 @@ export const registerReducer = (reducer, componentName) => {
     else reducerRegistry[componentName].counter++;
 };
 
-export const unregisterReducer = (reducer, componentName) => {
+export const unregisterReducer = componentName => {
     reducerRegistry[componentName].counter--;
     if (reducerRegistry[componentName].counter < 1) reducerRegistry[componentName] = undefined;
 };
