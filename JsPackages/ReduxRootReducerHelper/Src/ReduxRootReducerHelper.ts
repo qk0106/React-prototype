@@ -17,7 +17,7 @@ const getNewState = () => {
     return state;
 };
 
-const getMergedState = (oldState, newState) => {
+const mergeState = (oldState, newState) => {
     let state = {};
     for (let prop in newState) {
         if (newState.hasOwnProperty(prop)) {
@@ -25,6 +25,7 @@ const getMergedState = (oldState, newState) => {
             if (oldState.hasOwnProperty(prop)) state[prop] = oldState[prop];
         }
     }
+    state["SharedState"] = oldState["SharedState"];
     return state;
 };
 
@@ -46,7 +47,7 @@ const isBroadcastListener = componentName => {
     else return false;
 };
 
-const getUpdatedState = (state, action) => {
+const updateInstanceState = (state, action) => {
     const senderInstanceId = action.instanceId;
     const senderParentInstanceId = extractPrefixFromInstanceId(senderInstanceId);
     collectInstanceIds().forEach(receiverInstanceId => {
@@ -68,7 +69,7 @@ const getUpdatedState = (state, action) => {
     return state;
 };
 
-const getSharedState = (state, action) => {
+const updateSharedState = (state, action) => {
     return iassign(state, state => {
         const sharedState = state["SharedState"];
         const sharedStateReducer = collectSharedState();
@@ -88,9 +89,9 @@ const getSharedState = (state, action) => {
 export const getRootReducer = () => {
     let newState = getNewState();
     return (oldState = newState, action) => {
-        let state = getMergedState(oldState, newState);
-        state = getUpdatedState(state, action);
-        state = getSharedState(state, action);
+        let state = mergeState(oldState, newState);
+        state = updateInstanceState(state, action);
+        state = updateSharedState(state, action);
         return state;
     };
 };

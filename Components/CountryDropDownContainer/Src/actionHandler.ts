@@ -9,14 +9,13 @@ import {
 } from "./action";
 
 const registerCountryOptions = () => {
-    let initCountryOptions = [];
-    const countryOptions = (countryOptions = initCountryOptions, action) => {
+    const countryOptions = (countryOptions = [], action) => {
         switch (action.type) {
             case FETCH_COUNTRY_OPTIONS_SUCCESS:
-                initCountryOptions = action.countryOptions;
-                return initCountryOptions;
+                countryOptions = action.countryOptions;
+                return countryOptions;
             default:
-                return initCountryOptions;
+                return countryOptions;
         }
     };
     registerSharedState({ countryOptions });
