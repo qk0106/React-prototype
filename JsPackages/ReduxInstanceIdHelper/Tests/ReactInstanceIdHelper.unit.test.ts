@@ -1,9 +1,9 @@
 import {
     extractPrefixFromInstanceId,
     extractComponentNameFromInstanceId
-} from "ReduxInstanceIdHelper";
+} from "../Src/ReduxInstanceIdHelper";
 
-describe(">>>GitInfoSubContainer Unit Testing", () => {
+describe(">>>ReduxInstanceIdHelper Unit Testing", () => {
     it("+++ check extractPrefixFromInstanceId", () => {
         const instanceId = "AsyncTestPage_TopContainer_650935552_TodoListContainer_4204973487";
         const prefix = "AsyncTestPage_TopContainer_650935552";

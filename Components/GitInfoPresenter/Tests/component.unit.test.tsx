@@ -1,15 +1,15 @@
 import * as React from "react";
 import { mount } from "enzyme";
-import { GitSizePresenter } from "GitSizePresenter";
+import { GitInfoPresenter } from "GitInfoPresenter";
 
 const preset = () => {
     let mockFn = jest.fn();
     mockFn.mockReturnValueOnce(10);
-    let wrapper = mount(<GitSizePresenter gitSize={288} refreshCount={9} onClick={mockFn} />);
+    let wrapper = mount(<GitInfoPresenter gitSize={288} refreshCount={9} onClick={mockFn} />);
     return { wrapper };
 };
 
-describe(">>>GitSizePresenter Unit Testing", () => {
+describe(">>>GitInfoPresenter Unit Testing", () => {
     it("+++ check render 3 p tags", () => {
         let { wrapper } = preset();
         expect(wrapper.find("p").length).toEqual(3);

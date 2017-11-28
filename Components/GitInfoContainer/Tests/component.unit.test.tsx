@@ -1,44 +1,46 @@
 import * as React from "react";
+import configureStore from "redux-mock-store";
 import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import { newStore, readStore } from "ReduxStoreManager";
-import { registerInstance } from "ReduxInstanceManager";
-import { reducer } from "GitInfoContainer/Src/reducer";
-import configureStore from "redux-mock-store";
+import { createInstance } from "ReduxInstanceHelper";
+import { reducer } from "GitInfoAppContainer/Src/reducer";
 import { collectMiddlewares } from "ReduxMiddlewareManager";
 import {
-    GitInfoSubContainer,
+    GitInfoContainer,
     ON_REFRESH_CLICK,
     REFRESH_GIT_INFO,
     FETCH_GIT_INFO
-} from "GitInfoSubContainer";
-import { GitSizePresenter } from "GitSizePresenter";
+} from "GitInfoContainer";
+import { GitInfoPresenter } from "GitInfoPresenter";
 
 const mockStore = configureStore([collectMiddlewares()]);
 
-const getStore = (instanceId, reducer) => {
+const getStore = (instanceIdPrefix, componentName, reducer) => {
     newStore();
-    registerInstance(instanceId, reducer);
-    return readStore();
+    const instanceId = createInstance(instanceIdPrefix, componentName, reducer);
+    const realStore = readStore();
+    return { instanceId, realStore };
 };
 
 const preset = () => {
-    let instanceId: "MockInstanceId_112138";
+    let instanceIdPrefix = "MockInstanceIdPrefix";
+    let componentName = "MockComponentName";
     let gitUrl = "MockGitUrl";
-    let realStore = getStore(instanceId, reducer);
+    let { instanceId, realStore } = getStore(instanceIdPrefix, componentName, reducer);
     let store = mockStore(realStore.getState());
     let wrapper = mount(
         <Provider store={store}>
-            <GitInfoSubContainer instanceId={instanceId} gitUrl={gitUrl} />
+            <GitInfoContainer instanceId={instanceId} gitUrl={gitUrl} />
         </Provider>
     );
     return { wrapper, store, instanceId, gitUrl };
 };
 
 describe(">>>GitInfoSubContainer Unit Testing", () => {
-    it("+++ check render 1 GitInfoSubContainer", () => {
+    it("+++ check render 1 GitInfoContainer", () => {
         let { wrapper } = preset();
-        expect(wrapper.find(GitInfoSubContainer).length).toEqual(1);
+        expect(wrapper.find(GitInfoContainer).length).toEqual(1);
     });
 
     it("+++ check render 1 InitWrapper", () => {
@@ -46,15 +48,15 @@ describe(">>>GitInfoSubContainer Unit Testing", () => {
         expect(wrapper.find("InitWrapper").length).toEqual(1);
     });
 
-    it("+++ check render 1 GitSizePresenter", () => {
+    it("+++ check render 1 GitInfoPresenter", () => {
         let { wrapper } = preset();
-        expect(wrapper.find(GitSizePresenter).length).toEqual(1);
+        expect(wrapper.find(GitInfoPresenter).length).toEqual(1);
     });
 
     it("+++ check map dispatchProps correctly", () => {
         let { wrapper } = preset();
         let initWrapperProps = wrapper
-            .find(GitInfoSubContainer)
+            .find(GitInfoContainer)
             .childAt(0)
             .props();
         expect(initWrapperProps.gitSize).toEqual(0);
@@ -65,7 +67,7 @@ describe(">>>GitInfoSubContainer Unit Testing", () => {
     it("+++ check map stateProps correctly", () => {
         let { wrapper, store } = preset();
         let initWrapperProps = wrapper
-            .find(GitInfoSubContainer)
+            .find(GitInfoContainer)
             .childAt(0)
             .props();
         initWrapperProps.onClick();

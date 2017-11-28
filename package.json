@@ -8,7 +8,9 @@
         "prestart": "npm run build-desktop",
         "start": "node server.js",
         "pretest": "tsc -p ./tsconfig.json",
-        "test": "jest --testPathPattern \\.unit\\.test\\."
+        "test": "jest --testPathPattern \\.unit\\.test\\.",
+        "test-debug":
+            "npm run pretest && node --inspect --inspect-brk ./node_modules/.bin/jest --runInBand --testPathPattern \\.unit\\.test\\."
     },
     "author": "Dylan Qin <heisqk@gmail.com>",
     "contributors": [
