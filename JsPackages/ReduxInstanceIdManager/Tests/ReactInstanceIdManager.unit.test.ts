@@ -1,7 +1,7 @@
 import {
-    extractComponentNameFromInstanceId,
-    extractPrefixFromInstanceId
-} from "ReduxInstanceIdManager";
+    extractPrefixFromInstanceId,
+    extractComponentNameFromInstanceId
+} from "ReduxInstanceIdHelper";
 
 describe(">>>GitInfoSubContainer Unit Testing", () => {
     it("+++ check extractPrefixFromInstanceId", () => {

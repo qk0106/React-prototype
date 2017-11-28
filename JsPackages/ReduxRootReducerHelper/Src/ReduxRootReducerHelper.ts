@@ -1,13 +1,13 @@
 import * as iassign from "immutable-assign";
-import { combineReducers } from "redux";
-import { collectReducers } from "ReduxReducerManager";
 import {
-    collectInstanceIds,
     extractPrefixFromInstanceId,
     extractComponentNameFromInstanceId
-} from "ReduxInstanceIdManager";
+} from "ReduxInstanceIdHelper";
+import { combineReducers } from "redux";
+import { collectReducers } from "ReduxReducerManager";
+import { collectInstanceIds } from "ReduxInstanceIdManager";
+import { collectSharedStates } from "ReduxSharedStateManager";
 import { collectBroadcastListeners } from "ReduxBroadcastListenerManager";
-import { collectSharedState } from "ReduxSharedStateManager";
 
 const getNewState = () => {
     let state = {};
@@ -72,7 +72,7 @@ const updateInstanceState = (state, action) => {
 const updateSharedState = (state, action) => {
     return iassign(state, state => {
         const sharedState = state["SharedState"];
-        const sharedStateReducer = collectSharedState();
+        const sharedStateReducer = collectSharedStates();
         if (
             Object.keys(sharedStateReducer).length === 0 &&
             sharedStateReducer.constructor === Object

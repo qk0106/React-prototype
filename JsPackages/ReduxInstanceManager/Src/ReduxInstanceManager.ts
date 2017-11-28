@@ -1,11 +1,8 @@
 import { updateStore } from "ReduxStoreManager";
 import { getRootReducer } from "ReduxRootReducerHelper";
+import { extractComponentNameFromInstanceId } from "ReduxInstanceIdHelper";
 import { registerReducer, unregisterReducer } from "ReduxReducerManager";
-import {
-    registerInstanceId,
-    unregisterInstanceId,
-    extractComponentNameFromInstanceId
-} from "ReduxInstanceIdManager";
+import { registerInstanceId, unregisterInstanceId } from "ReduxInstanceIdManager";
 
 export const registerInstance = (instanceId, reducer) => {
     const componentName = extractComponentNameFromInstanceId(instanceId);
