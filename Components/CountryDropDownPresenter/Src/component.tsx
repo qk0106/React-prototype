@@ -1,7 +1,8 @@
-import * as React from "react";
-
-const style = require("./style.less");
 import { wrapWithStyle } from "ReactStyleWrapper";
+
+import * as React from "react";
+const style = require("./style.less");
+
 import { Dropdown } from "semantic-ui-react";
 
 const component = ({ selectedCountry, countryOptions, selectHandler }) => (

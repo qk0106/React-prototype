@@ -1,13 +1,13 @@
-import * as React from "react";
+import { wrapWithStyle } from "ReactStyleWrapper";
 import { wrapWithInstance } from "ReactInstanceWrapper";
 
-const style = require("./style.less");
-import { wrapWithStyle } from "ReactStyleWrapper";
-
+import * as React from "react";
 import { reducer } from "./reducer";
+const style = require("./style.less");
+
 import { AddTodoContainer } from "AddTodoContainer";
-import { TodoFooterContainer } from "TodoFooterContainer";
 import { TodoListContainer } from "TodoListContainer";
+import { TodoFooterContainer } from "TodoFooterContainer";
 
 const component = props => (
     <div>

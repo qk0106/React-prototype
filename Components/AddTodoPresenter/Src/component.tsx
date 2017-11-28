@@ -1,7 +1,7 @@
-import * as React from "react";
-
-const style = require("./style.less");
 import { wrapWithStyle } from "ReactStyleWrapper";
+
+import * as React from "react";
+const style = require("./style.less");
 
 const component = ({ onSubmit, onChange, inputText }) => (
     <div>

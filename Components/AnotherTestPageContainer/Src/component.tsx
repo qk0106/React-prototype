@@ -1,5 +1,6 @@
-import * as React from "react";
 import { registerRoute } from "ReactRouteManager";
+
+import * as React from "react";
 
 import { GitInfoAppContainer } from "GitInfoAppContainer";
 import { TodoListAppContainer } from "TodoListAppContainer";

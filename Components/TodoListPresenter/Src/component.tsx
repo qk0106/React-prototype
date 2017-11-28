@@ -1,10 +1,10 @@
-import * as React from "react";
-
-const style = require("./style.less");
 import { wrapWithStyle } from "ReactStyleWrapper";
-import { List } from "semantic-ui-react";
+
+import * as React from "react";
+const style = require("./style.less");
 
 import { TodoPresenter } from "TodoPresenter";
+import { List } from "semantic-ui-react";
 
 const makeTodoClick = (onTodoClick, id) => () => {
     onTodoClick(id);

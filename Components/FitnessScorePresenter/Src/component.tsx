@@ -1,9 +1,7 @@
-import * as React from "react";
-
-const style = require("./style.less");
 import { wrapWithStyle } from "ReactStyleWrapper";
 
-import {} from "semantic-ui-react";
+import * as React from "react";
+const style = require("./style.less");
 
 const component = ({ fitnessScore }) => (
     <div>

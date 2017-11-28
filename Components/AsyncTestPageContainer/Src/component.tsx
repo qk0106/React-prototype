@@ -1,5 +1,6 @@
-import * as React from "react";
 import { registerRoute } from "ReactRouteManager";
+
+import * as React from "react";
 
 import { TopAppContainer } from "TopAppContainer";
 import { GitInfoAppContainer } from "GitInfoAppContainer";
