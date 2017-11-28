@@ -4,7 +4,7 @@ import { generateInstanceId } from "ReduxInstanceIdHelper";
 import { registerReducer, unregisterReducer } from "ReduxReducerManager";
 import { registerInstanceId, unregisterInstanceId } from "ReduxInstanceIdManager";
 
-export const registerInstance = (instanceIdPrefix, componentName, reducer) => {
+export const createInstance = (instanceIdPrefix, componentName, reducer) => {
     const instanceId = generateInstanceId(instanceIdPrefix, componentName);
     registerInstanceId(instanceId);
     registerReducer(reducer, componentName);
@@ -12,7 +12,7 @@ export const registerInstance = (instanceIdPrefix, componentName, reducer) => {
     return instanceId;
 };
 
-export const unregisterInstance = (instanceId, componentName) => {
+export const removeInstance = (instanceId, componentName) => {
     unregisterInstanceId(instanceId);
     unregisterReducer(componentName);
     updateStore(getRootReducer());

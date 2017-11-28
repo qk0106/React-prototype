@@ -1,32 +1,24 @@
 import * as React from "react";
-import { registerInstance, unregisterInstance } from "ReduxInstanceManager";
+import { createInstance, removeInstance } from "ReduxInstanceHelper";
 import {
-    registerBroadcastListener,
-    unregisterBroadcastListener
-} from "ReduxBroadcastListenerManager";
+    registerbroadcastSubscriber,
+    unregisterbroadcastSubscriber
+} from "ReduxbroadcastSubscriberManager";
 
-export const wrapWithInstance = (
-    componentName,
-    reducer,
-    listenToBroadcast?
-) => WrappedComponent => {
+export const wrapWithInstance = (componentName, reducer, broadcastConfig?) => WrappedComponent => {
     class InstanceWrapper extends React.PureComponent<any> {
-        private _reducer = reducer;
         private _instanceId;
         constructor(props) {
             super(props);
         }
         componentWillMount() {
-            this._instanceId = registerInstance(
-                this.props.instanceIdPrefix,
-                componentName,
-                this._reducer
-            );
-            registerBroadcastListener(componentName, listenToBroadcast);
+            const { instanceIdPrefix } = this.props;
+            this._instanceId = createInstance(instanceIdPrefix, componentName, reducer);
+            registerbroadcastSubscriber(broadcastConfig, componentName);
         }
         componentWillUnmount() {
-            unregisterInstance(this._instanceId, componentName);
-            unregisterBroadcastListener(listenToBroadcast, componentName);
+            removeInstance(this._instanceId, componentName);
+            unregisterbroadcastSubscriber(broadcastConfig, componentName);
         }
         render() {
             return <WrappedComponent instanceId={this._instanceId} {...this.props} />;

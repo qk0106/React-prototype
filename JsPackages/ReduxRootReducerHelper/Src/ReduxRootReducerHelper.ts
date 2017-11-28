@@ -7,7 +7,7 @@ import { combineReducers } from "redux";
 import { collectReducers } from "ReduxReducerManager";
 import { collectInstanceIds } from "ReduxInstanceIdManager";
 import { collectSharedStates } from "ReduxSharedStateManager";
-import { collectBroadcastListeners } from "ReduxBroadcastListenerManager";
+import { collectbroadcastSubscribers } from "ReduxbroadcastSubscriberManager";
 
 const getNewState = () => {
     let state = {};
@@ -40,10 +40,10 @@ const getInstanceUpdatedState = (instanceId, componentName, state, action) => {
     });
 };
 
-const isBroadcastListener = componentName => {
-    const broadcastListenerRegistry = collectBroadcastListeners();
-    if (broadcastListenerRegistry[componentName])
-        return broadcastListenerRegistry[componentName].listen;
+const isbroadcastSubscriber = componentName => {
+    const broadcastSubscriberRegistry = collectbroadcastSubscribers();
+    if (broadcastSubscriberRegistry[componentName])
+        return broadcastSubscriberRegistry[componentName].subscribe;
     else return false;
 };
 
@@ -54,7 +54,7 @@ const updateInstanceState = (state, action) => {
         const receiverComponentName = extractComponentNameFromInstanceId(receiverInstanceId);
         const receiverParentInstanceId = extractPrefixFromInstanceId(receiverInstanceId);
         if (
-            isBroadcastListener(receiverComponentName) ||
+            isbroadcastSubscriber(receiverComponentName) ||
             receiverInstanceId === senderParentInstanceId || // match parent instance
             receiverParentInstanceId === senderParentInstanceId || // match sibling instances, including itself
             receiverParentInstanceId.includes(senderParentInstanceId) // match descendant instances

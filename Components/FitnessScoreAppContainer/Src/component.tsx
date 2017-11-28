@@ -18,5 +18,5 @@ export const component = props => (
 );
 
 export const FitnessScoreAppContainer = wrapWithInstance("FitnessScore", reducer, {
-    broadcast: true
+    subscribe: true
 })(wrapWithStyle(style)(component));
