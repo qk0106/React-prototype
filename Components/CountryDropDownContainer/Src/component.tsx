@@ -4,9 +4,9 @@ import { wrapWithConnect } from "ReactConnectWrapper";
 import { CountryDropDownPresenter } from "CountryDropDownPresenter";
 import { onSelect, initCountryOptions } from "CountryDropDownContainer";
 
-const stateProps = (ownState, ownProps, sharedState) => ({
+const stateProps = (ownState, ownProps, sharedResource) => ({
     selectedCountry: ownState.selectedCountry !== undefined ? ownState.selectedCountry : "",
-    countryOptions: sharedState.countryOptions !== undefined ? sharedState.countryOptions : []
+    countryOptions: sharedResource.countryOptions !== undefined ? sharedResource.countryOptions : []
 });
 
 const dispatchProps = (dispatch, instanceId, ownProps, stateProps) => ({

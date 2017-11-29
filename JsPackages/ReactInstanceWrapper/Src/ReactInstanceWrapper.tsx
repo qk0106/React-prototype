@@ -1,5 +1,5 @@
 import * as React from "react";
-import { createInstance, removeInstance } from "ReduxInstanceHelper";
+import { createInstance, removeInstance } from "ReduxInstanceManager";
 import {
     registerBroadcastSubscriber,
     unregisterBroadcastSubscriber
@@ -23,12 +23,14 @@ export const wrapWithInstance = (appContainer, reducer, broadcastConfig?) => Wra
             const { instanceIdPrefix } = this.props;
             const componentName = findComponentName(appContainer);
             this._instanceId = createInstance(instanceIdPrefix, componentName, reducer);
-            registerBroadcastSubscriber(broadcastConfig, componentName);
+            if (broadcastConfig && broadcastConfig.subscribe)
+                registerBroadcastSubscriber(componentName);
         }
         componentWillUnmount() {
             const componentName = findComponentName(appContainer);
             removeInstance(this._instanceId);
-            unregisterBroadcastSubscriber(broadcastConfig, componentName);
+            if (broadcastConfig && broadcastConfig.subscribe)
+                unregisterBroadcastSubscriber(componentName);
         }
         render() {
             return <WrappedComponent instanceId={this._instanceId} {...this.props} />;

@@ -5,8 +5,8 @@ const getState = (state, key) => state[key];
 const generateMapStateToProps = stateProps => {
     return (state, ownProps) => {
         let ownState = getState(state, ownProps.instanceId);
-        let sharedState = getState(state, "SharedState");
-        return stateProps(ownState, ownProps, sharedState);
+        let sharedResource = getState(state, "SharedResource");
+        return stateProps(ownState, ownProps, sharedResource);
     };
 };
 

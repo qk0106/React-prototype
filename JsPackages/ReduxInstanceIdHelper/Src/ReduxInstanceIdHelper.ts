@@ -17,7 +17,7 @@ export const extractComponentNameFromInstanceId = instanceId => {
     return instanceId.match(reg)[1];
 };
 
-export const findTargetInstanceIds = instanceId => {
+export const getParentTreeInstanceIds = instanceId => {
     let targetInstanceIds = [];
     const senderInstanceId = instanceId;
     const senderParentInstanceId = extractPrefixFromInstanceId(senderInstanceId);

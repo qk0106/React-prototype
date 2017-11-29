@@ -1,7 +1,7 @@
 import { registerMiddleware } from "ReduxMiddlewareManager";
 
 import { doFetch } from "FetchHelper";
-import { registerSharedState } from "ReduxSharedStateManager";
+import { registerSharedResource } from "ReduxSharedResourceManager";
 import {
     INIT_COUNTRY_OPTIONS,
     FETCH_COUNTRY_OPTIONS_SUCCESS,
@@ -18,7 +18,7 @@ const registerCountryOptions = () => {
                 return countryOptions;
         }
     };
-    registerSharedState({ countryOptions });
+    registerSharedResource({ countryOptions });
 };
 
 const getCountryOptionsData = async () => {
