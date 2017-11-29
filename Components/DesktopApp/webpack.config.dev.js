@@ -6,7 +6,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CheckerPlugin } = require("awesome-typescript-loader");
-
+const distDirPath = "./dist";
 const appDirPath = "./Components/DesktopApp/";
 const getAppFilePath = fileName => appDirPath + fileName;
 
@@ -26,7 +26,7 @@ module.exports = {
     // Output folder
     output: {
         filename: "js/[name].js",
-        path: path.resolve("./dist"),
+        path: path.resolve(distDirPath),
         publicPath: "/",
         pathinfo: true
     },
