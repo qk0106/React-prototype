@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from "redux";
+import { getRootReducer } from "ReduxReducerHelper";
 import { collectMiddlewares } from "ReduxMiddlewareManager";
-import { getRootReducer } from "ReduxRootReducerHelper";
 
 let store;
 
