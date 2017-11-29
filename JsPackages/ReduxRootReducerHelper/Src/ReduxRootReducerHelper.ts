@@ -1,13 +1,7 @@
-import * as iassign from "immutable-assign";
-import {
-    extractPrefixFromInstanceId,
-    extractComponentNameFromInstanceId
-} from "ReduxInstanceIdHelper";
-import { combineReducers } from "redux";
-import { collectReducers } from "ReduxReducerManager";
+import { updateInstance } from "ReduxInstanceHelper";
+import { updateSharedState } from "ReduxSharedStateHelper";
 import { collectInstanceIds } from "ReduxInstanceIdManager";
-import { collectSharedStates } from "ReduxSharedStateManager";
-import { collectBroadcastSubscribers } from "ReduxBroadcastSubscriberManager";
+import { findTargetInstanceIds } from "ReduxInstanceIdHelper";
 
 const getNewState = () => {
     let state = {};
@@ -29,61 +23,12 @@ const mergeState = (oldState, newState) => {
     return state;
 };
 
-const isBroadcastSubscriber = componentName => {
-    const broadcastSubscriberRegistry = collectBroadcastSubscribers();
-    if (broadcastSubscriberRegistry[componentName])
-        return broadcastSubscriberRegistry[componentName].subscribe;
-    else return false;
-};
-
-const getInstanceUpdatedState = (instanceId, componentName, state, action) => {
-    if (!(instanceId in state)) return state;
-    return iassign(state, state => {
-        const instanceState = state[instanceId];
-        const runCombinedReducer = combineReducers(collectReducers()[componentName].reducer);
-        const updatedInstanceState = runCombinedReducer(instanceState, action);
-        state[instanceId] = updatedInstanceState;
-        return state;
-    });
-};
-
 const updateInstanceState = (state, action) => {
-    const senderInstanceId = action.instanceId;
-    const senderParentInstanceId = extractPrefixFromInstanceId(senderInstanceId);
-    collectInstanceIds().forEach(receiverInstanceId => {
-        const receiverComponentName = extractComponentNameFromInstanceId(receiverInstanceId);
-        const receiverParentInstanceId = extractPrefixFromInstanceId(receiverInstanceId);
-        if (
-            isBroadcastSubscriber(receiverComponentName) ||
-            receiverInstanceId === senderParentInstanceId || // match parent instance
-            receiverParentInstanceId === senderParentInstanceId || // match sibling instances, including itself
-            receiverParentInstanceId.includes(senderParentInstanceId) // match descendant instances
-        )
-            state = getInstanceUpdatedState(
-                receiverInstanceId,
-                receiverComponentName,
-                state,
-                action
-            );
+    const parentTreeInstanceIds = findTargetInstanceIds(action.instanceId);
+    parentTreeInstanceIds.forEach(instanceId => {
+        state = updateInstance(instanceId, state, action);
     });
     return state;
-};
-
-const updateSharedState = (state, action) => {
-    return iassign(state, state => {
-        const sharedState = state["SharedState"];
-        const sharedStateReducer = collectSharedStates();
-        if (
-            Object.keys(sharedStateReducer).length === 0 &&
-            sharedStateReducer.constructor === Object
-        ) {
-            state["SharedState"] = {};
-        } else {
-            const runCombinedReducer = combineReducers(sharedStateReducer);
-            state["SharedState"] = runCombinedReducer(sharedState, action);
-        }
-        return state;
-    });
 };
 
 export const getRootReducer = () => {
