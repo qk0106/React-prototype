@@ -1,11 +1,12 @@
-import { connect } from "react-redux"; // connect redux and react
+import { connect } from "react-redux";
+import { SHARED_RESOURCE_KEY } from "ReduxSharedResourceHelper";
 
 const getState = (state, key) => state[key];
 
 const generateMapStateToProps = stateProps => {
     return (state, ownProps) => {
         let ownState = getState(state, ownProps.instanceId);
-        let sharedResource = getState(state, "SharedResource");
+        let sharedResource = getState(state, SHARED_RESOURCE_KEY);
         return stateProps(ownState, ownProps, sharedResource);
     };
 };

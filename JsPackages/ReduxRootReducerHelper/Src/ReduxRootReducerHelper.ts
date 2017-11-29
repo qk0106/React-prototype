@@ -1,4 +1,4 @@
-import { updateSharedResourceState } from "ReduxSharedResourceHelper";
+import { SHARED_RESOURCE_KEY, updateSharedResourceState } from "ReduxSharedResourceHelper";
 import { getRegisteredInstancesState, updateParentTreeState } from "ReduxInstanceHelper";
 
 const mergeState = (existingState, registeredInstancesState) => {
@@ -9,7 +9,7 @@ const mergeState = (existingState, registeredInstancesState) => {
             if (existingState.hasOwnProperty(prop)) mergedState[prop] = existingState[prop];
         }
     }
-    mergedState["SharedResource"] = existingState["SharedResource"];
+    mergedState[SHARED_RESOURCE_KEY] = existingState[SHARED_RESOURCE_KEY];
     return mergedState;
 };
 
