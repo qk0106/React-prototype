@@ -1,5 +1,6 @@
 import * as iassign from "immutable-assign";
 import { combineReducers } from "redux";
+import { SHARED_RESOURCE_KEY } from "ReduxSharedResourceHelper";
 
 export const updateTargetState = (state, action, target, reducer) => {
     return iassign(state, state => {
@@ -12,4 +13,16 @@ export const updateTargetState = (state, action, target, reducer) => {
         }
         return state;
     });
+};
+
+export const mergeState = (existingState, registeredInstancesState) => {
+    let mergedState = {};
+    for (let prop in registeredInstancesState) {
+        if (registeredInstancesState.hasOwnProperty(prop)) {
+            mergedState[prop] = registeredInstancesState[prop];
+            if (existingState.hasOwnProperty(prop)) mergedState[prop] = existingState[prop];
+        }
+    }
+    mergedState[SHARED_RESOURCE_KEY] = existingState[SHARED_RESOURCE_KEY];
+    return mergedState;
 };
