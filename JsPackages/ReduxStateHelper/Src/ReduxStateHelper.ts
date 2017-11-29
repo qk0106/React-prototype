@@ -1,5 +1,6 @@
 import * as iassign from "immutable-assign";
 import { combineReducers } from "redux";
+import { collectInstanceIds } from "ReduxInstanceIdManager";
 import { SHARED_RESOURCE_KEY } from "ReduxSharedResourceHelper";
 
 export const updateTargetState = (state, action, target, reducer) => {
@@ -15,14 +16,27 @@ export const updateTargetState = (state, action, target, reducer) => {
     });
 };
 
-export const mergeState = (existingState, registeredInstancesState) => {
+const generateCompleteStateEmpty = completeStateKeys => {
+    let state = {};
+    completeStateKeys.forEach(instanceId => {
+        state[instanceId] = {};
+    });
+    return state;
+};
+
+const mergeState = (existingState, completeStateEmpty) => {
     let mergedState = {};
-    for (let prop in registeredInstancesState) {
-        if (registeredInstancesState.hasOwnProperty(prop)) {
-            mergedState[prop] = registeredInstancesState[prop];
+    for (let prop in completeStateEmpty) {
+        if (completeStateEmpty.hasOwnProperty(prop)) {
+            mergedState[prop] = completeStateEmpty[prop];
             if (existingState.hasOwnProperty(prop)) mergedState[prop] = existingState[prop];
         }
     }
-    mergedState[SHARED_RESOURCE_KEY] = existingState[SHARED_RESOURCE_KEY];
     return mergedState;
+};
+
+export const getCompleteState = existingState => {
+    const completeStateKeys = collectInstanceIds().concat([SHARED_RESOURCE_KEY]);
+    const completeStateEmpty = generateCompleteStateEmpty(completeStateKeys);
+    return mergeState(existingState, completeStateEmpty);
 };
