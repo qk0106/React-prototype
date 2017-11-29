@@ -1,1 +1,1 @@
-export * from "./Src/ReduxInstanceHelper";
+export * from "./Src/ReduxInstanceManager";
