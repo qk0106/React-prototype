@@ -1,9 +1,9 @@
+import { getUpdatedTargetState } from "ReduxStateHelper";
 import { collectSharedResources } from "ReduxSharedResourceManager";
-import { updateTargetState } from "ReduxStateHelper";
 
 export const SHARED_RESOURCE_KEY = "SharedResource";
 
-export const updateSharedResourceState = (state, action) => {
+export const getUpdatedSharedResourceState = (state, action) => {
     const sharedResourcReducer = collectSharedResources();
-    return updateTargetState(state, action, SHARED_RESOURCE_KEY, sharedResourcReducer);
+    return getUpdatedTargetState(state, action, SHARED_RESOURCE_KEY, sharedResourcReducer);
 };

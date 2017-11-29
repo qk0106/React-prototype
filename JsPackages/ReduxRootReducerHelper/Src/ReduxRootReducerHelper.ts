@@ -1,12 +1,12 @@
 import { getCompleteState } from "ReduxStateHelper";
-import { updateParentTreeState } from "ReduxInstanceHelper";
-import { updateSharedResourceState } from "ReduxSharedResourceHelper";
+import { getUpdatedParentTreeState } from "ReduxInstanceHelper";
+import { getUpdatedSharedResourceState } from "ReduxSharedResourceHelper";
 
 export const getRootReducer = () => {
     return (existingState = {}, action) => {
         let state = getCompleteState(existingState);
-        state = updateParentTreeState(state, action);
-        state = updateSharedResourceState(state, action);
+        state = getUpdatedParentTreeState(state, action);
+        state = getUpdatedSharedResourceState(state, action);
         return state;
     };
 };

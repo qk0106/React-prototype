@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import { collectInstanceIds } from "ReduxInstanceIdManager";
 import { SHARED_RESOURCE_KEY } from "ReduxSharedResourceHelper";
 
-export const updateTargetState = (state, action, target, reducer) => {
+export const getUpdatedTargetState = (state, action, target, reducer) => {
     return iassign(state, state => {
         const targetState = state[target];
         if (Object.keys(reducer).length === 0 && reducer.constructor === Object) {
@@ -18,25 +18,25 @@ export const updateTargetState = (state, action, target, reducer) => {
 
 const generateCompleteStateEmpty = completeStateKeys => {
     let state = {};
-    completeStateKeys.forEach(instanceId => {
-        state[instanceId] = {};
+    completeStateKeys.forEach(key => {
+        state[key] = {};
     });
     return state;
 };
 
-const mergeState = (existingState, completeStateEmpty) => {
-    let mergedState = {};
+const generateCompleteState = (existingState, completeStateEmpty) => {
+    let state = {};
     for (let prop in completeStateEmpty) {
         if (completeStateEmpty.hasOwnProperty(prop)) {
-            mergedState[prop] = completeStateEmpty[prop];
-            if (existingState.hasOwnProperty(prop)) mergedState[prop] = existingState[prop];
+            state[prop] = completeStateEmpty[prop];
+            if (existingState.hasOwnProperty(prop)) state[prop] = existingState[prop];
         }
     }
-    return mergedState;
+    return state;
 };
 
 export const getCompleteState = existingState => {
     const completeStateKeys = collectInstanceIds().concat([SHARED_RESOURCE_KEY]);
     const completeStateEmpty = generateCompleteStateEmpty(completeStateKeys);
-    return mergeState(existingState, completeStateEmpty);
+    return generateCompleteState(existingState, completeStateEmpty);
 };
