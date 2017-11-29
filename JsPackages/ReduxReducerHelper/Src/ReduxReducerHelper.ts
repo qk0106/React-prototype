@@ -32,7 +32,7 @@ const updateInstanceState = (state, action) => {
 };
 
 export const getRootReducer = () => {
-    let newState = getNewState();
+    const newState = getNewState();
     return (oldState = newState, action) => {
         let state = mergeState(oldState, newState);
         state = updateInstanceState(state, action);
