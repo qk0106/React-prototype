@@ -24,7 +24,7 @@ const generateCompleteStateEmpty = completeStateKeys => {
     return state;
 };
 
-const generateCompleteState = (existingState, completeStateEmpty) => {
+const stuffWithExistingState = (completeStateEmpty, existingState) => {
     let state = {};
     for (let prop in completeStateEmpty) {
         if (completeStateEmpty.hasOwnProperty(prop)) {
@@ -38,5 +38,5 @@ const generateCompleteState = (existingState, completeStateEmpty) => {
 export const getCompleteState = existingState => {
     const completeStateKeys = collectInstanceIds().concat([SHARED_RESOURCE_KEY]);
     const completeStateEmpty = generateCompleteStateEmpty(completeStateKeys);
-    return generateCompleteState(existingState, completeStateEmpty);
+    return stuffWithExistingState(completeStateEmpty, existingState);
 };
