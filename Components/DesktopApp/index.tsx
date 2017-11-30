@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as iassign from "immutable-assign";
-import { render } from "react-dom";
+import * as ReactDOM from "react-dom";
 import { createLogger } from "redux-logger";
 import { AppContainer } from "react-hot-loader";
 import { registerMiddleware } from "ReduxMiddlewareManager";
@@ -18,22 +18,20 @@ const store = readStore();
 const routes = collectRoutes();
 const appElement = document.getElementById("app");
 
-render(
-    <AppContainer>
-        <App store={store} routes={routes} />
-    </AppContainer>,
-    appElement
-);
+const render = Component => {
+    ReactDOM.render(
+        <AppContainer>
+            <Component store={store} routes={routes} />
+        </AppContainer>,
+        appElement
+    );
+};
 
-// Hot Module Replacement API
+render(App);
+
+// Webpack Hot Module Replacement API
 if (module.hot) {
     module.hot.accept("./app", () => {
-        const NextApp = require<{ default: typeof App }>("./app").default;
-        render(
-            <AppContainer>
-                <NextApp store={store} routes={routes} />
-            </AppContainer>,
-            appElement
-        );
+        render(App);
     });
 }
