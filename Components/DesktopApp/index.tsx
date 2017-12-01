@@ -5,7 +5,6 @@ import { createLogger } from "redux-logger";
 import { AppContainer } from "react-hot-loader";
 import { registerMiddleware } from "ReduxMiddlewareManager";
 import App from "./app";
-import "./routesRegistry"; // register must happen before collectRoutes()
 import "semantic-ui-css/semantic.min.css";
 iassign.setOption({ freeze: true }); // throw immutable error
 
@@ -15,7 +14,7 @@ registerMiddleware(loggerMiddleware);
 const appElement = document.getElementById("app");
 
 ReactDOM.render(
-    <AppContainer>
+    <AppContainer warnings={false}>
         <App />
     </AppContainer>,
     appElement
@@ -29,7 +28,7 @@ if (module.hot) {
         console.log("====================");
         const NextApp = require("./app").default;
         ReactDOM.render(
-            <AppContainer>
+            <AppContainer warnings={false}>
                 <NextApp />
             </AppContainer>,
             appElement
