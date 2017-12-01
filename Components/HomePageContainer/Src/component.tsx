@@ -8,4 +8,4 @@ const component = () => (
     </div>
 );
 
-registerRoute("Home", "/", "Home", component);
+registerRoute("Home", "/home", "Home", component);

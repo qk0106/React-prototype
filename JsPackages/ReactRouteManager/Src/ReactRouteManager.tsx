@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { HashRouter, Switch, Route, Link } from "react-router-dom";
 
 let routeRegistry = {};
 
@@ -34,11 +34,11 @@ const routeTemplate = route => (
 
 export const collectRoutes = () => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div>
                 {rows(linkTemplate, routeRegistry)}
                 <Switch>{rows(routeTemplate, routeRegistry)}</Switch>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 };
