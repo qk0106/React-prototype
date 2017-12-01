@@ -23,9 +23,6 @@ ReactDOM.render(
 // Hot Module Replacement API
 if (module.hot) {
     module.hot.accept("./app", () => {
-        console.log("====================");
-        console.log("update accepted");
-        console.log("====================");
         const NextApp = require("./app").default;
         ReactDOM.render(
             <AppContainer warnings={false}>
