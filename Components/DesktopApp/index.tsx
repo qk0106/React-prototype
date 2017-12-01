@@ -6,7 +6,7 @@ import { AppContainer } from "react-hot-loader";
 import { registerMiddleware } from "ReduxMiddlewareManager";
 import { readStore } from "ReduxStoreManager";
 import { collectRoutes } from "ReactRouteManager";
-import { App } from "./app"; // must isolate App for hot reload
+import App from "./app";
 import "./routesRegistry"; // register must happen before collectRoutes()
 import "semantic-ui-css/semantic.min.css";
 iassign.setOption({ freeze: true }); // throw immutable error
@@ -18,20 +18,25 @@ const store = readStore();
 const routes = collectRoutes();
 const appElement = document.getElementById("app");
 
-const render = Component => {
-    ReactDOM.render(
-        <AppContainer>
-            <Component store={store} routes={routes} />
-        </AppContainer>,
-        appElement
-    );
-};
+ReactDOM.render(
+    <AppContainer>
+        <App store={store} routes={routes} />
+    </AppContainer>,
+    appElement
+);
 
-render(App);
-
-// Webpack Hot Module Replacement API
+// Hot Module Replacement API
 if (module.hot) {
     module.hot.accept("./app", () => {
-        render(App);
+        console.log("====================");
+        console.log("update accepted");
+        console.log("====================");
+        const NextApp = require("./app").default;
+        ReactDOM.render(
+            <AppContainer>
+                <NextApp store={store} routes={routes} />
+            </AppContainer>,
+            appElement
+        );
     });
 }
