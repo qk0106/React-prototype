@@ -7,7 +7,7 @@ const style = require("./style.less");
 
 import { CountryDropDownContainer } from "CountryDropDownContainer";
 
-export const component = props => (
+const component = props => (
     <div>
         <div styleName="country-drop">
             <p>Country DropDown Component</p>

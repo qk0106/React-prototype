@@ -10,7 +10,7 @@ import { FitnessScoreContainer } from "FitnessScoreContainer";
 const broadcastConfig = {
     subscribe: true
 };
-export const component = props => (
+const component = props => (
     <div>
         <div styleName="fitness-score">
             <p>Fitness Score Component</p>

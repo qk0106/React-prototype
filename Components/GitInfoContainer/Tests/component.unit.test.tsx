@@ -3,7 +3,7 @@ import configureStore from "redux-mock-store";
 import { mount } from "enzyme";
 import { Provider } from "react-redux";
 import { newStore, readStore } from "ReduxStoreManager";
-import { createInstance } from "ReduxInstanceHelper";
+import { createInstance } from "ReduxInstanceManager";
 import { reducer } from "GitInfoAppContainer/Src/reducer";
 import { collectMiddlewares } from "ReduxMiddlewareManager";
 import {

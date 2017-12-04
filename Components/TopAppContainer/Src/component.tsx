@@ -9,7 +9,7 @@ import { TopContainer } from "TopContainer";
 import { GitInfoAppContainer } from "GitInfoAppContainer";
 import { TodoListAppContainer } from "TodoListAppContainer";
 
-export const component = props => {
+const component = props => {
     const id = { instanceIdPrefix: props.instanceId };
     return (
         <div>
