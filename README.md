@@ -50,7 +50,7 @@ Dylan's React Prototype (Decentralised and Flat Style)
 * Complete TS Typings
 * Dependecy Injection
 * React Helmet for SEO
-* Server side rendering for performance
+* NextJS and SSR (Server side rendering) for performance
 * Code spliting for performance
 * Request ID and global error handling
 * Producion config and minify & uglify
