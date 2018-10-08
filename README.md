@@ -1,3 +1,5 @@
+React Component resigter its own Redux.
+
 # React Prototype
 
 Dylan's React Prototype (Decentralised and Flat Style)
@@ -18,8 +20,6 @@ Dylan's React Prototype (Decentralised and Flat Style)
 * Jest
 
 ## Features
-
-React Component resigter Redux for themselves.
 
 * Modularization
   * Keep everything related as a module staying in one folder.
