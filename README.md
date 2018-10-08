@@ -19,6 +19,8 @@ Dylan's React Prototype (Decentralised and Flat Style)
 
 ## Features
 
+React Component resigter Redux for themselves.
+
 * Modularization
   * Keep everything related as a module staying in one folder.
   * (component, reducer, action, middleware, style and so on).
