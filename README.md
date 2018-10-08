@@ -1,8 +1,8 @@
-React Component resigter its own Redux.
+
 
 # React Prototype
 
-Dylan's React Prototype (Decentralised and Flat Style)
+React Component resigter its own Redux.
 
 ## Libraries
 
