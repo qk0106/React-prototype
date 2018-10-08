@@ -2,7 +2,7 @@
 
 # React Prototype
 
-React Component resigter its own Redux.
+A React Component resigters its own Redux.
 
 ## Libraries
 
